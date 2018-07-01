@@ -7,9 +7,11 @@
 }
 .cuitNoOK{
 	color:#F00;
+	background:black;
 }
 .cuitOK{
 	color:#0F0;
+	background:#eee;
 }
 
 
@@ -17,5 +19,5 @@
 .invalidDNI::after{}
 .validDNI::after{}
 .cuitFetching::after{}
-.cuitNoOK::after{}
-.cuitOK::after{}
+.cuitNoOK::after{content:" cuit invalido!"}
+.cuitOK::after{content:" cuit invalido!"}

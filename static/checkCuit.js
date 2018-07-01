@@ -32,6 +32,36 @@ function checkDni(dni){
 	});
 }
 
+function checkCuit(dni){
+	var cuit;
+	var msg="";
+	console.log("buscando para dni: "+dni+" digitos:"+dni.length);
+	msg="<h5>Cuit directo</h5>";
+	switch (dni.length){
+		case 11:
+			cuit=dni;
+			console.log("buscando para cuit: "+cuit);
+
+			break;
+		default:
+			divCUIT.innerHTML=msg;
+			return false;
+	}
+	
+	arrTipos.forEach(function(tipo){
+		if(tipo.id==="CUIT"){
+			tipo.cuit=cuit;
+			msg="<h5>"+tipo.descripcion+"</h5>"+cuit;
+		}
+	});
+	
+	divCUIT.innerHTML=msg;
+
+	// resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
+	 resultQuery=getResponse(urlAFIP+cuit);
+	 resultQuery=fetchCuit(urlAFIP+cuit);
+}
+
 function validarCuit(cuit) {
 
 	if(cuit.len != 11) {
@@ -94,15 +124,14 @@ function getResponseArr(url='',id){
 	request.send();
 	request.onload = function() {
 	  result = request.response;
-	  console.log(id+" Loaded ");
-	  console.log(result);
-	  console.log(arrTipos);
-	  /*arrTipos.forEach(function(tipo){
+	  	console.log(id+" Loaded ");
+	  arrTipos.forEach(function(tipo){
 		if(tipo.id===id){
 			tipo.response=result;
+			console.log(tipo);
+			reCalcular();
 		}	  	
-		reCalcular();
-	  });*/
+	  });
 	  console.log(arrTipos);
 	  return request.response;
 	}
@@ -132,43 +161,18 @@ function reCalcular(){
 	arrTipos.forEach(function(tipo){
 		var div=document.getElementById("div"+tipo.id);
 		var resultado=tipo.response;
+		console.log(tipo);
+		console.log(div);
+		console.log(resultado);
 		div.classList.remove("cuitOK","cuitNoOK");
 		if (resultado==null||resultado.success){
-			div.classList.add="cuitOK";
+			div.classList.add("cuitOK");
 		}else{
-			div.classList.add="cuitNoOK";
+			div.classList.add("cuitNoOK");
 		}
 	});
 }
 
-function checkCuit(dni){
-	var cuit;
-	var msg="";
-	console.log("buscando para dni: "+dni+" digitos:"+dni.length);
-	msg="<h5>Cuit directo</h5>";
-	switch (dni.length){
-		case 11:
-			cuit=dni;
-			console.log("buscando para cuit: "+cuit);
 
-			break;
-		default:
-			divCUIT.innerHTML=msg;
-			return false;
-	}
-	
-	arrTipos.forEach(function(tipo){
-		if(tipo.id==="CUIT"){
-			tipo.cuit=cuit;
-			msg="<h5>"+tipo.descripcion+"</h5>"+cuit;
-		}
-	});
-	
-	divCUIT.innerHTML=msg;
-
-	// resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
-	 resultQuery=getResponse(urlAFIP+cuit);
-	 resultQuery=fetchCuit(urlAFIP+cuit);
-}
 
 

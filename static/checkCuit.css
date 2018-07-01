@@ -19,5 +19,5 @@
 .invalidDNI::after{}
 .validDNI::after{}
 .cuitFetching::after{}
-.cuitNoOK::after{content:" cuit invalido!"}
-.cuitOK::after{content:" cuit invalido!"}
+.cuitNoOK::after{content:" cuit invalido"}
+.cuitOK::after{content:" cuit valido!"}

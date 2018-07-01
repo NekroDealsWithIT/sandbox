@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing cuit</title>
+	<script type="text/javascript" src="static/checkCuit.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/checkCuit.css">
+</head>
+<body>
+	<ol>
+		<li>
+			<label id="labelDni">Ingresar DNI: <input type="text" minlength="8"maxlength="8" name="dni" id="dni" oninput="checkDni(this.value);" class="invalidDNI"></label>
+		</li>
+		<li>
+			<label id="labelDni">Ingresar CUIT: <input type="text" minlength="11"maxlength="cuit" name="cuit" id="cuit" oninput="checkCuit(this.value);" class="invalidDNI"></label>			
+		</li>
+	</ol>
+	<div id="divCUIT" class=""></div>
+	<div id="div20" class=""></div>
+	<div id="div27" class=""></div>
+	<div id="div24" class=""></div>
+	<div id="div30" class=""></div>
+	<div id="div34" class=""></div>
+	<div id="div23" class=""></div>
+	<div id="div33" class=""></div>
+</body>
+</html>

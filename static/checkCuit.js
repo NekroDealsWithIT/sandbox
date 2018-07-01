@@ -30,6 +30,7 @@ function checkDni(dni){
 
 		div.innerHTML=msg;
 	});
+	reCalcular();
 }
 
 function checkCuit(dni){
@@ -51,15 +52,15 @@ function checkCuit(dni){
 	arrTipos.forEach(function(tipo){
 		if(tipo.id==="CUIT"){
 			tipo.cuit=cuit;
-			msg="<h5>"+tipo.descripcion+"</h5>"+cuit;
+			msg="<3h5>"+tipo.descripcion+"</h5>"+cuit;
 		}
 	});
 	
 	divCUIT.innerHTML=msg;
-
-	// resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
-	 resultQuery=getResponse(urlAFIP+cuit);
-	 resultQuery=fetchCuit(urlAFIP+cuit);
+         reCalcular();
+	 resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
+	 //resultQuery=getResponse(urlAFIP+cuit);
+	 //resultQuery=fetchCuit(urlAFIP+cuit);
 }
 
 function validarCuit(cuit) {

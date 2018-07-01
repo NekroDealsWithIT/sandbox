@@ -97,21 +97,42 @@ function getResponseArr(url='',id){
 	  console.log(id+" Loaded ");
 	  console.log(result);
 	  console.log(arrTipos);
-	  arrTipos.forEach(function(tipo){
+	  /*arrTipos.forEach(function(tipo){
 		if(tipo.id===id){
 			tipo.response=result;
 		}	  	
 		reCalcular();
-	  });
+	  });*/
 	  console.log(arrTipos);
 	  return request.response;
 	}
+}
+
+function fetchCuit(url){
+fetch(url)
+	.then(function(response) {
+	  // When the page is loaded convert it to text
+	  return response.text();
+	})
+	.then(function(html) {
+	  // Initialize the DOM parser
+	  var parser = new DOMParser();
+	  // Parse the text
+	  var doc = parser.parseFromString(html, "text/html");
+	  
+	  // You can now even select part of that html as you would in the regular DOM 
+	  // Example:
+	  // var docArticle = doc.querySelector('article').innerHTML;
+	  console.log(html);
+	  //console.log(doc);
+	})
 }
 function reCalcular(){
 	console.log("entro a recalcular");
 	arrTipos.forEach(function(tipo){
 		var div=document.getElementById("div"+tipo.id);
 		var resultado=tipo.response;
+		div.classList.remove("cuitOK","cuitNoOK");
 		if (resultado==null||resultado.success){
 			div.classList.add="cuitOK";
 		}else{
@@ -122,7 +143,9 @@ function reCalcular(){
 
 function checkCuit(dni){
 	var cuit;
+	var msg="";
 	console.log("buscando para dni: "+dni+" digitos:"+dni.length);
+	msg="<h5>Cuit directo</h5>";
 	switch (dni.length){
 		case 11:
 			cuit=dni;
@@ -130,14 +153,22 @@ function checkCuit(dni){
 
 			break;
 		default:
+			divCUIT.innerHTML=msg;
 			return false;
 	}
+	
 	arrTipos.forEach(function(tipo){
 		if(tipo.id==="CUIT"){
 			tipo.cuit=cuit;
+			msg="<h5>"+tipo.descripcion+"</h5>"+cuit;
 		}
 	});
-	resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
+	
+	divCUIT.innerHTML=msg;
+
+	// resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
+	 resultQuery=getResponse(urlAFIP+cuit);
+	 resultQuery=fetchCuit(urlAFIP+cuit);
 }
 
 

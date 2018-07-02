@@ -2,15 +2,16 @@
 var result="";
 var resultQuery="";
 var urlAFIP='https://soa.afip.gob.ar/sr-padron/v1/constancia/';
+var urlAFIP2='https://soa.afip.gob.ar/av/v1/vencimientos/';
 var arrTipos=[
-				{id:"CUIT",cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"Cuit directo"},
-				{id:20,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"20 (Hombre)"},
-				{id:27,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"27 (Mujer)"},
-				{id:24,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"24 (Repetido)"},
-				{id:30,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"30 (Empresa)"},
-				{id:34,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"34 (Repetida)"},
-				{id:23,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"23 (Nuevo Persona)"},
-				{id:33,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"33 (Nuevo empresa)"}
+				{id:"CUIT",cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"Cuit directo"},
+				{id:20,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"20 (Hombre)"},
+				{id:27,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"27 (Mujer)"},
+				{id:24,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"24 (Repetido)"},
+				{id:30,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"30 (Empresa)"},
+				{id:34,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"34 (Repetida)"},
+				{id:23,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"23 (Nuevo Persona)"},
+				{id:33,cuit:"",valido:false,response:"",url:"",url2:"",mensaje:"",mensaje2:"",estado:"",descripcion:"33 (Nuevo empresa)"}
 			];
 function checkDni(dni){
 	arrTipos.forEach(function(tipo){
@@ -20,7 +21,9 @@ function checkDni(dni){
 				tipo.response="";
 				tipo.cuit="";
 				tipo.url="";
+				tipo.url2="";
 				tipo.mensaje="El dni debe de tener 8 digitos para calcular";
+				tipo.mensaje2="";
 				tipo.valido=false;
 				tipo.estado=false;
 				labelDni.classList.remove("invalidDNI","validDNI");
@@ -30,7 +33,10 @@ function checkDni(dni){
 				tipo.valido=true;
 				tipo.response='fetching';
 				tipo.url=urlAFIP+tipo.cuit;
-				
+				tipo.url2="";
+				tipo.mensaje="";
+				tipo.mensaje2="";
+
 				msg+=tipo.cuit+'<br><a href="'+tipo.url+'">'+tipo.url+'</a>';
 				labelDni.classList.remove("invalidDNI","validDNI");
 				labelDni.classList.add("validDNI");
@@ -51,9 +57,11 @@ function checkCuit(dni){
 			cuit=dni;
 			console.log("buscando para cuit: "+cuit);
 			arrTipos[0].cuit=cuit;
-			arrTipos[0].url=urlAFIP+cuit,"CUIT"
+			arrTipos[0].url=urlAFIP+cuit;
+			arrTipos[0].url2="";
 			arrTipos[0].response="fetching";
-			arrTipos[0].mensaje="";
+			arrTipos[0].mensaje="el cuit debe de tener 11 digitos";
+			arrTipos[0].mensaje2="";
 			break;
 		default:
 			msg+="<h5>"+arrTipos[0].descripcion+"</h5>"+"el cuit debe de tener 11 digitos";
@@ -61,15 +69,18 @@ function checkCuit(dni){
 			arrTipos[0].cuit="";
 			arrTipos[0].response="";
 			arrTipos[0].url="";
+			arrTipos[0].url2="";
 			arrTipos[0].valido=false;
 			arrTipos[0].mensaje="el cuit debe de tener 11 digitos";
+			arrTipos[0].mensaje2="";
 			labelCuit.classList.remove("invalidDNI","validDNI");
 			labelCuit.classList.add("invalidDNI");
 			reCalcular();
 			return false;
 	}
-	msg="<h5>"+arrTipos[0].descripcion+"</h5>"+cuit;
+	msg="<h3>"+arrTipos[0].descripcion+"</h3>"+cuit;
 	labelCuit.classList.remove("invalidDNI","validDNI");
+	console.log(cuit+" "+validarCuit(cuit));
 	if(validarCuit(cuit)){
 		labelCuit.classList.add("validDNI");
 		resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
@@ -79,11 +90,11 @@ function checkCuit(dni){
 		arrTipos[0].estado=false;
 		labelCuit.classList.add("invalidDNI");
 	}
+	reCalcular();
 	divCUIT.innerHTML=msg;
 }
 
 function validarCuit(cuit) {
-	if(!Number.isInteger(cuit)){return "Cuit debe de tener 11 digitos (NO NUMERICO):" + cuit;}
 	cuit=cuit+"";
 	if(cuit.length != 11) {return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";}
 	var acumulado 	= 0;
@@ -117,7 +128,7 @@ function getDigitoVerif(parametro) {
 	}
 	return parametro+""+verif;
 }
-function getResponseArr(url='',id){
+function getResponseArr(url='',id,segundaValidacion=false){
 	console.log("buscando "+url+" id:"+id);
 	var request = new XMLHttpRequest();
 	request.open('GET', url);
@@ -125,29 +136,51 @@ function getResponseArr(url='',id){
 	request.send();
 	request.onload = function() {
 	  result = request.response;
-	  console.log(id+" Loaded ");
+	  console.log(id+" Loaded "+(segundaValidacion?"segunda validacion":""));
 	  console.log(result);
 	  arrTipos.forEach(function(tipo){
 		if(tipo.id===id){
-			tipo.response=result;
-			if(result==null){
-				tipo.estado=true;
-				tipo.mensaje="INTENTO DESCARGAR FORMULARIO (POSIBLE FALSO POSITIVO)";
-			}else{
-				if (result.success){
-					tipo.estado=true;
-					tipo.mensaje="SUCESS";
-				}else{
-					if(result.error.mensaje=="Error interno del sistema: The document has no pages."){
-						tipo.estado=true;	
-						tipo.mensaje=result.error.mensaje;
+			if(segundaValidacion){
+				if(result!=null){
+					if(result.success){
+						tipo.estado=true;
+						tipo.mensaje2="SUCESS (Segunda validacion)";
 					}else{
-						if(result.error.mensaje=="Error interno del sistema: CLAVE inexistente"){
-							tipo.estado=false;
+						tipo.estado=undefined;	
+						tipo.mensaje2="ERROR (segunda validacion) "+result.error.mensaje;
+					}
+				}
+			}else{
+				tipo.response=result;
+				if(result==null){
+					tipo.estado=undefined;
+					tipo.mensaje="WS INTENTO DESCARGAR FORMULARIO (POSIBLE FALSO POSITIVO), GENERO UNA SEGUNDA VALIDACION";
+					//genero segunda validacion
+					getResponseArr(urlAFIP2+tipo.cuit,id,true);
+					tipo.url2=urlAFIP2+tipo.cuit;
+				}else{
+					if (result.success){
+						tipo.estado=true;
+						tipo.mensaje="SUCESS";
+					}else{
+						if(result.error.mensaje=="Error interno del sistema: The document has no pages."){
+							tipo.estado=true;	
 							tipo.mensaje=result.error.mensaje;
+							//genero segunda validacion
+							getResponseArr(urlAFIP2+tipo.cuit,id,true);
+							tipo.url2=urlAFIP2+tipo.cuit;
+
 						}else{
-							tipo.estado=undefined;	
-							tipo.mensaje=result.error.mensaje;
+							if(result.error.mensaje=="Error interno del sistema: CLAVE inexistente"){
+								tipo.estado=false;
+								tipo.mensaje=result.error.mensaje;
+							}else{
+								tipo.estado=undefined;	
+								tipo.mensaje=result.error.mensaje;
+								//genero segunda validacion
+								getResponseArr(urlAFIP2+tipo.cuit,id,true);
+								tipo.url2=urlAFIP2+tipo.cuit;
+							}
 						}
 					}
 				}
@@ -181,6 +214,9 @@ function reCalcular(){
 		var msg="<h3>"+tipo.descripcion+"</h3>";
 		msg+=(tipo.url!=""?tipo.cuit+'<br><a href="'+tipo.url+'" target="blank">URL: '+tipo.url+'</a>':"");
 		msg+=(tipo.mensaje!=""?"<br><strong>Mensaje: '"+tipo.mensaje+"'</strong>":"");
+		msg+=(tipo.url2!=""?'<br><a href="'+tipo.url2+'" target="blank">URL: '+tipo.url2+'</a>':"");
+		msg+=(tipo.mensaje2!=""?"<br><strong>Mensaje: '"+tipo.mensaje2+"'</strong>":"");
+
 		div.innerHTML=msg;
 	});
 }

@@ -52,7 +52,7 @@ function checkCuit(dni){
 	arrTipos.forEach(function(tipo){
 		if(tipo.id==="CUIT"){
 			tipo.cuit=cuit;
-			msg="<3h5>"+tipo.descripcion+"</h5>"+cuit;
+			msg="<h5>"+tipo.descripcion+"</h5>"+cuit;
 		}
 	});
 	

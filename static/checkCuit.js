@@ -180,7 +180,7 @@ function reCalcular(){
 		
 		var msg="<h3>"+tipo.descripcion+"</h3>";
 		msg+=(tipo.url!=""?tipo.cuit+'<br><a href="'+tipo.url+'" target="blank">URL: '+tipo.url+'</a>':"");
-		msg+=(tipo.mensaje!=""?"<br><span>Mensaje: '"+tipo.mensaje+"'</span>":"");
+		msg+=(tipo.mensaje!=""?"<br><strong>Mensaje: '"+tipo.mensaje+"'</strong>":"");
 		div.innerHTML=msg;
 	});
 }

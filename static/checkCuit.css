@@ -33,7 +33,7 @@ div{
 
 .validDNI::after{content:"\2714";color: green;}
 .invalidDNI::after{content:"\2A2F";color:red;}
-.indefinido::after{content:" (ERROR en la respuesta)";}
-.cuitFetching::after{content:" (CUIL/CUIT buscando)";}
-.cuitNoOK::after{content:" (CUIL/CUIT invalido)";}
-.cuitOK::after{content:" (CUIL/CUIT valido!)";}
+.indefinido::after{content:" (Respuesta no contemplada) \2A2F";}
+.cuitFetching::after{content:" (CUIL/CUIT buscando) \2192";}
+.cuitNoOK::after{content:" (CUIL/CUIT invalido) \2A2F";}
+.cuitOK::after{content:" (CUIL/CUIT valido!) \2714";}

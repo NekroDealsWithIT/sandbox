@@ -83,10 +83,9 @@ function checkCuit(dni){
 }
 
 function validarCuit(cuit) {
+	if(!Number.isInteger(cuit)){return "Cuit debe de tener 11 digitos (NO NUMERICO):" + cuit;}
 	cuit=cuit+"";
-	if(cuit.length != 11) {
-      	return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";
-	}
+	if(cuit.length != 11) {return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";}
 	var acumulado 	= 0;
 	var digitos 	= cuit.split("");
 	var digito	= digitos.pop();

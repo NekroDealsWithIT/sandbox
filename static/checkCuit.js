@@ -3,14 +3,14 @@ var result="";
 var resultQuery="";
 var urlAFIP='https://soa.afip.gob.ar/sr-padron/v1/constancia/';
 var arrTipos=[
-				{id:"CUIT",cuit:"",valido:false,response:"",descripcion:"Cuit directo"},
-				{id:20,cuit:"",valido:false,response:"",descripcion:"20 (Hombre)"},
-				{id:27,cuit:"",valido:false,response:"",descripcion:"27 (Mujer)"},
-				{id:24,cuit:"",valido:false,response:"",descripcion:"24 (Repetido)"},
-				{id:30,cuit:"",valido:false,response:"",descripcion:"30 (Empresa)"},
-				{id:34,cuit:"",valido:false,response:"",descripcion:"34 (Repetida)"},
-				{id:23,cuit:"",valido:false,response:"",descripcion:"23 (Nuevo Persona)"},
-				{id:33,cuit:"",valido:false,response:"",descripcion:"33 (Nuevo empresa)"}
+				{id:"CUIT",cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"Cuit directo"},
+				{id:20,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"20 (Hombre)"},
+				{id:27,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"27 (Mujer)"},
+				{id:24,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"24 (Repetido)"},
+				{id:30,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"30 (Empresa)"},
+				{id:34,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"34 (Repetida)"},
+				{id:23,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"23 (Nuevo Persona)"},
+				{id:33,cuit:"",valido:false,response:"",url:"",mensaje:"",estado:"",descripcion:"33 (Nuevo empresa)"}
 			];
 function checkDni(dni){
 	arrTipos.forEach(function(tipo){
@@ -18,18 +18,21 @@ function checkDni(dni){
 		if(tipo.id!="CUIT"){
 			if(dni.length!=8){
 				msg+="El dni debe de tener 8 digitos para calcular";
+				tipo.response="";
+				tipo.cuit="";
 				tipo.valido=false;
 			}else{
 				tipo.cuit=getDigitoVerif(tipo.id+dni);
-				msg+=tipo.cuit;
 				tipo.valido=true;
 				tipo.response='fetching';
+				tipo.url=urlAFIP+tipo.cuit;
+				
+				msg+=tipo.cuit+'<br><a href="'+tipo.url+'">'+tipo.url+'</a>';
 				getResponseArr(urlAFIP+tipo.cuit,tipo.id);
 			}
+			var div=document.getElementById("div"+tipo.id);
+			div.innerHTML=msg;
 		}
-		var div=document.getElementById("div"+tipo.id);
-
-		div.innerHTML=msg;
 	});
 	reCalcular();
 }
@@ -37,86 +40,72 @@ function checkDni(dni){
 function checkCuit(dni){
 	var cuit;
 	var msg="";
-	console.log("buscando para dni: "+dni+" digitos:"+dni.length);
-	msg="<h5>"+arrTipos[0].descripcion+"</h5>";
 	switch (dni.length){
 		case 11:
 			cuit=dni;
 			console.log("buscando para cuit: "+cuit);
-
+			arrTipos[0].cuit=cuit;
+			arrTipos[0].url=urlAFIP+cuit,"CUIT"
+			arrTipos[0].response="fetching";
+			arrTipos[0].mensaje="";
 			break;
 		default:
+			msg+="el cuit debe de tener 11 digitos";
 			divCUIT.innerHTML=msg;
 			arrTipos[0].cuit="";
 			arrTipos[0].response="";
+			arrTipos[0].url="";
 			arrTipos[0].valido=false;
+			arrTipos[0].mensaje="";
 			return false;
 	}
-	
-	arrTipos[0].cuit=cuit;
-	arrTipos[0].response="fetching";
 	msg="<h5>"+arrTipos[0].descripcion+"</h5>"+cuit;
+	if(validarCuit(cuit)){
+		resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
+	}else{
+		msg+="<br>CUIT INVALIDO";
+		arrTipos[0].estado=false;
+	}
 	
 	divCUIT.innerHTML=msg;
-         reCalcular();
-	 resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
 	 //resultQuery=getResponse(urlAFIP+cuit);
 	 //resultQuery=fetchCuit(urlAFIP+cuit);
 }
 
 function validarCuit(cuit) {
-
 	if(cuit.len != 11) {
       		return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";
 	}
-
 	var acumulado 	= 0;
 	var digitos 	= cuit.split("");
 	var digito	= digitos.pop();
-
 	for(var i = 0; i < digitos.length; i++) {
 		acumulado += digitos[9 - i] * (2 + (i % 6));
 	}
-
 	var verif = 11 - (acumulado % 11);
 	if(verif == 11) {
 		verif = 0;
 	}
-
 	return digito == verif;
 }
 
 function getDigitoVerif(parametro) {
   var cuit=parametro+"0";
     if(cuit.length != 11) {
-     return "cuit: "+cuit.length;
+     return "Cuit debe de tener 11 digitos: "+cuit.length;
 	}
-
 	var acumulado 	= 0;
 	var digitos 	= cuit.split("");
 	var digito	= digitos.pop();
-
 	for(var i = 0; i < digitos.length; i++) {
 		acumulado += digitos[9 - i] * (2 + (i % 6));
 	}
  
 	var verif = 11 - (acumulado % 11);
-  if(verif == 11) {
+  	if(verif == 11) {
 		verif = 0;
 	}
 	return parametro+""+verif;
-}
-function getResponse(url=''){
-	var request = new XMLHttpRequest();
-	request.open('GET', url);
-	request.responseType = 'json';
-	request.send();
-	request.onload = function() {
-	  result = request.response;
-	  console.log("request done: " + url)
-	  console.log(result);
-	  return request.response;
-	}
 }
 function getResponseArr(url='',id){
 	console.log("buscando "+url+" id:"+id);
@@ -126,16 +115,71 @@ function getResponseArr(url='',id){
 	request.send();
 	request.onload = function() {
 	  result = request.response;
-	  	console.log(id+" Loaded ");
+	  console.log(id+" Loaded ");
+	  console.log(result);
 	  arrTipos.forEach(function(tipo){
 		if(tipo.id===id){
 			tipo.response=result;
+			if(result==null){
+				tipo.estado=true;
+				tipo.mensaje="INTENTO DESCARGAR FORMULARIO";
+			}else{
+				if (result.success){
+					tipo.estado=true;
+					tipo.mensaje="SUCESS";
+				}else{
+					if(result.error.mensaje=="Error interno del sistema: The document has no pages."){
+						tipo.estado=true;	
+						tipo.mensaje=result.error.mensaje;
+					}else{
+						if(result.error.mensaje=="Error interno del sistema: CLAVE inexistente"){
+							tipo.estado=false;
+							tipo.mensaje=result.error.mensaje;
+						}else{
+							tipo.estado=undefined;	
+							tipo.mensaje=result.error.mensaje;
+						}
+					}
+				}
+			}
 			reCalcular();
 		}	  	
 	  });
 	  return request.response;
 	}
 }
+function reCalcular(){
+	arrTipos.forEach(function(tipo){
+		var div=document.getElementById("div"+tipo.id);
+		var resultado=tipo.response;
+		div.classList.remove("cuitOK","cuitNoOK","cuitFetching","indefinido");
+		
+		if(resultado=="cuitFetching"){
+			div.classList.add("cuitFetching");
+		}else{
+			if(tipo.estado==undefined){
+				div.classList.add("indefinido");
+			}else{
+				if(tipo.estado){
+					div.classList.add("cuitOK");
+				}else{
+					div.classList.add("cuitNoOK");
+				}
+			}
+		}
+		
+		var msg="<h5>"+tipo.descripcion+"</h5>";
+		if(tipo.id!="CUIT"){
+			msg+=tipo.cuit+'<br><a href="'+tipo.url+'">'+tipo.url+'</a>';
+			msg+=(tipo.mensaje!=""?"<br><span>"+tipo.mensaje+"</span>":"");
+			div.innerHTML=msg;
+		}
+
+	});
+}
+
+
+
 
 function fetchCuit(url){
 fetch(url)
@@ -156,40 +200,3 @@ fetch(url)
 	  //console.log(doc);
 	})
 }
-function reCalcular(){
-	console.log("entro a recalcular");
-	arrTipos.forEach(function(tipo){
-		var div=document.getElementById("div"+tipo.id);
-		var resultado=tipo.response;
-		console.log(tipo);
-		console.log(div);
-		console.log(resultado);
-		div.classList.remove("cuitOK","cuitNoOK","cuitFetching");
-		
-		switch(resultado){
-			case null:		
-				div.classList.add("cuitOK");
-				break;
-			case .success:
-				div.classList.add("cuitOK");
-				break;
-			case "fetching":
-				div.classList.add("cuitFetching");
-				break;
-			default:
-				div.classList.add("cuitNoOK");
-				break;
-		}
-		/*
-		if (resultado==null||resultado.success){
-			div.classList.add("cuitOK");
-		}else{
-			div.classList.add("cuitNoOK");
-		}
-		*/
-	});
-}
-
-
-
-

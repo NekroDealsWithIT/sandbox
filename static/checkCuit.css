@@ -1,5 +1,12 @@
 /*checkCuit.css*/
+a,a:visited{
+	color:#FFF;
+}
 
+.indefinido{
+	color:#000;
+	background:red;
+};
 .invalidDNI{}
 .validDNI{}
 .cuitFetching{
@@ -15,10 +22,9 @@
 	background:black;
 }
 
-
-
 .invalidDNI::after{}
 .validDNI::after{}
-.cuitFetching::after{}
-.cuitNoOK::after{content:" cuit invalido"}
-.cuitOK::after{content:" cuit valido!"}
+.indefinido::after{content:" (ERROR en el fetching)";}
+.cuitFetching::after{content:" (cuit fetching)";}
+.cuitNoOK::after{content:" (cuit invalido)";}
+.cuitOK::after{content:" (cuit valido!)";}

@@ -4,6 +4,7 @@
 .validDNI{}
 .cuitFetching{
 	color:yellow;
+	background:black;
 }
 .cuitNoOK{
 	color:#F00;
@@ -11,7 +12,7 @@
 }
 .cuitOK{
 	color:#0F0;
-	background:#eee;
+	background:black;
 }
 
 

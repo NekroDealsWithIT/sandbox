@@ -133,7 +133,7 @@ function getResponseArr(url='',id){
 			tipo.response=result;
 			if(result==null){
 				tipo.estado=true;
-				tipo.mensaje="INTENTO DESCARGAR FORMULARIO";
+				tipo.mensaje="INTENTO DESCARGAR FORMULARIO (POSIBLE FALSO POSITIVO)";
 			}else{
 				if (result.success){
 					tipo.estado=true;

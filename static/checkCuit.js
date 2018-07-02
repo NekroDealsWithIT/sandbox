@@ -17,10 +17,14 @@ function checkDni(dni){
 		var msg="<h5>"+tipo.descripcion+"</h5>";
 		if(tipo.id!="CUIT"){
 			if(dni.length!=8){
-				msg+="El dni debe de tener 8 digitos para calcular";
 				tipo.response="";
 				tipo.cuit="";
+				tipo.url="";
+				tipo.mensaje="El dni debe de tener 8 digitos para calcular";
 				tipo.valido=false;
+				tipo.estado=false;
+				labelDni.classList.remove("invalidDNI","validDNI");
+				labelDni.classList.add("invalidDNI");
 			}else{
 				tipo.cuit=getDigitoVerif(tipo.id+dni);
 				tipo.valido=true;
@@ -28,6 +32,8 @@ function checkDni(dni){
 				tipo.url=urlAFIP+tipo.cuit;
 				
 				msg+=tipo.cuit+'<br><a href="'+tipo.url+'">'+tipo.url+'</a>';
+				labelDni.classList.remove("invalidDNI","validDNI");
+				labelDni.classList.add("validDNI");
 				getResponseArr(urlAFIP+tipo.cuit,tipo.id);
 			}
 			var div=document.getElementById("div"+tipo.id);
@@ -50,31 +56,36 @@ function checkCuit(dni){
 			arrTipos[0].mensaje="";
 			break;
 		default:
-			msg+="el cuit debe de tener 11 digitos";
+			msg+="<h5>"+arrTipos[0].descripcion+"</h5>"+"el cuit debe de tener 11 digitos";
 			divCUIT.innerHTML=msg;
 			arrTipos[0].cuit="";
 			arrTipos[0].response="";
 			arrTipos[0].url="";
 			arrTipos[0].valido=false;
-			arrTipos[0].mensaje="";
+			arrTipos[0].mensaje="el cuit debe de tener 11 digitos";
+			labelCuit.classList.remove("invalidDNI","validDNI");
+			labelCuit.classList.add("invalidDNI");
+			reCalcular();
 			return false;
 	}
 	msg="<h5>"+arrTipos[0].descripcion+"</h5>"+cuit;
+	labelCuit.classList.remove("invalidDNI","validDNI");
 	if(validarCuit(cuit)){
+		labelCuit.classList.add("validDNI");
 		resultQuery=getResponseArr(urlAFIP+cuit,"CUIT");
 	}else{
 		msg+="<br>CUIT INVALIDO";
+		arrTipos[0].mensaje=msg;
 		arrTipos[0].estado=false;
+		labelCuit.classList.add("invalidDNI");
 	}
-	
 	divCUIT.innerHTML=msg;
-	 //resultQuery=getResponse(urlAFIP+cuit);
-	 //resultQuery=fetchCuit(urlAFIP+cuit);
 }
 
 function validarCuit(cuit) {
-	if(cuit.len != 11) {
-      		return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";
+	cuit=cuit+"";
+	if(cuit.length != 11) {
+      	return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";
 	}
 	var acumulado 	= 0;
 	var digitos 	= cuit.split("");
@@ -168,13 +179,10 @@ function reCalcular(){
 			}
 		}
 		
-		var msg="<h5>"+tipo.descripcion+"</h5>";
-		if(tipo.id!="CUIT"){
-			msg+=tipo.cuit+'<br><a href="'+tipo.url+'">'+tipo.url+'</a>';
-			msg+=(tipo.mensaje!=""?"<br><span>"+tipo.mensaje+"</span>":"");
-			div.innerHTML=msg;
-		}
-
+		var msg="<h3>"+tipo.descripcion+"</h3>";
+		msg+=(tipo.url!=""?tipo.cuit+'<br><a href="'+tipo.url+'" target="blank">URL: '+tipo.url+'</a>':"");
+		msg+=(tipo.mensaje!=""?"<br><span>Mensaje: '"+tipo.mensaje+"'</span>":"");
+		div.innerHTML=msg;
 	});
 }
 

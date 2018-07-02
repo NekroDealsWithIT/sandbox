@@ -3,6 +3,15 @@ a,a:visited{
 	color:#FFF;
 }
 
+div{
+	text-align: center;
+}
+
+
+.labelContent,.divContent{
+	display: flex;
+	justify-content: space-between;
+}
 .indefinido{
 	color:#000;
 	background:red;
@@ -22,9 +31,9 @@ a,a:visited{
 	background:black;
 }
 
-.invalidDNI::after{}
-.validDNI::after{}
-.indefinido::after{content:" (ERROR en el fetching)";}
-.cuitFetching::after{content:" (CUIL/CUIT fetching)";}
+.validDNI::after{content:"\2714";color: green;}
+.invalidDNI::after{content:"\2A2F";color:red;}
+.indefinido::after{content:" (ERROR en la respuesta)";}
+.cuitFetching::after{content:" (CUIL/CUIT buscando)";}
 .cuitNoOK::after{content:" (CUIL/CUIT invalido)";}
 .cuitOK::after{content:" (CUIL/CUIT valido!)";}

@@ -23,6 +23,7 @@ function checkDni(dni){
 				tipo.cuit=getDigitoVerif(tipo.id+dni);
 				msg+=tipo.cuit;
 				tipo.valido=true;
+				tipo.response='fetching';
 				getResponseArr(urlAFIP+tipo.cuit,tipo.id);
 			}
 		}
@@ -37,7 +38,7 @@ function checkCuit(dni){
 	var cuit;
 	var msg="";
 	console.log("buscando para dni: "+dni+" digitos:"+dni.length);
-	msg="<h5>Cuit directo</h5>";
+	msg="<h5>"+arrTipos[0].descripcion+"</h5>";
 	switch (dni.length){
 		case 11:
 			cuit=dni;
@@ -46,15 +47,15 @@ function checkCuit(dni){
 			break;
 		default:
 			divCUIT.innerHTML=msg;
+			arrTipos[0].cuit="";
+			arrTipos[0].response="";
+			arrTipos[0].valido=false;
 			return false;
 	}
 	
-	arrTipos.forEach(function(tipo){
-		if(tipo.id==="CUIT"){
-			tipo.cuit=cuit;
-			msg="<h5>"+tipo.descripcion+"</h5>"+cuit;
-		}
-	});
+	arrTipos[0].cuit=cuit;
+	arrTipos[0].response="fetching";
+	msg="<h5>"+arrTipos[0].descripcion+"</h5>"+cuit;
 	
 	divCUIT.innerHTML=msg;
          reCalcular();
@@ -66,7 +67,7 @@ function checkCuit(dni){
 function validarCuit(cuit) {
 
 	if(cuit.len != 11) {
-      return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";
+      		return "Cuit debe de tener 11 digitos:" + cuit+" ("+cuit.length+")";
 	}
 
 	var acumulado 	= 0;
@@ -129,11 +130,9 @@ function getResponseArr(url='',id){
 	  arrTipos.forEach(function(tipo){
 		if(tipo.id===id){
 			tipo.response=result;
-			console.log(tipo);
 			reCalcular();
 		}	  	
 	  });
-	  console.log(arrTipos);
 	  return request.response;
 	}
 }
@@ -165,12 +164,29 @@ function reCalcular(){
 		console.log(tipo);
 		console.log(div);
 		console.log(resultado);
-		div.classList.remove("cuitOK","cuitNoOK");
+		div.classList.remove("cuitOK","cuitNoOK","cuitFetching");
+		
+		switch(resultado){
+			case null:		
+				div.classList.add("cuitOK");
+				break;
+			case .success:
+				div.classList.add("cuitOK");
+				break;
+			case "fetching":
+				div.classList.add("cuitFetching");
+				break;
+			default:
+				div.classList.add("cuitNoOK");
+				break;
+		}
+		/*
 		if (resultado==null||resultado.success){
 			div.classList.add("cuitOK");
 		}else{
 			div.classList.add("cuitNoOK");
 		}
+		*/
 	});
 }
 

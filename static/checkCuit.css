@@ -25,6 +25,6 @@ a,a:visited{
 .invalidDNI::after{}
 .validDNI::after{}
 .indefinido::after{content:" (ERROR en el fetching)";}
-.cuitFetching::after{content:" (cuit fetching)";}
-.cuitNoOK::after{content:" (cuit invalido)";}
-.cuitOK::after{content:" (cuit valido!)";}
+.cuitFetching::after{content:" (CUIL/CUIT fetching)";}
+.cuitNoOK::after{content:" (CUIL/CUIT invalido)";}
+.cuitOK::after{content:" (CUIL/CUIT valido!)";}

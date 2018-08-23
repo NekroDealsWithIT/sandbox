@@ -48,4 +48,13 @@ if (isNaN(majorVersion)) {
  majorVersion = parseInt(navigator.appVersion,10);
 }
 
-datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+'</li>'+'<li>Version Completa = '+fullVersion+'</li>'+'<li>Version Mayor = '+majorVersion+'</li>'+'<li>navigator.appName = '+navigator.appName+'</li>'+'<li>navigator.userAgent = '+navigator.userAgent+'</li></ul>'
+var ie = (function (){
+    if (window.ActiveXObject === undefined) return null;
+    if (!document.querySelector) return 7;
+    if (!document.addEventListener) return 8;
+    if (!window.atob) return 9;
+    if (!document.__proto__) return 10;
+    return 11;
+})();
+
+datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+'</li>'+'<li>Version Completa = '+fullVersion+'</li>'+'<li>Version Mayor = '+majorVersion+'</li>'+'<li>navigator.appName = '+navigator.appName+'</li>'+'<li>navigator.userAgent = '+navigator.userAgent+'</li></ul><hr><p style="color:red;background:#000">(Si es iexplore) version:'+ie+'</p>';

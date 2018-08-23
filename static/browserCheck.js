@@ -57,4 +57,4 @@ var ie = (function (){
     return 11;
 })();
 
-datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+'</li>'+'<li>Version Completa = '+fullVersion+'</li>'+'<li>Version Mayor = '+majorVersion+'</li>'+'<li>navigator.appName = '+navigator.appName+'</li>'+'<li>navigator.userAgent = '+navigator.userAgent+'</li></ul><hr><p style="color:red;background:#000">(Si es iexplore) version:'+ie+'</p>';
+datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+'</li>'+'<li>Version Completa = '+fullVersion+'</li>'+'<li>Version Mayor = '+majorVersion+'</li>'+'<li>navigator.appName = '+navigator.appName+'</li>'+'<li>navigator.userAgent = '+navigator.userAgent+'</li></ul><hr>'+(ie!=null?'<p style="color:red;background:#000">(Si es iexplore) version:'+ie+'</p>':'');

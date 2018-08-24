@@ -1,12 +1,27 @@
 var ipPublica='';
-
+var ipData='';
 $(document).ready(function () {
     $.getJSON("http://jsonip.com/?callback=?", function (data) {
         console.log(data);
         document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';
         ipPublica=data.ip;
+        ipInfo(data);
     });
 });
+
+function ipInfo(data){
+    $.getJSON("https://ipstack.com/ipstack_api.php?ip="+data.ip, function (data2) {
+        console.log(data2);
+        ipData=data2;
+        /*
+        document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';
+        ipPublica=data.ip;
+        */
+    });
+}
+
+function ipData () {
+};
 /**
  * Get the user IP throught the webkitRTCPeerConnection
  * @param onNewIP {Function} listener function to expose the IP locally

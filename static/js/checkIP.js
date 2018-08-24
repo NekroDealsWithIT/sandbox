@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    $.getJSON("http://jsonip.com/?callback=?", function (data) {
+        console.log(data);
+        alert(data.ip);
+    });
+});
 /**
  * Get the user IP throught the webkitRTCPeerConnection
  * @param onNewIP {Function} listener function to expose the IP locally
@@ -44,3 +50,37 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
 getUserIP(function(ip){
 		document.getElementById("ip").innerHTML = 'IP: '  + ip + " | <a href='http://www.whatismypublicip.com/' target='blank'>verificar en http://www.whatismypublicip.com/</a>";
 });
+
+function imBehindProxy() {
+    var proxyHeader = 'via';
+    var req = new XMLHttpRequest();
+    req.open('GET', document.location, false);
+    req.send();
+    var header = req.getResponseHeader(proxyHeader);
+    if (header) {
+        // we are on a proxy
+        return true;
+    }
+    return false;
+}
+
+function myIP(url) {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    
+    xmlhttp.open("GET",url,false);
+    xmlhttp.send();
+
+    console.log('data recibida: ',xmlhttp.responseText);
+    
+    /*
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+    */
+    return false;
+}

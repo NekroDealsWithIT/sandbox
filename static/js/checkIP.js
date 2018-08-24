@@ -1,6 +1,3 @@
-$(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipExtraData(data.ip);});});
-function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";},"jsonp");}
-
 /**
  * Get the user IP throught the webkitRTCPeerConnection
  * @param onNewIP {Function} listener function to expose the IP locally
@@ -42,42 +39,8 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
     };
 }
 
-// Usage
-
-getUserIP(function(ip){
-		document.getElementById("ip").innerHTML = '<p>IP: '  + ip + " | <a href='http://www.whatismypublicip.com/' target='blank'>Verificar</a></p>";
-});
-
-function imBehindProxy() {
-    var proxyHeader = 'via';
-    var req = new XMLHttpRequest();
-    req.open('GET', document.location, false);
-    req.send();
-    var header = req.getResponseHeader(proxyHeader);
-    if (header) {
-        // we are on a proxy
-        return true;
-    }
-    return false;
-}
-
-function myIP(url) {
-    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-
-    
-    xmlhttp.open("GET",url,false);
-    xmlhttp.send();
-
-    console.log('data recibida: ',xmlhttp.responseText);
-    
-    /*
-    hostipInfo = xmlhttp.responseText.split("\n");
-
-    for (i=0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if ( ipAddress[0] == "IP" ) return ipAddress[1];
-    }
-    */
-    return false;
-}
+function proxyCheck(){var proxyHeader = 'via';var req = new XMLHttpRequest();req.open('GET', document.location, false);req.send();var header = req.getResponseHeader(proxyHeader);if (header) {return true;}return false;}
+function myIP(url){if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");xmlhttp.open("GET",url,false);xmlhttp.send();console.log('data recibida: ',xmlhttp.responseText);return false;}
+$(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipExtraData(data.ip);});});
+function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Privada</td><td id='ipPrivada'></td></tr><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";getLocalIp();document.getElementById("proxyData").innerHTML=proxyCheck();},"jsonp");}
+function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivada").innerHTML=ip;});}

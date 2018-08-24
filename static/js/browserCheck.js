@@ -49,12 +49,16 @@ if (isNaN(majorVersion)) {
 }
 
 var ie = (function (){
-    if (window.ActiveXObject === undefined) return null;
-    if (!document.querySelector) return 7;
-    if (!document.addEventListener) return 8;
-    if (!window.atob) return 9;
-    if (!document.__proto__) return 10;
-    return 11;
+    if (window.ActiveXObject === undefined) return '';
+    if (!document.querySelector) return '(Internet Explorer 7)';
+    if (!document.addEventListener) return '(Internet Explorer 8)';
+    if (!window.atob) return '(Internet Explorer 9)';
+    if (!document.__proto__) return '(Internet Explorer 10)';
+    return '(Internet Explorer 11)';
+})();
+var cookiesHabilitados=( function (){
+  if(navigator.cookieEnabled===true)return 'HABILITADOS';
+  return 'NO HABILITADOS';
 })();
 
-datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+'</li>'+'<li>Version Completa = '+fullVersion+'</li>'+'<li>Version Mayor = '+majorVersion+'</li>'+'<li>navigator.appName = '+navigator.appName+'</li>'+'<li>navigator.userAgent = '+navigator.userAgent+'</li></ul><hr>'+(ie!=null?'<p style="color:red;background:#000">(Si es iexplore) version:'+ie+'</p>':'');
+datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+' '+ie+'</li><li>Version Completa = '+fullVersion+'</li><li>Version Mayor = '+majorVersion+'</li><li>navigator.appName = '+navigator.appName+'</li><li>navigator.userAgent = '+navigator.userAgent+'</li><li>Cookies  = '+cookiesHabilitados+'</li></ul><hr>';

@@ -1,7 +1,10 @@
+var ipPublica='';
+
 $(document).ready(function () {
     $.getJSON("http://jsonip.com/?callback=?", function (data) {
         console.log(data);
-        alert(data.ip);
+        document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';
+        ipPublica=data.ip;
     });
 });
 /**
@@ -48,7 +51,7 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
 // Usage
 
 getUserIP(function(ip){
-		document.getElementById("ip").innerHTML = 'IP: '  + ip + " | <a href='http://www.whatismypublicip.com/' target='blank'>verificar en http://www.whatismypublicip.com/</a>";
+		document.getElementById("ip").innerHTML = '<p>IP: '  + ip + " | <a href='http://www.whatismypublicip.com/' target='blank'>verificar en http://www.whatismypublicip.com/</a></p>";
 });
 
 function imBehindProxy() {

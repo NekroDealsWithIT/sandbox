@@ -2,23 +2,30 @@
 <html>
 <head>
 	<title>Testing browser</title>
+	<meta charset="utf-8">
 	<meta name="author" content="Vinculadas - A127479">
 	<link rel="shortcut icon" href="static/img/favicon.ico">
-	<meta name="author" content="BBVA - Vinculadas - A127479">
+	
 	<script type="text/javascript" src="static/js/tools.js"></script>
 	<!-- odio jquery... pero soporte a viejos cacharros. -->
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="static/js/jquery/jQueryv1.10.1.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
+	<style type="text/css">#speedcheckerdiv{align-self: center;}a{color:#005500;}a:visited{color:#005500;}#speedchecker_link{color:#000000;}#speedchecker_link a{color:#000000;}body{color:#00FF00;background:black;}table,th,td {border:1px solid white;text-align: center}</style>
 </head>
 <body>
-	<h3>Chequeo de browser</h3>
+	<h3>* <u>Chequeo de browser</u></h3>
+	<p><u>(* Desarrollado con funcionalidades basicas para dar soportar a Explorer 7 / Firefox 18 / Chrome 21)</u></p>
+  	<h4>Browser</h4>
+  	<div id="datosBrowser"></div>
+	<h4>Referente a redes</h4>
 	<p id="ip"></p>
 	<p id="ipPublicaID"></p>
-  	<h4>Browser</h4>
-  	<div id='datosBrowser'></div>
+	<p id="ipInfo"></p>
+	
+	<hr>
   	<h4>Chequeo (Orientativo) de velocidad</h4>
-	
-	<div id="speedcheckerdiv"></div><div id="speedchecker_link">Broadband Speed Checker Provided By <a href="https://www.broadbandspeedchecker.co.uk">www.broadbandspeedchecker.co.uk</a></div><script type="text/javascript">sc_skin='';sc_bgc='0x000000';sc_bc='0x00FF00';sc_hc='0xFF0000';sc_cc='0x0000FF';sc_w=400;sc_h=250;sc_userid=67417236;sc_location='AR';version=3;var sc_script = document.createElement('script');sc_script.setAttribute('src', ((('https:' == document.location.protocol)? 'https' : 'http') + '://www.speedcheckercdn.com/speedchecker.js'));document.getElementsByTagName('head')[0].appendChild(sc_script);</script>	
-	
+	<div align="center" id="speedcheckerdiv"></div><div id="speedchecker_link">Broadband Speed Checker Provided By <a href="https://www.broadbandspeedchecker.co.uk">www.broadbandspeedchecker.co.uk</a></div><script type="text/javascript">sc_skin='';sc_bgc='0x000000';sc_bc='0x00FF00';sc_hc='0xFF0000';sc_cc='0x0000FF';sc_w=400;sc_h=250;sc_userid=67417236;sc_location='AR';version=3;var sc_script = document.createElement('script');sc_script.setAttribute('src', ((('https:' == document.location.protocol)? 'https' : 'http') + '://www.speedcheckercdn.com/speedchecker.js'));document.getElementsByTagName('head')[0].appendChild(sc_script);</script>	
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121793649-1"></script>
 	<script>

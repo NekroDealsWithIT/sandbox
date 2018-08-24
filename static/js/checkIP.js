@@ -1,27 +1,6 @@
-var ipPublica='';
-var ipData='';
-$(document).ready(function () {
-    $.getJSON("http://jsonip.com/?callback=?", function (data) {
-        console.log(data);
-        document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';
-        ipPublica=data.ip;
-        ipInfo(data);
-    });
-});
+$(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipExtraData(data.ip);});});
+function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";},"jsonp");}
 
-function ipInfo(data){
-    $.getJSON("https://ipstack.com/ipstack_api.php?ip="+data.ip, function (data2) {
-        console.log(data2);
-        ipData=data2;
-        /*
-        document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';
-        ipPublica=data.ip;
-        */
-    });
-}
-
-function ipData () {
-};
 /**
  * Get the user IP throught the webkitRTCPeerConnection
  * @param onNewIP {Function} listener function to expose the IP locally
@@ -66,7 +45,7 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
 // Usage
 
 getUserIP(function(ip){
-		document.getElementById("ip").innerHTML = '<p>IP: '  + ip + " | <a href='http://www.whatismypublicip.com/' target='blank'>verificar en http://www.whatismypublicip.com/</a></p>";
+		document.getElementById("ip").innerHTML = '<p>IP: '  + ip + " | <a href='http://www.whatismypublicip.com/' target='blank'>Verificar</a></p>";
 });
 
 function imBehindProxy() {

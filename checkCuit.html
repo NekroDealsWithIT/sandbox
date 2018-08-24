@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing cuit</title>
+	<script type="text/javascript" src="static/js/checkCuit.js"></script>
+	<link rel="shortcut icon" href="static/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="static/css/checkCuit.css">
+	<meta name="author" content="BBVA - Vinculadas - A127479">
+</head>
+<body>
+	<h1>Chequeo de cuit contra WS en AFIP</h1>
+	<div class="divContent">
+		<ol>
+			<li>
+				<label class="labelContent" id="labelDni">
+					Ingresar DNI:
+					<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8"maxlength="8" name="dni" id="dni" oninput="checkDni(this.value);" class="invalidDNI">
+				</label>
+			</li>
+			<li>
+				<label class="labelcontent" id="labelCuit">
+					Ingresar CUIT:
+					<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="11"maxlength="cuit" name="cuit" id="cuit" oninput="checkCuit(this.value);" class="invalidDNI">
+				</label>			
+			</li>
+		</ol>
+	</div>
+	<div id="divCUIT" class=""></div>
+	<div id="div20" class=""></div>
+	<div id="div27" class=""></div>
+	<div id="div24" class=""></div>
+	<div id="div30" class=""></div>
+	<div id="div34" class=""></div>
+	<div id="div23" class=""></div>
+	<div id="div33" class=""></div>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121793649-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-121793649-1');
+	</script>
+</body>
+</html>

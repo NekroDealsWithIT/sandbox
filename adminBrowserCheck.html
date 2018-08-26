@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BrowserCheck Admin</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Vinculadas - A127479">
+	<link rel="shortcut icon" href="static/img/favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="static/css/browserCheckAdmin.css">
+	<script type="text/javascript" src="static/js/tools.js"></script>
+
+	<script type="text/javascript" src="static/js/jquery/jQueryv1.10.1.js"></script>
+</head>
+<body>
+	<h1>BrowserCheck Admin</h1>
+
+	<p><label>Mail (opcional):<input id='email' type="email" name="email"></label></p>
+	<p><label>Identificacion:<input id='idOperations' type="text" name="id"></label></p>
+	<p><label id='labelUrl'>URL (click para copiar): <span id='urlForm'/></label></p>
+	<p hidden><label>URL minificada: <span id='urlFormMini'/></label></p>
+
+	<h3 id='tituloDatosRelevados'>Datos relevados</h3>
+	<div id='tablaDatos'>Sin datos relevados</div>
+</body>
+</html>
+<script type="text/javascript" src="static/js/browserCheckAdmin.js"></script>

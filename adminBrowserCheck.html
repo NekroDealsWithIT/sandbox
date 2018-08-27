@@ -14,11 +14,12 @@
 <body>
 	<h1>BrowserCheck Admin</h1>
 
-	<p><label>Mail (opcional):<input id='email' type="email" name="email"></label></p>
-	<p><label>Identificacion:<input id='idOperations' type="text" name="id"></label></p>
+	<p class="validField" id="pMail"><label>Mail (opcional):<input id='email' type="email" name="email"></label></p>
+	<p class="invalidField" id="pOperations"><label>Identificacion:<input id='idOperations' type="text" name="id" required></label></p>
+	<hr>
 	<label id='labelUrl'><h4>URL:</h4><input type="button" id='urlButton' value='Copiar!'> <span id='urlForm'/></label>
 	<label id='labelUrlMini'><h4>URL minificada:</h4><input type="button" id='urlButtonMini' value='Copiar!'> <span id='urlFormMini'/></label>
-
+	<hr>
 	<h3 id='tituloDatosRelevados'>Datos relevados</h3>
 	<div id='tablaDatos'>Sin datos relevados</div>
 </body>

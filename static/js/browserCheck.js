@@ -62,12 +62,3 @@ var cookiesHabilitados=( function (){
 })();
 
 datosBrowser.innerHTML='<ul><li>Browser  = '+browserName+' '+ie+'</li><li>Version Completa = '+fullVersion+'</li><li>Version Mayor = '+majorVersion+'</li><li>navigator.appName = '+navigator.appName+'</li><li>navigator.userAgent = '+navigator.userAgent+'</li><li>Cookies  = '+cookiesHabilitados+'</li></ul><hr>';
-
-
-//var idParameter=parse_query_string(window.location.search.substring(1));
-var idParameter=(window.location.search.substring(1);
-if(idParameter.indexOf('id=')>-1){
-  idParameter=idParameter.split('id=')
-}else{
-  idParameter='';
-}

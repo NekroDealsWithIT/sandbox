@@ -11,8 +11,11 @@ function validateURL(e){
 
 	urlForm.innerText=url;
 	urlFormMini.innerText=minifiedUrl;
+	
+	idOperations.validity.valid==true?pOperations.className='validField':pOperations.className='invalidField';
+	email.validity.valid==true?pMail.className='validField':pMail.className='invalidField';
 
-	if(op==''){
+	if(op==''||!idOperations.validity.valid||!email.validity.valid){
 		return false
 	}else{
 		op=stringToSlug(op);

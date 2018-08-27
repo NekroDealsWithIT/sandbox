@@ -1,0 +1,2 @@
+.validField::after{content:"\2714";color: green;}
+.invalidField::after{content:"\2A2F";color:red;}

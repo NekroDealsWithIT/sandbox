@@ -46,5 +46,17 @@ function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElemen
 function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivada").innerHTML=ip;});}
 function proxyCheck2(d){$.get('https://ipstack.com/ipstack_api.php?ip='+d,function(ddd){console.log([ddd])},"jsonp");};
 
-function proxyCheck3(){$.get('https://nekro-sandbox.000webhostapp.com/ip.php',function(ddd){console.log(ddd)},"jsonp");};
-function proxyCheck4(){$.get('http://localhost/php/ip.php',function(ddd){console.log(ddd)},"jsonp");};
+
+function proxyData(){
+    var localId=parse_query_string(window.location.search.substring(1))['id'];
+    if (localId!=undefined&&localId!=''){
+        localId='&id='+localId;
+    }else{
+        localId='';
+    }
+    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId,function(ddd){console.log(ddd)},"jsonp");
+};
+function jsonResponse(data){
+    console.log(data);
+}
+

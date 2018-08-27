@@ -1,3 +1,11 @@
+//var idParameter=parse_query_string(window.location.search.substring(1));
+var idParameter=window.location.search.substring(1);
+if(idParameter.indexOf('id=')>-1){
+  idParameter=idParameter.split('id=')[1];
+}else{
+  idParameter='';
+}
+
 function fetchStatus(address) {
   var client = new XMLHttpRequest();
   client.onreadystatechange = function() {

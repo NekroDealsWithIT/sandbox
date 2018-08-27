@@ -20,8 +20,8 @@ function validateURL(e){
 	}else{
 		op=stringToSlug(op);
 		idOperations.value=op;
-		let parameters='op='+op;
-		parameters+=';m='+mail;
+		let parameters=op+'|'+mail;;
+
 		parameters=encodeURI(btoa(parameters));
 
 		url=url+'?id='+parameters;

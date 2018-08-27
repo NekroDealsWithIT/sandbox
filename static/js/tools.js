@@ -50,6 +50,24 @@ function stringToSlug(str) {
 	return str;
 }
 
+//requiere esto en el HTML
+// <script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&amp;login=emlo&amp;apiKey=R_6b2f33956923c76b2a206af41e4bab0c"></script>
+// o
+// <script type="text/javascript" charset="utf-8" src="http://bit.ly/javascript-api.js?version=latest&amp;login=delzon&amp;apiKey=R_0438e51fc6cc3e2f3a66179db9a5a0af"></script>
+function shortenUrl(url,into){
+	BitlyCB.myShortenCallback = function(data) {
+	// this is how to get a result of shortening a single url
+	var result;
+	for (var r in data.results) {
+		result = data.results[r];
+		result['longUrl'] = r;
+		break;
+	}
+		return document.getElementById(into).innerHTML=result['shortUrl'];
+	}
+	BitlyClient.shorten(url, 'BitlyCB.myShortenCallback');
+}
+
 function generateTable(arrayTable,arrayTH='',claseTable='',idTable='',atribsTable='',headTable=false,bodyTable=false){
 	var table='<table'+
 				((claseTable!=''&&claseTable!=undefined)?' class="'+claseTable+'"':'')+

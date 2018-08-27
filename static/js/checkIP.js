@@ -38,23 +38,29 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
         ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
     };
 }
+var ipData={};
 
+$(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipData.publicIP=data.ip;ipExtraData(data.ip);});});
 function proxyCheck(){var proxyHeader = 'via';var req = new XMLHttpRequest();req.open('GET', document.location, false);req.send();var header = req.getResponseHeader(proxyHeader);if (header) {return true;}return false;}
-function myIP(url){if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");xmlhttp.open("GET",url,false);xmlhttp.send();console.log('data recibida: ',xmlhttp.responseText);return false;}
-$(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipExtraData(data.ip);});});
-function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Privada</td><td id='ipPrivada'></td></tr><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";getLocalIp();document.getElementById("proxyData").innerHTML=proxyCheck();proxyCheck2(dd);},"jsonp");}
-function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivada").innerHTML=ip;});}
+function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Privada</td><td id='ipPrivada'></td></tr><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";getLocalIp();document.getElementById("proxyData").innerHTML=proxyCheck();proxyCheck2(dd);proxyData()},"jsonp");}
 function proxyCheck2(d){$.get('https://ipstack.com/ipstack_api.php?ip='+d,function(ddd){console.log([ddd])},"jsonp");};
+function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivada").innerHTML=ip;ipData.localIp=ip;});}
 
+function myIP(url){if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");xmlhttp.open("GET",url,false);xmlhttp.send();console.log('data recibida: ',xmlhttp.responseText);return false;}
 
 function proxyData(){
+    var localIp='';
+    if(ipData.localIp!=undefined&&ipData.localIp!=''){
+        localIp='&localIp='+ipData.localIp;
+    }
+
     var localId=parse_query_string(window.location.search.substring(1))['id'];
     if (localId!=undefined&&localId!=''){
         localId='&id='+localId;
     }else{
         localId='';
     }
-    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId,function(ddd){console.log(ddd)},"jsonp");
+    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp,function(ddd){console.log(ddd)},"jsonp");
 };
 function jsonResponse(data){
     console.log(data);

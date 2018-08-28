@@ -73,7 +73,13 @@ function proxyData(){
     }else{
         localId='';
     }
-    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp,function(ddd){jsonResponse(ddd)},"jsonp");
+    var parsedData=document.getElementById("resumen").innerText
+    if (parsedData!=undefined&&parsedData!=''){
+        parsedData='&pd='+parsedData;
+    }else{
+        parsedData='';
+    }
+    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
 };
 function jsonResponse(data){
     console.log(data.ipStack);

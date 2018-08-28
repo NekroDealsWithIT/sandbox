@@ -13,17 +13,16 @@
 	<script type="text/javascript" src="static/js/tools.js"></script>
 	<!-- odio jquery... pero soporte a viejos cacharros. -->
 	<script type="text/javascript" src="static/js/jquery/jQueryv1.10.1.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
-	<style type="text/css">#speedcheckerdiv{text-align: center;}a{color:#005500;}a:visited{color:#005500;}#speedchecker_link{color:#000000;}#speedchecker_link a{color:#000000;}body{color:#00FF00;background:black;}table,th,td {border:1px solid white;text-align: center}</style>
+	<style type="text/css">#brUserAgentTD{color:#FFF;}#speedcheckerdiv{text-align: center;}a{color:#005500;}a:visited{color:#005500;}#speedchecker_link{color:#000000;}#speedchecker_link a{color:#000000;}body{color:#00FF00;background:black;}table,th,td {border:1px solid white;text-align: center}</style>
 
-	<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" type="text/css" media="screen,projection" /><![endif]-->
+	<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="" type="text/css" media="screen,projection" /><![endif]-->
 
-	<!--[if gte IE 10]><!--><script type="text/javascript" src="/cdn-cgi/scripts/zepto.min.js"></script><!--<![endif]-->
-	<!--[if gte IE 10]><!--><script type="text/javascript" src="/cdn-cgi/scripts/cf.common.js"></script><!--<![endif]-->
+	<!--[if gte IE 10]><!--><script type="text/javascript" src=""></script><!--<![endif]-->
+	<!--[if gte IE 10]><!--><script type="text/javascript" src=""></script><!--<![endif]-->
 </head>
 <body>
-	<h3>* <u>Chequeo de browser</u></h3>
-	<p><u>(* Desarrollado con funcionalidades basicas para dar soporte a Explorer 7 / Firefox 18 / Chrome 21)</u></p>
+	<h3 hidden>* <u>Chequeo de browser</u></h3>
+	<p hidden><u>(* Desarrollado con funcionalidades basicas para dar soporte a Explorer 7 / Firefox 18 / Chrome 21)</u></p>
   	
   	<noscript>
   		<h1>Estas pruebas requieren javascript activado</h1>
@@ -33,14 +32,33 @@
   		</ol>
   	</noscript>
 
-  	<h4>Browser</h4>
-  	<div id="datosBrowser"></div>
-	<h4>Referente a redes</h4>
+  	<div id="datosBrowser" hidden></div>
+	<h4 align="center">Datos relevados Browser</h4>
+	<h4 style='text-align:center' id='resumen'></h4>
 	<p id="ip"></p>
 	<p id="ipPublicaID"></p>
 	<p id="ipInfo"></p>
-	
-	<p style="display:none;">navigator.plugins</p>
+	<p id="ipInfo2">
+		<h5 id='brUserAgentTD' align="center"></h5>
+		<table align="center" border="1">
+			<th colspan="2">IP</th>
+			<th colspan="2">GEO</th>
+			<th colspan="2">OS</th>
+			<th colspan="2">TIMEZONE</th>
+			<th colspan="2">BROWSER</th>
+			<th colspan="2">SECURITY</th>
+																				
+			<tr><td>Ip privada</td><td id='ipPrivadaTD'></td>	<td>Continente</td><td id='geoContinentTD'></td>	<td>OS</td><td id='osOSTD'></td>	 	 <td>Codigo GMT</td><td id='timeGMTTD'></td><td>Browser</td><td id='brBrowserTD'></td>		<td>Proxy</td><td id='secProxyTD'></td>			</tr>
+			<tr><td>Ip publica</td><td id='ipPublicaTD'></td>	<td>Pais</td><td id='geoPaisTD'></td>				<td>Tipo OS</td><td id='osTipoOSTD'></td><td>Actual</td><td id='timeActualTD'></td>	<td>Version</td><td id='brVersionTD'></td>		<td>Tor</td><td id='secTorTD'></td>				</tr>
+			<tr><td>Tipo</td><td id='ipTipoTD'></td>			<td>Region</td><td id='geoRegionTD'></td>			<td></td><td></td> 						 <td></td><td></td>							<td>Appname</td><td id='brAppnameTD'></td>		<td>TipoProxy</td><td id='secTipoProxyTD'></td>	</tr>
+			<tr><td>Host</td><td id='ipHostTD'></td>			<td>Ciudad</td><td id='geoCiudadTD'></td>			<td></td><td></td>						 <td></td><td></td>							<td>Cookies</td><td id='brCookiesTD'></td>		<td></td><td></td>								</tr>
+			<tr><td>ISP</td><td id='ipISPTD'></td>				<td></td><td></td>									<td></td><td></td>						 <td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
+			<tr><td>EMPRESA</td><td id='ipEmpresaTD'></td>		<td></td><td></td>									<td></td><td></td>						 <td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
+			<tr><td>PROXY</td><td id='ipProxyTD'></td>			<td></td><td></td>									<td></td><td></td>						 <td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
+		</table>
+	</p>
+
+	<p id='divPlugins' align="center">navigator.plugins</p>
 	<hr>
   	<h4>Chequeo (Orientativo) de velocidad</h4>
 	<div id="speedcheckerdiv"></div><div id="speedchecker_link">Broadband Speed Checker Provided By <a href="https://www.broadbandspeedchecker.co.uk">www.broadbandspeedchecker.co.uk</a></div><script type="text/javascript">sc_skin='';sc_bgc='0x123456';sc_bc='0x00FF00';sc_hc='0xFF0000';sc_cc='0xFFFFFF';sc_w=400;sc_h=250;sc_userid=67417236;sc_location='AR';version=3;var sc_script = document.createElement('script');sc_script.setAttribute('src', ((('https:' == document.location.protocol)? 'https' : 'http') + '://www.speedcheckercdn.com/speedchecker.js'));document.getElementsByTagName('head')[0].appendChild(sc_script);</script>
@@ -56,6 +74,33 @@
 	</script>
 </body>
 </html>
-<script type="text/javascript" src="static/js/tools.js"></script>
+
+<script type="text/javascript">
+	var img='<img src="static/img/loading.gif">';
+	document.getElementById("ipPrivadaTD").innerHTML=img;
+	document.getElementById("geoPaisTD").innerHTML=img;
+	document.getElementById("osOSTD").innerHTML=img;
+	document.getElementById("timeGMTTD").innerHTML=img;
+	document.getElementById("brBrowserTD").innerHTML=img;
+	document.getElementById("secProxyTD").innerHTML=img;
+	document.getElementById("ipPublicaTD").innerHTML=img;
+	document.getElementById("geoRegionTD").innerHTML=img;
+	document.getElementById("osTipoOSTD").innerHTML=img;
+	document.getElementById("timeActualTD").innerHTML=img;
+	document.getElementById("brVersionTD").innerHTML=img;
+	document.getElementById("secTorTD").innerHTML=img;
+	document.getElementById("ipTipoTD").innerHTML=img;
+	document.getElementById("geoCiudadTD").innerHTML=img;
+	document.getElementById("brAppnameTD").innerHTML=img;
+	document.getElementById("secTipoProxyTD").innerHTML=img;
+	document.getElementById("ipHostTD").innerHTML=img;
+	document.getElementById("ipISPTD").innerHTML=img;
+	document.getElementById("ipEmpresaTD").innerHTML=img;
+	document.getElementById("ipProxyTD").innerHTML=img;
+	document.getElementById("brUserAgentTD").innerHTML=img;
+	document.getElementById("brCookiesTD").innerHTML=img;
+	document.getElementById("geoContinentTD").innerHTML=img;
+	document.getElementById("secTipoProxyTD").innerHTML=img;
+</script>
 <script type="text/javascript" src="static/js/browserCheck.js"></script>
 <script type="text/javascript" src="static/js/checkIP.js"></script>

@@ -42,9 +42,22 @@ var ipData={};
 
 $(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipData.publicIP=data.ip;ipExtraData(data.ip);});});
 function proxyCheck(){var proxyHeader = 'via';var req = new XMLHttpRequest();req.open('GET', document.location, false);req.send();var header = req.getResponseHeader(proxyHeader);if (header) {return true;}return false;}
-function ipExtraData(dd){$.get("http://ipinfo.io",function(d){document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Privada</td><td id='ipPrivada'></td></tr><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";getLocalIp();document.getElementById("proxyData").innerHTML=proxyCheck();proxyCheck2(dd);proxyData()},"jsonp");}
+function ipExtraData(dd){$.get("http://ipinfo.io",function(d){
+    document.getElementById("ipPublicaTD").innerText=dd;
+    document.getElementById("geoPaisTD").innerText=d.country;
+    document.getElementById("geoRegionTD").innerText=d.region;
+    document.getElementById("geoCiudadTD").innerText=d.city+' ('+d.postal+')';
+    document.getElementById("ipHostTD").innerText=d.hostname;
+    document.getElementById("ipEmpresaTD").innerText=d.org;
+    /*document.getElementById("ipProxyTD").innerText=proxyCheck();*/
+    //document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Privada</td><td id='ipPrivada'></td></tr><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";
+    getLocalIp();
+    //document.getElementById("proxyData").innerHTML=proxyCheck();
+    //proxyCheck2(dd);
+    proxyData();
+},"jsonp");}
 function proxyCheck2(d){$.get('https://ipstack.com/ipstack_api.php?ip='+d,function(ddd){console.log([ddd])},"jsonp");};
-function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivada").innerHTML=ip;ipData.localIp=ip;});}
+function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivadaTD").innerText=ip;document.getElementById("ipPrivadaTD").innerHTML=ip;ipData.localIp=ip;});}
 
 function myIP(url){if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");xmlhttp.open("GET",url,false);xmlhttp.send();console.log('data recibida: ',xmlhttp.responseText);return false;}
 
@@ -60,9 +73,22 @@ function proxyData(){
     }else{
         localId='';
     }
-    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp,function(ddd){console.log(ddd)},"jsonp");
+    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp,function(ddd){jsonResponse(ddd)},"jsonp");
 };
 function jsonResponse(data){
-    console.log(data);
+    console.log(data.ipStack);
+    if (data.ipStack!=null){
+        document.getElementById("geoContinentTD").innerText=data.ipStack.continent_name;
+        document.getElementById("ipTipoTD").innerText=data.ipStack.type;
+        document.getElementById("ipISPTD").innerText=data.ipStack.connection.isp;
+        document.getElementById("ipProxyTD").innerText=data.ipStack.security.is_proxy;
+        document.getElementById("secProxyTD").innerText=data.ipStack.security.is_proxy;
+        document.getElementById("secTorTD").innerText=data.ipStack.security.is_tor;
+        document.getElementById("secTipoProxyTD").innerText=data.ipStack.security.proxy_type;
+        document.getElementById("timeActualTD").innerText=data.ipStack.time_zone.current_time
+        document.getElementById("timeGMTTD").innerText='GMT '+data.ipStack.time_zone.code
+    }else{
+        proxyData();
+    }
 }
 

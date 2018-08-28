@@ -82,7 +82,6 @@ function proxyData(){
     $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
 };
 function jsonResponse(data){
-    console.log(data.ipStack);
     if (data.ipStack!=null){
         document.getElementById("geoContinentTD").innerText=data.ipStack.continent_name;
         document.getElementById("ipTipoTD").innerText=data.ipStack.type;

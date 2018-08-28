@@ -133,6 +133,16 @@ console.log(BrowserDetect.browser,BrowserDetect.version,BrowserDetect.OS,Browser
 document.getElementById("osOSTD").innerText=BrowserDetect.OS+' '+BrowserDetect.OsVersion;
 document.getElementById("osTipoOSTD").innerText='('+BrowserDetect.bit+')';
 
+var currentdate = new Date(); 
+var datetime =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+
+document.getElementById("pageTitle").innerText+=' ('+datetime+')';
+
 var L = navigator.plugins.length;
 var plugins=L.toString().bold() + " Plugin(s)".bold();
 plugins+="<br>";

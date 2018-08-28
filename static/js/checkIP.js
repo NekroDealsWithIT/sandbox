@@ -82,7 +82,8 @@ function proxyData(){
     $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
 };
 function jsonResponse(data){
-    if (data.ipStack!=null){
+    console.log(data);
+    if (data.ipStack!=null&&data.ipStack!=undefined&&!(data.ipStack.error!=undefined&&data.ipStack.error=="ratelimit_exceeded")){
         var flag='<img src="'+data.ipStack.location.country_flag+'" height="12px">';
         document.getElementById("geoContinentTD").innerText=data.ipStack.continent_name;
         document.getElementById("geoPaisTD").innerHTML=flag+' '+document.getElementById("geoPaisTD").innerText;
@@ -92,10 +93,18 @@ function jsonResponse(data){
         document.getElementById("secProxyTD").innerText=data.ipStack.security.is_proxy;
         document.getElementById("secTorTD").innerText=data.ipStack.security.is_tor;
         document.getElementById("secTipoProxyTD").innerText=data.ipStack.security.proxy_type;
-        document.getElementById("timeActualTD").innerText=data.ipStack.time_zone.current_time
-        document.getElementById("timeGMTTD").innerText='GMT '+data.ipStack.time_zone.code
+        document.getElementById("timeActualTD").innerText=data.ipStack.time_zone.current_time;
+        document.getElementById("timeGMTTD").innerText='GMT '+data.ipStack.time_zone.code;
     }else{
-        proxyData();
+        document.getElementById("geoContinentTD").innerText='Temporalmente no disponible';
+        document.getElementById("ipTipoTD").innerText='Temporalmente no disponible';
+        document.getElementById("ipISPTD").innerText='Temporalmente no disponible';
+        document.getElementById("ipProxyTD").innerText='Temporalmente no disponible';
+        document.getElementById("secProxyTD").innerText='Temporalmente no disponible';
+        document.getElementById("secTorTD").innerText='Temporalmente no disponible';
+        document.getElementById("secTipoProxyTD").innerText='Temporalmente no disponible';
+        document.getElementById("timeActualTD").innerText='Temporalmente no disponible';
+        document.getElementById("timeGMTTD").innerText='Temporalmente no disponible';
     }
 }
 

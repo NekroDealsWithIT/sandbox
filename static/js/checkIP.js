@@ -83,7 +83,9 @@ function proxyData(){
 };
 function jsonResponse(data){
     if (data.ipStack!=null){
+        var flag='<img src="'+data.ipStack.location.country_flag+'" height="12px">';
         document.getElementById("geoContinentTD").innerText=data.ipStack.continent_name;
+        document.getElementById("geoPaisTD").innerHTML=flag+' '+document.getElementById("geoPaisTD").innerText;
         document.getElementById("ipTipoTD").innerText=data.ipStack.type;
         document.getElementById("ipISPTD").innerText=data.ipStack.connection.isp;
         document.getElementById("ipProxyTD").innerText=data.ipStack.security.is_proxy;

@@ -70,13 +70,13 @@ document.getElementById("brCookiesTD").innerText=cookiesHabilitados;
 
 var BrowserDetect = {
     init: function () {
-        this.browser = this.searchString(this.dataBrowser) || "Browser desconocido";
+        this.browser = this.searchString(this.dataBrowser) || "Desconocido";
         this.version = this.searchVersion(navigator.userAgent)
             || this.searchVersion(navigator.appVersion)
-            || "version desconocida";
-        this.OS = this.searchString(this.dataOS) || "un SO desconocido";
+            || "Desconocida";
+        this.OS = this.searchString(this.dataOS) || "Desconocido";
         this.bit = this.searchString(this.dataBit) || " x32"; 
-        this.OsVersion = this.searchString(this.dataOsVersion) || "una version desconocida de de SO";
+        this.OsVersion = this.searchString(this.dataOsVersion) || "Desconocida";
     },
     searchString: function (data) {
         for (var i=0;i<data.length;i++)    {

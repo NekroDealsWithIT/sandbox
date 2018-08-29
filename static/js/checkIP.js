@@ -77,7 +77,8 @@ function proxyData(){
     var localId=parse_query_string(window.location.search.substring(1))['id'];
     if (localId!=undefined&&localId!=''){localId='&id='+localId;}else{localId='';}
     
-    var parsedData=document.getElementById("resumen").innerText
+    var parsedData=document.getElementById("resumen").innerText;
+    parsedData=strReplaceAll(parsedData,'|','_')
     if (parsedData!=undefined&&parsedData!=''){parsedData='&pd='+parsedData;}else{parsedData='';}
     
     $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
@@ -110,6 +111,14 @@ function jsonResponse(data){
         updateById('timeGMTTD','GMT '+data.ipStack.time_zone.code,'text');
     }else{
     }
+    clearWaiting();
+    if (navigator!=undefined&&navigator.vibrate!=undefined){
+        //navigator.vibrate([500,200,1000,200,1000]);
+        navigator.vibrate(1000);
+    }
+}
+
+function clearWaiting(){
     for (var i = 0; i < fieldsTD.length; i++) {
       if(document.getElementById(fieldsTD[i]).innerHTML==imgLoading){
         document.getElementById(fieldsTD[i]).innerText='No disponible temporalmente';
@@ -117,4 +126,3 @@ function jsonResponse(data){
       };
     }
 }
-

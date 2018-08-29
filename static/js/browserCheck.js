@@ -227,4 +227,4 @@ if (gl) {
   updateById('osGPUTD',renderer,'text');
 }
 // fin GPU
-document.getElementById("resumen").innerText+=' | Cores: '+cores+' | GPU: '+renderer
+document.getElementById("resumen").innerText+='|Cores '+cores+'|GPU '+renderer

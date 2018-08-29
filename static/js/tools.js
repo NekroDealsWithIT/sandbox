@@ -10,6 +10,14 @@ function updateById(id,value,type){
 	}	
 }
 
+function strReplaceAll(texto,reemplazar,por){
+	if (texto!=undefined&&texto.length>0){
+		return texto.split(reemplazar).join(por);	
+	}else{
+		return texto;
+	}
+}
+
 function validateIP(str){
     var response={};
     try{

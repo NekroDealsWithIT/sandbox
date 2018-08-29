@@ -43,7 +43,10 @@ var ipData={};
 $(document).ready(function(){$.getJSON("http://jsonip.com/?callback=?", function (data){/*document.getElementById("ipPublicaID").innerHTML = '<p>Ip Publica: <b>'+data.ip+'</b>';*/ipData.publicIP=data.ip;ipExtraData(data.ip);});});
 function proxyCheck(){var proxyHeader = 'via';var req = new XMLHttpRequest();req.open('GET', document.location, false);req.send();var header = req.getResponseHeader(proxyHeader);if (header) {return true;}return false;}
 function ipExtraData(dd){$.get("http://ipinfo.io",function(d){
-    document.getElementById("ipPublicaTD").innerText=dd;
+    
+    var ipType=validateIP(dd);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}
+    
+    document.getElementById("ipPublicaTD").innerText=dd+ipType;
     document.getElementById("geoPaisTD").innerText=d.country;
     document.getElementById("geoRegionTD").innerText=d.region;
     document.getElementById("geoCiudadTD").innerText=d.city+' ('+d.postal+')';
@@ -56,55 +59,62 @@ function ipExtraData(dd){$.get("http://ipinfo.io",function(d){
     //proxyCheck2(dd);
     proxyData();
 },"jsonp");}
-function proxyCheck2(d){$.get('https://ipstack.com/ipstack_api.php?ip='+d,function(ddd){console.log([ddd])},"jsonp");};
-function getLocalIp(){getUserIP(function(ip){document.getElementById("ipPrivadaTD").innerText=ip;document.getElementById("ipPrivadaTD").innerHTML=ip;ipData.localIp=ip;});}
+function getLocalIp(){
+    getUserIP(function(ip){
+        var ipType=validateIP(ip);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}
+        document.getElementById("ipPrivadaTD").innerText=ip+ipType;
+        ipData.localIp=ip+ipType;
+    });
+}
+function proxyCheck2(d){$.get('https://ipstack.com/ipstack_api.php?ip='+d+'&callback=console.info',function(ddd){console.log([ddd])},"jsonp");};
 
 function myIP(url){if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");xmlhttp.open("GET",url,false);xmlhttp.send();console.log('data recibida: ',xmlhttp.responseText);return false;}
 
 function proxyData(){
     var localIp='';
-    if(ipData.localIp!=undefined&&ipData.localIp!=''){
-        localIp='&localIp='+ipData.localIp;
-    }
+    if(ipData.localIp!=undefined&&ipData.localIp!=''){localIp='&localIp='+ipData.localIp;}
 
     var localId=parse_query_string(window.location.search.substring(1))['id'];
-    if (localId!=undefined&&localId!=''){
-        localId='&id='+localId;
-    }else{
-        localId='';
-    }
+    if (localId!=undefined&&localId!=''){localId='&id='+localId;}else{localId='';}
+    
     var parsedData=document.getElementById("resumen").innerText
-    if (parsedData!=undefined&&parsedData!=''){
-        parsedData='&pd='+parsedData;
-    }else{
-        parsedData='';
-    }
+    if (parsedData!=undefined&&parsedData!=''){parsedData='&pd='+parsedData;}else{parsedData='';}
+    
     $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
 };
 function jsonResponse(data){
     console.log(data);
+    if (data.ipInfo!=null&&data.ipInfo!=undefined&&!(data.ipInfo.error!=undefined&&data.ipInfo.error=="ratelimit_exceeded")){    
+        updateById('geoLocTD',data.ipInfo.loc,'text');
+    }
     if (data.ipStack!=null&&data.ipStack!=undefined&&!(data.ipStack.error!=undefined&&data.ipStack.error=="ratelimit_exceeded")){
         var flag='<img src="'+data.ipStack.location.country_flag+'" height="12px">';
-        document.getElementById("geoContinentTD").innerText=data.ipStack.continent_name;
-        document.getElementById("geoPaisTD").innerHTML=flag+' '+document.getElementById("geoPaisTD").innerText;
-        document.getElementById("ipTipoTD").innerText=data.ipStack.type;
-        document.getElementById("ipISPTD").innerText=data.ipStack.connection.isp;
-        document.getElementById("ipProxyTD").innerText=data.ipStack.security.is_proxy;
-        document.getElementById("secProxyTD").innerText=data.ipStack.security.is_proxy;
-        document.getElementById("secTorTD").innerText=data.ipStack.security.is_tor;
-        document.getElementById("secTipoProxyTD").innerText=data.ipStack.security.proxy_type;
-        document.getElementById("timeActualTD").innerText=data.ipStack.time_zone.current_time;
-        document.getElementById("timeGMTTD").innerText='GMT '+data.ipStack.time_zone.code;
+        updateById('geoContinentTD',data.ipStack.continent_name,'text');
+        
+        updateById('geoPaisTD',flag+' '+document.getElementById("geoPaisTD").innerText,'html');
+        
+        updateById('ipTipoTD',data.ipStack.type,'text');
+        
+        updateById('ipISPTD',data.ipStack.connection.isp,'text');
+        
+        updateById('ipProxyTD',data.ipStack.security.is_proxy,'text');
+        
+        updateById('secProxyTD',data.ipStack.security.is_proxy,'text');
+        
+        updateById('secTorTD',data.ipStack.security.is_tor,'text');
+        
+        updateById('secTipoProxyTD',data.ipStack.security.proxy_type,'text');
+
+        updateById('timeActualTD',data.ipStack.time_zone.current_time,'text');
+        
+        updateById('timeGMTTD','GMT '+data.ipStack.time_zone.code,'text');
     }else{
-        document.getElementById("geoContinentTD").innerText='Temporalmente no disponible';
-        document.getElementById("ipTipoTD").innerText='Temporalmente no disponible';
-        document.getElementById("ipISPTD").innerText='Temporalmente no disponible';
-        document.getElementById("ipProxyTD").innerText='Temporalmente no disponible';
-        document.getElementById("secProxyTD").innerText='Temporalmente no disponible';
-        document.getElementById("secTorTD").innerText='Temporalmente no disponible';
-        document.getElementById("secTipoProxyTD").innerText='Temporalmente no disponible';
-        document.getElementById("timeActualTD").innerText='Temporalmente no disponible';
-        document.getElementById("timeGMTTD").innerText='Temporalmente no disponible';
+    }
+    for (var i = 0; i < fieldsTD.length; i++) {
+      if(document.getElementById(fieldsTD[i]).innerHTML==imgLoading){
+        document.getElementById(fieldsTD[i]).innerText='No disponible temporalmente';
+        document.getElementById(fieldsTD[i]).innerText='---';
+      };
     }
 }
 

@@ -1,3 +1,38 @@
+var imgLoading='<img src="static/img/loading.gif">';
+var fieldsTD=[
+  'ipPrivadaTD',
+  'geoPaisTD',
+  'osOSTD',
+  'timeGMTTD',
+  'brBrowserTD',
+  'secProxyTD',
+  'ipPublicaTD',
+  'geoRegionTD',
+  'osTipoOSTD',
+  'timeActualTD',
+  'brVersionTD',
+  'secTorTD',
+  //'ipTipoTD',
+  'geoCiudadTD',
+  'brAppnameTD',
+  'secTipoProxyTD',
+  'ipHostTD',
+  'ipISPTD',
+  'ipEmpresaTD',
+  'ipProxyTD',
+  'brUserAgentTD',
+  'brCookiesTD',
+  'geoContinentTD',
+  'secTipoProxyTD',
+  'geoLocTD',
+  'osGPUTD',
+  'osCoresTD',
+  'geoClimaTD'
+]
+for (var i = 0; i < fieldsTD.length; i++) {
+  updateById(fieldsTD[i],imgLoading,'html');
+}
+
 var nVer = navigator.appVersion;
 var nAgt = navigator.userAgent;
 var browserName  = navigator.appName;
@@ -61,12 +96,19 @@ var cookiesHabilitados=( function (){
   return 'NO HABILITADOS';
 })();
 
-document.getElementById("datosBrowser").innerHTML='<ul><li>Browser  = '+browserName+' '+ie+'</li><li>Version Completa = '+fullVersion+'</li><li>Version Mayor = '+majorVersion+'</li><li>navigator.appName = '+navigator.appName+'</li><li>navigator.userAgent = '+navigator.userAgent+'</li><li>Cookies  = '+cookiesHabilitados+'</li></ul><hr>';
-document.getElementById("brBrowserTD").innerText=browserName+' '+ie;
-document.getElementById("brVersionTD").innerText=fullVersion;
-document.getElementById("brAppnameTD").innerText=navigator.appName;
-document.getElementById("brUserAgentTD").innerText='userAgent: '+navigator.userAgent
-document.getElementById("brCookiesTD").innerText=cookiesHabilitados;
+updateById('datosBrowser','<ul><li>Browser='+browserName+' '+ie+'</li><li>Version Completa='+fullVersion+'</li><li>Version Mayor='+majorVersion+'</li><li>navigator.appName='+navigator.appName+'</li><li>navigator.userAgent='+navigator.userAgent+'</li><li>Cookies='+cookiesHabilitados+'</li></ul><hr>','html');
+//document.getElementById("datosBrowser").innerHTML='<ul><li>Browser  = '+browserName+' '+ie+'</li><li>Version Completa = '+fullVersion+'</li><li>Version Mayor = '+majorVersion+'</li><li>navigator.appName = '+navigator.appName+'</li><li>navigator.userAgent = '+navigator.userAgent+'</li><li>Cookies  = '+cookiesHabilitados+'</li></ul><hr>';
+updateById('brBrowserTD',browserName+' '+ie,'text');
+//document.getElementById("brBrowserTD").innerText=browserName+' '+ie;
+updateById('brVersionTD',fullVersion,'text');
+//document.getElementById("brVersionTD").innerText=fullVersion;
+updateById('brAppnameTD',navigator.appName,'text');
+//document.getElementById("brAppnameTD").innerText=navigator.appName;
+updateById('brUserAgentTD','userAgent: '+navigator.userAgent,'text');
+//document.getElementById("brUserAgentTD").innerText='userAgent: '+navigator.userAgent
+updateById('brCookiesTD',cookiesHabilitados,'text');
+//document.getElementById("brCookiesTD").innerText=cookiesHabilitados;
+
 
 var BrowserDetect = {
     init: function () {
@@ -159,3 +201,30 @@ for(var i=0; i<L; i++) {
  plugins+="<br>";
 }
 document.getElementById("divPlugins").innerHTML=plugins;
+
+//CORES
+var cores='';
+if(navigator!=undefined&&navigator.hardwareConcurrency!=undefined&&navigator.hardwareConcurrency!=''){cores=navigator.hardwareConcurrency}
+if(cores!=''){
+  updateById('osCoresTD',cores,'text');
+}
+
+// GPU
+var gl;
+var debugInfo;
+var vendor;
+var renderer;
+try {
+  var canvas = document.createElement('canvas');
+  gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+} catch (e) {
+  console.log(e);
+}
+if (gl) {
+  debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+  vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+  renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+  updateById('osGPUTD',renderer,'text');
+}
+// fin GPU
+document.getElementById("resumen").innerText+=' | Cores: '+cores+' | GPU: '+renderer

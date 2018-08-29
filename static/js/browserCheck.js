@@ -213,7 +213,7 @@ if(cores!=''){
 var gl;
 var debugInfo;
 var vendor;
-var renderer;
+var renderer='';
 try {
   var canvas = document.createElement('canvas');
   gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');

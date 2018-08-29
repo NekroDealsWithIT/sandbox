@@ -88,6 +88,9 @@ function jsonResponse(data){
     if (data.ipInfo!=null&&data.ipInfo!=undefined&&!(data.ipInfo.error!=undefined&&data.ipInfo.error=="ratelimit_exceeded")){    
         updateById('geoLocTD',data.ipInfo.loc,'text');
     }
+    if (data.weather!=null&&data.weather!=undefined&&!(data.weather.cod!=undefined)){
+        console.log(data.weather);
+    }
     if (data.ipStack!=null&&data.ipStack!=undefined&&!(data.ipStack.error!=undefined&&data.ipStack.error=="ratelimit_exceeded")){
         var flag='<img src="'+data.ipStack.location.country_flag+'" height="12px">';
         updateById('geoContinentTD',data.ipStack.continent_name,'text');

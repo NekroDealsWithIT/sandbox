@@ -36,9 +36,11 @@ function validateIP(str){
  	return response;   
 }
 
+/*
 function validateIPv6(str){
     return /^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/.test(str);
 }
+*/
 //var idParameter=parse_query_string(window.location.search.substring(1));
 var idParameter=window.location.search.substring(1);
 if(idParameter.indexOf('id=')>-1){
@@ -194,4 +196,187 @@ function parse_query_string(query) {
     }
   }
   return query_string;
+}
+
+function getWindDirection(data){
+	if(data>=315){return "NO"};
+	if(data>=270){return "O"};
+	if(data>=225){return "SO"};
+	if(data>=180){return "S"};
+	if(data>=135){return "SE"};
+	if(data>=90) {return "E"};
+	if(data>=45) {return "NO"};
+	if(data>=0)  {return "N"};
+	return false;
+}
+
+function jsonResponse(data){
+    console.log(data);
+    var lat='';
+    var lon='';
+    var p={};
+	p['timeGMTTD']='GMT '+(((new Date().getTimezoneOffset())/60)*-1)+'|text'; 
+    p['timeActualTD']=datetime+'|text'; 
+
+    try{
+        if (data.dbIp!=null&&data.dbIp!=undefined&&!(data.dbIp.error!=undefined&&data.dbIp.error=="ratelimit_exceeded")){    
+            var ipType=validateIP(data.dbIp.ipAddress);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}else{ipType=''};
+
+            p['geoPaisTD']=data.dbIp.countryName+'|text';
+            p['geoContinentTD']=data.dbIp.continentName+'|text';
+            p['geoCiudadTD']=data.dbIp.city+'|text';
+            p['geoRegionTD']=data.dbIp.stateProv+'|text';
+            
+            p['ipPublicaTD']=data.dbIp.ipAddress+ipType+'|text';
+
+            /*
+            updateById('geoPaisTD',data.dbIp.countryName,'text');
+            updateById('geoContinentTD',data.dbIp.continentName,'text');
+            updateById('geoCiudadTD',data.dbIp.city,'text');
+            updateById('ipPublicaTD',data.dbIp.ipAddress+ipType,'text');
+            updateById('geoRegionTD',data.dbIp.stateProv,'text');
+            */
+
+        }
+    }catch(e){
+        console.log(e,data.dbIp);
+    }
+    
+    try{
+        if (data.ipInfo!=null&&data.ipInfo!=undefined&&!(data.ipInfo.error!=undefined&&data.ipInfo.error=="ratelimit_exceeded")){    
+            var ipType=validateIP(data.ipInfo.ip);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}else{ipType=''};
+            lat=data.ipInfo.loc.split(",")[0];
+            lon=data.ipInfo.loc.split(",")[1];
+
+            p['geoLocTD']=data.ipInfo.loc+'|text';
+            p['geoPaisTD']=data.ipInfo.country+'|text';
+            p['geoCiudadTD']=data.ipInfo.city +' ('+data.ipInfo.postal+')'+'|text';
+            p['geoLocTD']=data.ipInfo.loc+'|text';
+            p['geoRegionTD']=data.ipInfo.region+'|text';
+            
+            p['ipHostTD']=data.ipInfo.hostname+'|text';
+            p['ipPublicaTD']=data.ipInfo.ip+ipType+'|text';
+            p['ipEmpresaTD']=data.ipInfo.org+'|text';
+            
+
+            /*
+            updateById('geoLocTD',data.ipInfo.loc,'text');
+            updateById('geoPaisTD',data.ipInfo.country,'text');
+            updateById('geoCiudadTD',data.ipInfo.city +' ('+data.ipInfo.postal+')','text');
+            updateById('ipHostTD',data.ipInfo.hostname,'text');
+            updateById('ipPublicaTD',data.ipInfo.ip+ipType,'text');
+            updateById('geoLocTD',data.ipInfo.loc,'text');
+            updateById('ipEmpresaTD',data.ipInfo.org,'text');
+            updateById('geoRegionTD',data.ipInfo.region,'text');
+            */
+        }
+    }catch(e){
+        console.log(e,data.ipInfo);
+    }
+
+    try{
+        if (data.cPub!=null&&data.cPub!=undefined&&!(data.cPub.error!=undefined&&data.cPub.error=="ratelimit_exceeded")){    
+            var ipType=validateIP(data.cPub.traits.ipAddress);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}else{ipType=''};
+			lat=data.cPub.location.latitude;
+			lon=data.cPub.location.longitude;
+
+            p['geoCiudadTD']=data.cPub.city.names['en']+'|text';
+            p['geoContinentTD']=data.cPub.continent.names['en']+'|text';
+            p['geoLocTD']=data.cPub.location.latitude+','+data.cPub.location.longitude+' ('+data.cPub.location.accuracyRadius+')|text';
+            p['geoRegionTD']=data.cPub.subdivisions[0].names['en']+'|text';
+            p['geoPaisTD']=data.cPub.country.names['en']+'|text';
+			
+			//p['timeGMTTD']=data.cPub.location.timeZone+'|text';
+            
+            p['ipPublicaTD']=data.cPub.traits.ipAddress+ipType+'|text';
+
+            p['secProxyTD']=data.cPub.traits.isAnonymousProxy+'|text';
+            p['secTorTD']=data.cPub.traits.isAnonymousProxy+'|text';
+            p['secTipoProxyTD']=data.cPub.traits.isSatelliteProvider+'|text';
+
+            var proxyData='';
+            var clase='';
+            if(data.cPub.traits.isLegitimateProxy==true){clase="valid"}else{clase="invalid"};
+            proxyData+='<p class="'+clase+'">Proxy legitimo</p>';
+            if(data.cPub.traits.isAnonymousProxy==true){clase="valid"}else{clase="invalid"};
+            proxyData+='<p class="'+clase+'">Proxy anonimo</p>';
+            if(data.cPub.traits.isSatelliteProvider==true){clase="valid"}else{clase="invalid"};
+            proxyData+='<p class="'+clase+'">Proxy satelital</p>';
+
+            p['ipProxyTD']=proxyData+'|html';
+        }
+    }catch(e){
+        console.log(e,data.cPub);
+    }
+
+    try{
+        if (data.ipStack!=null&&data.ipStack!=undefined&&!(data.ipStack.error!=undefined&&data.ipStack.error=="ratelimit_exceeded")){
+            var flag='<img src="'+data.ipStack.location.country_flag+'" height="12px">';
+            p['geoContinentTD']=data.ipStack.continent_name+'|text';
+            p['geoPaisTD']=flag+' '+document.getElementById("geoPaisTD").innerText+'|html';
+            
+            p['ipTipoTD']=data.ipStack.type+'|text';
+            p['ipISPTD']=data.ipStack.connection.isp+'|text';
+            p['ipProxyTD']=data.ipStack.security.is_proxy+'|text';
+            
+            p['secProxyTD']=data.ipStack.security.is_proxy+'|text';
+            p['secTorTD']=data.ipStack.security.is_tor+'|text';
+            p['secTipoProxyTD']=data.ipStack.security.proxy_type+'|text';
+            
+            p['timeActualTD']=data.ipStack.time_zone.current_time+'|text';
+            p['timeGMTTD']='GMT '+data.ipStack.time_zone.code+'|text';
+
+            /*
+            updateById('geoContinentTD',data.ipStack.continent_name,'text');
+            updateById('geoPaisTD',flag+' '+document.getElementById("geoPaisTD").innerText,'html');
+            updateById('ipTipoTD',data.ipStack.type,'text');
+            updateById('ipISPTD',data.ipStack.connection.isp,'text');
+            updateById('ipProxyTD',data.ipStack.security.is_proxy,'text');
+            updateById('secProxyTD',data.ipStack.security.is_proxy,'text');
+            updateById('secTorTD',data.ipStack.security.is_tor,'text');
+            updateById('secTipoProxyTD',data.ipStack.security.proxy_type,'text');
+            updateById('timeActualTD',data.ipStack.time_zone.current_time,'text');
+            updateById('timeGMTTD','GMT '+data.ipStack.time_zone.code,'text');
+            */
+        }
+    }catch(e){
+        console.log(e,data.ipStack);
+    }
+
+    try{
+        if (data.weather!=null&&data.weather!=undefined&&!(data.weather.cod!=undefined&&data.weather.cod!=200)){
+            console.log(data.weather);
+            var urlLink='<a href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat='+lat+'&lon='+lon+'&zoom=10" target="blank"> 🔗Link </a>';
+            var clima='<table>'+'<tr><th colspan="2">Clima Local '+urlLink+'</th></tr><tr><td>Zona</td><td>'+data.weather.name+'</td></tr>'+'<tr><td>Clima</td><td><img src="http://openweathermap.org/img/w/'+data.weather.weather[0].icon+'.png" class="imgOW">'+data.weather.weather[0].main+'</td></tr>'+'<tr><td>Descripcion</td><td>'+data.weather.weather[0].description+'</td></tr>'+'<tr><td>Temp</td><td>'+data.weather.main.temp+' °C (min:'+data.weather.main.temp_max+' °C - MAX:'+data.weather.main.temp_min+' °C)</td></tr>'+'<tr><td>Humedad</td><td>'+data.weather.main.humidity+'%</td></tr>'+'<tr><td>Presion</td><td>'+data.weather.main.pressure+' hpa</td></tr>'+'<tr><td>Viento</td><td>'+data.weather.wind.speed+'kn ['+(data.weather.wind.speed*1.852)+' km/h] ('+getWindDirection(data.weather.wind.deg)+')</td></tr>'+'<table>';
+            p['geoClimaTD']=clima+'|html';
+            //updateById('geoClimaTD',clima,'html');
+        }
+    }catch(e){
+        console.log(e,data.ipStack);
+    }
+    console.log(p);
+    clearWaiting(p);
+    if (navigator!=undefined&&navigator.vibrate!=undefined){
+        //navigator.vibrate([500,200,1000,200,1000]);
+        try{
+            navigator.vibrate(1000);
+        }catch(e){
+
+        }
+    }
+}
+
+function clearWaiting(p){
+    for (var i = 0; i < fieldsTD.length; i++) {
+        var f=p[fieldsTD[i]];
+        if(f==undefined){
+          if(document.getElementById(fieldsTD[i]).innerHTML==imgLoading){
+            document.getElementById(fieldsTD[i]).innerText='No disponible temporalmente';
+            document.getElementById(fieldsTD[i]).innerText='---';
+          }
+        }else{
+            f=f.split('|');
+            updateById(fieldsTD[i],f[0],f[1]);
+        }
+    }
 }

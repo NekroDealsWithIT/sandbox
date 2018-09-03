@@ -380,3 +380,106 @@ function clearWaiting(p){
         }
     }
 }
+
+
+/* 
+Agregar a favoritos
+*/
+function bookmark()
+{
+    var bookmarkurl = "http://www.infodolar.com/";
+    var bookmarktitle = "Dólar - InfoDolar.com";
+    if (document.all) // IE
+        window.external.AddFavorite(bookmarkurl, bookmarktitle);
+    else if (window.sidebar) // firefox
+        window.sidebar.addPanel(bookmarktitle, bookmarkurl, "");
+}
+
+/* 
+Buscar todas las funciones de una pagina [usar getAllMethods(window) y buscar los ultimos]
+*/
+
+function getAllMethods(object) {
+    return Object.getOwnPropertyNames(object).filter(function(property) {
+        return typeof object[property] == 'function';
+    });
+}
+
+/*
+	GeoLocacion
+*/
+function getLocation(callback) {
+    var data={};
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.gotPosition, this.showError);
+    } else {
+        data.error="Geolocation no soportada."
+        return data;
+    }
+
+	function showError(error) {
+	    switch(error.code) {
+	        case error.PERMISSION_DENIED:
+	            data.error="Geolocation denegada."
+	            break;
+	        case error.POSITION_UNAVAILABLE:
+	            data.error="Location no disponible."
+	            break;
+	        case error.TIMEOUT:
+	            data.error="Location timed out."
+	            break;
+	        case error.UNKNOWN_ERROR:
+	            data.error="Error desconocido."
+	            break;
+	    }
+	    return data;
+	}
+	function gotPosition(position,divHolderMap) {
+	    data.lat=position.coords.latitude;
+	    data.lon=position.coords.longitude;
+
+	    var latlon = position.coords.latitude + "," + position.coords.longitude;
+	    console.log(data);
+	    return data;
+	}
+	return data;
+}
+
+
+/*
+Geoloc distancia entre dos puntos
+coords como array ([lat,lon])
+*/
+function haversineDistance(coords1, coords2, isMiles) {
+  function toRad(x) {
+    return x * Math.PI / 180;
+  }
+
+  var lon1 = coords1[0];
+  var lat1 = coords1[1];
+
+  var lon2 = coords2[0];
+  var lat2 = coords2[1];
+
+  var R = 6371; // km
+
+  var x1 = lat2 - lat1;
+  var dLat = toRad(x1);
+  var x2 = lon2 - lon1;
+  var dLon = toRad(x2)
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+
+  if(isMiles) d /= 1.60934;
+
+  return d;
+}
+
+function showPositionInMap(position,divHolderMap) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+    document.getElementById(divHolderMap).innerHTML = "<img src='"+img_url+"'>";
+}

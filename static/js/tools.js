@@ -245,19 +245,17 @@ function jsonResponse(data){
     try{
         if (data.ipInfo!=null&&data.ipInfo!=undefined&&!(data.ipInfo.error!=undefined&&data.ipInfo.error=="ratelimit_exceeded")){    
             var ipType=validateIP(data.ipInfo.ip);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}else{ipType=''};
-            lat=data.ipInfo.loc.split(",")[0];
-            lon=data.ipInfo.loc.split(",")[1];
+            ipData.locLat=data.ipInfo.loc.split(",")[0];
+            ipData.locLon=data.ipInfo.loc.split(",")[1];
 
             p['geoLocTD']=data.ipInfo.loc+'|text';
             p['geoPaisTD']=data.ipInfo.country+'|text';
             p['geoCiudadTD']=data.ipInfo.city +' ('+data.ipInfo.postal+')'+'|text';
-            p['geoLocTD']=data.ipInfo.loc+'|text';
             p['geoRegionTD']=data.ipInfo.region+'|text';
             
             p['ipHostTD']=data.ipInfo.hostname+'|text';
             p['ipPublicaTD']=data.ipInfo.ip+ipType+'|text';
             p['ipEmpresaTD']=data.ipInfo.org+'|text';
-            
 
             /*
             updateById('geoLocTD',data.ipInfo.loc,'text');
@@ -277,8 +275,8 @@ function jsonResponse(data){
     try{
         if (data.cPub!=null&&data.cPub!=undefined&&!(data.cPub.error!=undefined&&data.cPub.error=="ratelimit_exceeded")){    
             var ipType=validateIP(data.cPub.traits.ipAddress);if(ipType!=undefined&&ipType.error==undefined){ipType=' ('+ipType.str+')';}else{ipType=''};
-			lat=data.cPub.location.latitude;
-			lon=data.cPub.location.longitude;
+			ipData.locLat=data.cPub.location.latitude;
+			ipData.locLon=data.cPub.location.longitude;
 
             p['geoCiudadTD']=data.cPub.city.names['en']+'|text';
             p['geoContinentTD']=data.cPub.continent.names['en']+'|text';
@@ -345,7 +343,11 @@ function jsonResponse(data){
 
     try{
         if (data.weather!=null&&data.weather!=undefined&&!(data.weather.cod!=undefined&&data.weather.cod!=200)){
-            console.log(data.weather);
+            var lat='';
+            var lon='';
+            if(ipData.locLat!=undefined&&ipData.locLon!=undefined){lat=ipData.locLat;lon=ipData.locLon;}
+            if(ipData.rLocLat!=undefined&&ipData.rLocLon!=undefined){lat=ipData.rLocLat;lon=ipData.rLocLon;}
+
             var urlLink='<a href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat='+lat+'&lon='+lon+'&zoom=10" target="blank"> 🔗Link </a>';
             var clima='<table>'+'<tr><th colspan="2">Clima Local '+urlLink+'</th></tr><tr><td>Zona</td><td>'+data.weather.name+'</td></tr>'+'<tr><td>Clima</td><td><img src="http://openweathermap.org/img/w/'+data.weather.weather[0].icon+'.png" class="imgOW">'+data.weather.weather[0].main+'</td></tr>'+'<tr><td>Descripcion</td><td>'+data.weather.weather[0].description+'</td></tr>'+'<tr><td>Temp</td><td>'+data.weather.main.temp+' °C (min:'+data.weather.main.temp_max+' °C - MAX:'+data.weather.main.temp_min+' °C)</td></tr>'+'<tr><td>Humedad</td><td>'+data.weather.main.humidity+'%</td></tr>'+'<tr><td>Presion</td><td>'+data.weather.main.pressure+' hpa</td></tr>'+'<tr><td>Viento</td><td>'+data.weather.wind.speed+'kn ['+(data.weather.wind.speed*1.852)+' km/h] ('+getWindDirection(data.weather.wind.deg)+')</td></tr>'+'<table>';
             p['geoClimaTD']=clima+'|html';
@@ -354,7 +356,23 @@ function jsonResponse(data){
     }catch(e){
         console.log(e,data.ipStack);
     }
-    console.log(p);
+    
+    var geoLocRealTD='---';
+    var geoLocDeltaTD='---';
+	if(ipData.rLocLat!=undefined&&ipData.rLocLat!=''&&ipData.rLocLon!=undefined&&ipData.rLocLon!=''){
+		geoLocRealTD=ipData.rLocLat+','+ipData.rLocLon;
+		if(ipData.locLat!=undefined&&ipData.locLon!=undefined){
+			geoLocDeltaTD=haversineDistance([ipData.rLocLat,ipData.rLocLon],[ipData.locLat,ipData.locLon],false)+' KM';
+		}
+	}else{
+		if(ipData.rLocErrCodeDesc!=undefined){
+			geoLocRealTD=ipData.rLocErrCodeDesc;
+		}    		
+	}
+
+    p['geoLocRealTD']=geoLocRealTD+'|text';
+    p['geoLocDeltaTD']=geoLocDeltaTD+'|text';
+
     clearWaiting(p);
     if (navigator!=undefined&&navigator.vibrate!=undefined){
         //navigator.vibrate([500,200,1000,200,1000]);
@@ -408,6 +426,7 @@ function getAllMethods(object) {
 /*
 	GeoLocacion
 */
+/*
 function getLocation(callback) {
     var data={};
     if (navigator.geolocation) {
@@ -444,8 +463,71 @@ function getLocation(callback) {
 	}
 	return data;
 }
-
-
+*/
+var callbackCurrentLocation='';
+var errCallbackCurrentLocation='';
+function getBrowserCurrentLocation(callback,errCallback,timeout){
+	callbackCurrentLocation=callback;
+	errCallbackCurrentLocation=errCallback;
+	
+	var geoLocationData={};
+	var location= function x(){
+		if (timeout==undefined||timeout==''){timeout=5000}
+		var options = {
+		  enableHighAccuracy: true,
+		  timeout: timeout,
+		  maximumAge: 0
+		};
+		if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(
+	        	function pos(position){
+	        		geoLocationData={};
+	        		geoLocationData.lat=position.coords.latitude;
+    				geoLocationData.lon=position.coords.longitude;
+    				if(callbackCurrentLocation!=''&&typeof callbackCurrentLocation=='function'){
+	    				callbackCurrentLocation(geoLocationData);
+    				}else{
+    					console.log(geoLocationData)
+    				}
+	        	},
+	        	function error(error){
+	        		 geoLocationData={};
+	        		 switch(error.code) {
+				        case error.PERMISSION_DENIED:
+				            geoLocationData.errorDesc="Geolocation denegada";
+				            break;
+				        case error.POSITION_UNAVAILABLE:
+				            geoLocationData.errorDesc="Geolocation no disponible";
+				            break;
+				        case error.TIMEOUT:
+				            geoLocationData.errorDesc="Geolocation timed out";
+				            break;
+				        case error.UNKNOWN_ERROR:
+				            geoLocationData.errorDesc="Error desconocido";
+				            break;
+				    }
+					geoLocationData.errCode=error.code;
+				    if(errCallbackCurrentLocation!=''&&typeof errCallbackCurrentLocation=='function'){
+	    				errCallbackCurrentLocation(geoLocationData);
+    				}else{
+    					console.info(geoLocationData);
+    				}
+	        	}
+	        	,options);
+	    } else {
+	        geoLocationData={};
+	        geoLocationData.errCode='OLD_BROWSER'
+	        geoLocationData.errorDesc="Geolocation no soportada";
+			if(errCallbackCurrentLocation!=''&&typeof errCallbackCurrentLocation=='function'){
+				errCallbackCurrentLocation(geoLocationData);
+			}else{
+				console.info(geoLocationData);
+			}
+	    }
+	}
+	location.apply(timeout);
+	location();
+}
 /*
 Geoloc distancia entre dos puntos
 coords como array ([lat,lon])

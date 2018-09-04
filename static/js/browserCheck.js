@@ -1,4 +1,4 @@
-var imgLoading='<img src="static/img/loading.gif">';
+var imgLoading='<img src="static/img/3D_loaders_set1/Rotating globe/animated_GIF/24x24.gif">';
 var fieldsTD=[
   'ipPrivadaTD',
   'geoPaisTD',
@@ -25,9 +25,12 @@ var fieldsTD=[
   'geoContinentTD',
   'secTipoProxyTD',
   'geoLocTD',
+  'geoLocRealTD',
+  'geoLocDeltaTD',
   'osGPUTD',
   'osCoresTD',
   'geoClimaTD'
+
 ]
 for (var i = 0; i < fieldsTD.length; i++) {
   updateById(fieldsTD[i],imgLoading,'html');
@@ -92,7 +95,11 @@ var ie = (function (){
     return '(Internet Explorer 11)';
 })();
 var cookiesHabilitados=( function (){
-  if(navigator.cookieEnabled===true)return 'HABILITADOS';
+  try{
+    if(navigator.cookieEnabled===true)return 'HABILITADOS';
+  }catch (e){
+    console.log(e.message);
+  }
   return 'NO HABILITADOS';
 })();
 
@@ -171,7 +178,7 @@ var BrowserDetect = {
 };
 BrowserDetect.init();
 document.getElementById("resumen").innerText=BrowserDetect.browser+'|'+BrowserDetect.version+'|'+BrowserDetect.OS+'|'+BrowserDetect.OsVersion+'|'+BrowserDetect.bit
-console.log(BrowserDetect.browser,BrowserDetect.version,BrowserDetect.OS,BrowserDetect.OsVersion,BrowserDetect.bit);
+//console.log(BrowserDetect.browser,BrowserDetect.version,BrowserDetect.OS,BrowserDetect.OsVersion,BrowserDetect.bit);
 document.getElementById("osOSTD").innerText=BrowserDetect.OS+' '+BrowserDetect.OsVersion;
 document.getElementById("osTipoOSTD").innerText='('+BrowserDetect.bit+')';
 
@@ -204,11 +211,14 @@ document.getElementById("divPlugins").innerHTML=plugins;
 
 //CORES
 var cores='';
-if(navigator!=undefined&&navigator.hardwareConcurrency!=undefined&&navigator.hardwareConcurrency!=''){cores=navigator.hardwareConcurrency}
-if(cores!=''){
-  updateById('osCoresTD',cores,'text');
+try{
+  if(navigator!=undefined&&navigator.hardwareConcurrency!=undefined&&navigator.hardwareConcurrency!=''){cores=navigator.hardwareConcurrency}
+  if(cores!=''){
+    updateById('osCoresTD',cores,'text');
+  }
+}catch (e){
+  console.log(e.message);
 }
-
 // GPU
 var gl;
 var debugInfo;

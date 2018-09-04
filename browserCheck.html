@@ -47,14 +47,14 @@
 			<th colspan="2">BROWSER</th>
 			<th colspan="2">SECURITY</th>
 																				
-			<tr><td>Ip privada</td><td id='ipPrivadaTD'></td>	<td>Continente</td><td id='geoContinentTD'></td>			<td>OS</td><td id='osOSTD'></td>	 	 <td>Codigo GMT</td><td id='timeGMTTD'></td><td>Browser</td><td id='brBrowserTD'></td>		<td>Proxy</td><td id='secProxyTD'></td>			</tr>
-			<tr><td>Ip publica</td><td id='ipPublicaTD'></td>	<td>Pais</td><td id='geoPaisTD'></td>						<td>Tipo OS</td><td id='osTipoOSTD'></td><td>Actual</td><td id='timeActualTD'></td>	<td>Version</td><td id='brVersionTD'></td>		<td>Anonimo</td><td id='secTorTD'></td>			</tr>
-			<tr><td>Host</td><td id='ipHostTD'></td>			<td>Region</td><td id='geoRegionTD'></td>					<td>Cores</td><td id='osCoresTD'></td>	 <td></td><td></td>							<td>Appname</td><td id='brAppnameTD'></td>		<td>TipoProxy</td><td id='secTipoProxyTD'></td>	</tr>
-			<tr><td>ISP</td><td id='ipISPTD'></td>				<td>Ciudad</td><td id='geoCiudadTD'></td>					<td></td><td></td>						 <td></td><td></td>							<td>Cookies</td><td id='brCookiesTD'></td>		<td></td><td></td>								</tr>
-			<tr><td>EMPRESA</td><td id='ipEmpresaTD'></td>		<td>Loc</td><td id='geoLocTD'></td>							<td></td><td></td>						 <td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
-			<tr><td>PROXY</td><td id='ipProxyTD'></td>			<!--<td>Clima</td>--><td colspan="2" id='geoClimaTD'></td>	<td>GPU</td><td id='osGPUTD'></td>		 <td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
-		<!-- 	
-			<tr><td>---</td><td></td>							<td></td><td></td>									<td></td><td></td>						 <td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
+			<tr><td>Ip privada</td><td id='ipPrivadaTD'></td>	<td>Continente</td><td id='geoContinentTD'></td>																																											<td>OS</td><td id='osOSTD'></td>	 	 			<td>Codigo GMT</td><td id='timeGMTTD'></td>	<td>Browser</td><td id='brBrowserTD'></td>		<td>Proxy</td><td id='secProxyTD'></td>			</tr>
+			<tr><td>Ip publica</td><td id='ipPublicaTD'></td>	<td>Pais</td><td id='geoPaisTD'></td>																																														<td>Tipo OS</td><td id='osTipoOSTD'></td>			<td>Actual</td><td id='timeActualTD'></td>	<td>Version</td><td id='brVersionTD'></td>		<td>Anonimo</td><td id='secTorTD'></td>			</tr>
+			<tr><td>Host</td><td id='ipHostTD'></td>			<td>Region</td><td id='geoRegionTD'></td>																																													<td>Cores</td><td id='osCoresTD'></td>	 			<td></td><td></td>							<td>Appname</td><td id='brAppnameTD'></td>		<td>TipoProxy</td><td id='secTipoProxyTD'></td>	</tr>
+			<tr><td>ISP</td><td id='ipISPTD'></td>				<td>Ciudad</td><td id='geoCiudadTD'></td>																						 																							<td></td><td></td>						 			<td></td><td></td>							<td>Cookies</td><td id='brCookiesTD'></td>		<td></td><td></td>								</tr>
+			<tr><td>EMPRESA</td><td id='ipEmpresaTD'></td>		<td colspan="2">LOCACION<table width="100%"><tr><td>⊚ Calculada</td><td id='geoLocTD'></td></tr><tr><td>✠ Real</td><td id='geoLocRealTD'></td></tr><tr><td>Δ Diff</td><td id='geoLocDeltaTD'></td></tr></table></td>		<td></td><td></td>						 			<td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
+			<tr><td>PROXY</td><td id='ipProxyTD'></td>			<td colspan="2" id='geoClimaTD'></td>																																														<td>GPU</td><td id='osGPUTD'></td>		 			<td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
+		<!-- 																												
+			<tr><td>---</td><td></td>							<td></td><td></td>																																																			<td></td><td></td>						 			<td></td><td></td>							<td></td><td></td>								<td></td><td></td>								</tr>
 		 -->
 		</table>
 	</p>
@@ -62,8 +62,11 @@
 	<p id='divPlugins' align="center">navigator.plugins</p>
 	<hr>
   	<h4>Chequeo (Orientativo) de velocidad</h4>
+	
+	<!-- 
 	<div id="speedcheckerdiv"></div><div id="speedchecker_link">Broadband Speed Checker Provided By <a href="https://www.broadbandspeedchecker.co.uk">www.broadbandspeedchecker.co.uk</a></div><script type="text/javascript">sc_skin='';sc_bgc='0x123456';sc_bc='0x00FF00';sc_hc='0xFF0000';sc_cc='0xFFFFFF';sc_w=400;sc_h=250;sc_userid=67417236;sc_location='AR';version=3;var sc_script = document.createElement('script');sc_script.setAttribute('src', ((('https:' == document.location.protocol)? 'https' : 'http') + '://www.speedcheckercdn.com/speedchecker.js'));document.getElementsByTagName('head')[0].appendChild(sc_script);</script>
-
+	 -->
+	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121793649-1"></script>
 	<script>

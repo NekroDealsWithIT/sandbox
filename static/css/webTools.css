@@ -199,10 +199,15 @@ p.descripcion{font-style:italic;}
 	.fondo{display:none;}
 	body{
 		opacity: 1;
-		background:url('../img/subtle/dark_leather/dark_leather.png')  repeat fixed;
+	/*		
 		background:url('../img/subtle/dark_mosaic/dark_mosaic.png')  repeat fixed;
+		background:url('../img/subtle/dark_leather/dark_leather.png')  repeat fixed;
+		background:url('../img/subtle/dark_wood/dark_wood.png')  repeat fixed;
+		background:url('../img/subtle/hixs_pattern_evolution/hixs_pattern_evolution.png')  repeat fixed;
+	*/
+		background:url('../img/subtle/black_scales/black_scales_@2X.png')  repeat fixed;
 		animation: slideFondoB 10s ease-in-out infinite;
-		animation-direction: alternate;
+		/*animation-direction: alternate;*/
 		animation-delay: 5s;
 	}
 } 

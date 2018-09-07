@@ -5,226 +5,84 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Vinculadas - A127479">
 	<link rel="shortcut icon" href="static/img/tools-image_48x48.ico">
+	<link rel="stylesheet" type="text/css" href="static/css/webTools.css">
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-	<h1>Herramientas web online</h1>
-	<h6>(De desarrolladores para desarrolladores)</h6>
-	<h2>Herramientas chequeadas</h2>
-	<div id='toolsContainer'></div>
-	<hr>
-	<h2>Herramientas sugeridas</h2>
-	<div id='toolsSugestedContainer'></div>
-	
-	<style type="text/css">
-		body{background-color: black;color:#0F0;}
-		.hidden{display:none}
-		.preview{width:90%;margin:auto;height:75vh;border-color: blue;}
-		.title{color:#F00;cursor: pointer;}
-		.title::after{content:" (click para desplegar u ocultar)";color:white;}
-		a:link,a:visited{color:yellow;}
-		a:hover{color:white;font-weight: 800;}
-	</style>
-	<script type="text/javascript">
-		var toolsArr=[
-			 {'check':'true','autor':'nekro','id':'0','lenguajes':['json'],'title':'jsonviewer','url':'http://jsonviewer.stack.hu','desc':'Json parser','type':'JSON','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'1','lenguajes':[],'title':'utf8icons','url':'https://www.utf8icons.com','desc':'Utf 8 icons','type':'Icons','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'2','lenguajes':['http'],'title':'htaccessredirect','url':'https://www.htaccessredirect.net','desc':'Htta generator','type':'Htta','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'3','lenguajes':[],'title':'mxtoolbox','url':'https://mxtoolbox.com/NetworkTools.aspx','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'4','lenguajes':['json'],'title':'ip-tracker','url':'https://www.ip-tracker.org/locator/ip-lookup.php','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'5','lenguajes':['json'],'title':'ipinfo.io','url':'http://ipinfo.io','desc':'Ip information','type':'Ip Analisis','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'6','lenguajes':['json'],'title':'Google geocode','url':'http://maps.googleapis.com/maps/api/geocode/json?latlng=[lat],[lon]&sensor=true','desc':'Reverse GEO','type':'GEO Location','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'7','lenguajes':[],'title':'histats','url':'http://www.histats.com','desc':'Counters','type':'Counter','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'8','lenguajes':['javascript','css','html'],'title':'jsfiddle','url':'https://jsfiddle.net','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'9','lenguajes':['javascript','css','html'],'title':'cssdeck','url':'http://cssdeck.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'A','lenguajes':['javascript','css','html'],'title':'Plunker','url':'http://next.plnkr.co','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'B','lenguajes':['javascript','css','html'],'title':'liveweave','url':'https://liveweave.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'C','lenguajes':['regex'],'title':'debuggex','url':'https://www.debuggex.com','desc':'Graficador de REGEX','type':'REGEX','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'D','lenguajes':[],'title':'bitly','url':'https://app.bitly.com','desc':'Acortador de links','type':'Links','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'E','lenguajes':[],'title':'browserling','url':'https://www.browserling.com','desc':'Pruebas crossBrowser','type':'QA','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'F','lenguajes':['javascript','css','html'],'title':'cleancss','url':'https://www.cleancss.com','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'G','lenguajes':['javascript','css','html'],'title':'codebeautify','url':'https://codebeautify.org','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'H','lenguajes':[],'title':'subtlepatterns','url':'https://www.toptal.com/designers/subtlepatterns','desc':'Fondos sutiles','type':'Fondos','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'I','lenguajes':[],'title':'youmightnotneedjquery','url':'http://youmightnotneedjquery.com','desc':'Ayuda a entender si necesitamos o no jquery','type':'QA','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'J','lenguajes':['javascript','css','html'],'title':'caniuse','url':'https://caniuse.com','desc':'Testing de funcionalidades y soporte','type':'QA','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'K','lenguajes':[],'title':'es6-features','url':'http://es6-features.org','desc':'Testing de funcionalidades y soporte de ECMA6','type':'QA','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'L','lenguajes':[],'title':'kangax','url':'http://kangax.github.io/compat-table/es5','desc':'Testing de funcionalidades y soporte de ECMA','type':'QA','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'M','lenguajes':['css'],'title':'css3test','url':'http://css3test.com','desc':'Testing de funcionalidades y soporte de CSS3','type':'QA','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'N','lenguajes':['css'],'title':'css3please','url':'http://css3please.com','desc':'Prueba de codigo rapida y aislada de CSS3','type':'Code playground','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'O','lenguajes':['javascript'],'title':'30 dias de javascript','url':'https://javascript30.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'P','lenguajes':['javascript'],'title':'Javascript for cats','url':'http://jsforcats.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'Q','lenguajes':[],'title':'Freepngimg','url':'https://www.freepngimg.com','desc':'Imagenes para favicons e iconos','type':'Icons','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'R','lenguajes':[],'title':'PicResize','url':'http://picresize.com','desc':'Editor online de Imagenes','type':'Icons','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'S','lenguajes':['javascript','css','html'],'title':'StackOverflow','url':'https://stackoverflow.com','desc':'Foro de programacion','type':'Foro','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'T','lenguajes':['javascript','css','html'],'title':'NetLify','url':'https://www.netlify.com','desc':'Hosting con hooks contra git','type':'Hosting','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'U','lenguajes':['javascript','css','html','php','MySql'],'title':'000WebHost','url':'https://www.000webhost.com','desc':'Hosting con PHP y MySql','type':'Hosting','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'V','lenguajes':[],'title':'GitHub','url':'https://github.com','desc':'Cliente sencillo GIT','type':'GIT','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'W','lenguajes':[],'title':'BitBucket','url':'https://bitbucket.org','desc':'Cliente GIT','type':'GIT','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'X','lenguajes':[],'title':'DomainTools','url':'http://whois.domaintools.com','desc':'Analisis de ip','type':'Ip Analisis','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'Y','lenguajes':['css'],'title':'CSS Tricks','url':'https://css-tricks.com','desc':'Foro de CSS','type':'Foro','added':'06-09-2018'}
-			,{'check':'true','autor':'nekro','id':'Z','lenguajes':['javascript','css','html'],'title':'W3C Validator','url':'https://validator.w3.org','desc':'Validador de HTML5','type':'Validador','added':'06-09-2018'}
-		]
-		//{'url':'','desc':'','type':'','added':''},
-	
-		function draw(tools,container){
-			document.getElementById(container).innerHTML='';
-
-			let organizedArr=[];
-			tools.forEach(t=>{
-				organizedArr[t.type]==undefined?organizedArr[t.type]=[]:'';
-				organizedArr[t.type].push(t);
-			});
-			for (let k in organizedArr){
-			    if (organizedArr.hasOwnProperty(k)) {
-			        let div = document.createElement("section");
-			        div.id='div_'+k;
-			        let title = document.createElement("h3");
-					title.innerText=k+' ['+organizedArr[k].length+']';
-					title.classList='title';
-					title.dataChild='ol_'+k;
-					div.appendChild(title);	        
-					let ol = document.createElement("ol");
-					ol.id='ol_'+k;
-					ol.classList='hidden';
-					organizedArr[k].forEach(t=>{
-						let li = document.createElement("li");
-						
-						let innerTitle = document.createElement("h4");
-						innerTitle.innerHTML=t.title.toUpperCase()+' (<a href="'+t.url+'" target="blank">'+t.url+'</a>) [Autor: '+t.autor.toUpperCase()+' | Fecha:'+t.added+']';
-						innerTitle.classList='innerTitle';
-						li.appendChild(innerTitle);
-
-						let p=document.createElement("p");
-						p.innerText=t.desc;
-						li.appendChild(p);
-						
-						let lang=document.createElement("p");
-						if (t.lenguajes!=undefined){
-							t.lenguajes.forEach(l=>{
-								lang.innerText==''?lang.innerText='Lenguajes: '+l.toUpperCase():lang.innerText+=' | '+l.toUpperCase();
-							});
-						};
-						lang.classList='lenguajes';
-						li.appendChild(lang);
-
-						let preview=document.createElement("input");
-						preview.type='checkbox';
-						preview.id='checkbox_'+t.title+'_'+t.id;
-						preview.name='iframe_'+t.title+'_'+t.id;
-						preview.src=t.url;
-					
-
-						let labelPreview=document.createElement("label");
-						labelPreview.appendChild(preview);
-						labelPreview.innerHTML+=' Habilitar preview de '+t.title.toLowerCase();
-
-						let pPreview=document.createElement("p");
-						pPreview.appendChild(labelPreview);
-						li.appendChild(pPreview);
-
-						let iframe=document.createElement("iframe");
-						//iframe.src=t.url;
-						//iframe.style='display:none;';
-						iframe.classList='hidden preview';
-						iframe.id='iframe_'+t.title+'_'+t.id;
-						li.appendChild(iframe);
-
-						ol.appendChild(li);
-					});
-					div.appendChild(ol);
-			        //console.log("Key is " + k + ", value is" , organizedArr[k]);
-
-			        document.getElementById(container).appendChild(div);
-			    }
-			}
-			let checks=document.querySelectorAll('#'+container+' input[type=checkbox]');
-			checks.forEach(c=>{
-				c.addEventListener('click',event=>{
-					let el=document.getElementById(event.target.name);
-					let t=event.target;
-					el.classList.toggle('hidden');
-					if(t.checked==true){
-						/*
-						var the_url_to_load = t.src;
-						$.ajax({
-							type: "GET",
-							url: the_url_to_load,
-							data: "",
-							success: function(data){
-							    // if can load inside iframe, load the URL
-							    location.href = the_url_to_load ;
-							},
-							statusCode: {
-							    500: function() {
-							        alert( 'site has errors' ) ;
-							    }
-							},
-							error:function (xhr, ajaxOptions, thrownError){
-							    // if x-frame-options, site is down or web server is down
-							    alert( 'URL did not load due to x-frame-options' ) ;
-							} 
-						});
-						*/
-						//getUrl(t.src);
-						getHeaders(t.src);
-						el.src=t.src;
-					}else{
-						el.src='';
-					}
-				});
-			});
-			let titles=document.querySelectorAll('#'+container+' .title');
-			titles.forEach(t=>{
-				t.addEventListener('click',event=>{
-					let el=document.getElementById(event.target.dataChild);
-					el.classList.toggle('hidden');
-				});
-			});
-			let iframes=document.querySelectorAll('#'+container+' iframe');
-			iframes.forEach(ifr=>{
-				ifr.addEventListener('load',event=>{
-					if(event.path[0].src!=''){
-						console.log(event);
-						/*
-						console.log(event.path[0].childElementCount);
-						console.log(event.path[0].ownerDocument.childNodes);
-						
-						console.log(event.path[0]);
-						let iframeDoc = event.path[0].contentDocument || event.path[0].contentWindow.document;
-						console.log(iframeDoc);
-						*/
-		
-						//var iframeBody = event.path[0].contentDocument;
-	    				//console.log('iframe loaded, body is: ', iframeBody);
-						//let el=document.getElementById(event.target.dataChild);
-						//el.classList.toggle('hidden');
-					}
-				});
-			});
-		}
-		function getUrl(url){
-			var oReq = new XMLHttpRequest();
-			oReq.onload = e=> {
-			  var arraybuffer = oReq.response; // not responseText
-			  /* ... */
-			}
-
-			oReq.addEventListener("progress", console.log);
-			oReq.addEventListener("load", console.log);
-			oReq.addEventListener("error", console.error);
-			oReq.addEventListener("abort", console.error);
-			
-			oReq.open("GET", url);
-			oReq.responseType = "arraybuffer";
-			oReq.send();
-		}
-		function getHeaders(url=document.location){
-			var req = new XMLHttpRequest();
-			req.open('GET', url, true);
-			req.send();
-			var headers = req.getAllResponseHeaders().toLowerCase();
-			console.log(headers);
-		}
-		draw(toolsArr,'toolsContainer');
-	</script>
+	<div class='content'>
+		<canvas class='fondo'></canvas>
+		<h1>Herramientas web online</h1>
+		<h6>(De desarrolladores para desarrolladores)</h6>
+		<p hidden><input id='updateFormTitle' data-child='formUpdateUrl' type="button" value="Aportar una herramienta online" onclick="updatePreview(event);"/></p>
+		<div id='formUpdateUrl' class='hidden'>
+			<h3>Preview</h3><div id='updatePreview' class='linksContainer previewContainer'></div>
+			<form class="formulario" action="#" method="post">
+				<ul>
+					<li>
+						<h2 style="margin:auto;">Subir un link</h2>
+					</li>
+					<div id='camposForm'>
+						<li>
+							<label class="field-style field-split align-left">Usuario que sube el link:</label>
+							<input type="text" name="autor" id="formNombre" class="field-style field-split align-right" placeholder="* Un nombre que te guste" required />
+						</li>
+						<li>
+							<label class="field-style field-split align-left">Url:</label>
+							<input type="text" name="url" class="field-style field-split align-right" required placeholder="* www.example.com" />
+						</li>
+						<li>
+							<label class="field-style field-split align-left">Tipo:</label>
+							<input type="text" name="type" class="field-style field-split align-right" required placeholder="* Tipo del sitio" />
+						</li>
+						<li>
+							<label class="field-style field-split align-left">Titulo de la web:</label>
+							<input type="text" name="title" class="field-style field-split align-right" required placeholder="* Titulo del sitio" />
+						</li>				
+		<!-- 				
+						<li>
+							<label class="field-style field-split align-left"><input type="radio" name="tipo" value='recomendacion' checked>Recomendacion</label>
+							<label class="field-style field-split align-left"><input type="radio" name="tipo" value='contacto'>Contacto</label>
+							<label class="field-style field-split align-left"><input type="radio" name="tipo" value='bug'>Bug</label>
+						</li>
+		 -->			
+		 				<li>
+							<h4 style="margin:auto;">Lenguajes</h4>
+						</li>
+		 				<li>
+							<label ><input type="checkBox" name="lenguajes" value='Javascript'>Javascript</label>
+							<label ><input type="checkBox" name="lenguajes" value='PHP'>PHP</label>
+							<label ><input type="checkBox" name="lenguajes" value='CSS'>CSS</label>
+							<label ><input type="checkBox" name="lenguajes" value='HTML'>HTML</label>
+							<label ><input type="checkBox" name="lenguajes" value='OTROS' data-child='formOtrosLenguajes' onclick="toggleHide(event);">Otros</label>
+						</li>
+		 				<li id="formOtrosLenguajes" class="hidden">
+							<label class="field-style field-split align-left">Que lenguaje(s)?:</label>
+							<input type="text" name="lenguajes" class="field-style field-split align-right" placeholder="lenguaje 1|lenguaje 2|...|lenguaje n" />
+						</li>
+		 				<li>
+							<textarea name="desc" class="field-style" required placeholder="* Descripcion del sitio"></textarea>
+						</li>
+						<li>
+							<input type="submit" value="Ver preview" onclick="updatePreview(event);return false;"/>
+							<input type="submit" value="📨 Subir link!"  onclick="submitMe();return false;"/>
+						</li>
+						<li>
+							<label class="field-style field-split align-left">Pregunta (sumas): <span id='calculoQ'></span><input type="text" id="calculoR" class="field-style field-full align-none" required placeholder="* NO ROBOTS ALLOWED!"/></label>
+						</li>
+						<li>
+							<label class="field-style field-full align-none"><span id='errorPQ'></span></label>
+						</li>
+					</div>
+				</ul>
+			</form>
+		</div>
+		<h2>Herramientas chequeadas</h2>
+		<div id='toolsContainer' class='linksContainer'></div>
+		<hr>
+		<h2>Herramientas sugeridas (no chequeadas)</h2>
+		<div id='toolsSugestedContainer' class='linksContainer'></div>
+	</div>
+	<script type="text/javascript" src="static/js/webTools.js"></script>
+	<script type="text/javascript" src="static/js/fondo.js"></script>
 </body>
 </html>

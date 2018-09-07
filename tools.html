@@ -66,7 +66,9 @@
 		//{'url':'','desc':'','type':'','added':''},
 	
 		function draw(tools,container){
-			var organizedArr=[];
+			document.getElementById(container).innerHTML='';
+
+			let organizedArr=[];
 			tools.forEach(t=>{
 				organizedArr[t.type]==undefined?organizedArr[t.type]=[]:'';
 				organizedArr[t.type].push(t);
@@ -140,10 +142,36 @@
 					let el=document.getElementById(event.target.name);
 					let t=event.target;
 					el.classList.toggle('hidden');
-					t.checked==true?el.src=t.src:el.src='';
+					if(t.checked==true){
+						/*
+						var the_url_to_load = t.src;
+						$.ajax({
+							type: "GET",
+							url: the_url_to_load,
+							data: "",
+							success: function(data){
+							    // if can load inside iframe, load the URL
+							    location.href = the_url_to_load ;
+							},
+							statusCode: {
+							    500: function() {
+							        alert( 'site has errors' ) ;
+							    }
+							},
+							error:function (xhr, ajaxOptions, thrownError){
+							    // if x-frame-options, site is down or web server is down
+							    alert( 'URL did not load due to x-frame-options' ) ;
+							} 
+						});
+						*/
+						//getUrl(t.src);
+						getHeaders(t.src);
+						el.src=t.src;
+					}else{
+						el.src='';
+					}
 				});
 			});
-
 			let titles=document.querySelectorAll('#'+container+' .title');
 			titles.forEach(t=>{
 				t.addEventListener('click',event=>{
@@ -151,8 +179,49 @@
 					el.classList.toggle('hidden');
 				});
 			});
+			let iframes=document.querySelectorAll('#'+container+' iframe');
+			iframes.forEach(ifr=>{
+				ifr.addEventListener('load',event=>{
+					console.log(event);
+					/*
+					console.log(event.path[0].childElementCount);
+					console.log(event.path[0].ownerDocument.childNodes);
+					
+					console.log(event.path[0]);
+					let iframeDoc = event.path[0].contentDocument || event.path[0].contentWindow.document;
+					console.log(iframeDoc);
+					*/
+	
+					//var iframeBody = event.path[0].contentDocument;
+    				//console.log('iframe loaded, body is: ', iframeBody);
+					//let el=document.getElementById(event.target.dataChild);
+					//el.classList.toggle('hidden');
+				});
+			});
 		}
+		function getUrl(url){
+			var oReq = new XMLHttpRequest();
+			oReq.onload = e=> {
+			  var arraybuffer = oReq.response; // not responseText
+			  /* ... */
+			}
 
+			oReq.addEventListener("progress", console.log);
+			oReq.addEventListener("load", console.log);
+			oReq.addEventListener("error", console.error);
+			oReq.addEventListener("abort", console.error);
+			
+			oReq.open("GET", url);
+			oReq.responseType = "arraybuffer";
+			oReq.send();
+		}
+		function getHeaders(url=document.location){
+			var req = new XMLHttpRequest();
+			req.open('GET', url, true);
+			req.send();
+			var headers = req.getAllResponseHeaders().toLowerCase();
+			console.log(headers);
+		}
 		draw(toolsArr,'toolsContainer');
 	</script>
 </body>

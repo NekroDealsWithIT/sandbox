@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WEB Tools</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Vinculadas - A127479">
+	<link rel="shortcut icon" href="static/img/tools-image_48x48.ico">
+</head>
+<body>
+	<h1>Herramientas web online</h1>
+	<h6>(De desarrolladores para desarrolladores)</h6>
+	<h2>Herramientas chequeadas</h2>
+	<div id='toolsContainer'></div>
+	<hr>
+	<h2>Herramientas sugeridas</h2>
+	<div id='toolsSugestedContainer'></div>
+	
+	<style type="text/css">
+		body{background-color: black;color:#0F0;}
+		.hidden{display:none}
+		.preview{width:90%;margin:auto;height:75vh;border-color: blue;}
+		.title{color:#F00;cursor: pointer;}
+		.title::after{content:" (click para desplegar u ocultar)";color:white;}
+		a:link,a:visited{color:yellow;}
+		a:hover{color:white;font-weight: 800;}
+	</style>
+	<script type="text/javascript">
+		var toolsArr=[
+			 {'check':'true','autor':'nekro','id':'0','title':'jsonviewer','url':'http://jsonviewer.stack.hu','desc':'Json parser','type':'JSON','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'1','title':'utf8icons','url':'https://www.utf8icons.com','desc':'Utf 8 icons','type':'Icons','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'2','title':'htaccessredirect','url':'https://www.htaccessredirect.net','desc':'Htta generator','type':'Htta','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'3','title':'mxtoolbox','url':'https://mxtoolbox.com/NetworkTools.aspx','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'4','title':'ip-tracker','url':'https://www.ip-tracker.org/locator/ip-lookup.php','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'5','title':'ipinfo.io','url':'http://ipinfo.io','desc':'Ip information','type':'Ip Analisis','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'6','title':'Google geocode','url':'http://maps.googleapis.com/maps/api/geocode/json?latlng=[lat],[lon]&sensor=true','desc':'Reverse GEO','type':'GEO Location','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'7','title':'histats','url':'http://www.histats.com','desc':'Counters','type':'Counter','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'8','title':'jsfiddle','url':'https://jsfiddle.net','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'9','title':'cssdeck','url':'http://cssdeck.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'A','title':'Plunker','url':'http://next.plnkr.co','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'B','title':'liveweave','url':'https://liveweave.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'C','title':'debuggex','url':'https://www.debuggex.com','desc':'Graficador de REGEX','type':'REGEX','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'D','title':'bitly','url':'https://app.bitly.com','desc':'Acortador de links','type':'Links','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'E','title':'browserling','url':'https://www.browserling.com','desc':'Pruebas crossBrowser','type':'QA','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'F','title':'cleancss','url':'https://www.cleancss.com','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'G','title':'codebeautify','url':'https://codebeautify.org','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'H','title':'subtlepatterns','url':'https://www.toptal.com/designers/subtlepatterns','desc':'Fondos sutiles','type':'Fondos','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'I','title':'youmightnotneedjquery','url':'http://youmightnotneedjquery.com','desc':'Ayuda a entender si necesitamos o no jquery','type':'QA','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'J','title':'caniuse','url':'https://caniuse.com','desc':'Testing de funcionalidades y soporte','type':'QA','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'K','title':'es6-features','url':'http://es6-features.org','desc':'Testing de funcionalidades y soporte de ECMA6','type':'QA','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'L','title':'kangax','url':'http://kangax.github.io/compat-table/es5','desc':'Testing de funcionalidades y soporte de ECMA','type':'QA','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'M','title':'css3test','url':'http://css3test.com','desc':'Testing de funcionalidades y soporte de CSS3','type':'QA','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'N','title':'css3please','url':'http://css3please.com','desc':'Prueba de codigo rapida y aislada de CSS3','type':'Code playground','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'O','title':'30 dias de javascript','url':'https://javascript30.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'P','title':'Javascript for cats','url':'http://jsforcats.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'Q','title':'Freepngimg','url':'https://www.freepngimg.com','desc':'Imagenes para favicons e iconos','type':'Icons','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'R','title':'PicResize','url':'http://picresize.com','desc':'Editor online de Imagenes','type':'Icons','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'S','title':'StackOverflow','url':'https://stackoverflow.com','desc':'Foro de programacion','type':'Foro','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'T','title':'NetLify','url':'https://www.netlify.com','desc':'Hosting con hooks contra git','type':'Hosting','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'U','title':'000WebHost','url':'https://www.000webhost.com','desc':'Hosting con PHP y MySql','type':'Hosting','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'V','title':'GitHub','url':'https://github.com','desc':'Cliente sencillo GIT','type':'GIT','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'W','title':'BitBucket','url':'https://bitbucket.org','desc':'Cliente GIT','type':'GIT','added':'06-09-2018'}
+			,{'check':'true','autor':'nekro','id':'W','title':'DomainTools','url':'http://whois.domaintools.com','desc':'Analisis de ip','type':'Ip Analisis','added':'06-09-2018'}
+		]
+		//{'url':'','desc':'','type':'','added':''},
+	
+		function draw(tools,container){
+			var organizedArr=[];
+			tools.forEach(t=>{
+				organizedArr[t.type]==undefined?organizedArr[t.type]=[]:'';
+				organizedArr[t.type].push(t);
+			});
+			for (let k in organizedArr){
+			    if (organizedArr.hasOwnProperty(k)) {
+			        let div = document.createElement("section");
+			        div.id='div_'+k;
+			        let title = document.createElement("h3");
+					title.innerText=k+' ['+organizedArr[k].length+']';
+					title.classList='title';
+					title.dataChild='ol_'+k;
+					div.appendChild(title);	        
+					let ol = document.createElement("ol");
+					ol.id='ol_'+k;
+					ol.classList='hidden';
+					organizedArr[k].forEach(t=>{
+						let li = document.createElement("li");
+						
+						let innerTitle = document.createElement("h4");
+						innerTitle.innerHTML=t.title.toUpperCase()+' (<a href="'+t.url+'" target="blank">'+t.url+'</a>) [Autor: '+t.autor.toUpperCase()+' | Fecha:'+t.added+']';
+						innerTitle.classList='innerTitle';
+						li.appendChild(innerTitle);
+
+						let p=document.createElement("p");
+						p.innerText=t.desc;
+						li.appendChild(p);
+						
+						let preview=document.createElement("input");
+						preview.type='checkbox';
+						preview.id='checkbox_'+t.title+'_'+t.id;
+						preview.name='iframe_'+t.title+'_'+t.id;
+						preview.src=t.url;
+					
+
+						let labelPreview=document.createElement("label");
+						labelPreview.appendChild(preview);
+						labelPreview.innerHTML+=' Habilitar preview de '+t.title.toLowerCase();
+
+						let pPreview=document.createElement("p");
+						pPreview.appendChild(labelPreview);
+						li.appendChild(pPreview);
+
+						let iframe=document.createElement("iframe");
+						//iframe.src=t.url;
+						//iframe.style='display:none;';
+						iframe.classList='hidden preview';
+						iframe.id='iframe_'+t.title+'_'+t.id;
+						li.appendChild(iframe);
+
+						ol.appendChild(li);
+					});
+					div.appendChild(ol);
+			        //console.log("Key is " + k + ", value is" , organizedArr[k]);
+
+			        document.getElementById(container).appendChild(div);
+			    }
+			}
+			let checks=document.querySelectorAll('#'+container+' input[type=checkbox]');
+			checks.forEach(c=>{
+				c.addEventListener('click',event=>{
+					let el=document.getElementById(event.target.name);
+					let t=event.target;
+					el.classList.toggle('hidden');
+					t.checked==true?el.src=t.src:el.src='';
+				});
+			});
+
+			let titles=document.querySelectorAll('#'+container+' .title');
+			titles.forEach(t=>{
+				t.addEventListener('click',event=>{
+					let el=document.getElementById(event.target.dataChild);
+					el.classList.toggle('hidden');
+				});
+			});
+		}
+
+		draw(toolsArr,'toolsContainer');
+	</script>
+</body>
+</html>

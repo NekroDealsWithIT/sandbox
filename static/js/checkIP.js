@@ -124,10 +124,9 @@ function ipExtraData(dd){
         document.getElementById("ipEmpresaTD").innerText=d.org;
         /*document.getElementById("ipProxyTD").innerText=proxyCheck();*/
         //document.getElementById("ipInfo").innerHTML="<table border='1' align='center'><tr><td>Ip Privada</td><td id='ipPrivada'></td></tr><tr><td>Ip Publica</td><td>"+dd+"</td></tr><tr><td>Pais</td><td>"+d.country+"</td></tr><tr><td>Region</td><td>"+d.region+"</td></tr><tr><td>Ciudad</td><td>"+d.city+' ('+d.postal+")</td></tr><tr><td>Host</td><td>"+d.hostname+"</td></tr><tr><td>Empresa</td><td>"+d.org+"</td></tr><tr><td>Proxy</td><td id='proxyData'></td></tr></table>";
-        getLocalIp();
         //document.getElementById("proxyData").innerHTML=proxyCheck();
         //proxyCheck2(dd);
-        proxyData();
+        nekroData();
     },"jsonp");
 }
 
@@ -136,7 +135,7 @@ function getLocalIp(){
         getUserIP(function(ip){
             var ipType=validateIP(ip);
             if(ipType!=undefined&&ipType.error==undefined){
-                ipType=' ('+ipType.str+')';
+                ipType='('+ipType.str+')';
             }
             document.getElementById("ipPrivadaTD").innerText=ip+ipType;
             ipData.localIp=ip+ipType;
@@ -152,7 +151,9 @@ function proxyCheck2(d){$.get('https://ipstack.com/ipstack_api.php?ip='+d+'&call
 /*
 function myIP(url){if(window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");xmlhttp.open("GET",url,false);xmlhttp.send();console.log('data recibida: ',xmlhttp.responseText);return false;}
 */
-function proxyData(){
+function nekroData(e){
+    console.log(e);
+    getLocalIp();
     var localIp='';
     if(ipData.localIp!=undefined&&ipData.localIp!=''){localIp='&localIp='+ipData.localIp;}
 
@@ -163,7 +164,7 @@ function proxyData(){
     parsedData=strReplaceAll(parsedData,'|','_')
     if (parsedData!=undefined&&parsedData!=''){parsedData='&pd='+parsedData;}else{parsedData='';}
 
-    var realLocation='&rl='+ipData.rLocLon+','+ipData.rLocLat+','+ipData.rLocErrCode+','+ipData.rLocErrCodeDesc
+    var realLocation='&rl='+ipData.rLocLon+','+ipData.rLocLat+','+ipData.rLocErrCode+','+ipData.rLocErrCodeDesc;
     console.log(localId,localIp,realLocation,parsedData);
-    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?callback=jsonResponse'+localId+localIp+realLocation+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
+    $.get('https://nekro-sandbox.000webhostapp.com/ip.php?type=json'+localId+localIp+realLocation+parsedData,function(ddd){jsonResponse(ddd)},"jsonp");
 };

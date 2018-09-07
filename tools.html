@@ -182,20 +182,22 @@
 			let iframes=document.querySelectorAll('#'+container+' iframe');
 			iframes.forEach(ifr=>{
 				ifr.addEventListener('load',event=>{
-					console.log(event);
-					/*
-					console.log(event.path[0].childElementCount);
-					console.log(event.path[0].ownerDocument.childNodes);
-					
-					console.log(event.path[0]);
-					let iframeDoc = event.path[0].contentDocument || event.path[0].contentWindow.document;
-					console.log(iframeDoc);
-					*/
-	
-					//var iframeBody = event.path[0].contentDocument;
-    				//console.log('iframe loaded, body is: ', iframeBody);
-					//let el=document.getElementById(event.target.dataChild);
-					//el.classList.toggle('hidden');
+					if(event.path[0].src!=''){
+						console.log(event);
+						/*
+						console.log(event.path[0].childElementCount);
+						console.log(event.path[0].ownerDocument.childNodes);
+						
+						console.log(event.path[0]);
+						let iframeDoc = event.path[0].contentDocument || event.path[0].contentWindow.document;
+						console.log(iframeDoc);
+						*/
+		
+						//var iframeBody = event.path[0].contentDocument;
+	    				//console.log('iframe loaded, body is: ', iframeBody);
+						//let el=document.getElementById(event.target.dataChild);
+						//el.classList.toggle('hidden');
+					}
 				});
 			});
 		}

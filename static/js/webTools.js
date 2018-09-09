@@ -190,6 +190,7 @@ function draw(tools,container,hideChild=true){
 				li.appendChild(pPreview);
 
 				let pModifPreview=document.createElement("p");
+				pModifPreview.classList='modifPreview';
 				
 				let spanInstancias=document.createElement("span");
 				spanInstancias.innerHTML+='Cantidad de instancias del preview: ';
@@ -201,7 +202,6 @@ function draw(tools,container,hideChild=true){
 				inputInstancias.name='instancesPreview';
 				spanInstancias.appendChild(inputInstancias);
 				pModifPreview.appendChild(spanInstancias);
-				
 				
 				let spanResize=document.createElement("span");
 				spanResize.innerHTML+='  Altura del preview (vh): '

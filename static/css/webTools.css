@@ -142,6 +142,8 @@ a:hover{color:white;font-weight: 800;}
 input[type="number"]{width:3em;}
 .previewContainer{top:10px;position:sticky;z-index: -1}
 
+.modifPreview{top:1px;position:sticky;background:#000;}
+
 .title{color:#F00;cursor:pointer;}
 .title::after{content:" (click para desplegar u ocultar)";color:white;}
 

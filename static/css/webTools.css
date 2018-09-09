@@ -138,8 +138,8 @@ a:hover{color:white;font-weight: 800;}
 }
 /*fin formulario*/
 
-.preview{width:100%;margin:auto;margin-bottom:4vh;height:75vh;border: 2px solid blue;opacity:1!important}
-
+.preview{width:100%;margin:auto;margin-bottom:4vh;/*height:75vh;*/border: 2px solid blue;opacity:1!important}
+input[type="number"]{width:3em;}
 .previewContainer{top:10px;position:sticky;z-index: -1}
 
 .title{color:#F00;cursor:pointer;}
@@ -226,7 +226,7 @@ p.descripcion{font-style:italic;}
 	}
 	.fondo{display:block;}
 	body{
-		background:url('../img/subtle/darkness/darkness.png')  repeat fixed;
+		/*background:url('../img/subtle/darkness/darkness.png')  repeat fixed;*/
 		background:url('../img/subtle/ep_naturalblack/ep_naturalblack.png')  repeat fixed;
 		animation: slideFondo 60s cubic-bezier(.19,1.51,.79,-0.53) infinite;
 		animation-direction: alternate;

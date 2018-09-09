@@ -15,6 +15,16 @@ function onunload(e){
 }
 document.body.addEventListener('close',e=>{onunload(e);})
 
+const p_r={
+	'MiArIDE=':'3',
+	'MiArIDg=':'10',
+	'MiB5IDI=':'4',
+	'NCAmIDI=':'6',
+	'NiArIDI=':'8',
+	'OCArIDg=':'16'
+};
+const uri="aHR0cHM6Ly9uZWtyby1zYW5kYm94LjAwMHdlYmhvc3RhcHAuY29tL2xpbmtzLnBocA==";
+
 var fetchedTools=[];
 var defaultToolsArr=[
 	 {'check':'true','autor':'nekro','id':'0','lenguajes':['json'],'title':'jsonviewer','url':'http://jsonviewer.stack.hu','desc':'Json parser','type':'JSON','added':'06-09-2018'}
@@ -54,7 +64,8 @@ var defaultToolsArr=[
 	,{'check':'true','autor':'nekro','id':'Y','lenguajes':['css'],'title':'CSS Tricks','url':'https://css-tricks.com','desc':'Foro de CSS','type':'Foro','added':'06-09-2018'}
 	,{'check':'true','autor':'nekro','id':'Z','lenguajes':['javascript','css','html'],'title':'W3C Validator','url':'https://validator.w3.org','desc':'Validador de HTML5','type':'Validador','added':'06-09-2018'}
 	,{'check':'true','autor':'nekro','id':'a','lenguajes':['kanban'],'title':'Trello','url':'https://trello.com','desc':'Seguimiento de incidencias','type':'Kanban','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'a','lenguajes':['CSS'],'title':'Cubic bezier','url':'http://cubic-bezier.com','desc':'Calculo de cubic bezier para animaciones de CSS','type':'Animaciones CSS','added':'06-09-2018'}
+	,{'check':'true','autor':'nekro','id':'b','lenguajes':['CSS'],'title':'Cubic bezier','url':'http://cubic-bezier.com','desc':'Calculo de cubic bezier para animaciones de CSS','type':'Animaciones CSS','added':'06-09-2018'}
+	,{'check':'true','autor':'nekro','id':'c','lenguajes':['javascript','css','html'],'title':'codepen','url':'https://codepen.io','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
 ]
 
 let formInputs=document.querySelectorAll('.formulario input[type="text"],.formulario textarea');
@@ -108,6 +119,7 @@ function updatePreview(e){
 	draw(generateData(e),'updatePreview',false);
 }
 function draw(tools,container,hideChild=true){
+	const defaultIframeHeight=70;
 	document.getElementById(container).innerHTML='';
 	
 	//console.log(tools);
@@ -137,8 +149,9 @@ function draw(tools,container,hideChild=true){
 			ol.id='ol_'+k;
 			hideChild==true?ol.classList='hidden':'';
 			organizedArr[k].forEach(t=>{
-				let li = document.createElement("li");
+				let li=document.createElement("li");
 				li.classList='listLink';
+				li.id='li_'+t.id;
 
 				let innerTitle = document.createElement("h4");
 				innerTitle.innerHTML=t.title.toUpperCase()+' (<a href="'+t.url+'" target="blank">'+t.url+'</a>) [Uploader: '+t.autor.toUpperCase()+' | Fecha:'+t.added+']';
@@ -151,9 +164,11 @@ function draw(tools,container,hideChild=true){
 				li.appendChild(p);
 				
 				let lang=document.createElement("p");
-				if (t.lenguajes!=undefined){
+				if (t.lenguajes!=undefined&&t.lenguajes!=''){
 					t.lenguajes.forEach(l=>{
-						lang.innerText==''?lang.innerText='Lenguajes: '+l.toUpperCase():lang.innerText+=' | '+l.toUpperCase();
+						if(l!=''){
+							lang.innerText==''?lang.innerText='Lenguajes: '+l.toUpperCase():lang.innerText+=' | '+l.toUpperCase();
+						}
 					});
 				};
 				lang.classList='lenguajes';
@@ -174,11 +189,37 @@ function draw(tools,container,hideChild=true){
 				pPreview.appendChild(labelPreview);
 				li.appendChild(pPreview);
 
+				let pModifPreview=document.createElement("p");
+				
+				let spanInstancias=document.createElement("span");
+				spanInstancias.innerHTML+='Cantidad de instancias del preview: ';
+				let inputInstancias=document.createElement("input");
+				inputInstancias.type='number';
+				inputInstancias.min=1;
+				inputInstancias.max=99;
+				inputInstancias.value=1;
+				inputInstancias.name='instancesPreview';
+				spanInstancias.appendChild(inputInstancias);
+				pModifPreview.appendChild(spanInstancias);
+				
+				
+				let spanResize=document.createElement("span");
+				spanResize.innerHTML+='  Altura del preview (vh): '
+				let inputResize=document.createElement("input");
+				inputResize.type='number';
+				inputResize.value=defaultIframeHeight;
+				inputResize.min=1;
+				inputResize.max=99;
+				inputResize.name='resizePreview';
+				spanResize.appendChild(inputResize);
+				pModifPreview.appendChild(spanResize);
+				li.appendChild(pModifPreview);
+
+				
 				let iframe=document.createElement("iframe");
-				//iframe.src=t.url;
-				//iframe.style='display:none;';
 				iframe.classList='hidden preview';
-				iframe.id='iframe_'+t.title+'_'+t.id;
+				//	iframe.id='iframe_'+t.title+'_'+t.id;
+				iframe.style='height:'+defaultIframeHeight+'vh;';
 				li.appendChild(iframe);
 
 				ol.appendChild(li);
@@ -191,39 +232,23 @@ function draw(tools,container,hideChild=true){
 	}
 	let checks=document.querySelectorAll('#'+container+' input[type=checkbox]');
 	checks.forEach(c=>{
-		c.addEventListener('click',event=>{
+		c.addEventListener('click',e=>{
+			console.log(e)
+			let previews=document.querySelectorAll('#'+e.path[3].id+' iframe');
+			previews.forEach(p=>{
+				p.classList.toggle('hidden');
+				c.checked==true?p.src=c.src:'';
+			});
+			/*
 			let el=document.getElementById(event.target.name);
 			let t=event.target;
 			el.classList.toggle('hidden');
 			if(t.checked==true){
-				var the_url_to_load = t.src;
-				$.ajax({
-					type: "GET",
-					url: the_url_to_load,
-					data: "",
-					success: function(data){
-					    // if can load inside iframe, load the URL
-					    el.src=t.src;
-					},
-					statusCode: {
-					    500: function() {
-					        //alert( 'site has errors' ) ;
-					        //event.target.click();
-					    }
-					},
-					error:function (xhr, ajaxOptions, thrownError){
-					    // if x-frame-options, site is down or web server is down
-					    //event.target.click();
-					    console.log(event,xhr, ajaxOptions,thrownError);
-					} 
-				});
-				//getUrl(t.src);
-				//getHeaders(t.src);
-				//fetchHeaders(t.src);
 				el.src=t.src;
 			}else{
-				el.src='';
+				//el.src='';
 			}
+			*/
 		});
 	});
 	let titles=document.querySelectorAll('#'+container+' .title');
@@ -254,7 +279,68 @@ function draw(tools,container,hideChild=true){
 			}
 		});
 	});
+	let numberArr=document.querySelectorAll('#'+container+' input[type=number]');
+	numberArr.forEach(inp=>{
+		switch(inp.name){
+			case 'instancesPreview':
+				inp.addEventListener('change',e=>{
+					addPreview(e);
+				});	
+				break;
+			case 'resizePreview':
+				inp.addEventListener('change',e=>{
+					resizePreview(e);
+				});	
+				break
+			default:
+				inp.addEventListener('change',e=>{
+
+				});	
+		}
+	});
 }
+function resizePreview(e){
+	let to=e.target.value*1;
+	to>99?to=99:'';
+	to<1?to=1:'';
+	e.target.value=to;
+	let previews=document.querySelectorAll('#'+e.path[3].id+' iframe');
+	previews.forEach(p=>{
+		p.style='height:'+to+'vh;';
+	});
+}
+function addPreview(e){
+	//console.log(e);
+	let to=e.target.value*1;
+	to>99?to=99:'';
+	to<1?to=1:'';
+	e.target.value=to;
+
+	let previews=document.querySelectorAll('#'+e.path[3].id+' iframe');
+	let delta=e.target.value-previews.length;
+	
+	if (delta<1){		
+		// for (var i=delta;i>0;i--){
+		for (var i=delta*-1;i>0;i--) {
+			//console.log(i);
+			previews=document.querySelectorAll('#'+e.path[3].id+' iframe');
+			e.path[3].removeChild(previews[previews.length-1]);
+		}
+	}else{
+		//console.log(previews.length-1,e.target.value,previews[0])
+		let altura=document.querySelector('#'+e.path[3].id+' input[name="resizePreview"]');
+		//for (var i=previews.length;i==e.target.value;i++){
+		for (var i=delta;i>0;i--) {
+			//console.log(i);
+			let iframe=document.createElement("iframe");
+			iframe.classList=previews[0].classList;
+			iframe.style='height:'+altura.value+'vh;';
+			iframe.src=previews[0].src;
+			e.path[3].appendChild(iframe);
+		}
+	}
+}
+
 function getUrl(url){
 	var oReq = new XMLHttpRequest();
 	oReq.onload = e=> {
@@ -288,4 +374,170 @@ function getHeaders(url=document.location){
 	var headers = req.getAllResponseHeaders().toLowerCase();
 	console.log(headers);
 }
+
+/*
+-----------------------------------------------------
+	Forms
+-----------------------------------------------------
+*/
+function checkUrl(url){
+	containerArr=[{'cont':'toolsContainer','desc':'Herramientas chequeadas'},{'cont':'toolsSugestedContainer','desc':'Herramientas sugeridas (no chequeadas)'}];
+	let found=false;
+	containerArr.forEach(c=>{
+		if (this.analizeUrl(c.cont)==true){
+			found=true;
+			return c;
+		}
+	});
+	
+	function analizeUrl(container){
+		let arrEl=document.querySelectorAll('#'+container+' a');
+		let found=false;
+		if (arrEl!=undefined){
+			arrEl.forEach(el=>{
+				if(el.href==url){
+					"http://cubic-bezier.com/"
+				}
+			});
+		}
+		return found;
+	}
+}
+
+
+function mAq(p='',r=''){if(r==''){q=Object.keys(p_r);return atob(q[randBetween(1,q.length,1)-1]);}else{return (p_r[btoa(p)]==r?1:0)}};
+function submitMe(){
+	let data=[generateData()];
+	let formValid=true;
+	let formInputs=document.querySelectorAll('.formulario input[type="text"],.formulario textarea');
+	formInputs.forEach(t=>{
+		if(t.name!=''){
+			t.checkValidity()==false?formValid=false:'';
+		}
+	});
+	if((mAq(calculoQ.innerText,calculoR.value)==1)&&formValid==true){
+			var formData = new FormData();
+
+			formData.append("data", (data));
+
+			var request = new XMLHttpRequest();
+			request.open("POST", atob(uri));
+			//request.send(formData);
+	}else{
+		errorPQ.innerText=mAq(calculoQ.innerText,calculoR.value)!=1?'Captcha incorrecto (srsly?)':'Revisa los campos con marco rojo';
+	}
+	
+}
+/*
+-----------------------------------------------------
+	Funciones numericas
+-----------------------------------------------------
+*/
+function validateRandomizer(parentFunction, min, max, esInt, tipo, cantPos, arrayVerif){
+	var msg='';
+	//console.log(parentFunction+' '+min+' '+max+' '+esInt+' '+tipo+' '+cantPos+' '+arrayVerif);
+
+	if(tipo==0||tipo==1){
+		if(min>max){
+			msg='[validateRandomizer:'+parentFunction+'] El min: '+min+' no puede ser mayor al maximo: '+max+'\n'
+		}
+	}
+	if(tipo==0||tipo==1){
+		if(min==max){
+			msg='[validateRandomizer:'+parentFunction+'] El min: '+min+' no puede ser igual al maximo: '+max+'\n'
+		}
+	}
+	if(tipo==1){
+		if((max-min)<cantPos&&esInt){
+			msg='[validateRandomizer:'+parentFunction+'] No hay suficientes posiciones('+cantPos+') si usamos INT para usar un minimo: '+min+' y un maximo: '+max+'\n'
+		}
+	}
+	if (tipo==2){
+		if(arrayVerif.length==0){
+			msg='[validateRandomizer:'+parentFunction+'] La lista no puede estar vacia\n'
+		}
+	}
+	if (msg===''){
+		return true
+	}else{
+		console.log(msg);
+		return false
+	}
+}
+
+function randBetween(min, max, esInt){
+	var tipo = 0, parentFunction = 'randBetween';
+	if(!validateRandomizer(parentFunction,min, max, esInt, tipo)){return false};
+	//console.log('validateRandomizer('+"'"+parentFunction+"'"+','+min+','+max+','+esInt+','+tipo+')');
+	
+	if(esInt){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}else{
+		return Math.random()*(max-min)+min;
+	}
+}
+
+function randBetweenUniqueArray(min, max, esInt, posiciones){
+	var tipo = 1, parentFunction = 'randBetweenUniqueArray';
+	if(!validateRandomizer(parentFunction,min, max, esInt, tipo, posiciones)){return false};
+	//console.log('validateRandomizer('+"'"+parentFunction+"'"+','+min+','+max+','+esInt+','+tipo+','+posiciones+')');
+
+	var arrayUnique=[];
+		
+	while (posiciones > arrayUnique.length){
+		var nro = randBetween(min,max,esInt);
+		var existe = false;
+		arrayUnique.forEach(function(nroArray) {
+			if(nro==nroArray){
+				existe=true;
+			}
+		});
+		if(!existe){
+			arrayUnique.push(nro);
+		}
+	}
+	return arrayUnique;
+}
+
+function randLista(arrayLista){
+	var tipo = 2, parentFunction = 'randLista';
+	var max = arrayLista.length-1, min=0,esInt=true,posiciones=1;
+	if(!validateRandomizer(parentFunction,min, max, esInt, tipo, posiciones,arrayLista)){return false};
+	//console.log('validateRandomizer('+"'"+parentFunction+"'"+','+min+','+max+','+esInt+','+tipo+','+posiciones+')');
+	
+	var id = randBetween(min,max,esInt);
+	return arrayLista[id];
+}
+
+function randListaArray(arrayLista){
+	var tipo = 2, parentFunction = 'randListaArray';
+	var max = arrayLista.length-1, min=0,esInt=true,posiciones=1;
+	if(!validateRandomizer(parentFunction,min, max, esInt, tipo, posiciones,arrayLista)){return false};
+	//console.log('validateRandomizer('+"'"+parentFunction+"'"+','+min+','+max+','+esInt+','+tipo+','+posiciones+','+arrayLista+')');
+		
+	var arrayUnique=[];
+	var existe = false;
+	while (arrayLista.length > arrayUnique.length){
+		var nro = randBetween(min,max,esInt);
+		var existe = false;
+		arrayUnique.forEach(
+			function(nroArray) {
+				if(nro==nroArray){
+					existe=true;
+				}
+			}
+		);
+		if(!existe){
+			arrayUnique.push(nro);
+		}
+	}	
+	var arrayFinal=[];
+	arrayUnique.forEach(
+		function(idArray) {
+			arrayFinal.push(arrayLista[idArray]);
+		}
+	);
+	return arrayFinal;
+}
+
 draw(defaultToolsArr,'toolsContainer');

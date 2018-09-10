@@ -142,7 +142,8 @@ a:hover{color:white;font-weight: 800;}
 input[type="number"]{width:3em;}
 .previewContainer{top:10px;position:sticky;z-index: -1}
 
-.modifPreview{top:1px;position:sticky;background:#000;}
+.modifPreview{top:1.1rem;position:sticky;background:url('../img/subtle/dark_leather/dark_leather.png')  repeat fixed;}
+.floatingLabel{top:0;position:sticky;background:url('../img/subtle/dark_leather/dark_leather.png')  repeat fixed;}
 
 .title{color:#F00;cursor:pointer;}
 .title::after{content:" (click para desplegar u ocultar)";color:white;}

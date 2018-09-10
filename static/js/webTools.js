@@ -184,8 +184,8 @@ function draw(tools,container,hideChild=true){
 				let labelPreview=document.createElement("label");
 				labelPreview.appendChild(preview);
 				labelPreview.innerHTML+=' Habilitar preview de '+t.title.toLowerCase();
-
 				let pPreview=document.createElement("p");
+				pPreview.classList='floatingLabel';
 				pPreview.appendChild(labelPreview);
 				li.appendChild(pPreview);
 

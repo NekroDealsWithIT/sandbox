@@ -147,6 +147,7 @@ function draw(tools,container,hideChild=true){
 			div.appendChild(title);	        
 			let ol = document.createElement("ol");
 			ol.id='ol_'+k;
+
 			hideChild==true?ol.classList='hidden':'';
 			organizedArr[k].forEach(t=>{
 				let li=document.createElement("li");

@@ -25,48 +25,53 @@ const p_r={
 };
 const uri="aHR0cHM6Ly9uZWtyby1zYW5kYm94LjAwMHdlYmhvc3RhcHAuY29tL2xpbmtzLnBocA==";
 
+var filters={};
+
 var fetchedTools=[];
 var defaultToolsArr=[
-	 {'check':'true','autor':'nekro','id':'0','lenguajes':['json'],'title':'jsonviewer','url':'http://jsonviewer.stack.hu','desc':'Json parser','type':'JSON','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'1','lenguajes':[],'title':'utf8icons','url':'https://www.utf8icons.com','desc':'Utf 8 icons','type':'Icons','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'2','lenguajes':['http'],'title':'htaccessredirect','url':'https://www.htaccessredirect.net','desc':'Htta generator','type':'Htta','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'3','lenguajes':[],'title':'mxtoolbox','url':'https://mxtoolbox.com/NetworkTools.aspx','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'4','lenguajes':['json'],'title':'ip-tracker','url':'https://www.ip-tracker.org/locator/ip-lookup.php','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'5','lenguajes':['json'],'title':'ipinfo.io','url':'http://ipinfo.io','desc':'Ip information','type':'Ip Analisis','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'6','lenguajes':['json'],'title':'Google geocode','url':'http://maps.googleapis.com/maps/api/geocode/json?latlng=[lat],[lon]&sensor=true','desc':'Reverse GEO','type':'GEO Location','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'7','lenguajes':[],'title':'histats','url':'http://www.histats.com','desc':'Counters','type':'Counter','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'8','lenguajes':['javascript','css','html'],'title':'jsfiddle','url':'https://jsfiddle.net','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'9','lenguajes':['javascript','css','html'],'title':'cssdeck','url':'http://cssdeck.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'A','lenguajes':['javascript','css','html'],'title':'Plunker','url':'http://next.plnkr.co','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'B','lenguajes':['javascript','css','html'],'title':'liveweave','url':'https://liveweave.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'C','lenguajes':['regex'],'title':'debuggex','url':'https://www.debuggex.com','desc':'Graficador de REGEX','type':'REGEX','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'D','lenguajes':[],'title':'bitly','url':'https://app.bitly.com','desc':'Acortador de links','type':'Links','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'E','lenguajes':[],'title':'browserling','url':'https://www.browserling.com','desc':'Pruebas crossBrowser','type':'QA','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'F','lenguajes':['javascript','css','html'],'title':'cleancss','url':'https://www.cleancss.com','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'G','lenguajes':['javascript','css','html'],'title':'codebeautify','url':'https://codebeautify.org','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'H','lenguajes':[],'title':'subtlepatterns','url':'https://www.toptal.com/designers/subtlepatterns','desc':'Fondos sutiles','type':'Fondos','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'I','lenguajes':[],'title':'youmightnotneedjquery','url':'http://youmightnotneedjquery.com','desc':'Ayuda a entender si necesitamos o no jquery','type':'QA','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'J','lenguajes':['javascript','css','html'],'title':'caniuse','url':'https://caniuse.com','desc':'Testing de funcionalidades y soporte','type':'QA','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'K','lenguajes':[],'title':'es6-features','url':'http://es6-features.org','desc':'Testing de funcionalidades y soporte de ECMA6','type':'QA','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'L','lenguajes':[],'title':'kangax','url':'http://kangax.github.io/compat-table/es5','desc':'Testing de funcionalidades y soporte de ECMA','type':'QA','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'M','lenguajes':['css'],'title':'css3test','url':'http://css3test.com','desc':'Testing de funcionalidades y soporte de CSS3','type':'QA','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'N','lenguajes':['css'],'title':'css3please','url':'http://css3please.com','desc':'Prueba de codigo rapida y aislada de CSS3','type':'Code playground','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'O','lenguajes':['javascript'],'title':'30 dias de javascript','url':'https://javascript30.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'P','lenguajes':['javascript'],'title':'Javascript for cats','url':'http://jsforcats.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'Q','lenguajes':[],'title':'Freepngimg','url':'https://www.freepngimg.com','desc':'Imagenes para favicons e iconos','type':'Icons','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'R','lenguajes':[],'title':'PicResize','url':'http://picresize.com','desc':'Editor online de Imagenes','type':'Icons','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'S','lenguajes':['javascript','css','html'],'title':'StackOverflow','url':'https://stackoverflow.com','desc':'Foro de programacion','type':'Foro','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'T','lenguajes':['javascript','css','html'],'title':'NetLify','url':'https://www.netlify.com','desc':'Hosting con hooks contra git','type':'Hosting','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'U','lenguajes':['javascript','css','html','php','MySql'],'title':'000WebHost','url':'https://www.000webhost.com','desc':'Hosting con PHP y MySql','type':'Hosting','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'V','lenguajes':[],'title':'GitHub','url':'https://github.com','desc':'Cliente sencillo GIT','type':'GIT','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'W','lenguajes':[],'title':'BitBucket','url':'https://bitbucket.org','desc':'Cliente GIT','type':'GIT','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'X','lenguajes':[],'title':'DomainTools','url':'http://whois.domaintools.com','desc':'Analisis de ip','type':'Ip Analisis','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'Y','lenguajes':['css'],'title':'CSS Tricks','url':'https://css-tricks.com','desc':'Foro de CSS','type':'Foro','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'Z','lenguajes':['javascript','css','html'],'title':'W3C Validator','url':'https://validator.w3.org','desc':'Validador de HTML5','type':'Validador','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'a','lenguajes':['kanban'],'title':'Trello','url':'https://trello.com','desc':'Seguimiento de incidencias','type':'Kanban','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'b','lenguajes':['CSS'],'title':'Cubic bezier','url':'http://cubic-bezier.com','desc':'Calculo de cubic bezier para animaciones de CSS','type':'Animaciones CSS','added':'06-09-2018'}
-	,{'check':'true','autor':'nekro','id':'c','lenguajes':['javascript','css','html'],'title':'codepen','url':'https://codepen.io','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
-]
+	 {'iframe':true,	'check':'true','autor':'nekro','id':'0','lenguajes':['JSON']									,'title':'jsonviewer','url':'http://jsonviewer.stack.hu','desc':'Json parser','type':'JSON','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'1','lenguajes':[]											,'title':'utf8icons','url':'https://www.utf8icons.com','desc':'Utf 8 icons','type':'Icons','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'2','lenguajes':['HTTP']									,'title':'htaccessredirect','url':'https://www.htaccessredirect.net','desc':'Htta generator','type':'Htta','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'3','lenguajes':[]											,'title':'mxtoolbox','url':'https://mxtoolbox.com/NetworkTools.aspx','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'4','lenguajes':['JSON']									,'title':'ip-tracker','url':'https://www.ip-tracker.org/locator/ip-lookup.php','desc':'Ip toolbox','type':'Ip Analisis','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'5','lenguajes':['JSON']									,'title':'ipinfo.io','url':'http://ipinfo.io','desc':'Ip information','type':'Ip Analisis','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'6','lenguajes':['JSON']									,'title':'Google geocode','url':'http://maps.googleapis.com/maps/api/geocode/json?latlng=[lat],[lon]&sensor=true','desc':'Reverse GEO','type':'GEO Location','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'7','lenguajes':[]											,'title':'histats','url':'http://www.histats.com','desc':'Counters','type':'Counter','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'8','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'jsfiddle','url':'https://jsfiddle.net','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'9','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'cssdeck','url':'http://cssdeck.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'A','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'Plunker','url':'http://next.plnkr.co','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'B','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'liveweave','url':'https://liveweave.com','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'C','lenguajes':['REGEX']									,'title':'debuggex','url':'https://www.debuggex.com','desc':'Graficador de REGEX','type':'REGEX','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'D','lenguajes':[]											,'title':'bitly','url':'https://app.bitly.com','desc':'Acortador de links','type':'Links','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'E','lenguajes':[]											,'title':'browserling','url':'https://www.browserling.com','desc':'Pruebas crossBrowser','type':'QA','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'F','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'cleancss','url':'https://www.cleancss.com','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'G','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'codebeautify','url':'https://codebeautify.org','desc':'Caja de herramientas','type':'Toolbox','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'H','lenguajes':[]											,'title':'subtlepatterns','url':'https://www.toptal.com/designers/subtlepatterns','desc':'Fondos sutiles','type':'Fondos','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'I','lenguajes':[]											,'title':'youmightnotneedjquery','url':'http://youmightnotneedjquery.com','desc':'Ayuda a entender si necesitamos o no jquery','type':'QA','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'J','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'caniuse','url':'https://caniuse.com','desc':'Testing de funcionalidades y soporte','type':'QA','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'K','lenguajes':[]											,'title':'es6-features','url':'http://es6-features.org','desc':'Testing de funcionalidades y soporte de ECMA6','type':'QA','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'L','lenguajes':[]											,'title':'kangax','url':'http://kangax.github.io/compat-table/es5','desc':'Testing de funcionalidades y soporte de ECMA','type':'QA','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'M','lenguajes':['CSS']										,'title':'css3test','url':'http://css3test.com','desc':'Testing de funcionalidades y soporte de CSS3','type':'QA','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'N','lenguajes':['CSS']										,'title':'css3please','url':'http://css3please.com','desc':'Prueba de codigo rapida y aislada de CSS3','type':'Code playground','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'O','lenguajes':['JAVASCRIPT']								,'title':'30 dias de javascript','url':'https://javascript30.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'P','lenguajes':['JAVASCRIPT']								,'title':'Javascript for cats','url':'http://jsforcats.com','desc':'Tutoriales para javascript','type':'Tutoriales','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'Q','lenguajes':[]											,'title':'Freepngimg','url':'https://www.freepngimg.com','desc':'Imagenes para favicons e iconos','type':'Icons','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'R','lenguajes':[]											,'title':'PicResize','url':'http://picresize.com','desc':'Editor online de Imagenes','type':'Icons','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'S','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'StackOverflow','url':'https://stackoverflow.com','desc':'Foro de programacion','type':'Foro','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'T','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'NetLify','url':'https://www.netlify.com','desc':'Hosting con hooks contra git','type':'Hosting','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'U','lenguajes':['JAVASCRIPT','CSS','HTML','PHP','MYSQL']	,'title':'000WebHost','url':'https://www.000webhost.com','desc':'Hosting con PHP y MySql','type':'Hosting','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'V','lenguajes':[]											,'title':'GitHub','url':'https://github.com','desc':'Cliente sencillo GIT','type':'GIT','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'W','lenguajes':[]											,'title':'BitBucket','url':'https://bitbucket.org','desc':'Cliente GIT','type':'GIT','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'X','lenguajes':[]											,'title':'DomainTools','url':'http://whois.domaintools.com','desc':'Analisis de ip','type':'Ip Analisis','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'Y','lenguajes':['CSS']										,'title':'CSS Tricks','url':'https://css-tricks.com','desc':'Foro de CSS','type':'Foro','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'Z','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'W3C Validator','url':'https://validator.w3.org','desc':'Validador de HTML5','type':'Validador','added':'06-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'a','lenguajes':['KANBAN']									,'title':'Trello','url':'https://trello.com','desc':'Seguimiento de incidencias','type':'Kanban','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'b','lenguajes':['CSS']										,'title':'Cubic bezier','url':'http://cubic-bezier.com','desc':'Calculo de cubic bezier para animaciones de CSS','type':'Animaciones CSS','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'c','lenguajes':['JAVASCRIPT','CSS','HTML']					,'title':'codepen','url':'https://codepen.io','desc':'Prueba de codigo rapida y aislada','type':'Code playground','added':'06-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'d','lenguajes':['JAVASCRIPT','CSS','HTML','OTROS']			,'title':'Wappalyzer','url':'https://www.wappalyzer.com/','desc':'Relevamiento tecnologias usadas en el sitio','type':'QA','added':'13-09-2018'}
+	,{'iframe':true,	'check':'true','autor':'nekro','id':'e','lenguajes':[]											,'title':'freepik','url':'https://www.freepik.com','desc':'Imagenes gratuitas','type':'Icons','added':'13-09-2018'}
+	,{'iframe':false,	'check':'true','autor':'nekro','id':'f','lenguajes':['JAVASCRIPT','CSS','OTROS']				,'title':'Google cloud CDN','url':'https://cloud.google.com/cdn','desc':'Content delivery network de google','type':'CDN','added':'13-09-2018'}
+								]
 
 let formInputs=document.querySelectorAll('.formulario input[type="text"],.formulario textarea');
 formInputs.forEach(t=>{
@@ -122,13 +127,49 @@ function draw(tools,container,hideChild=true){
 	const defaultIframeHeight=70;
 	document.getElementById(container).innerHTML='';
 	
+	let counter=0;
+
 	//console.log(tools);
 	let organizedArr=[];
+	let keys=[];
+	document.querySelectorAll("#filtros input[type=checkbox]:checked").forEach(c=>{
+		keys.push(c.value.toUpperCase());
+	});
 	tools.forEach(t=>{
-		organizedArr[t.type]==undefined?organizedArr[t.type]=[]:'';
-		organizedArr[t.type].push(t);
+		//aplico los filtros
+		let add=false;
+		let addIframe=false;
+		if(filters.active==true){
+			keys.forEach(k=>{
+				if(k!='IFRAME'){
+					filters[k]==true&&t.lenguajes.includes(k)?add=true:'';
+				}else{
+					if(filters[k]==true){
+						t.iframe==true?addIframe=true:'';
+					}else{
+						addIframe=true;
+					}
+				}
+			});
+		}else{
+			add=true;
+			addIframe=true;
+		}
+
+		if(!keys.includes('IFRAME')){
+			addIframe=true;
+		}else{
+			keys.length==1?add=true:'';
+		}
+
+		if(add==true&&addIframe==true){
+			organizedArr[t.type]==undefined?organizedArr[t.type]=[]:'';
+			organizedArr[t.type].push(t);
+			counter++;
+		}
 	});
 	//console.log(organizedArr);
+	document.getElementById(container+'Info').innerText='['+counter+']'+(filters.active==true?'['+keys.length+' filtro(s) activo(s)]':'')
 
 	const orderedArr = {};
 	Object.keys(organizedArr).sort().forEach(function(key) {
@@ -174,55 +215,59 @@ function draw(tools,container,hideChild=true){
 				};
 				lang.classList='lenguajes';
 				li.appendChild(lang);
-
-				let preview=document.createElement("input");
-				preview.type='checkbox';
-				preview.id='checkbox_'+t.title+'_'+t.id;
-				preview.name='iframe_'+t.title+'_'+t.id;
-				preview.src=t.url;
-			
-
-				let labelPreview=document.createElement("label");
-				labelPreview.appendChild(preview);
-				labelPreview.innerHTML+=' Habilitar preview de '+t.title.toLowerCase();
-				let pPreview=document.createElement("p");
-				pPreview.classList='floatingLabel';
-				pPreview.appendChild(labelPreview);
-				li.appendChild(pPreview);
-
-				let pModifPreview=document.createElement("p");
-				pModifPreview.classList='modifPreview';
+				if(t.iframe==true){
+					let preview=document.createElement("input");
+					preview.type='checkbox';
+					preview.id='checkbox_'+t.title+'_'+t.id;
+					preview.name='iframe_'+t.title+'_'+t.id;
+					preview.src=t.url;
 				
-				let spanInstancias=document.createElement("span");
-				spanInstancias.innerHTML+='Cantidad de instancias del preview: ';
-				let inputInstancias=document.createElement("input");
-				inputInstancias.type='number';
-				inputInstancias.min=1;
-				inputInstancias.max=99;
-				inputInstancias.value=1;
-				inputInstancias.name='instancesPreview';
-				spanInstancias.appendChild(inputInstancias);
-				pModifPreview.appendChild(spanInstancias);
-				
-				let spanResize=document.createElement("span");
-				spanResize.innerHTML+='  Altura del preview (vh): '
-				let inputResize=document.createElement("input");
-				inputResize.type='number';
-				inputResize.value=defaultIframeHeight;
-				inputResize.min=1;
-				inputResize.max=99;
-				inputResize.name='resizePreview';
-				spanResize.appendChild(inputResize);
-				pModifPreview.appendChild(spanResize);
-				li.appendChild(pModifPreview);
 
-				
-				let iframe=document.createElement("iframe");
-				iframe.classList='hidden preview';
-				//	iframe.id='iframe_'+t.title+'_'+t.id;
-				iframe.style='height:'+defaultIframeHeight+'vh;';
-				li.appendChild(iframe);
+					let labelPreview=document.createElement("label");
+					labelPreview.appendChild(preview);
+					labelPreview.innerHTML+=' Habilitar preview de '+t.title.toLowerCase();
+					let pPreview=document.createElement("p");
+					pPreview.classList='floatingLabel';
+					pPreview.appendChild(labelPreview);
+					li.appendChild(pPreview);
 
+					let pModifPreview=document.createElement("p");
+					pModifPreview.classList='modifPreview';
+					
+					let spanInstancias=document.createElement("span");
+					spanInstancias.innerHTML+='Cantidad de instancias del preview: ';
+					let inputInstancias=document.createElement("input");
+					inputInstancias.type='number';
+					inputInstancias.min=1;
+					inputInstancias.max=99;
+					inputInstancias.value=1;
+					inputInstancias.name='instancesPreview';
+					spanInstancias.appendChild(inputInstancias);
+					pModifPreview.appendChild(spanInstancias);
+					
+					let spanResize=document.createElement("span");
+					spanResize.innerHTML+='  Altura del preview (vh): '
+					let inputResize=document.createElement("input");
+					inputResize.type='number';
+					inputResize.value=defaultIframeHeight;
+					inputResize.min=1;
+					inputResize.max=99;
+					inputResize.name='resizePreview';
+					spanResize.appendChild(inputResize);
+					pModifPreview.appendChild(spanResize);
+					li.appendChild(pModifPreview);
+
+					
+					let iframe=document.createElement("iframe");
+					iframe.classList='hidden preview';
+					//	iframe.id='iframe_'+t.title+'_'+t.id;
+					iframe.style='height:'+defaultIframeHeight+'vh;';
+					li.appendChild(iframe);
+				}else{
+					let iframe=document.createElement("h4");
+					iframe.innerText='Esta web no soporta embeeding.';
+					li.appendChild(iframe);
+				}
 				ol.appendChild(li);
 			});
 			div.appendChild(ol);
@@ -299,6 +344,21 @@ function draw(tools,container,hideChild=true){
 				});	
 		}
 	});
+}
+function updateFilters(e){
+	filters.active=false;
+	document.querySelectorAll("#filtros input[type=checkbox]").forEach(c=>{
+		filters[c.value.toUpperCase()]=c.checked;
+		c.checked==true?filters.active=true:'';
+	});
+
+	if(fetchedTools.length==0){
+		draw(defaultToolsArr,'toolsContainer');
+	}else{
+		draw(fetchedTools.checked,'toolsContainer');
+		draw(fetchedTools.sugested,'toolsSugestedContainer');
+	}
+	
 }
 function resizePreview(e){
 	let to=e.target.value*1;
@@ -541,4 +601,4 @@ function randListaArray(arrayLista){
 	return arrayFinal;
 }
 
-draw(defaultToolsArr,'toolsContainer');
+updateFilters();

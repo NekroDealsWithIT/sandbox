@@ -16,13 +16,15 @@
 			<li>
 				<label class="labelContent" id="labelDni">
 					Ingresar DNI:
-					<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8"maxlength="8" name="dni" id="dni" oninput="checkDni(this.value);" class="invalidDNI">
+					<!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
+					<input type="number" minlength="8" maxlength="8" name="dni" id="dni" oninput="checkDni(this.value);" class="invalidDNI">
 				</label>
 			</li>
 			<li>
 				<label class="labelcontent" id="labelCuit">
 					Ingresar CUIT:
-					<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="11"maxlength="cuit" name="cuit" id="cuit" oninput="checkCuit(this.value);" class="invalidDNI">
+					<!-- onkeypress='return event.charCode >= 48 && event.charCode <= 57' -->
+					<input type="number" min=10000000000 max=99999999999 minlength="11" maxlength="cuit" name="cuit" id="cuit" oninput="checkCuit(this.value);" class="invalidDNI">
 				</label>			
 			</li>
 		</ol>

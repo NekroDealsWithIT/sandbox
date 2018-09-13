@@ -38,6 +38,7 @@ a:hover{color:white;font-weight: 800;}
     padding:0;
     margin:0;
     list-style:none;
+    z-index:5;
 }
 .formulario ul li{
     display: flex;

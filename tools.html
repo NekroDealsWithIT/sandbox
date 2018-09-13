@@ -10,8 +10,11 @@
 </head>
 <body>
 	<div class='content'>
-		<canvas class='fondo hidden'></canvas>
+		
+
+		<canvas class='fondo'></canvas>
 		<h1>Herramientas web online</h1>
+		<p><label><input type="checkBox" name="" onclick="document.querySelector('canvas').classList.toggle('hidden');">Mostrar fondo simple</label></p>
 		<h2 onclick="filtros.classList.toggle('hidden');" class="title">Filtros</h2>
 		<div id='filtros' class="hidden">
 			<h3>Lenguajes</h3>
@@ -57,7 +60,7 @@
 							<input type="text" name="title" class="field-style field-split align-right" required placeholder="* Titulo del sitio" />
 						</li>	
 						<li>
-							<label style="margin:auto;"><input type="checkBox" name="iframe" value='iframe'>Soporta Iframe?</label>
+							<label style="margin:auto;"><input type="checkBox" name="iframe" value='iframe' id='iframeSupport' hidden>Soporta Iframe? <span id='iframeSupportText'>(Iframe no soportado)</span></label>
 						</li>				
 		<!-- 				
 						<li>

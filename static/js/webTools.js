@@ -8,12 +8,15 @@ window.addEventListener("beforeunload", function(e){
 }, false);
 */
 function onunload(e){
+	testIframe!=undefined?testIframe.close():'';
 	canvas = document.querySelector('canvas');
 	ctx = canvas.getContext('2d');
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	document.body.removeChild(document.querySelector('canvas'));
 }
-document.body.addEventListener('close',e=>{onunload(e);})
+window.addEventListener('close',e=>{onunload(e);})
+window.addEventListener('unload',e=>{onunload(e);})
+window.addEventListener('beforeunload',e=>{onunload(e);})
 
 const p_r={
 	'MiArIDE=':'3',
@@ -76,7 +79,11 @@ var defaultToolsArr=[
 let formInputs=document.querySelectorAll('.formulario input[type="text"],.formulario textarea');
 formInputs.forEach(t=>{
 	if(t.name!=''){
-		t.addEventListener('change',e=>{updatePreview(e);})
+		if(t.name=='url'){
+			t.addEventListener('change',e=>{console.log(checkUrl(e.target.value));openChildIframe(e.target.value);updatePreview(e);})	
+		}else{
+			t.addEventListener('change',e=>{updatePreview(e);})	
+		}
 	}
 });
 formInputs=document.querySelectorAll('.formulario input[type="checkBox"]');
@@ -86,6 +93,30 @@ formInputs.forEach(c=>{
 	}
 });
 updatePreview('bodyLoad');
+
+function connect(update=false){
+	$.ajax({
+        url: '../api/cuotas/getComprobante',
+        cache: false,
+        data: data,
+        type: 'POST',
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        success: function(json) {
+			console.log(json);
+			fetchedTools=json;
+        },
+        error:function(json){
+            console.log(json);
+            alert (json.responseText);
+            return;
+        },
+        complete: function (status){
+            console.log(status);
+            return;
+        }
+    });
+}
 
 updateFormTitle.addEventListener('click',e=>{
 	toggleHide(e);
@@ -442,27 +473,49 @@ function getHeaders(url=document.location){
 -----------------------------------------------------
 */
 function checkUrl(url){
+  	let a=document.createElement('a');
+    a.href=url;
+  	let host=a.hostname;
+
 	containerArr=[{'cont':'toolsContainer','desc':'Herramientas chequeadas'},{'cont':'toolsSugestedContainer','desc':'Herramientas sugeridas (no chequeadas)'}];
 	let found=false;
 	containerArr.forEach(c=>{
-		if (this.analizeUrl(c.cont)==true){
-			found=true;
-			return c;
-		}
-	});
-	
-	function analizeUrl(container){
-		let arrEl=document.querySelectorAll('#'+container+' a');
-		let found=false;
+		let arrEl=document.querySelectorAll('#'+c.cont+' a');
 		if (arrEl!=undefined){
 			arrEl.forEach(el=>{
-				if(el.href==url){
-					"http://cubic-bezier.com/"
+				if(el.hostname==host){
+					found=c.desc;
 				}
 			});
 		}
-		return found;
-	}
+	});
+	
+	found!=false?found="Dominio ya existente en "+found:'';
+	
+	openChildIframe(url)
+
+	return found;
+}
+
+let testIframe;
+function openChildIframe(url=false){
+    try{
+    	testIframe!=undefined?testIframe.close():'';
+    }catch (e){
+    	console.log(e);
+    }
+    if(url!=false){
+	    testIframe = window.open("", "testIframe", "width=700,height=250");
+	    testIframe.document.write("<style>body{background:#000;color:#0F0;}li{font-size:.55rem;}iframe{border:3px solid blue;margin:auto;width:90vw;height:60vh;}</style><p>Testeo de Iframe</p><ol><li>Si se ve este texto, y la herramienta se carga en el recuadro azul, la herramienta soporta iframes!</li><li><input type='checkbox' onchange='opener.CallParent(event);'>Se ve la herramienta en el recuadro azul?</li></ol><iframe id='iframeTester' />");
+	    iframeSupport.checked=false;
+	    setTimeout(function() {testIframe.iframeTester.src=url}, 3000);
+    }
+}
+
+function CallParent(e) {
+  iframeSupportText.innerText=e.target.checked==false?"(Iframe no soportado)":"(Iframe soportado)";
+  iframeSupport.checked=e.target.checked;
+
 }
 
 

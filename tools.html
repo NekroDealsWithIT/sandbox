@@ -10,11 +10,30 @@
 </head>
 <body>
 	<div class='content'>
-		<canvas class='fondo'></canvas>
+		<canvas class='fondo hidden'></canvas>
 		<h1>Herramientas web online</h1>
+		<h2 onclick="filtros.classList.toggle('hidden');" class="title">Filtros</h2>
+		<div id='filtros' class="hidden">
+			<h3>Lenguajes</h3>
+			<label><input type="checkBox" name="lenguajes" value='Javascript'>Javascript</label>
+			<label><input type="checkBox" name="lenguajes" value='PHP'>PHP</label>
+			<label><input type="checkBox" name="lenguajes" value='CSS'>CSS</label>
+			<label><input type="checkBox" name="lenguajes" value='HTML'>HTML</label>
+			<label><input type="checkBox" name="lenguajes" value='OTROS'>Otros</label>
+			<h3>Vista previa</h3>
+			<label><input type="checkBox" name="iframe" value='iframe'>Mostrar solo webs con vista previa habilitada</label>
+		</div>
+		<script type="text/javascript">
+			document.querySelectorAll("#filtros input[type=checkbox]").forEach(c=>{
+				c.addEventListener('click',e=>{
+					updateFilters(e);
+				});
+
+			});
+		</script>
 		<p hidden><input id='updateFormTitle' data-child='formUpdateUrl' type="button" value="Aportar una herramienta online" onclick="updatePreview(event);calculoQ.innerText=mAq();"/></p>
 		<div id='formUpdateUrl' class='hidden'>
-			<h3>Preview</h3><div id='updatePreview' class='linksContainer previewContainer'></div>
+			<h3>Preview <span id='updatePreviewInfo'/></h3><div id='updatePreview' class='linksContainer previewContainer'></div>
 			<form class="formulario" action="#" method="post">
 				<ul>
 					<li>
@@ -78,11 +97,12 @@
 				</ul>
 			</form>
 		</div>
-		<h2>Herramientas chequeadas</h2>
+		<h2>Herramientas chequeadas <span id='toolsContainerInfo'/></h2>
 		<div id='toolsContainer' class='linksContainer'></div>
 		<hr>
-		<h2>Herramientas sugeridas (no chequeadas)</h2>
+		<h2>Herramientas sugeridas (no chequeadas) <span id='toolsSugestedContainerInfo'/></h2>
 		<div id='toolsSugestedContainer' class='linksContainer'></div>
+		<hr>
 	</div>
 	<script type="text/javascript" src="static/js/webTools.js"></script>
 	<script type="text/javascript" src="static/js/fondo.js"></script>

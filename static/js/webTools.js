@@ -518,6 +518,30 @@ function connect(data=null){
     });
 }
 
+function massiveUpdate(){
+	var request = new XMLHttpRequest();
+	request.open("POST", atob(uri));
+    request.onreadystatechange = function() {
+        console.log(this.readyState,this.status,this.responseText);
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let style=document.createElement('style');
+            style.innerText='.debug b{color:red}.debug{background:#000!important}';
+            document.body.append(style);
+
+            let div=document.createElement('div');
+            div.class='debug';
+            div.style='border:3px solid red';
+            div.innerHTML=this.responseText;
+            document.body.append(div);
+
+            document.querySelector(".content").classList.add('hidden');
+       }
+    };
+	var formData = new FormData();
+	formData.append("data", defaultToolsArr);
+	request.send(formData);
+}
 
 function mAq(p='',r=''){if(r==''){q=Object.keys(p_r);return atob(q[randBetween(1,q.length,1)-1]);}else{return (p_r[btoa(p)]==r?1:0)}};
 function submitMe(fromForm=false){
@@ -530,16 +554,15 @@ function submitMe(fromForm=false){
 		}
 	});
 	if((mAq(calculoQ.innerText,calculoR.value)==1)&&formValid==true){
-			/*
 			var formData = new FormData();
 
-			fromForm==true?formData.append("data", (data)):data=null;
+			fromForm==true?formData.append("data", (data)):formData.append("null", null);
 
 			var request = new XMLHttpRequest();
 			request.open("POST", atob(uri));
-			*/
-			//request.send(formData);
-			connect(data)
+			
+			request.send(formData);
+			//connect(data)
 	}else{
 		errorPQ.innerText=mAq(calculoQ.innerText,calculoR.value)!=1?'Captcha incorrecto (srsly?)':'Revisa los campos con marco rojo';
 	}

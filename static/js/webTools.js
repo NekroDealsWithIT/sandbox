@@ -94,30 +94,6 @@ formInputs.forEach(c=>{
 });
 updatePreview('bodyLoad');
 
-function connect(update=false){
-	$.ajax({
-        url: '../api/cuotas/getComprobante',
-        cache: false,
-        data: data,
-        type: 'POST',
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        success: function(json) {
-			console.log(json);
-			fetchedTools=json;
-        },
-        error:function(json){
-            console.log(json);
-            alert (json.responseText);
-            return;
-        },
-        complete: function (status){
-            console.log(status);
-            return;
-        }
-    });
-}
-
 updateFormTitle.addEventListener('click',e=>{
 	toggleHide(e);
 });
@@ -518,9 +494,33 @@ function CallParent(e) {
 
 }
 
+function connect(data=null){
+	$.ajax({
+        url: atob(uri),
+        cache: false,
+        data: data,
+        type: 'POST',
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        success: function(json) {
+			console.log(json);
+			fetchedTools=json;
+        },
+        error:function(json){
+            console.log(json);
+            alert (json.responseText);
+            return;
+        },
+        complete: function (status){
+            console.log(status);
+            return;
+        }
+    });
+}
+
 
 function mAq(p='',r=''){if(r==''){q=Object.keys(p_r);return atob(q[randBetween(1,q.length,1)-1]);}else{return (p_r[btoa(p)]==r?1:0)}};
-function submitMe(){
+function submitMe(fromForm=false){
 	let data=[generateData()];
 	let formValid=true;
 	let formInputs=document.querySelectorAll('.formulario input[type="text"],.formulario textarea');
@@ -530,13 +530,16 @@ function submitMe(){
 		}
 	});
 	if((mAq(calculoQ.innerText,calculoR.value)==1)&&formValid==true){
+			/*
 			var formData = new FormData();
 
-			formData.append("data", (data));
+			fromForm==true?formData.append("data", (data)):data=null;
 
 			var request = new XMLHttpRequest();
 			request.open("POST", atob(uri));
+			*/
 			//request.send(formData);
+			connect(data)
 	}else{
 		errorPQ.innerText=mAq(calculoQ.innerText,calculoR.value)!=1?'Captcha incorrecto (srsly?)':'Revisa los campos con marco rojo';
 	}

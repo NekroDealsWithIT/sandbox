@@ -526,11 +526,11 @@ function massiveUpdate(){
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             let style=document.createElement('style');
-            style.innerText='.debug b{color:red}.debug{background:#000!important}';
+            style.innerText='.debug b{color:red}.debug{background:#000!important}comment{color:yellow}';
             document.body.append(style);
 
             let div=document.createElement('div');
-            div.class='debug';
+            div.classList='debug';
             div.style='border:3px solid red';
             div.innerHTML=this.responseText;
             document.body.append(div);

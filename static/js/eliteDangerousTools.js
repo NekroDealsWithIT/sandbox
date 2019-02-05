@@ -17,7 +17,7 @@ function getJson(){
 	});	
 }
 getJson();
-getUrl(URLJson);
+//getUrl(URLJson);
 
 function onunload(e){
 	testIframe!=undefined?testIframe.close():'';

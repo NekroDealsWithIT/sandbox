@@ -12,7 +12,7 @@ window.addEventListener("beforeunload", function(e){
 const URLJson="https://docs.google.com/spreadsheet/pub?key=1bMpMZnxUIcG7fgBcmzP8Np5v7fKT2VafDQy5Nv06_gs&single=true&gid=0&range=d3&output=csv";
 function getJson(){
 	$.ajax(URLJson).done(function(result){
-    	console.log(result);
+    	console.log(JSON.parse(result));
     	alert(result);
 	});	
 }

@@ -565,3 +565,63 @@ function showPositionInMap(position,divHolderMap) {
     var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
     document.getElementById(divHolderMap).innerHTML = "<img src='"+img_url+"'>";
 }
+
+/*
+-----------------------------------------------------
+	Arrays
+-----------------------------------------------------
+*/
+
+function arrayUnique(array){
+	return array.filter(
+		function (item, pos){
+			return array.indexOf(item) == pos
+		}
+	);
+}
+function arrayRemove(array,remove=''){
+	var auxArray=[];
+	// array.forEach(function(a){
+	// 	console.log(a+'-'+remove);
+	// 	if(a!=remove){
+	// 		auxArray.push(a);
+	// 	}
+	// });
+	// return auxArray;
+	
+	var index = array.indexOf(remove);
+    if (index > -1) {
+       array.splice(index, 1);
+    }
+	return array;
+}
+
+function arrayToPipedString(array,separador='|',allowBlanks=false){
+	var result="";
+	array.forEach(function (item){
+		if(allowBlanks==false){
+			if(result==""){
+				result=item;
+			}else{
+				result+=separador+item;
+			}
+		}else{
+			if(item.trim()!=''){
+				if(result==""){
+					result=item;
+				}else{
+					result+=separador+item;
+				}
+			}
+		}
+	});
+	return result;
+}
+function pipedStringToArray(pipedString,separador='|',allowBlanks=false){
+	var result=[];
+	result = pipedString.split(separador);
+	if(!allowBlanks){
+		result=arrayRemove(result);
+	}
+	return result;
+}

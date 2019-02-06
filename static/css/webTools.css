@@ -21,6 +21,10 @@ canvas{position:fixed;z-index:-1;width:100vw;height:100vh}
     padding: 90%;
 }
 
+#filtros tr:nth-child(even){
+  background-color: #2d77a2;
+}
+
 .hidden{display:none!important}
 a:link,a:visited{color:yellow;}
 a:hover{color:white;font-weight: 800;}

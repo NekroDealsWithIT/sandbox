@@ -13,12 +13,12 @@
 		
 
 		<canvas class='fondo'></canvas>
-		<h1>Links utiles herramientas Elite Dangerous</h1>
-		<p><label><input type="checkBox" name="" onclick="document.querySelector('canvas').classList.toggle('hidden');">Mostrar fondo simple</label></p>
-		<h2 onclick="filtros.classList.toggle('hidden');" class="title">Filtros</h2>
+		<h1>Tools for Elite Dangerous</h1>
+		<p><label><input type="checkBox" name="" onclick="document.querySelector('canvas').classList.toggle('hidden');">Simple Background</label></p>
+		<h2 onclick="filtros.classList.toggle('hidden');" class="title">Filters</h2>
 		<div id='filtros' class="hidden">
-			<h3>Tipo</h3>
-			<div id="checkboxFilters">
+			<h3>Type</h3>
+			<div id="checkboxFilters" style="text-align:-webkit-center ">
 				
 				<!-- <label><input type="checkBox" name="lenguajes" value='Global'>Javascript</label>
 				<label><input type="checkBox" name="lenguajes" value='Exploration'>PHP</label>
@@ -27,8 +27,8 @@
 				<label><input type="checkBox" name="lenguajes" value='Trading'>Otros</label>
 				<label><input type="checkBox" name="lenguajes" value='Trading'>Otros</label> -->
 			</div>
-			<h3>Vista previa</h3>
-			<label><input type="checkBox" name="iframe" value='iframe'>Mostrar solo webs con vista previa habilitada</label>
+			<h3>Preview (embeeded)</h3>
+			<label><input type="checkBox" name="iframe" value='iframe'>Only show with preview</label>
 		</div>
 		<script type="text/javascript">
 			/*
@@ -106,12 +106,12 @@
 				</ul>
 			</form>
 		</div>
-		<h2>Herramientas chequeadas <span id='toolsContainerInfo'/></h2>
+		<h2>Tools<span id='toolsContainerInfo'/></h2>
 		<div id='toolsContainer' class='linksContainer'></div>
 		<hr>
-		<h2>Herramientas sugeridas (no chequeadas) <span id='toolsSugestedContainerInfo'/></h2>
+		<!-- <h2>Herramientas sugeridas (no chequeadas) <span id='toolsSugestedContainerInfo'/></h2>
 		<div id='toolsSugestedContainer' class='linksContainer'></div>
-		<hr>
+		<hr> -->
 	</div>
 	<script type="text/javascript" src="static/js/tools.js"></script>
 	<script type="text/javascript" src="static/js/eliteDangerousTools.js"></script>

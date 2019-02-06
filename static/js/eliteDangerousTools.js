@@ -17,7 +17,7 @@ function getJson(){
 	console.log(sheetJson);
 	sheetJson=strReplaceAll(result,"'",'"')
 	console.log(sheetJson);
-	sheetJson=JSON.parse(sheetJson));
+	sheetJson=JSON.parse(sheetJson);
 	console.log(sheetJson);
     	alert(result);
 	});	

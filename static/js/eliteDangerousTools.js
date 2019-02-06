@@ -60,11 +60,40 @@ function generateTypeFilters(){
 		})
 	})
 	types=arrayUnique(types);
+	let table="<table border='3px solid white'><tr><th>Tag</th><th>Ignore</th><th>Has</th><th>Hasnt</th></tr>";
 	types.forEach(t=>{
 		checkboxFilters.innerHTML+='<label><input type="checkBox" onclick="updateFilters(this);" name="lenguajes" value="'+t+'">'+t+'</label>';
+		table+='<tr><td>'+t+'</td>	<td class="radioYellow" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="-1" checked></label></td> <td class="radioGreen" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="1"></label></td>	<td class="radioRed" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="0"></label></td>	</tr>';
 	})
+	table+='</table>';
+
+	checkboxFilters.innerHTML+=table;
 }
 
+function updateRadioButtons(){
+	let checks=document.querySelectorAll("#checkboxFilters table input");
+	let radioFilters={'show':[],'hide':[]};
+	checks.forEach(c=>{
+		if(c.checked){
+			c.value==0?radioFilters.hide.push(c.name):'';
+			c.value==1?radioFilters.show.push(c.name):'';
+		}
+	});
+	/*
+	filters.active=false;
+	document.querySelectorAll("#filtros input[type=checkbox]").forEach(c=>{
+		filters[c.value.toUpperCase()]=c.checked;
+		c.checked==true?filters.active=true:'';
+	});
+
+	if(fetchedTools.length==0){
+		draw(defaultToolsArr,'toolsContainer');
+	}else{
+		draw(fetchedTools.checked,'toolsContainer');
+		draw(fetchedTools.sugested,'toolsSugestedContainer');
+	}
+	*/
+}
 var fetchedTools=[];
 var defaultToolsArr=[
 	/*
@@ -113,7 +142,7 @@ var defaultToolsArr=[
 	*/
 {'id':'1','title':'Elite Dangerous Companion','type':'Resources','desc':'Elite Dangerous Companion','url':'https://inara.cz','iframe':0,'check':'TRUE','autor':'Nekro','lenguajes':['COMMUNITY GOALS','COMMODITIES','SHIPYARD','OUTFITTING','ENGINEERING','POWERS','MINOR FACTIONS','SYSTEMS','STATIONS','TRADING','EXPLORATION','MINING','BOUNTY','POWER PLAY','CORE URL'],'added':'02-05-2019'},
 {'id':'2','title':'EDDB - Elite: Dangerous Database','type':'Resources','desc':'EDDB - Elite: Dangerous Database','url':'https://eddb.io','iframe':0,'check':'TRUE','autor':'Nekro','lenguajes':['SYSTEMS','STATIONS','FACTIONS','COMMODITIES','BODIES','TRADING','EXPLORATION','MINING','BOUNTY','POWER PLAY','CORE URL'],'added':'02-05-2019'},
-{'id':'3','title':'Elite Dangerous Star Map','type':'Resources','desc':'Elite Dangerous Star Map','url':'https://www.edsm.net/en/','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['SYSTEMS','STATIONS','CELESTIAL BODIES','MINOR FACTIONS','TRADING','EXPLORATION','MINING','BOUNTY','POWER PLAY'],'added':'02-05-2019'},
+{'id':'3','title':'Elite Dangerous Star Map','type':'Resources','desc':'Elite Dangerous Star Map','url':'https://www.edsm.net/en/','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['SYSTEMS','STATIONS','BODIES','MINOR FACTIONS','TRADING','EXPLORATION','MINING','BOUNTY','POWER PLAY'],'added':'02-05-2019'},
 {'id':'4','title':'Pristine Metallics Distances Calculator','type':'Resources','desc':'Pristine Metallics Distances Calculator','url':'http://edtools.ddns.net/','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['MINING'],'added':'02-05-2019'},
 {'id':'5','title':'Elite: Dangerous Board','type':'Resources','desc':'Elite: Dangerous Board','url':'https://ed-board.net/en/','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['ENGINERING','BUILD','EXPLORATION','POWER PLAY','CONFLICTS','ELEMENTS'],'added':'02-05-2019'},
 {'id':'6','title':'EDEngineer (layout)','type':'Installers','desc':'','url':'https://github.com/msarilar/EDEngineer','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['ENGINERING'],'added':'02-05-2019'},
@@ -284,7 +313,7 @@ function draw(tools,container,hideChild=true){
 		}
 	});
 	//console.log(organizedArr);
-	document.getElementById(container+'Info').innerText='['+counter+']'+(filters.active==true?'['+keys.length+' filtro(s) activo(s)]':'')
+	document.getElementById(container+'Info').innerText='['+counter+']'+(filters.active==true?'['+keys.length+' active filter(s)]':'')
 
 	const orderedArr = {};
 	Object.keys(organizedArr).sort().forEach(function(key) {
@@ -460,6 +489,7 @@ function draw(tools,container,hideChild=true){
 		}
 	});
 }
+
 function updateFilters(e){
 	filters.active=false;
 	document.querySelectorAll("#filtros input[type=checkbox]").forEach(c=>{

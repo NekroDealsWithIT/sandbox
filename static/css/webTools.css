@@ -8,6 +8,19 @@ html, body {
 }
 canvas{position:fixed;z-index:-1;width:100vw;height:100vh}
 
+.radioGreen{
+    background: #c9e0b0;
+}
+.radioYellow{
+    background: #c1c1c1;
+}
+.radioRed{
+    background: #a90606;
+}
+.radioGreen>input,.radioYellow>input,.radioRed>input{
+    padding: 90%;
+}
+
 .hidden{display:none!important}
 a:link,a:visited{color:yellow;}
 a:hover{color:white;font-weight: 800;}

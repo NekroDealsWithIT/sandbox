@@ -1,100 +1,3 @@
-//https://stackoverflow.com/questions/14885231/getting-value-of-a-cell-from-google-docs-spreadsheet-into-javascript
-
-/*
-window.onbeforeunload = function(){
-	document.body.removeChild(document.querySelector('canvas'));
-}
-// OR
-window.addEventListener("beforeunload", function(e){
-	document.body.removeChild(document.querySelector('canvas'));
-}, false);
-*/
-const URLJson="https://docs.google.com/spreadsheet/pub?key=1bMpMZnxUIcG7fgBcmzP8Np5v7fKT2VafDQy5Nv06_gs&single=true&gid=0&range=d3&output=csv";
-let sheetJson="";
-function getJson(){
-	try{
-		$.ajax(URLJson).done(function(result){
-	    	sheetJson=result;
-			console.log(sheetJson);
-			sheetJson=strReplaceAll(result,"'",'"')
-			console.log(sheetJson);
-			sheetJson=JSON.parse(sheetJson);
-			console.log(sheetJson);
-	    	alert(result);
-		});
-	}catch (e){
-		console.error(e);
-	}	
-}
-getJson();
-//getUrl(URLJson);
-
-function onunload(e){
-	testIframe!=undefined?testIframe.close():'';
-	canvas = document.querySelector('canvas');
-	ctx = canvas.getContext('2d');
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	document.body.removeChild(document.querySelector('canvas'));
-}
-window.addEventListener('close',e=>{onunload(e);})
-window.addEventListener('unload',e=>{onunload(e);})
-window.addEventListener('beforeunload',e=>{onunload(e);})
-
-const p_r={
-	'MiArIDE=':'3',
-	'MiArIDg=':'10',
-	'MiB5IDI=':'4',
-	'NCAmIDI=':'6',
-	'NiArIDI=':'8',
-	'OCArIDg=':'16'
-};
-const uri="aHR0cHM6Ly9uZWtyby1zYW5kYm94LjAwMHdlYmhvc3RhcHAuY29tL2xpbmtzLnBocA==";
-
-var filters={};
-
-function generateTypeFilters(){
-	let types=[];
-	defaultToolsArr.forEach(t=>{
-		t.lenguajes.forEach(l=>{
-			types.push(l.toUpperCase());
-		})
-	})
-	types=arrayUnique(types);
-	let table="<table border='3px solid white'><tr><th>Tag</th><th>Ignore</th><th>Has</th><th>Hasnt</th></tr>";
-	types.forEach(t=>{
-		checkboxFilters.innerHTML+='<label><input type="checkBox" onclick="updateFilters(this);" name="lenguajes" value="'+t+'">'+t+'</label>';
-		table+='<tr><td>'+t+'</td>	<td class="radioYellow" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="-1" checked></label></td> <td class="radioGreen" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="1"></label></td>	<td class="radioRed" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="0"></label></td>	</tr>';
-	})
-	table+='</table>';
-
-	checkboxFilters.innerHTML+=table;
-}
-
-function updateRadioButtons(){
-	let checks=document.querySelectorAll("#checkboxFilters table input");
-	let radioFilters={'show':[],'hide':[]};
-	checks.forEach(c=>{
-		if(c.checked){
-			c.value==0?radioFilters.hide.push(c.name):'';
-			c.value==1?radioFilters.show.push(c.name):'';
-		}
-	});
-	/*
-	filters.active=false;
-	document.querySelectorAll("#filtros input[type=checkbox]").forEach(c=>{
-		filters[c.value.toUpperCase()]=c.checked;
-		c.checked==true?filters.active=true:'';
-	});
-
-	if(fetchedTools.length==0){
-		draw(defaultToolsArr,'toolsContainer');
-	}else{
-		draw(fetchedTools.checked,'toolsContainer');
-		draw(fetchedTools.sugested,'toolsSugestedContainer');
-	}
-	*/
-}
-var fetchedTools=[];
 var defaultToolsArr=[
 	/*
 	 {'iframe':true,	'check':'true','autor':'nekro','id':'0','lenguajes':['JSON']									,'title':'jsonviewer','url':'http://jsonviewer.stack.hu','desc':'Json parser','type':'JSON','added':'06-09-2018'}
@@ -212,6 +115,114 @@ var defaultToolsArr=[
 {'id':'70','title':'Elite Dangerous: How To Fit The Federal Corvette','type':'Miscelaneous','desc':'','url':'https://youtu.be/6yL5F_yZ8Ko','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['BUILD','MISCELANEOUS','YOUTUBE'],'added':'02-05-2019'},
 {'id':'71','title':'Elite Dangerous: How To Fit The Anaconda','type':'Miscelaneous','desc':'','url':'https://youtu.be/sWqwRAcSDKw','iframe':1,'check':'TRUE','autor':'Nekro','lenguajes':['BUILD','MISCELANEOUS','YOUTUBE'],'added':'02-05-2019'}
 ]
+//https://stackoverflow.com/questions/14885231/getting-value-of-a-cell-from-google-docs-spreadsheet-into-javascript
+
+/*
+window.onbeforeunload = function(){
+	document.body.removeChild(document.querySelector('canvas'));
+}
+// OR
+window.addEventListener("beforeunload", function(e){
+	document.body.removeChild(document.querySelector('canvas'));
+}, false);
+*/
+
+const URLJson="https://docs.google.com/spreadsheet/pub?key=1bMpMZnxUIcG7fgBcmzP8Np5v7fKT2VafDQy5Nv06_gs&single=true&gid=0&range=d3&output=csv";
+let sheetJson="";
+function getJson(){
+	try{
+		$.ajax(URLJson).done(function(result){
+	    	sheetJson=result;
+			console.log(sheetJson);
+			sheetJson=strReplaceAll(result,"'",'"')
+			console.log(sheetJson);
+			sheetJson=JSON.parse(sheetJson);
+			console.log(sheetJson);
+	    	alert(result);
+		});
+	}catch (e){
+		console.error(e);
+	}	
+}
+getJson();
+//getUrl(URLJson);
+
+function onunload(e){
+	testIframe!=undefined?testIframe.close():'';
+	canvas = document.querySelector('canvas');
+	ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	document.body.removeChild(document.querySelector('canvas'));
+}
+window.addEventListener('close',e=>{onunload(e);})
+window.addEventListener('unload',e=>{onunload(e);})
+window.addEventListener('beforeunload',e=>{onunload(e);})
+
+const p_r={
+	'MiArIDE=':'3',
+	'MiArIDg=':'10',
+	'MiB5IDI=':'4',
+	'NCAmIDI=':'6',
+	'NiArIDI=':'8',
+	'OCArIDg=':'16'
+};
+const uri="aHR0cHM6Ly9uZWtyby1zYW5kYm94LjAwMHdlYmhvc3RhcHAuY29tL2xpbmtzLnBocA==";
+
+var filters={};
+
+let filterTypes=[];
+
+function generateTypeFilters(){
+	let types=[];
+	defaultToolsArr.forEach(t=>{
+		t.lenguajes.forEach(l=>{
+			types.push(l.toUpperCase());
+		})
+	})
+	
+	types=arrayUnique(types);
+	
+	filterTypes=arrayUnique(types);
+	
+	let table="<table border='3px solid white'><tr><th>Tag</th><th>Ignore</th><th>Has</th><th>Hasnt</th></tr>";
+	types.forEach(t=>{
+		//checkboxFilters.innerHTML+='<label><input type="checkBox" onclick="updateFilters(this);" name="lenguajes" value="'+t+'">'+t+'</label>';
+		table+='<tr><td>'+t+'</td>	<td class="radioYellow" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="-1" checked></label></td> <td class="radioGreen" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="1"></label></td>	<td class="radioRed" align="center" onclick="updateRadioButtons();"><input type="radio" name="'+t+'" value="0"></label></td>	</tr>';
+	})
+	table+='</table>';
+
+	checkboxFilters.innerHTML+=table;
+}
+
+function updateRadioButtons(){
+	let radioFilters={'show':[],'hide':[]};
+
+	filters.active=false;
+	
+	filterTypes.forEach(f=>{
+		let value = document.querySelector('#checkboxFilters input[type="radio"][name="'+f+'"]:checked').value;
+		switch(value){
+			case "-1":
+				break
+			case "0":
+				radioFilters.hide.push(f);
+				break;
+			case "1":
+				radioFilters.show.push(f);
+				break;
+			default:
+				console.error(value);
+		}
+	});
+
+	radioFilters.hide.size>0||radioFilters.show.size>0?filters.active=true:filters.active=false;
+
+	filters.show=arrayUnique(radioFilters.show);
+	filters.hide=arrayUnique(radioFilters.hide);
+	
+	draw(defaultToolsArr,'toolsContainer');	
+}
+var fetchedTools=[];
 
 let formInputs=document.querySelectorAll('.formulario input[type="text"],.formulario textarea');
 formInputs.forEach(t=>{
@@ -271,35 +282,54 @@ function draw(tools,container,hideChild=true){
 	const defaultIframeHeight=70;
 	document.getElementById(container).innerHTML='';
 	
+	filters.show==undefined?filters.show=[]:'';
+	filters.hide==undefined?filters.hide=[]:'';
+
 	let counter=0;
 
-	//console.log(tools);
 	let organizedArr=[];
 	let keys=[];
 	document.querySelectorAll("#filtros input[type=checkbox]:checked").forEach(c=>{
 		keys.push(c.value.toUpperCase());
 	});
+	
 	tools.forEach(t=>{
 		//aplico los filtros
 		let add=false;
+		
+		let addAux=false;
+		let ignoredAux=false;
+		
 		let addIframe=false;
-		if(filters.active==true){
-			keys.forEach(k=>{
-				if(k!='IFRAME'){
-					filters[k]==true&&t.lenguajes.includes(k)?add=true:'';
-				}else{
-					if(filters[k]==true){
-						t.iframe==true?addIframe=true:'';
+		if(filters.show.length>0||filters.hide.length>0){
+			t.lenguajes.forEach(k=>{
+				
+				if(filters.show.length>0){
+					if(filters.show.includes(k)){
+						addAux=true;
 					}else{
-						addIframe=true;
+						//console.log('no esta en la lista de visibles:',t)
 					}
+				}else{
+					addAux=true;
 				}
-			});
+
+				if(filters.hide.includes(k)){
+					ignoredAux=true;
+				}else{
+					//console.log('Esta en la lista de ignorados:',t)
+				}
+			})
 		}else{
-			add=true;
+			addAux=true;
+			ignoredAux=false;
 			addIframe=true;
 		}
-
+		
+		//Al menos sali una vez del loop
+		addAux==true?add=true:'';
+		ignoredAux==true?add=false:'';
+		
 		if(!keys.includes('IFRAME')){
 			addIframe=true;
 		}else{
@@ -313,7 +343,7 @@ function draw(tools,container,hideChild=true){
 		}
 	});
 	//console.log(organizedArr);
-	document.getElementById(container+'Info').innerText='['+counter+']'+(filters.active==true?'['+keys.length+' active filter(s)]':'')
+	document.getElementById(container+'Info').innerText='['+counter+']'+(filters.active==true||filters.show.length>0||filters.hide.length>0==true?'[Show: '+filters.show.length+' | Hide: '+filters.hide.length+']':'')
 
 	const orderedArr = {};
 	Object.keys(organizedArr).sort().forEach(function(key) {
@@ -369,7 +399,7 @@ function draw(tools,container,hideChild=true){
 
 					let labelPreview=document.createElement("label");
 					labelPreview.appendChild(preview);
-					labelPreview.innerHTML+=' Habilitar preview de '+t.title.toLowerCase();
+					labelPreview.innerHTML+=' Embeed '+t.title.toLowerCase();
 					let pPreview=document.createElement("p");
 					pPreview.classList='floatingLabel';
 					pPreview.appendChild(labelPreview);
@@ -379,7 +409,7 @@ function draw(tools,container,hideChild=true){
 					pModifPreview.classList='modifPreview';
 					
 					let spanInstancias=document.createElement("span");
-					spanInstancias.innerHTML+='Cantidad de instancias del preview: ';
+					spanInstancias.innerHTML+='Embeeding instances: ';
 					let inputInstancias=document.createElement("input");
 					inputInstancias.type='number';
 					inputInstancias.min=1;
@@ -390,7 +420,7 @@ function draw(tools,container,hideChild=true){
 					pModifPreview.appendChild(spanInstancias);
 					
 					let spanResize=document.createElement("span");
-					spanResize.innerHTML+='  Altura del preview (vh): '
+					spanResize.innerHTML+='  Embeeding Max height (vh): '
 					let inputResize=document.createElement("input");
 					inputResize.type='number';
 					inputResize.value=defaultIframeHeight;
@@ -409,7 +439,7 @@ function draw(tools,container,hideChild=true){
 					li.appendChild(iframe);
 				}else{
 					let iframe=document.createElement("h4");
-					iframe.innerText='Esta web no soporta embeeding.';
+					iframe.innerText='this web doesnt support embeeding.';
 					li.appendChild(iframe);
 				}
 				ol.appendChild(li);

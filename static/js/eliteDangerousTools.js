@@ -132,13 +132,13 @@ let sheetJson="";
 function getJson(){
 	try{
 		$.ajax(URLJson).done(function(result){
-	    	sheetJson=result;
-			console.log(sheetJson);
+			sheetJson=result;
 			sheetJson=strReplaceAll(result,"'",'"')
+			sheetJson=sheetJson.substring(1, sheetJson.length-1);
 			console.log(sheetJson);
 			sheetJson=JSON.parse(sheetJson);
-			console.log(sheetJson);
-	    	alert(result);
+			defaultToolsArr=sheetJson;
+			updateFilters();
 		});
 	}catch (e){
 		console.error(e);

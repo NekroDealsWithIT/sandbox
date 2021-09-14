@@ -1,0 +1,40 @@
+form{
+	margin: auto;
+	display: flex;
+	flex-direction:column;
+	text-align:center;
+	border: 1px black dotted;
+}
+h1{
+	text-decoration: underline;
+	position: sticky;
+}
+h2{
+	color: red;
+}
+input[type=text]{
+	width: 50%;
+	margin: 0;
+	width: 80%;
+}
+td{
+	width: 50%;
+	text-align: left;
+	border: 1px solid black;
+}
+td[colspan="2"]{
+	text-align: center;
+	font-weight: bolder;
+}
+table{
+	width: 50%;
+	align-self: center;
+}
+#comision{
+	width: 50px;
+}
+.important{
+	font-size: 1.1em;
+	color: blueviolet;
+	font-weight: 900;
+}

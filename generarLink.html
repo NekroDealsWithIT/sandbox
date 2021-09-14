@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Generador de link ftp</title>
+		<link rel="icon" type="image/jpg" href="https://icon-library.com/images/javascript-icon/javascript-icon-8.jpg">
+
+		<link rel="stylesheet" type="text/css" href="generarLinkStatic/css/generarLink.css">
+		<script type="text/javascript" src="generarLinkStatic/js/generarLink.js"></script>
+	</head>
+	<body onload="start();">
+		<form>
+		<h1>Generar link para ver FTP</h1>
+			<!--
+			<p>Comisi&oacute;n: <input type="number" id="comision" value=2159 oninput="generarLink();"></p>
+			<p>Ingresa tu <span class="important">nombre en <u>FTP</u></span> (con los caracteres raros si hay): <input type="text" class="nombre" placeholder="Ingresar tu Nombre de carpeta como se ve en el FTP" oninput="generarLink();"></p>
+			<p><span>Ej: Juan Perez</span></p>
+			<p>Ingresa la <span class="important">carpeta</span> y <span class="important">path</span> de tu p&aacute;gina: <input type="text" class="carpeta" placeholder="Carpeta Propia + / + nombre archivo HTML"  oninput="generarLink();"></p>
+			<p><span>EJ: ejercicios/html/prueba.html</span></p>
+			-->
+			<table>
+				<tr>
+					<td><p>Comisi&oacute;n:</td>
+					<td><input type="number" id="comision" value=2159 oninput="generarLink();"></p></td>
+				</tr>
+				<tr>
+					<td><p>Ingresa tu <span class="important">nombre como se ve en el <u>FTP</u></span> (con los caracteres raros si hay):</td>
+					<td><input type="text" class="nombre" placeholder="Ingresar tu Nombre de carpeta como se ve en el FTP" oninput="generarLink();"></p></td>
+				</tr>
+					<tr><td colspan="2"><p><span>Ej: Juan Perez</span></p></td></tr>
+				<tr>
+					<td><p>Ingresa la <span class="important">carpeta</span> y <span class="important">path</span> de tu p&aacute;gina:</p></td>
+					<td><p><input type="text" class="carpeta" placeholder="Carpeta Propia + / + nombre archivo HTML"  oninput="generarLink();"></p></td>
+				</tr>
+				<tr><td colspan="2"><p><span>EJ: ejercicios/html/prueba.html</span></p></td></tr>
+			</table>
+		</form>
+		<hr>
+		<label id="idResultado"></label>
+		<hr>
+		<p><a href="https://jsfiddle.net/gsucb6qk/1/">Link Fiddle</a></p>
+		<div id="preview">
+			<hr>
+			<h1>Preview</h1>
+			<iframe id="embeed" src="" height="500px" width="100%"></iframe>
+		</div>
+	</body>
+</html>

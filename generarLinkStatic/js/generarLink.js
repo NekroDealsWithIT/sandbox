@@ -29,7 +29,7 @@ function generarLink() {
 		if (ok == false) {
 			resultadoTxt = '<h2>'+resultadoTxt+' para generar link.</h2>';
 		} else {
-			url = "http://cursophp.foxit.com.ar/comision"+comision.value+"/" + encodeURIComponent(nombre) + "/" + carpetaPropia;
+			url = "https://cursophp.foxit.com.ar/comision"+comision.value+"/" + encodeURIComponent(nombre) + "/" + carpetaPropia;
 			resultadoTxt = '<span class="important">URL: '+ url + '</span><br><h1><a href=' + url + ' target="_blank">Link</a></h1>';
 			embeed.src = url;
 

@@ -1,0 +1,13 @@
+{
+	"short_name": "CV Mauricio Niemand",
+	"name": "CV Mauricio Niemand",
+	"lang": "es",
+	"description": "Curriculum Vitae Mauricio Niemand",
+	"start_url": "https://mauricio-niemand.netlify.app/",
+	"background_color": "#050505",
+	"theme_color": "#0fafe8",
+	"dir": "ltr",
+	"display": "standalone",
+	"orientation": "any",
+	"prefer_related_applications": "false"
+}

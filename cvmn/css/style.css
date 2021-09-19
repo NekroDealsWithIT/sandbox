@@ -1,39 +1,56 @@
-/*
-
-Lavish HTML CSS Template
-
-https://templatemo.com/tm-458-lavish
-		
-*/
-
 /* Pantone */
 :root {
-  --body-color: #03cacd; /*#C0F;*/
-  --experiencia-me-color: #FFF;
-  --name-color: #D43F52;
-  --button-back-color: transparent;
-  --button-back-color-hover: #D43F52;/*#D43F52;*/
-  --button-color: #D43F52; /*#FFF;*/
-  --button-color-hover: #09efba;
+    --body-color: #03cacd; /*#C0F;*/
+    --body-background: #000000;
+    --experiencia-me-color: #FFF;
+    --name-color: #D43F52;
+    --button-back-color: transparent;
+    --button-back-color-hover: #D43F52;/*#D43F52;*/
+    --button-color: #D43F52; /*#FFF;*/
+    --button-color-hover: #09efba;
+    --header-color: #00f9fd;
+    --fa-color: #D43F52;
+    
+    --experiencia-h4-color: #D43F52;
+    --experiencia-card-border-color: tan;
+
+    --courses-background: #1a1a1a;
+    --courses-overlay-background: #D43F52;
+    
+    --contact-contact-title-color: #ffffff;
+    --contact-fa-color: #D43F52;
+    --contact-form-control-color: #ffffff;
+    --contact-submit-background: #D43F52;
+    --contact-submit-color: #ffffff;
+    --contact-submit-background-hover: #ffffff;
+    --contact-submit-color-hover: #D43F52;
+    
+    --social-icon-li-a-color: #606060;
+    --social-icon-li-a-hover-color: #D43F52;
 }
 
 body
 {
-	background: #000000;
+	background: var(--body-background);
     color: var(--body-color);
 	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 }
 
-/* start all section */
-#home,
-#home .fp-slide,
-#home .fp-tableCell,
+.hidden{
+    visibility: hidden;
+}
 
-#work,
-#work .fp-slide,
-#work .fp-tableCell,
+
+/* start all section */
+#intro,
+#intro .fp-slide,
+#intro .fp-tableCell,
+
+#skills,
+#skills .fp-slide,
+#skills .fp-tableCell,
 
 #experiencia,
 #experiencia .fp-slide,
@@ -43,9 +60,9 @@ body
 #contact .fp-slide,
 #contact .fp-tableCell,
 
-#portfolio,
-#portfolio .fp-slide,
-#portfolio .fp-tableCell,
+#courses,
+#courses .fp-slide,
+#courses .fp-tableCell,
 
 footer,
 footer .fp-slide,
@@ -56,25 +73,38 @@ footer .fp-tableCell
 
 /* end all section */
 
+/* Lists */
+ul {
+  list-style-type: none;
+}
+
+.QR{
+    display: inline-flex;
+}
+.QR img{
+    border: 1px solid #000;
+    width: 150px;
+}
+
 /* start all heading */
 h1,h2,h3,h4,h5
     {
-        color: #00f9fd;/*#ffffff;*/
+        color: var(--header-color)  /*#ffffff;*/
         font-weight: bold;
     }
 /* end all heading */
 
 /* start all section */
-#work, #experiencia, #portfolio, #contact
+#skills, #experiencia, #courses, #contact
     {
         padding-top: 100px;
         padding-bottom: 120px;
     }
 /* end all section */
 
-/* Lists */
-ul {
-  list-style-type: none;
+
+.container{
+    padding: 10px;
 }
 
 /* start simpletextrotator */
@@ -184,21 +214,17 @@ ul {
 }
 /* end simpletextrotator */
 
-/* start home */       
-#printHeader{
-    display: none;
-}
-
-#home
+/* start intro */       
+#intro
 	{
-        padding-top: 120px;
+        padding-top: 40px;
         padding-bottom: 140px;
         text-align: center;
 	}
 
-#home::before {    
+#intro::before {    
       content: "";
-      background-image: url('../images/home-bg.jpg');
+      background-image: url('../images/intro-bg.jpg');
       background-size: cover;
       position: absolute;
       top: 0px;
@@ -206,29 +232,48 @@ ul {
       bottom: 0px;
       left: 0px;
       opacity: 0.4;
+      filter: blur(5px);
+      background-repeat: no-repeat;
 }
 
-#home h1
+#intro .introHeader
     {
+        display: inline-flex;
         border: 2px solid var(--name-color);
         color: var(--name-color);
         display: inline-block;
         letter-spacing: 6px;
         padding: 25px 35px;
         margin: 30px 0;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
-#home h2
+#intro .fa{
+    margin-left: 50px;
+}
+
+#intro h1 img{
+    border: 1px solid aliceblue;
+    border-radius: 50%;
+    width: 100px;
+}
+
+#intro .description p{
+    padding: 5px;
+}
+
+#intro h2
     {
         padding-bottom: 10px;
     }
 
-#home p
+#intro p
     {
         color: var(--experiencia-me-color);
         font-weight: 800;
         text-align: left;
     }
-#home .btn
+#intro .btn
     {
         background: var(--button-back-color);
         border: 2px solid #ffffff;
@@ -241,36 +286,49 @@ ul {
         padding-top: 18px;
         transition: all 0.4s ease-in-out;
     }
-#home .btn:hover
+#intro .btn:hover
     {
         background: var(--button-back-color-hover); /*#D43F52;*/
         color: var(--button-color-hover);
         border-color: transparent;
     }
-/* end home */
+/* end intro */
 
-/* start work */
-#work
+/* start skills */
+#skills
     {
         background: #1a1a1a;
     }
-#work h2
+
+#skills::before {    
+      content: "";
+      background-image: url('../images/server.gif');
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.1;
+      filter: blur(10px);
+      background-repeat: no-repeat;
+}
+#skills h2
     {
         text-align: center;
     }
-
-#work .media
+#skills .media
     {
       margin-top: 30px;
     }
 	
-#work .media .fa
+.fa
     {
         border: 2px solid #ffffff;
         border-radius: 50%;
-        color: #D43F52;
+        color: var(--fa-color);
         font-size: 24px;
-        margin-right: 24px;
+        margin-right: 0;
         width: 60px;
         height: 60px;
         line-height: 55px;
@@ -278,72 +336,130 @@ ul {
         vertical-align: middle;
         transition: all 0.4s ease-in;
     }
-#work .media .fa:hover
+#skills .media .fa:hover
     {
         background: #ffffff;
         cursor: pointer;
     }
-#work .media .media-heading
+#skills ul{
+    padding-left: 1em;
+}
+#skills li::before{
+    content: "\00BB  ";
+}
+#skills .media .media-heading
     {
         font-weight: 600;
         font-size: 20px;
         padding-bottom: 10px;
     }
-/* end work */
 
-/* start experiencia */
-#experiencia h4
-    {
-        padding: 15px 0;
-		color: #D43F52;
-    }
-#experiencia .progress
+#skills .progress
     {
         border-radius: 4px;
         background: #ffffff;
-        height: 4px;
+        height: 6px;
     }
-#experiencia .progress .progress-bar-danger
+#skills .progress .progress-bar-danger
     {
         background: #D43F52;
     }
-#experiencia .text-top
+
+#skills .text-top
     {
         padding-top: 50px;
     }
-#experiencia span
+#skills span
     {
         color: #ffffff;
         font-weight: bold;
         display: block;
         padding-bottom: 6px;
     }
-#experiencia small
+#skills small
     {
         font-weight: bold;
         float: right;
     }
-/* end experiencia */
 
-/* start portfolio */
-#portfolio
+/* end skills */
+
+/* start experiencia */
+#experiencia::before {    
+      content: "";
+      background-image: url('../images/coding.gif');
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.1;
+      filter: grayscale(50%);
+      background-repeat: no-repeat;
+}
+
+#experiencia h2
     {
-        background: #1a1a1a;
         text-align: center;
     }
-#portfolio h2
+#experiencia .card
+    {
+        min-width: 30rem;
+        width: 45%;
+        border-radius: 14px;
+        border: 1px solid var(--experiencia-card-border-color);
+        margin: 5px;
+        min-height: 18em;
+    }
+
+#experiencia h4
+    {
+        padding: 15px 0;
+		color: var(--experiencia-h4-color);
+    }
+
+#experiencia h5.card-title 
+    {
+        text-decoration: underline;
+    }
+
+#experiencia li
+    {
+        font-size: 10px;
+    }
+
+#experiencia a.card-link 
+    {
+        position: absolute;
+        bottom: 0;
+        margin: 5px;
+    }
+/* end experiencia */
+
+/* start courses */
+
+#courses
+    {
+        background: var(--courses-background);
+        text-align: center;
+    }
+
+
+
+#courses h2
     {
         padding-bottom: 30px;
     }
-#portfolio .portfolio-thumb
+#courses .courses-thumb
     {
         overflow: hidden;
         position: relative;
         margin-bottom: 30px;
     }
-#portfolio .portfolio-thumb .portfolio-overlay
+#courses .courses-thumb .courses-overlay
     {
-        background: #D43F52;
+        background: var(--courses-overlay-background);
         top: 0;
         left: 0;
         right: 0;
@@ -355,19 +471,18 @@ ul {
         padding-top: 60px;
         transition: all 0.4s ease-in-out;
     }
-#portfolio .portfolio-thumb:hover .portfolio-overlay
+#courses .courses-thumb:hover .courses-overlay
     {
         cursor: pointer;
         opacity: 0.8;
         transform: scale(0.9);
     }
-#portfolio .cursos
+#courses .courses
     {
         text-align: left;
     }
-.cursos li:before
+.courses li:before
     {
-       /*font-family: "Font Awesome 5 Free";*/
        content: "\2713 ";
        display: inline-block;
        padding-right: 3px;
@@ -376,10 +491,23 @@ ul {
     }
 
 
-/* end portfolio */
+/* end courses */
 
 /* start contact */
-
+#contact::before {    
+      content: "";
+      background-image: url('../images/webDevelopment.gif');
+      background-size: cover;
+      position: absolute;
+      margin: auto;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.3;
+      filter: blur(5px);
+      background-repeat: no-repeat;
+}
 #contact address
     {
       padding-bottom: 18px;
@@ -390,13 +518,13 @@ ul {
 		font-size: 24px;
 		font-weight: bold;
         padding-bottom: 20px;
-		color: #ffffff;
+		color: var(--contact-contact-title-color);
     }
 #contact .fa
     {
         border: 2px solid #ffffff;
         border-radius: 50%;
-        color: #D43F52;
+        color: var(--contact-fa-color);
         width: 50px;
         height: 50px;
         line-height: 45px;
@@ -409,7 +537,7 @@ ul {
         border: 2px solid #999;
         border-radius: 0;
         box-shadow: none;
-        color: #ffffff;
+        color: var(--contact-form-control-color);
         margin-bottom: 20px;
     }
 #contact input
@@ -418,16 +546,16 @@ ul {
     }
 #contact input[type="submit"]
     {
-        background: #D43F52;
+        background: var(--contact-submit-background);
         border: 2px solid transparent;
-        color: #ffffff;
+        color: var(--contact-submit-color);
         font-weight: bold;
         transition: all 0.4s ease-in-out;
     }
 #contact input[type="submit"]:hover
     {
-        background: #ffffff;
-        color: #D43F52;
+        background: var(--contact-submit-background-hover);
+        color: var(--contact-submit-color-hover);
     }
 /* end contact */
 
@@ -460,7 +588,7 @@ footer hr
 .social-icon li a
     {
         border-radius: 50%;
-        color: #606060;
+        color: var(--social-icon-li-a-color);
         text-decoration: none;
         transition: all 0.4s ease-in-out;
         text-align: center;
@@ -468,32 +596,166 @@ footer hr
     }
 .social-icon li a:hover
     {
-        color: #D43F52;
+        color: var(--social-icon-li-a-hover-color);
     }
 /* end social icon */
 
+/* Media */
+@media screen and (max-width: 414px){
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+    }
+    .rotate{
+        height: 2em;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 11mm 17mm 17mm 17mm;
+}
 @media print {
-    section {page-break-after: always;}
-    /*.rotate { display: none; }*/
-    #printHeader { display: block;}
-    .btnHome {display: none;}
-    /*
-    :not(.printable) {
-        display: none;
-        visibility: hidden;
+    #fullpage {
+        display:flex;
+        flex-flow: column;
     }
-    */
-    .nonPrintable{
-        display: none;
-        visibility: hidden;
-    }
-    .printable{
-        display: block;
+    #intro{order: 1;}
+    #contact{order: 2;}
+    #skills{order: 3;}
+    #experiencia{order: 4;}
+    #courses{order: 5;}
+    #footer{order: 6}
+    
+    *{
         visibility: visible;
+        filter: grayscale(100%); 
+        font-weight: bolder;   
+        color: #000;
+    }
+    .PB {
+        page-break-after: always;
     }
     section{
         margin: 0;
         padding: 0;
+        border: 0;
+    }
+    .container{
+        display: inline-flex;
+        border: 1px solid black;
+        border-radius: 25px;
+        flex-wrap: wrap;
+        padding: 10px;
+        width: 100vw;
+        margin: auto;
+    } 
+    #skills, #experiencia, #courses, #contact, #intro{
+        margin: auto;
+        padding-top: 5px;
+        padding-bottom: 5px;
         font-size: 10px;
     }
+    .nonPrintable{
+        visibility: hidden!important;
+        display: none!important;
+    }
+    .printable{
+        visibility: visible!important;
+        display: block!important;
+    }
+    .QR{
+        display: flex;
+        height: 70%;
+        text-align: center;
+    }
+    .QR p{
+        margin: 5px;
+        min-width: 33.33%;
+    }
+    .QR img{
+        margin: auto;
+        min-width: 3cm;
+        visibility: visible!important;
+        position: absolute;
+        bottom: 10px;
+        left: 25%;
+        margin-bottom: 5px;
+    }
+    a[href] {
+        /*
+        font-size: 7px;
+        letter-spacing: 0;       
+        */
+        visibility: hidden;
+    }
+
+    h2{
+        text-decoration: underline;
+    }
+
+    #intro .introHeader{
+        border: 2px solid var(--name-color);
+        color: var(--name-color);
+        letter-spacing: 4px;
+        padding: 10px 10px;
+        margin: 10px 0;
+        width: 90%;
+        height: 240px;
+    }
+    #intro .introHeader img{
+        width: 50px;
+    }
+
+    #intro .fa,
+    .fa
+    {
+        border: 1px solid #000;
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        line-height: 37px;
+        margin: 0;
+    }
+
+    #skills .row
+    {
+        display: inline-flex;  
+        margin: auto; 
+    }
+
+    #skills .media .media-heading {
+        font-weight: 600;
+        font-size: 12px;
+        padding-bottom: 2px;
+    }
+    #skills .media {
+        margin-top: 0px;
+    }
+
+    #experiencia .card-link{
+        visibility: hidden;
+    }
+    #experiencia{
+        padding-left: 20px;
+    }
+    #experiencia .card {
+        border: 0;
+        margin: 5px;
+    }
+    footer{
+        display: none;
+    }
+    .introHeader{
+        height: 200px;
+    }
+    .introHeader p{
+        letter-spacing: 0;
+    }
+    .description p{
+        padding: 5px;
+    }
+}
+
 }

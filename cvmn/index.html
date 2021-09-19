@@ -50,41 +50,47 @@
 	<body>
 
 	<div id="fullpage">
-		<ol>
-			<li>Generar QR para linkedin</li>
-			<li>Generar QR para esta pagina</li>
-			<li>Insertar foto en version impresa</li>
-			<li>Revisar los saltos de pagina en la impresion</li>
-			<li>Revisar contenido visible en la impresion</li>
-		</ol>
-		<!-- start home -->
-		<section id="home" class="section">
+		<!-- start intro -->
+		<section id="intro" class="section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2"></div>
-					<div class="col-md-8 wow fadeIn" data-wow-delay="0.9s">
-						<h1 class="printable">Mauricio Niemand</h1>
-						<h2 class="rotate nonPrintable">Analista T&eacute;cnico Funcional, Programador Web Full Stack, Desarrollador Java/Jsp, Posicionamiento SEO  </h2>
-						<h2 id="printHeader" class="printable">Analista T&eacute;cnico Funcional</h2>
-						<p>Mi nombre es Mauricio y estoy radicado en CABA-Buenos Aires, me defino como un analista tecnico-funcional porque si bien cuento con s&oacute;lida experiencia t&eacute;cnica en desarrollo web, este tiempo not&eacute; que puedo dar un valor agregado desde el punto de vista funcional, dado a mi empatía con los clientes y la capacidad de trabajar en equipo.<br><br>
-						Mi perfil siempre fue un nexo entre la programaci&oacute;n y la necesidad del cliente, intentando mejorar la calidad del producto final y ajustándose a sus expectativas.<br><br>
-						Me siento muy c&oacute;modo con el trabajo en equipo, las ceremonias agile, y siempre estoy abierto a criticas constructivas.
-						Uso lenguaje específico: t&eacute;cnico con los t&eacute;cnicos, coloquial con los clientes, me gusta “bajar a la tierra” conceptos que los clientes no necesitan entender para desarrollar sus oficios.<br><br>
-						Soy un apasionado de la programacion y promuevo siempre el uso o desarrollo de herramientas para optimizar procesos.</p>
-						<a href="#work" class="btn btn-default smoothScroll wow fadeInUp btnHome" data-wow-delay="1s">Detalles</a>
+					<div class="col-md-8">
+						<div class="introHeader">
+							 <h1><img src="images/mn.jpg"> Mauricio Niemand</h1>
+							 <div class="QR">
+								 <p><a href="https://linkedin.com/in/mniemand/" target="_blank"><i class="fa fa-linkedin"></i></a><img src="images/QR/linkedin.png" class="hidden printable"></p>
+								 <p><a href="tel:+541127692246"><i class="fa fa-phone"></i></a><img src="images/QR/vr.png" class="hidden printable"></p>
+								 <p class="hidden printable"><i class="fa fa-desktop"></i><img src="images/QR/webCV.png"></p>
+							 </div>
+						</div>
+						<h2 class="rotate nonPrintable wow fadeIn" data-wow-delay="0.9s">Analista T&eacute;cnico Funcional, Programador Web Full Stack, Desarrollador Java/Jsp, Posicionamiento SEO  </h2>
+						<h2 class="printable hidden">Analista T&eacute;cnico Funcional</h2>
+						<div class="description wow fadeInRight" data-wow-delay="0.7s">
+							<p>Mi nombre es Mauricio y soy oriundo de CABA-Buenos Aires, me defino como un analista tecnico-funcional porque si bien cuento con s&oacute;lida experiencia t&eacute;cnica en desarrollo web, este tiempo not&eacute; que puedo dar un valor agregado desde el punto de vista funcional, dado a mi empatía con los clientes y la capacidad de trabajar en equipo.</p>
+							<p>Mi perfil siempre fue un nexo entre la programaci&oacute;n y la necesidad del cliente, intentando mejorar la calidad del producto final y ajustándose a sus expectativas.</p>
+							<p>Me siento muy c&oacute;modo con el trabajo en equipo, las ceremonias agile, y siempre estoy abierto a criticas constructivas.</p>
+							<p>Uso lenguaje específico: t&eacute;cnico con los t&eacute;cnicos, coloquial con los clientes, me gusta “bajar a la tierra” conceptos que los clientes no necesitan entender para desarrollar sus oficios.</p>
+							<p>Soy un apasionado de la programaci&oacute;n y promuevo siempre el uso o desarrollo de herramientas para optimizar procesos.</p>
+						</div>
+						<div class="botonera wow fadeInUp " data-wow-delay="1s">
+							<a href="#skills" class="btn btn-default smoothScroll nonPrintable">Skills</a>
+							<a href="#experiencia" class="btn btn-default smoothScroll nonPrintable">Experiencia</a>
+							<a href="#cursos" class="btn btn-default smoothScroll nonPrintable">&Uacute;ltimos Cursos</a>
+						</div>
 					</div>
 					<div class="col-md-2"></div>
 				</div>
 			</div>
 		</section>
-		<!-- end home -->
-		<!--<footer></footer>-->
-		<!-- start work -->
-		<section id="work" class="section printable">
+		<!-- end intro -->
+
+		<!-- start skills -->
+		<section id="skills" class="section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 wow bounce">
-						<h2>SKILLS PRINCIPALES</h2>
+						<h2><i class="fa fa-cogs"></i>SKILLS PRINCIPALES</h2>
 					</div>
                 </div>  
                 
@@ -98,9 +104,11 @@
 								<h3 class="media-heading">Trabajo en equipo</h3>
 								<p>
 									<ul>
-										<li>Metodologia Agile/SCRUM</li> 
+										<li>Agile</li> 
+										<li>SCRUM</li>
 										<li>GIT-SVN</li> 
-										<li>DRY y buenas prácticas</li> 
+										<li>DRY</li> 
+										<li>Buenas prácticas</li>
 										<li>Orientado a prototipos</li> 
 									</ul>
 								</p>
@@ -119,9 +127,9 @@
 									<ul>
 										<li>Analytics</li> 
 										<li>Posicionamiento SEO</li> 
-										<li>JavaEE/SOAP/XML/XSD</li> 
+										<li>JavaEE/SOAP</li> 
 										<li>Full Stack WEB</li> 
-										<li>Javascript/TypeScript/Json</li> 
+										<li>Javascript/TypeScript</li> 
 										<li>CSS/Sass</li> 
 										<li>PHP</li> 
 									</ul>
@@ -130,7 +138,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-4 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
+					<div class="col-sm-4 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
 						<div class="media">
 							<div class="media-object media-left">
 								<i class="fa fa-database"></i>
@@ -141,7 +149,7 @@
 									<ul>
 										<li>Normalizaci&oacute;n</li> 
 										<li>T-SQL</li> 
-										<li>Oracle PL</li> 
+										<li>Oracle PL-SQL</li> 
 										<li>Mysql</li> 
 										<li>Sybase</li> 
 									</ul>					
@@ -149,11 +157,10 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 				<div class="row">
-					<div class="col-md-6 col-xs-11 wow fadeInUp">
-					<div class="col-md-6 col-xs-11 wow fadeInUp">
+					<div class="col-sm-4 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
 						<div class="media">
 							<div class="media-object media-left">
 								<i class="fa fa-comments"></i>
@@ -170,7 +177,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-6 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
+					<div class="col-md-4 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
 						<div class="media">
 							<div class="media-object media-left">
 								<i class="fa fa-file-excel-o"></i>
@@ -186,175 +193,214 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row nonPrintable">
-					<div class="col-md-6 col-xs-11 wow fadeInRight" data-wow-delay="0.9s">
-						<span>T&eacute;cnico Funcional <small>90%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-							</div>
-						<span>Desarrollo <small>90%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-							</div>
-						<span class="text-top">Web Design <small>75%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-							</div>
-						<span>HTLM5 &AMP; CSS3 <small>90%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-							</div>
-						<span>SEO <small>70%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-							</div>
+
+					<div class="col-md-4 col-xs-12 nonPrintable">
+						<div class="col-sm wow fadeInRight" data-wow-delay="1s">
+							<h3 class="media-heading">Experiencia</h3>
+							<span>T&eacute;cnico Funcional <small>90%</small></span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+								</div>
+							<span>Desarrollo <small>90%</small></span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+								</div>
+							<span>Web Design <small>75%</small></span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+								</div>
+							<span>HTLM5 &AMP; CSS3 <small>80%</small></span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+								</div>
+							<span>SEO <small>70%</small></span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+								</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- end work -->
-
+		<!-- end skills -->
+		<div class="PB"></div>
 		<!-- start experiencia -->
 		<div id="experiencia" class="section">
 			<div class="container">
+				
 				<div class="row">
-					<div class="col-md-6 col-xs-11 wow fadeInLeft" data-wow-delay="0.9s">
-						<h2>Experiencia laboral</h2>
-						<h4>DESIGNER &AMP; DEVELOPER</h4>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat.</p>
-						<p>Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+					<div class="col-md-12 wow bounce">
+						<h2><i class="fa fa-code-fork"></i>EXPERIENCIA LABORAL RECIENTE</h2>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm col-xs-12 wow fadeInLeft card" data-wow-delay="0.5s">
+					  <div class="card-body">
+					    <h5 class="card-title">Freelance Tecnico Funcional/Java/Fullstack Web</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">Profesional independiente<br>(dic 2020 – actualidad)</h6>
+					    <p class="card-text">
+							<ul class="list-group list-group-flush">
+								<li>Tecnico Funcional</li>
+								<li>Consultor Tecnologico</li>
+								<li>Java</li>
+								<li>Fullstack web</li>
+							</ul>
+					    </p>
+					    <a href="#" class="card-link">Contacto</a>
+					  </div>
 					</div>
 
-				</div>
+					<div class="col-sm col-xs-12 wow fadeInRight card" data-wow-delay="0.5s">
+					  <div class="card-body">
+					    <h5 class="card-title">Sr Java Developer/Fullstack</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">BBVA Jornada completa<br>(ago 2015 – dic 2020)</h6>
+					    <p class="card-text">
+							<ul class="list-group list-group-flush">
+								<li>Duración del empleo 5 años y 5 meses</li>
+								<li>Ubicación Argentina</li>
+								<li>* Gestion de proyectos</li>
+								<li>* Analisis de procesos</li>
+								<li>* Consultoria informatica</li>
+								<li>* Mantenimiento de aplicativos</li>
+								<li>* Desarrollo y mantenimiento webs jsp (Tomcat-Websphere)</li>
+								<li>* Base de datos Sybase</li>
+							</ul>
+					    </p>
+					    <a href="#" class="card-link">Contacto</a>
+					  </div>
+					</div>
+
+					<div class="col-sm col-xs-12 wow fadeInLeft card" data-wow-delay="0.7s">
+					  <div class="card-body">
+					    <h5 class="card-title">Tecnico Funcional CNPA - UNLAM</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">Universidad Nacional de La Matanza<br>(may 2014 – ago 2015)</h6>
+					    <p class="card-text">
+							<ul class="list-group list-group-flush">
+								<li>Duración del empleo 1 año y 4 meses</li>
+								<li>Ubicación Argentina</li>
+								<li>* Supervisión de procesos de digitalización</li>
+								<li>* Normalizacion bases de datos SQL Server</li>
+								<li>* Desarrollo de herramientas a medida en .net</li>
+								<li>* Administración de equipo de digitalizadores</li>
+								<li>* Asesor informático</li>
+							</ul>
+					    </p>
+					    <a href="#" class="card-link">Contacto</a>
+					  </div>
+					</div>
+
+					<div class="col-sm col-xs-12 wow fadeInRight card" data-wow-delay="0.7s">
+					  <div class="card-body">
+					    <h5 class="card-title">Desarrollador Java Middleware</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">Interservices Management Company<br>(ene 2009 – mar 2014)</h6>
+					    <p class="card-text">
+					    	<ul class="list-group list-group-flush">
+					    		<li>Duración total 6 años y 8 meses</li>
+								<li>Ubicación Argentina</li>
+								<li>Base de datos Oracle con plsql </li>
+								<li>Administración Oracle UCM y SES </li>
+								<li>Factoria de software: PHP / .NET / VB / Javascript / Java / SOAP</li>
+								<li>- Contacto bilingüe con desarrolladores de Oracle</li>
+								<li>- Contacto con el cliente</li>
+								<li>- Capacitaciones al equipo</li>
+								<li>- Documentación de procesos y normas</li>
+								<li>- Procedimientos de atención al cliente</li>
+								<li>- Soporte de scripts en PL-SQL</li>
+								<li>- Normas ITIL</li>
+								<li>- Generación de reportes y estadísticas</li>
+							</ul>
+					    </p>
+					    <a href="#" class="card-link">Contacto</a>
+					  </div>
+					</div>
+				</div>				
 			</div>
 		</div>
 		<!-- end experiencia -->
 
-		<!-- start portfolio -->
-		<div id="portfolio" class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="wow bounce">&Uacute;LTIMOS CURSOS</h2>
-				</div>
-				<div class="col-sm"></div>
-				<div class="col-sm cursos wow fadeIn" data-wow-delay="0.6s">
-					<ul>
-						<li>2020 - Udemy Git Essentials.</li>
-						<li>2020 - BBVA UIX Essentials.</li>
-						<li>2020 - BBVA Kanban & Agile.</li>
-						<li>2020 - BBVA Comunicación efectiva.</li>
-						<li>2020 - BBVA Talleres de linux.</li>
-						<li>2019 - BBVA DevOps Academy Essentials.</li>
-						<li>2019 - BBVA Talleres Node.js/DB No relacional.</li>
-						<li>2019 - BBVA Talleres de Docker/Docker HUB.</li>
-						<li>2019 - UTN Webmaster avanzado.</li>
-						<li>2019 - BBVA Taller Jenkins Starter.</li>
-						<li>2018 - UTN Professional Webmaster.</li>
-						<li>2017 - BBVA Talleres Bootstrap.</li>
-					</ul>
-					<!--
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img1.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Web Design</h4>
-								<h5>Author: Cindy</h5>
-							</div>
-					</div>
-					-->
-				</div>
-				<div class="col-sm"></div>
-				<!--
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img2.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Web App</h4>
-								<h5>Author: Linda</h5>
-							</div>
+		<!-- start courses -->
+		<section id="courses" class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="wow bounce printable"><i class="fa fa-graduation-cap"></i>&Uacute;LTIMOS CURSOS</h2>
 					</div>
 				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img3.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Mobile App</h4>
-								<h5>Author: Kate</h5>
-							</div>
+				<div class="row">
+					<div class="col-sm courses wow fadeIn" data-wow-delay="0.6s">
+						<ul>
+							<li>2020 - Udemy Git Essentials.</li>
+							<li>2020 - BBVA UIX Essentials.</li>
+							<li>2020 - BBVA Kanban & Agile.</li>
+							<li>2020 - BBVA Comunicación efectiva.</li>
+							<li>2020 - BBVA Talleres de linux.</li>
+							<li>2019 - BBVA DevOps Academy.</li>
+							<li>2019 - BBVA Talleres Node.js.</li>
+							<li>2019 - BBVA DB No relacional.</li>
+							<li>2019 - BBVA Talleres de Docker.</li>
+							<li>2019 - UTN Webmaster avanzado.</li>
+							<li>2019 - BBVA Taller Jenkins Starter.</li>
+							<li>2018 - UTN Professional Webmaster.</li>
+							<li>2017 - BBVA Talleres Bootstrap.</li>
+						</ul>
 					</div>
-				</div>
-				<div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img4.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Old Artwork</h4>
-								<h5>Author: Catherine</h5>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img5.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>New Animation</h4>
-								<h5>Author: Kathy</h5>
-							</div>
-					</div>
-				</div>
-				-->
-			</div>
-		</div>
-	</div>
-	<!-- end portfolio -->
-
-	<!-- start contact -->
-	<section id="contact" class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5 col-lg-offset-1 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-					<address>
-						<p class="contact-title">CONTACT ME</p>
-						<p><i class="fa fa-phone"></i> 090-080-0760</p>
-						<p><i class="fa fa-envelope-o"></i> info@company.com</p>
-						<p><i class="fa fa-map-marker"></i> 120 Old Walking Street, GL 16060</p>
-					</address>
-				</div>
-				<div class="col-lg-6 col-md-6 col-xs-10 wow fadeInUp" data-wow-delay="0.6s">
-					<form role="form" method="post" action="#">
-						<input name="name" type="text" class="form-control" id="name" placeholder="Your Name">
-						<input name="email" type="email" class="form-control" id="email" placeholder="Your Email">
-						<textarea name="message" rows="5" class="form-control" id="message" placeholder="Your Message"></textarea>
-						<input name="send" type="submit" class="form-control" id="send" value="SEND ME">
-					</form>
-				</div>
-				<div class="col-md-1 col-sm-1"></div>
-			</div>
-		</div>
-	</section>
-	<!-- end contact -->
-
-	<!-- start footer -->
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 wow fadeIn" data-wow-delay="0.9s">
-					<p>Copyright &copy; 2018 Lavish Personal Profile 
-                    
-                    . Designed by <a rel="nofollow noopener" href="https://templatemo.com">templatemo</a></p>
-					<hr>
-					<ul class="social-icon">
-						<li><a href="#" class="fa fa-facebook"></a></li>
-						<li><a href="#" class="fa fa-twitter"></a></li>
-						<li><a href="#" class="fa fa-instagram"></a></li>
-					</ul>
 				</div>
 			</div>
-		</div>
-	</footer>
-	<!-- end footer -->
+		</section>
+		<!-- end courses -->
 
-	</div>
+		<!-- start contact -->
+		<section id="contact" class="section nonPrintable">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-lg-offset-1 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+						<address>
+							<h2><i class="fa fa-comments"></i>CONTACTO</h2>
+							<!--<p class="contact-title">CONTACTO</p>-->
+							<p><i class="fa fa-phone"></i> 011-2769-2246</p>
+							<p><i class="fa fa-envelope-o"></i> curriculummn@gmail.com</p>
+							<p><i class="fa fa-linkedin"></i> https://www.linkedin.com/in/mniemand/</p>
+							<p><i class="fa fa-address-card"></i> https://www.linkedin.com/in/mniemand/</p>
+							
+							<!--<p><i class="fa fa-map-marker"></i> 120 Old Walking Street, GL 16060</p>-->
+						</address>
+					</div>
+					<div class="col-lg-6 col-md-6 col-xs-10 wow fadeInUp nonPrintable" data-wow-delay="0.6s">
+						<form role="form" method="post" action="#">
+							<input name="name" type="text" class="form-control" id="name" placeholder="Your Name">
+							<input name="email" type="email" class="form-control" id="email" placeholder="Your Email">
+							<textarea name="message" rows="5" class="form-control" id="message" placeholder="Your Message"></textarea>
+							<input name="send" type="submit" class="form-control" id="send" value="SEND ME">
+						</form>
+					</div>
+					<div class="col-md-1 col-sm-1"></div>
+				</div>
+			</div>
+		</section>
+		<!-- end contact -->
+
+		<!-- start footer -->
+		<footer id="footer nonPrintable">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 wow fadeIn" data-wow-delay="0.9s">
+						<p>Copyright &copy; 2018 Lavish Personal Profile 
+	                    
+	                    . Designed by <a rel="nofollow noopener" href="https://templatemo.com">templatemo</a></p>
+						<hr>
+						<ul class="social-icon">
+							<li><a href="#" class="fa fa-facebook"></a></li>
+							<li><a href="#" class="fa fa-twitter"></a></li>
+							<li><a href="#" class="fa fa-instagram"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- end footer -->
+
+		</div>
 
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>

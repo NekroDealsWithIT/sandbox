@@ -567,7 +567,7 @@ h1,h2,h3,h4,h5
 
 #courses::before{
       content: "";
-      background-image: url('../images/courses.gif');
+      /*background-image: url('../images/courses.gif');*/
       background-position: center center;
       background-size: cover;
       position: absolute;
@@ -577,11 +577,9 @@ h1,h2,h3,h4,h5
       bottom: 0px;
       left: 0px;
       opacity: 0.07;
-      filter: blur(5px) grayscale(50%);
+      /*filter: blur(5px) grayscale(50%);*/
       background-repeat: no-repeat;
 }
-
-
 
 #courses h2
     {
@@ -926,6 +924,10 @@ footer .fa
     {
         /*background-image: none;*/
         filter: blur(10px) grayscale(50%);
+    }
+    #courses::before{
+      content: "";
+      /*background-image: url('../images/courses_crop.gif');*/
     }
     .row{
         display: flex;

@@ -5,9 +5,9 @@
     --experiencia-me-color: #FFF;
     --name-color: #D43F52;
     --button-back-color: transparent;
-    --button-back-color-hover: #D43F52;/*#D43F52;*/
-    --button-color: #D43F52; /*#FFF;*/
-    --button-color-hover: #09efba;
+    --button-back-color-hover: #03e9f4;
+    --button-color: #03e9f4;
+    --button-color-hover: #000;
     --header-color: #00f9fd;
     --fa-color: #D43F52;
     
@@ -73,19 +73,45 @@ ul {
   list-style-type: none;
 }
 
+/* General Class */
 .QR{
     display: inline-flex;
 }
+
 .QR img{
     border: 1px solid #000;
     width: 150px;
 }
 
+.container{
+    padding: 10px;
+}
+
+.fa
+    {
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        color: var(--fa-color);
+        font-size: 24px;
+        margin-right: 0;
+        width: 60px;
+        height: 60px;
+        line-height: 55px;
+        text-align: center;
+        vertical-align: middle;
+        transition: all 0.4s ease-in;
+    }
+.fa:hover
+    {
+        background: #ffffff;
+        cursor: pointer;
+    }
 /* start all heading */
 h1,h2,h3,h4,h5
     {
         color: var(--header-color)  /*#ffffff;*/
         font-weight: bold;
+        text-transform: capitalize;
     }
 /* end all heading */
 
@@ -97,10 +123,141 @@ h1,h2,h3,h4,h5
     }
 /* end all section */
 
+/* start botonera */
+/*
+.btn
+    {
+        background: var(--button-back-color);
+        font-size: 16px;
+        font-weight: bold;
+        
+        height: auto;
+        margin-top: 40px;
+        padding-top: 18px;
+        transition: all 0.4s ease-in-out;
+    }
 
-.container{
-    padding: 10px;
+.btn:hover
+    {
+        background: var(--button-back-color-hover);
+        color: var(--button-color-hover);
+        border-color: transparent;
+    }
+*/
+.botonera a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--button-color);
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 2px;
+    width: 180px;
+    border-color: transparent;
+    background: var(--button-back-color);
 }
+
+.botonera a:hover {
+    background: var(--button-back-color-hover);
+    color: var(--button-color-hover);
+    font-weight: bolder;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #03e9f4,
+              0 0 10px #03e9f4,
+              0 0 10px #03e9f4,
+              0 0 10px #03e9f4;
+}
+
+.botonera a:focus{
+    color: var(--button-color);
+    background: var(--button-back-color);
+    border-color: transparent;
+}
+
+.botonera a span {
+    position: absolute;
+    display: block;
+}
+
+.botonera a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+    50%,100% {
+        left: 100%;
+    }
+}
+
+.botonera a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+    0% {
+        top: -100%;
+    }
+    50%,100% {
+        top: 100%;
+    }
+}
+
+.botonera a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.botonera a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+/* end botonera
 
 /* start simpletextrotator */
 .rotating {
@@ -220,6 +377,7 @@ h1,h2,h3,h4,h5
 #intro::before {    
       content: "";
       background-image: url('../images/intro-bg.jpg');
+      background-position: center center;
       background-size: cover;
       position: absolute;
       top: 0px;
@@ -227,7 +385,7 @@ h1,h2,h3,h4,h5
       bottom: 0px;
       left: 0px;
       opacity: 0.4;
-      filter: blur(5px);
+      filter: blur(10px) grayscale(50%);
       background-repeat: no-repeat;
 }
 
@@ -242,9 +400,12 @@ h1,h2,h3,h4,h5
         margin: 30px 0;
         flex-direction: row;
         flex-wrap: wrap;
+        border-radius: 20px;
     }
+
 #intro .fa{
     margin-left: 50px;
+    padding-left: 7px;
 }
 
 #intro h1 img{
@@ -268,25 +429,6 @@ h1,h2,h3,h4,h5
         font-weight: 800;
         text-align: left;
     }
-#intro .btn
-    {
-        background: var(--button-back-color);
-        border: 2px solid #ffffff;
-        color: var(--button-color);
-        font-size: 16px;
-        font-weight: bold;
-        width: 180px;
-        height: 60px;
-        margin-top: 40px;
-        padding-top: 18px;
-        transition: all 0.4s ease-in-out;
-    }
-#intro .btn:hover
-    {
-        background: var(--button-back-color-hover); /*#D43F52;*/
-        color: var(--button-color-hover);
-        border-color: transparent;
-    }
 /* end intro */
 
 /* start skills */
@@ -298,6 +440,7 @@ h1,h2,h3,h4,h5
 #skills::before {    
       content: "";
       background-image: url('../images/server.gif');
+      background-position: center center;
       background-size: cover;
       position: absolute;
       top: 0px;
@@ -317,25 +460,6 @@ h1,h2,h3,h4,h5
       margin-top: 30px;
     }
 	
-.fa
-    {
-        border: 2px solid #ffffff;
-        border-radius: 50%;
-        color: var(--fa-color);
-        font-size: 24px;
-        margin-right: 0;
-        width: 60px;
-        height: 60px;
-        line-height: 55px;
-        text-align: center;
-        vertical-align: middle;
-        transition: all 0.4s ease-in;
-    }
-#skills .media .fa:hover
-    {
-        background: #ffffff;
-        cursor: pointer;
-    }
 #skills ul{
     padding-left: 1em;
 }
@@ -383,6 +507,7 @@ h1,h2,h3,h4,h5
 #experiencia::before {    
       content: "";
       background-image: url('../images/coding.gif');
+      background-position: center center;
       background-size: cover;
       position: absolute;
       top: 0px;
@@ -440,6 +565,22 @@ h1,h2,h3,h4,h5
         text-align: center;
     }
 
+#courses::before{
+      content: "";
+      background-image: url('../images/courses.gif');
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      margin: auto;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.07;
+      filter: blur(5px) grayscale(50%);
+      background-repeat: no-repeat;
+}
+
 
 
 #courses h2
@@ -475,6 +616,7 @@ h1,h2,h3,h4,h5
 #courses .courses
     {
         text-align: left;
+        padding-left: 4%;
     }
 .courses li:before
     {
@@ -492,6 +634,7 @@ h1,h2,h3,h4,h5
 #contact::before {    
       content: "";
       background-image: url('../images/webDevelopment.gif');
+      background-position: center center;
       background-size: cover;
       position: absolute;
       margin: auto;
@@ -557,14 +700,28 @@ h1,h2,h3,h4,h5
 /* start footer */
 footer
     {
-        border-top: 1px solid #090909;
         text-align: center;
-        padding-top: 40px;
-        padding-bottom: 20px;
+        position: relative;
+
+        padding-top: 0px;
+        padding-bottom: 0px;
+
+        bottom: 0px;
+        width: 100vw;
+        background-color: #000;
+        opacity: 0.5;
     }
 footer hr
     {
         width: 100px;
+    }
+footer h2
+    {
+        margin-top: 0px;
+    }
+footer .fa
+    {
+        margin-left: 50px;
     }
 /* end footer */
 
@@ -595,26 +752,16 @@ footer hr
     }
 /* end social icon */
 
-.hidden{
-    visibility: hidden;
-}
+.hidden
+    {
+        visibility: hidden;
+    }
 /* Media */
-@media screen and (max-width: 414px){
-    .row{
-        display: flex;
-        flex-wrap: wrap;
-        margin: auto;
+@page 
+    {
+        size: A4;
+        margin: 11mm 17mm 17mm 17mm;
     }
-    .rotate{
-        height: 2em;
-    }
-}
-
-
-@page {
-    size: A4;
-    margin: 11mm 17mm 17mm 17mm;
-}
 @media print {
     #fullpage {
         display:flex;
@@ -646,6 +793,17 @@ footer hr
         padding: 0;
         border: 0;
     }
+    a[href] {
+        visibility: hidden;
+    }
+
+    h2{
+        text-decoration: underline;
+    }
+    footer{
+        display: none;
+    }
+
     .container{
         display: inline-flex;
         border: 1px solid black;
@@ -687,17 +845,7 @@ footer hr
         left: 25%;
         margin-bottom: 5px;
     }
-    a[href] {
-        /*
-        font-size: 7px;
-        letter-spacing: 0;       
-        */
-        visibility: hidden;
-    }
 
-    h2{
-        text-decoration: underline;
-    }
 
     #intro .introHeader{
         border: 2px solid var(--name-color);
@@ -707,11 +855,15 @@ footer hr
         margin: 10px 0;
         width: 90%;
         height: 240px;
+        border-radius: 20px;
     }
     #intro .introHeader img{
         width: 50px;
     }
-
+    #intro .fa {
+        padding-left: 0px;
+        height: 200px;
+    }
     #intro .fa,
     .fa
     {
@@ -728,7 +880,6 @@ footer hr
         display: inline-flex;  
         margin: auto; 
     }
-
     #skills .media .media-heading {
         font-weight: 600;
         font-size: 12px;
@@ -748,12 +899,6 @@ footer hr
         border: 0;
         margin: 5px;
     }
-    footer{
-        display: none;
-    }
-    .introHeader{
-        height: 200px;
-    }
     .introHeader p{
         letter-spacing: 0;
     }
@@ -762,4 +907,40 @@ footer hr
     }
 }
 
+@media screen and (max-width: 414px){
+    .botonera a {
+        border: 1px solid wheat;
+    }
+    .botonera a:focus{
+        color: var(--button-color);
+        background: var(--button-back-color);
+        box-shadow: none;
+        border: 1px solid wheat;
+    }
+    #intro::before,
+    #contact::before,
+    #skills::before,
+    #experiencia::before,
+    #courses::before,
+    #footer::before
+    {
+        /*background-image: none;*/
+        filter: blur(10px) grayscale(50%);
+    }
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+    }
+    .rotate{
+        height: 2em;
+    }
+    #courses .courses {
+        padding-left: 0;
+        margin-left: -15px;
+    }
+    h1,h2,h3,h4,h5
+    {
+        text-transform: capitalize!important;
+    }
 }

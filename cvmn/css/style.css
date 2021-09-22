@@ -555,6 +555,12 @@ h1,h2,h3,h4,h5
         bottom: 0;
         margin: 5px;
     }
+#experiencia li:before{
+        content: "• ";
+}
+#experiencia a{
+    visibility: hidden;
+}
 /* end experiencia */
 
 /* start courses */
@@ -897,6 +903,7 @@ footer .fa
         border: 0;
         margin: 5px;
     }
+
     .introHeader p{
         letter-spacing: 0;
     }

@@ -816,14 +816,14 @@ footer .fa
         border: 1px solid black;
         border-radius: 25px;
         flex-wrap: wrap;
-        padding: -10px;
+        padding: 10px;
         width: 100vw;
         margin: auto;
     } 
     #skills, #experiencia, #courses, #contact, #intro{
         margin: auto;
         padding-top: 5px;
-        padding-bottom: 5px;
+        padding-bottom: 0px;
         font-size: 10px;
     }
     .nonPrintable{

@@ -776,9 +776,10 @@ footer .fa
     #intro{order: 1;}
     #contact{order: 2;}
     #skills{order: 3;}
-    #experiencia{order: 4;}
-    #courses{order: 5;}
-    #footer{order: 6}
+    #notes{order: 4}
+    #experiencia{order: 5;}
+    #courses{order: 6;}
+    #footer{order: 7}
     
     *{
         visibility: visible;
@@ -904,6 +905,17 @@ footer .fa
     #experiencia .card {
         border: 0;
         margin: 5px;
+    }
+    #notes .container{
+        margin-left: 5vw;
+        border: none;
+    }
+
+    #notes p{
+        margin-top: 10px;
+        width: 90vw;
+        margin-left: 5vw;
+        border-bottom: 1px solid #000;
     }
 
     .introHeader p{

@@ -887,7 +887,12 @@ footer .fa
         display: inline-flex;  
         margin: auto; 
     }
-    
+
+    #skills h2{
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+
     #skills .media .media-heading {
         font-weight: 600;
         font-size: 12px;

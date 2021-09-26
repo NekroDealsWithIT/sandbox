@@ -820,6 +820,7 @@ footer .fa
         width: 100vw;
         margin: auto;
     } 
+
     #skills, #experiencia, #courses, #contact, #intro{
         margin: auto;
         padding-top: 5px;
@@ -937,7 +938,12 @@ footer .fa
 
     .botonera a {
         border: 1px solid wheat;
+        padding: 10px;
+        font-size: 10px;
+        margin-top: 10px;
+        width: 130px;
     }
+ 
     .botonera a:focus{
         color: var(--button-color);
         background: var(--button-back-color);

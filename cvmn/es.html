@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
 
@@ -26,6 +26,9 @@
 		<link rel="stylesheet" href="css/animate.min.css">
 		<!-- bootstrap -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- toast -->
+		<link rel="stylesheet" type="text/css" href="css/toast.style.css">
+		<link rel="stylesheet" type="text/css" href="css/jquerysctipttop.css">		
 		<!-- font-awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<!-- google font -->
@@ -34,6 +37,14 @@
 		<link rel="stylesheet" href="css/jquery.fullPage.css">
 		<!-- custom -->
 		<link rel="stylesheet" href="css/style.css">
+		
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-MHXL7QF');</script>
+		<!-- End Google Tag Manager -->
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FHNNNDR84"></script>
@@ -46,7 +57,10 @@
 		</script>
 	</head>
 	<body>
-
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHXL7QF"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 	<div id="fullpage">
 		<!-- start intro -->
 		<section id="intro" class="section">
@@ -59,6 +73,7 @@
 							 <div class="QR">
 								 <p><a rel="nofollow noopener" href="https://linkedin.com/in/mniemand/" target="_blank"><i class="fa fa-linkedin"></i></a><img src="images/QR/linkedin.png" class="hidden printable"></p>
 								 <p><a rel="nofollow noopener" href="mailto:curriculummn@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a><img src="images/QR/vr.png" class="hidden printable"></p>
+								 <p class="nonPrintable shareContainer"><a rel="nofollow noopener" href="#" target="" id="shareButton"><i class="fa fa-share-alt"></i></a></p>
 								 <p class="hidden printable"><i class="fa fa-desktop"></i><img src="images/QR/webCV.png"></p>
 							 </div>
 						</div>
@@ -79,8 +94,11 @@
 							<p>Soy un apasionado de la programaci&oacute;n y promuevo siempre el uso o desarrollo de herramientas para optimizar procesos.</p>
 						</div>
 						<div class="botonera wow fadeInUp " data-wow-delay="0.6s">
-							<a href="https://mauricio-niemand-en.netlify.app/" class="btn btn-default smoothScroll hidden nonPrintable"><span></span><span></span><span></span><span></span>Skills</a>
 							<a href="index.html" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>English</a>
+							<a onclick="print();" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>Imprimir</a>
+						</div>
+						<div class="botonera wow fadeInUp " data-wow-delay="0.6s">
+							<a href="https://mauricio-niemand-en.netlify.app/" class="btn btn-default smoothScroll hidden nonPrintable"><span></span><span></span><span></span><span></span>Skills</a>
 							<a href="#skills" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>Skills</a>
 							<a href="#experiencia" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>Experiencia</a>
 							<a href="#courses" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>&Uacute;ltimos Cursos</a>
@@ -439,6 +457,8 @@
 		<script src="js/wow.min.js"></script>
 		<!-- text rotater -->
 		<script src="js/jquery.simple-text-rotator.js"></script>
+		<!-- toast -->
+		<script src="js/toast.script.js"></script>
 		<!-- custom -->
 		<script src="js/custom.js"></script>
 

@@ -387,6 +387,8 @@ h1,h2,h3,h4,h5
       opacity: 0.4;
       filter: blur(10px) grayscale(50%);
       background-repeat: no-repeat;
+
+      background-attachment: fixed;
 }
 
 #intro .introHeader
@@ -450,6 +452,8 @@ h1,h2,h3,h4,h5
       opacity: 0.1;
       filter: blur(10px);
       background-repeat: no-repeat;
+      
+      background-attachment: fixed;      
 }
 #skills h2
     {
@@ -517,6 +521,8 @@ h1,h2,h3,h4,h5
       opacity: 0.1;
       filter: grayscale(50%);
       background-repeat: no-repeat;
+      
+      background-attachment: fixed;
 }
 
 #experiencia h2
@@ -571,7 +577,7 @@ h1,h2,h3,h4,h5
         text-align: center;
     }
 
-#courses::before{
+#courses::before {
       content: "";
       /*background-image: url('../images/courses.gif');*/
       background-position: center center;
@@ -960,10 +966,26 @@ footer .fa
         /*background-image: none;*/
         filter: blur(10px) grayscale(50%);
     }
-    #courses::before{
-      content: "";
-      /*background-image: url('../images/courses_crop.gif');*/
+
+
+
+    #intro::before {
+        background-image: url("../images/intro-bg-411x559.jpg");
     }
+    #skills::before {
+        background-image: url("../images/server-354x499.gif");
+    }
+    #experiencia::before {
+        background-image: url("../images/coding-198x268.gif");
+    }
+/*
+    #courses::before {
+        background-image: url("../images/");
+    }
+    #contact::before {
+        background-image: url("../images/");
+    }
+*/
     .row{
         display: flex;
         flex-wrap: wrap;

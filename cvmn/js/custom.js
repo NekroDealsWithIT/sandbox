@@ -17,7 +17,7 @@ const localInfo={
 let lang=(window.navigator.language||window.navigator.browserLanguage||window.navigator.userLanguage).substr(0, 2);
 let pos=window.location.pathname.split("/").pop();
 
-if (pos=='index.html'){pos='en';}else{pos='es';}
+if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"){pos='es';}
 
 function checkLang(){
 	if(getCookie("avoidLangCheck")==''&&lang!=pos){
@@ -94,29 +94,31 @@ shareButton.addEventListener('click', async () => {
 
 
 $(document).ready(function() {
-			$('#fullpage').fullpage({
-				'verticalCentered': false,
-				'scrollingSpeed': 600,
-				'autoScrolling': false,
-				'css3': true,
-				'navigation': true,
-				'navigationPosition': 'right',
-			});
-		    $('#send').click(function(){
-		        var url = "datos_login.php";
-		        $.ajax({                        
-		           type: "POST",                 
-		           url: url,                     
-		           data: $("#contactForm").serialize(), 
-		           success: function(data)             
-		           {
-		             //$('#resp').html(data);               
-		             console.log(html(data));
-		           }
-		       });
-		    });
-		    checkLang();
-		});
+	$('#fullpage').fullpage({
+		'verticalCentered': false,
+		'scrollingSpeed': 600,
+		'autoScrolling': false,
+		'css3': true,
+		'navigation': true,
+		'navigationPosition': 'right',
+	});
+    $('#send').click(function(){
+        var url = "datos_login.php";
+        $.ajax({                        
+           type: "POST",                 
+           url: url,                     
+           data: $("#contactForm").serialize(), 
+           success: function(data)             
+           {
+             //$('#resp').html(data);               
+             console.log(html(data));
+           }
+       });
+    });
+    $('a').click(function(){
+    	this.blur();
+    });
+});
 
 
 // wow

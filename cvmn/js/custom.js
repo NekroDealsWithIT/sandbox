@@ -20,8 +20,10 @@ let pos=window.location.pathname.split("/").pop();
 if (pos=='index.html'){pos='en';}else{pos='es';}
 
 function checkLang(){
-	if(lang!=pos&&getCookie("avoidLangCheck")==''){
-		addToast('<div style="text-align:center;"><u>'+localInfo[pos]['toastTitle']+'</u></div>','<br><div style="display:flex;justify-content:space-between;"><p><a href="'+localInfo[pos]['link']+'" style="color:white;">'+localInfo[pos]['toastDesc']+'</a></p><p><a onclick="avoidToastMSG();"  style="color:wheat;">'+localInfo[pos]['avoid']+'</a></div>',8000);
+	if(getCookie("avoidLangCheck")==''&&lang!=pos){
+		if(lang=='es'||lang=='en'){
+			addToast('<div style="text-align:center;"><u>'+localInfo[pos]['toastTitle']+'</u></div>','<br><div style="display:flex;justify-content:space-between;"><p><a href="'+localInfo[pos]['link']+'" style="color:white;">'+localInfo[pos]['toastDesc']+'</a></p><p><a onclick="avoidToastMSG();"  style="color:wheat;">'+localInfo[pos]['avoid']+'</a></div>',8000);
+		}
 	}
 }
 

@@ -31,11 +31,11 @@
 
 body
 {
-	background: var(--body-background);
+    background: var(--body-background);
     color: var(--body-color);
-	font-family: 'Raleway', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 /* start all section */
@@ -368,11 +368,11 @@ h1,h2,h3,h4,h5
 
 /* start intro */       
 #intro
-	{
+    {
         padding-top: 40px;
         padding-bottom: 140px;
         text-align: center;
-	}
+    }
 
 #intro::before {    
       content: "";
@@ -428,7 +428,7 @@ h1,h2,h3,h4,h5
 #intro p
     {
         color: var(--experiencia-me-color);
-        font-weight: 800;
+        /*font-weight: 800;*/
         text-align: left;
     }
 /* end intro */
@@ -463,7 +463,7 @@ h1,h2,h3,h4,h5
     {
       margin-top: 30px;
     }
-	
+    
 #skills ul{
     padding-left: 1em;
 }
@@ -542,7 +542,7 @@ h1,h2,h3,h4,h5
 #experiencia h4
     {
         padding: 15px 0;
-		color: var(--experiencia-h4-color);
+        color: var(--experiencia-h4-color);
     }
 
 #experiencia h5.card-title 
@@ -662,13 +662,13 @@ h1,h2,h3,h4,h5
     {
       padding-bottom: 18px;
     }
-	
+    
 #contact .contact-title
     {
-		font-size: 24px;
-		font-weight: bold;
+        font-size: 24px;
+        font-weight: bold;
         padding-bottom: 20px;
-		color: var(--contact-contact-title-color);
+        color: var(--contact-contact-title-color);
     }
 #contact .fa
     {
@@ -888,7 +888,10 @@ footer .fa
         line-height: 37px;
         margin: 0;
     }
-
+    #intro p
+    {
+        font-weight: 800;
+    }
     #skills .row
     {
         display: inline-flex;  

@@ -2,7 +2,7 @@ body{
 	background-color: black;
 	color: aquamarine;
 }
-body::before{
+body::after{
 	content: "CSS OK!";
 }
 img::after{

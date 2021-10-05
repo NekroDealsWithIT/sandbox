@@ -75,6 +75,58 @@ nav a{
 	border-color: transparent;
 	background-color: #25a63f;
 }
+/* cards */
+.cardsContainer{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.card{
+	min-width: 18rem;
+	width: 33%;
+	margin-bottom: 10px;
+}
+.card img{
+	width: 347px;
+	height: 347px;
+}
+.cardTitles{
+	text-align: center;
+    width: 100%;
+}
+
+.card-title {
+    margin-top: .90rem;
+}
+
+span.javascript, 
+span.react, 
+span.negocios, 
+span.startups{
+	padding: 5px;
+	font-weight: 600;
+	color: #fff;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+span.javascript{
+	color: #000;
+	background-color: var(--warning);
+}
+span.react{
+	background-color: var(--info);
+}
+span.negocios{
+	background-color: var(--secondary);
+}
+span.startups{
+	background-color: var(--danger);
+}
+startups
+
 /* footer */
 footer{
 	background: rgb(26,54,68);
@@ -120,23 +172,49 @@ footer li{
 
 /* Mediaqueries */
 @media screen and (max-width: 700px){
-	.classCelHide{
+	.celHide{
 		visibility: hidden;
 		display: none;
 	}
+	/* Scroll */
 	.scrollInside{
 		width: 90%;
 	}
+	/* Card */
+	.card{
+		width: 100%;
+	}
+	.card img{
+		width: 100%;
+	}
+	/* Footer */
 	footer a, footer p{
 		font-size: 1em;
-		line-height: 5px;
 	}	
+	footer ul{
+		display: flex;
+		justify-content: center;
+	}
+	footer p{
+		line-height: 1px;
+	}
 	footer .nav-item{
 		border: 1px solid cyan;
 		width: 90%;		
-		margin: 2.5px 0;
+		margin: 2.5px 2px;
 		height: 4em;
 		border-radius: 5px;
+		text-decoration: none!important;
+		line-height: 5px;
+
+	    display: flex;
+	    justify-content: space-around;
+	    flex-direction: column;
+	    align-items: stretch;
+	}
+	footer .nav-item:hover{
+		border-color: transparent;
+		background-color: #25a63f;		
 	}
 	footer ul{
 		margin: 0!important;

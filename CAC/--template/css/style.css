@@ -1,0 +1,23 @@
+/*testing*/
+body{
+	background-color: black;
+	color: aquamarine;
+}
+body::after{
+	content: "CSS OK!";
+}
+img::after{
+	content: "Assets OK!";
+}
+
+/* Mediaqueries */
+@media screen and (max-width: 414px){
+
+}
+@page {
+        size: A4;
+        margin: 11mm 17mm 17mm 17mm;
+}
+@media print {
+
+}

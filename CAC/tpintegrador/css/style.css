@@ -22,6 +22,34 @@ nav a{
 #tickets{
 	color: #28a745;
 }
+/* footer */
+footer{
+	background-color: #1d506d;
+}
+footer ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+footer div{
+	width: 100%;
+}
+footer nav{
+	background-color: #1d506d;
+	
+}
+footer a{
+	text-decoration: none;
+	color: #ccc;
+	font-size: 1.2em;
+}
+
+footer li{
+	margin: 0 10px ;
+	padding: 0 10px;
+}
 
 /* screenshot */
 #screenshot{

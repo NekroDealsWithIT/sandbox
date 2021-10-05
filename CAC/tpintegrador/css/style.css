@@ -1,4 +1,5 @@
 /*testing*/
+/*
 body{
 	background-color: black;
 	color: aquamarine;
@@ -8,6 +9,23 @@ body::after{
 }
 img::after{
 	content: "Assets OK!";
+}
+*/
+
+/* nav */
+nav h3{
+	color: #fff;
+}
+nav a{
+	font-size: 1.5rem;
+}
+#tickets{
+	color: #28a745;
+}
+
+/* screenshot */
+#screenshot{
+	width: 100%;
 }
 
 /* Mediaqueries */

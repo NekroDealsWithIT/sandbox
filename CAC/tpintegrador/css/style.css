@@ -24,7 +24,11 @@ nav a{
 }
 /* footer */
 footer{
-	background-color: #1d506d;
+	background: rgb(26,54,68);
+	background: linear-gradient(90deg, rgba(26,54,68,1) 0%, rgba(29,80,109,1) 100%);
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
 }
 footer ul{
     width: 100%;
@@ -37,17 +41,20 @@ footer div{
 	width: 100%;
 }
 footer nav{
-	background-color: #1d506d;
-	
+	margin: 0!important;
+    padding: 0!important;
 }
 footer a{
 	text-decoration: none;
 	color: #ccc;
 	font-size: 1.2em;
 }
+.copyright{
+	background-color: black;
+}
 
 footer li{
-	margin: 0 10px ;
+	margin: 0 20px ;
 	padding: 0 10px;
 }
 

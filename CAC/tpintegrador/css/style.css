@@ -119,8 +119,31 @@ footer li{
 }
 
 /* Mediaqueries */
-@media screen and (max-width: 414px){
-
+@media screen and (max-width: 700px){
+	.classCelHide{
+		visibility: hidden;
+		display: none;
+	}
+	.scrollInside{
+		width: 90%;
+	}
+	footer a, footer p{
+		font-size: 1em;
+		line-height: 5px;
+	}	
+	footer .nav-item{
+		border: 1px solid cyan;
+		width: 90%;		
+		margin: 2.5px 0;
+		height: 4em;
+		border-radius: 5px;
+	}
+	footer ul{
+		margin: 0!important;
+	}
+	h1{
+		text-align: center;
+	}
 }
 @page {
         size: A4;

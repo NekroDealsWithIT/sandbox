@@ -1,1 +1,1 @@
-console.log("tp integrador: archivo ok!");
+console.log("archivo js ok!");

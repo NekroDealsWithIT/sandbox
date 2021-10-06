@@ -124,26 +124,6 @@ h1,h2,h3,h4,h5
 /* end all section */
 
 /* start botonera */
-/*
-.btn
-    {
-        background: var(--button-back-color);
-        font-size: 16px;
-        font-weight: bold;
-        
-        height: auto;
-        margin-top: 40px;
-        padding-top: 18px;
-        transition: all 0.4s ease-in-out;
-    }
-
-.btn:hover
-    {
-        background: var(--button-back-color-hover);
-        color: var(--button-color-hover);
-        border-color: transparent;
-    }
-*/
 .botonera a {
     position: relative;
     display: inline-block;
@@ -431,6 +411,22 @@ h1,h2,h3,h4,h5
         /*font-weight: 800;*/
         text-align: left;
     }
+
+#intro p.meeting {
+    text-align: end;
+    margin: 5px;
+}
+#intro p.meeting a{
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+/*
+#intro p.meeting a::before{
+    content: url("../images/calendly.png");
+    width:  1em;
+}
+*/
 /* end intro */
 
 /* start skills */

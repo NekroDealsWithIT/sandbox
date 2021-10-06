@@ -95,6 +95,7 @@ nav a{
 .cardTitles{
 	text-align: center;
     width: 100%;
+    margin-top: 10px;
 }
 
 .card-title {
@@ -129,8 +130,6 @@ startups
 
 /* footer */
 footer{
-	background: rgb(26,54,68);
-	background: linear-gradient(90deg, rgba(26,54,68,1) 0%, rgba(29,80,109,1) 100%);
   	left: 0;
   	bottom: 0;
   	width: 100%;
@@ -148,6 +147,10 @@ footer div{
 footer nav{
 	margin: 0!important;
     padding: 0!important;
+    background: rgb(26,54,68);
+	background: linear-gradient(90deg, rgba(26,54,68,1) 0%, rgba(29,80,109,1) 100%);
+	border-bottom-left-radius: 	0px !important;
+	border-bottom-right-radius:	0px !important;
 }
 footer a, footer p{
 	text-decoration: none;
@@ -198,6 +201,7 @@ footer li{
 	footer p{
 		line-height: 1px;
 	}
+	
 	footer .nav-item{
 		border: 1px solid cyan;
 		width: 90%;		

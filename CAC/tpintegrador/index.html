@@ -23,6 +23,7 @@
       <!-- bootstrap -->
       <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      
       <!-- toast -->
       <link rel="stylesheet" type="text/css" href="../assets/css/toast.style.css">
       <link rel="stylesheet" type="text/css" href="../assets/css/jquerysctipttop.css">
@@ -98,7 +99,7 @@
 		  		<h1>Oradores</h1>
 		  	</span>
 		</div>
-      <div class="cardsContainer mr-auto col-sm">
+      <div  id="cardsContainer" class="cardsContainer mr-auto col-sm">
 		<div class="card">
 		  <img class="card-img-top" src="img/steve.jpg" alt="steve">
 		  <div class="card-body">
@@ -130,8 +131,105 @@
       <!-- End Cards -->
  
       <!-- Start Carrousel -->
+
+
+<div id="carouselInfo" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselInfo" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselInfo" data-slide-to="1" class=""></li>
+    <li data-target="#carouselInfo" data-slide-to="2" class=""></li>
+    <li data-target="#carouselInfo" data-slide-to="3" class=""></li>
+    <li data-target="#carouselInfo" data-slide-to="4" class=""></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+      		<div class="col-sm">
+      				<img class="d-block w-100" src="img/honolulu-resize.jpg" alt="First slide">
+      	    </div>
+      		<div class="col-sm info">
+			    <h1>Honolulu</h1>
+			    <p>Honolulu es la capital y localidad más grande del estado de Hawái, en los Estados Unidos.</p>
+				<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
+				<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p>
+				<a href="#">Conoc&eacute; m&aacute;s</a>
+      	    </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="row">
+      		<div class="col-sm">
+      				<img class="d-block w-100" src="img/ba1.jpg" alt="First slide">
+      	    </div>
+      		<div class="col-sm info">
+				<h1>Buenos Aires - Octubre</h1>
+				<p>Buenos aires es la provincia y localidad m&aacute;s grande del estado de Argentina, en los Estados Unidos.</p>
+				<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
+				<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p>
+				<a href="#">Conoc&eacute; m&aacute;s</a>
+      	    </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="row">
+      		<div class="col-sm">
+      				<img class="d-block w-100" src="img/hawaii2.jpg" alt="First slide">
+      	    </div>
+      		<div class="col-sm info">
+			    <h1>Espa&ntilde;a - Octubre</h1>
+			    <p>Esta foto creo que es de Espa&ntilde;a parece que tiene rica comida y ahora tengo hambre, en los Estados Unidos.</p>
+				<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
+				<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p>				<a href="#">Conoc&eacute; m&aacute;s</a>
+      	    </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="row">
+      		<div class="col-sm">
+      				<img class="d-block w-100" src="img/ba3.jpg" alt="First slide">
+      	    </div>
+      		<div class="col-sm info">
+			    <h1>Obelisco - Octubre</h1>
+			    <p>En Buenos Aires - Argentina esta el obelisco en el medio de la 9 de julio, en los Estados Unidos.</p>
+				<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
+				<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p>
+				<a href="#">Conoc&eacute; m&aacute;s</a>
+      	    </div>
+      </div>
+    </div>
+    
+    <div class="carousel-item">
+      <div class="row">
+      		<div class="col-sm">
+      				<img class="d-block w-100" src="img/ba1.jpg" alt="First slide">
+      	    </div>
+      		<div class="col-sm info">
+			    <h1>Coso de agua - Octubre</h1>
+			    <p>En Buenos Aires - Argentina este es el coso de agua, en los Estados Unidos.</p>
+				<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
+				<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p>				<a href="#">Conoc&eacute; m&aacute;s</a>
+      	    </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev carouselControl" href="#carouselInfo" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next carouselControl" href="#carouselInfo" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Proximo</span>
+  </a>
+</div>
+
       <!-- End Carrousel -->
+
       <!-- Start Form -->
+
+
       <!-- End Form -->
 
       <!-- Start Footer -->

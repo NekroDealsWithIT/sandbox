@@ -790,8 +790,9 @@ footer .fa
         color: #000;
     }
     
-    .hidden{
+    .hidden, .nonPrintable{
         visibility: hidden;
+        display: none;
     }
 
     .PB {

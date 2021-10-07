@@ -26,6 +26,10 @@ nav a{
 #tickets{
 	color: #28a745;
 }
+#toggleImgRefLink{
+	color: #c9a53e;
+}
+
 /* scroll */
 .scroll{
 	height: 75vh;
@@ -80,7 +84,7 @@ nav a{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 	margin-bottom: 20px;
 }
 #cardsContainer .card{
@@ -103,6 +107,7 @@ nav a{
 	text-align: center;
     width: 100%;
     margin-top: 10px;
+    text-transform: uppercase;
 }
 
 #cardsContainer .card-title {
@@ -135,24 +140,9 @@ nav a{
 }
 
 /* Carousel */
-/*
-.carousel-item .active{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	flex-direction: row;
-}
-*/
 #carousel .row{
 	margin: 1px;
 }
-/*
-.carousel-item.carousel-caption, .carousel-item img{
-	width: 	50vw!important;
-	height: 50vh!important;
-	max-width: 50%;
-}
-*/
 #carousel{
 	width: 100%;
 }
@@ -183,10 +173,6 @@ nav a{
     text-shadow: 0 1px 2px rgb(0 0 0 / 60%);
     
     height: 474px;
-    /*
-    height: 100%;
-    width: 100%!important;
-    */
 }
 
 #carouselInfo{
@@ -212,6 +198,41 @@ nav a{
 	border-radius: 5px;
 	padding: 5px;
 	color: #fff;
+}
+
+/* Form */
+.formContainer{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 20px;
+	font-size: 	1.5em;
+}
+.formContainer .formTitles{
+	text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.formContainer form input{
+	width: 100%;
+}
+.formContainer form textarea{
+	width: 	100%;
+	margin: 10px 0;
+}
+.formContainer p.reminder{
+	font-size: 0.7em;
+}
+
+.formContainer input[type="submit"]{
+	background-color: #96c93e;
+	color: #fff;
+	font-weight: 600;
+}
+.formContainer input[type="submit"]{
+	border: none;
 }
 
 /* footer */
@@ -255,6 +276,13 @@ footer li{
 }
 
 /* screenshot */
+#imgRef{
+	width: 	100%;
+	text-align: center;
+	border: 1px solid red;
+	margin: 30px 0;
+}
+
 #screenshot{
 	width: 100%;
 }

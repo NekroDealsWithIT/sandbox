@@ -234,6 +234,11 @@ nav a{
 .formContainer input[type="submit"]{
 	border: none;
 }
+.formContainer span.ignite {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    /* text-decoration-color: wheat; */
+}
 
 /* footer */
 footer{

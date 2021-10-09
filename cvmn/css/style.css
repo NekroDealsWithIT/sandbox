@@ -11,6 +11,8 @@
     --button-color-hover: #000;
     --header-color: #00f9fd;
     --fa-color: #3fd48f; /*#D43F52;*/
+
+    --skills-progressBar-background: aqua;
     
     --experiencia-h4-color: #D43F52;
     --experiencia-card-border-color: tan;
@@ -497,6 +499,12 @@ h1,h2,h3,h4,h5
 #skills .progress .progress-bar-danger
     {
         background: #D43F52;
+    }
+
+#skills .progressBar{
+        background-color: var(--body-color);
+        width: 0;
+        transition: width 1s ease;
     }
 
 #skills .text-top
@@ -1029,6 +1037,7 @@ footer .fa
         display: flex;
         flex-wrap: wrap;
         margin: auto;
+        padding: 10px;
     }
     .rotate{
         height: 2em;

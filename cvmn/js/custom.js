@@ -78,7 +78,7 @@ const shareData = {
 	url: window.location.href
 }
 
-if (!navigator.canShare(shareData)){
+if (navigator.canShare==undefined||!navigator.canShare(shareData)){
 	document.querySelector(".shareContainer").style.display='none';
 }
 

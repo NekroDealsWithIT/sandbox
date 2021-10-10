@@ -4,15 +4,12 @@
     --body-background: #000000;
     --experiencia-me-color: #FFF;
     --name-color: #D43F52;
-    --name-border-color: #643fd4; /*#D43F52*/
     --button-back-color: transparent;
     --button-back-color-hover: #03e9f4;
     --button-color: #03e9f4;
     --button-color-hover: #000;
     --header-color: #00f9fd;
-    --fa-color: #3fd48f; /*#D43F52;*/
-
-    --skills-progressBar-background: aqua;
+    --fa-color: #D43F52;
     
     --experiencia-h4-color: #D43F52;
     --experiencia-card-border-color: tan;
@@ -103,7 +100,6 @@ ul {
         text-align: center;
         vertical-align: middle;
         transition: all 0.4s ease-in;
-        font-weight: 800;
     }
 .fa:hover
     {
@@ -141,7 +137,7 @@ h1,h2,h3,h4,h5
     margin-top: 40px;
     letter-spacing: 2px;
     width: 180px;
-    border: 1px solid var(--name-border-color);
+    border-color: transparent;
     background: var(--button-back-color);
 }
 
@@ -378,7 +374,7 @@ h1,h2,h3,h4,h5
 #intro .introHeader
     {
         display: inline-flex;
-        border: 2px solid var(--name-border-color);
+        border: 2px solid var(--name-color);
         color: var(--name-color);
         display: inline-block;
         letter-spacing: 6px;
@@ -390,25 +386,15 @@ h1,h2,h3,h4,h5
     }
 
 #intro .fa{
+    margin-left: 50px;
     padding-left: 7px;
-    margin: 2px 20px;
 }
 
-/*
-#intro img:not(".QR"){
+#intro h1 img{
     border: 1px solid aliceblue;
     border-radius: 50%;
-    width: 150px;
+    width: 100px;
 }
-*/
-
-#intro .imgHeaderContainer img{
-    border-radius: 15%;
-    width: 175px;
-    filter: brightness(0.8);
-    border: 1px solid var(--name-border-color);
-}
-
 
 #intro .description p{
     padding: 5px;
@@ -418,11 +404,6 @@ h1,h2,h3,h4,h5
     {
         padding-bottom: 10px;
     }
-
-#intro .imgHeaderContainer{
-    text-align: center ;
-}
-
 
 #intro p
     {
@@ -503,14 +484,6 @@ h1,h2,h3,h4,h5
         background: #D43F52;
     }
 
-#skills .progressBar{
-        background-color: var(--body-color);
-        width: 0;
-        transition: width 1s ease;
-    }
-[data-length] {
-  width: attr(data-length);
-}
 #skills .text-top
     {
         padding-top: 50px;
@@ -527,12 +500,6 @@ h1,h2,h3,h4,h5
         font-weight: bold;
         float: right;
     }
-#skills colSkills{
-        min-width: 18em;
-    }
-#skills .col-xs-4.wow.fadeInUp.colSkills.animated {
-    min-width: 18em;
-}
 
 /* end skills */
 
@@ -871,7 +838,25 @@ footer .fa
         visibility: visible!important;
         display: block!important;
     }
-    /* Header */
+    .QR{
+        display: flex;
+        height: 70%;
+        text-align: center;
+    }
+    .QR p{
+        margin: 5px;
+        min-width: 33.33%;
+    }
+    .QR img{
+        margin: auto;
+        min-width: 3cm;
+        visibility: visible!important;
+        position: absolute;
+        bottom: 10px;
+        left: 25%;
+        margin-bottom: 5px;
+    }
+
 
     #intro .introHeader{
         border: 2px solid var(--name-color);
@@ -884,24 +869,11 @@ footer .fa
         border-radius: 20px;
     }
     #intro .introHeader img{
-        width: 80px;
-        border-radius: 15%;
+        width: 50px;
     }
-    #intro .introHeaderTitles {
-        display: inline-flex;
-        /* align-content: stretch; */
-        flex-wrap: nowrap;
-        align-items: center;
-    }    
     #intro .fa {
         padding-left: 0px;
         height: 200px;
-    }
-    #intro .introHeader p{
-        letter-spacing: 0;
-    }
-    #intro .description p{
-        padding: 5px;
     }
     #intro .fa,
     .fa
@@ -917,26 +889,6 @@ footer .fa
     {
         font-weight: 800;
     }
-    #intro .QR{
-        display: flex;
-        height: 70%;
-        text-align: center;
-    }
-    #intro .QR p{
-        margin: 5px;
-        min-width: 33.33%;
-    }
-    #intro .QR img{
-        margin: auto;
-        min-width: 3cm;
-        visibility: visible!important;
-        position: absolute;
-        bottom: 10px;
-        left: 25%;
-        margin-bottom: 5px;
-    }
-    
-    /* skills */
     #skills .row
     {
         display: inline-flex;  
@@ -952,7 +904,6 @@ footer .fa
         margin-top: 0px;
     }
 
-    /* experiencia */
     #experiencia .card-link{
         visibility: hidden;
     }
@@ -963,8 +914,6 @@ footer .fa
         border: 0;
         margin: 5px;
     }
-    
-    /* notes */
     #notes .container{
         margin-left: 5vw;
         border: none;
@@ -977,6 +926,12 @@ footer .fa
         border-bottom: 1px solid #000;
     }
 
+    .introHeader p{
+        letter-spacing: 0;
+    }
+    .description p{
+        padding: 5px;
+    }
 }
 
 @media screen and (max-width: 414px){
@@ -986,18 +941,20 @@ footer .fa
     .fa {
         margin: 10px;
     }
+
     .botonera a {
-        border: 1px solid var(--name-border-color);
+        border: 1px solid wheat;
         padding: 10px;
         font-size: 10px;
         margin-top: 10px;
         width: 130px;
     }
+ 
     .botonera a:focus{
         color: var(--button-color);
         background: var(--button-back-color);
         box-shadow: none;
-        border: 1px solid var(--name-border-color);
+        border: 1px solid wheat;
     }
     #intro::before,
     #contact::before,
@@ -1015,12 +972,6 @@ footer .fa
     #intro::before {
         background-image: url("../images/intro-bg-411x559.jpg");
     }
-
-    #intro .introHeader img{
-        border-radius: 50%;
-        width: 100px;
-    }
-
     #skills::before {
         background-image: url("../images/server-354x499.gif");
     }
@@ -1039,7 +990,6 @@ footer .fa
         display: flex;
         flex-wrap: wrap;
         margin: auto;
-        padding: 10px;
     }
     .rotate{
         height: 2em;

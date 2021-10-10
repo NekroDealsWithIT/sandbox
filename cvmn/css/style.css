@@ -141,7 +141,7 @@ h1,h2,h3,h4,h5
     margin-top: 40px;
     letter-spacing: 2px;
     width: 180px;
-    border-color: transparent;
+    border: 1px solid var(--name-border-color);
     background: var(--button-back-color);
 }
 

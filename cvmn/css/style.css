@@ -406,7 +406,7 @@ h1,h2,h3,h4,h5
     border-radius: 15%;
     width: 175px;
     filter: brightness(0.8);
-    border: 1px solid var(--name-border-color);
+    border: 13333px solid var(--name-border-color);
 }
 
 
@@ -988,7 +988,7 @@ footer .fa
     }
 
     .botonera a {
-        border: 1px solid wheat;
+        border: 1px solid var(--name-border-color);
         padding: 10px;
         font-size: 10px;
         margin-top: 10px;

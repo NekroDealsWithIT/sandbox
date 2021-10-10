@@ -78,7 +78,7 @@ const shareData = {
 	url: window.location.href
 }
 
-if (navigator.canShare==undefined||!navigator.canShare(shareData)){
+if (!navigator.canShare(shareData)){
 	document.querySelector(".shareContainer").style.display='none';
 }
 
@@ -94,16 +94,6 @@ shareButton.addEventListener('click', async () => {
 
 
 $(document).ready(function() {
-	//Mozzilla detection
-	try{
-		//$.browser.mozilla
-		if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-			//document.getElementById("print").remove();
-			$('#print').remove();
-		}
-	}catch (e){
-		console.log(e);
-	}
 	$('#fullpage').fullpage({
 		'verticalCentered': false,
 		'scrollingSpeed': 600,
@@ -128,8 +118,6 @@ $(document).ready(function() {
     $('a').click(function(){
     	this.blur();
     });
-	//Lang check
-	checkLang();
 });
 
 

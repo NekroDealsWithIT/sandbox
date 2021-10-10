@@ -406,7 +406,7 @@ h1,h2,h3,h4,h5
     border-radius: 15%;
     width: 175px;
     filter: brightness(0.8);
-    border: 13333px solid var(--name-border-color);
+    border: 1px solid var(--name-border-color);
 }
 
 
@@ -986,7 +986,6 @@ footer .fa
     .fa {
         margin: 10px;
     }
-
     .botonera a {
         border: 1px solid var(--name-border-color);
         padding: 10px;
@@ -994,12 +993,11 @@ footer .fa
         margin-top: 10px;
         width: 130px;
     }
- 
     .botonera a:focus{
         color: var(--button-color);
         background: var(--button-back-color);
         box-shadow: none;
-        border: 1px solid wheat;
+        border: 1px solid var(--name-border-color);
     }
     #intro::before,
     #contact::before,

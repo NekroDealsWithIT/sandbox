@@ -798,6 +798,7 @@ footer .fa
 .toast-item-wrapper.nonPrintable.success.toast-bottom-right.fullscreen {
     background-color: #2e29ab;
     text-decoration: none;
+    transition: opacity 1.5s ease;// .1s; // effect on 0.3 millisecond  
 }
 
 .hidden

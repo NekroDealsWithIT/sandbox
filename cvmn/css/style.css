@@ -506,7 +506,9 @@ h1,h2,h3,h4,h5
         width: 0;
         transition: width 1s ease;
     }
-
+[data-length] {
+  width: attr(data-length);
+}
 #skills .text-top
     {
         padding-top: 50px;

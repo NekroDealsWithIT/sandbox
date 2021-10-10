@@ -22,7 +22,7 @@ if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"){pos='es';}
 function checkLang(){
 	if(getCookie("avoidLangCheck")==''&&lang!=pos){
 		if(lang=='es'||lang=='en'){
-			addToast('<div style="text-align:center;"><u>'+localInfo[pos]['toastTitle']+'</u></div>','<br><div style="display:flex;justify-content:space-between;"><p><a href="'+localInfo[pos]['link']+'" style="color:white;">'+localInfo[pos]['toastDesc']+'</a></p><p><a onclick="avoidToastMSG();"  style="color:wheat;">'+localInfo[pos]['avoid']+'</a></div>',9999999);
+			addToast('<div style="text-align:center;"><u>'+localInfo[pos]['toastTitle']+'</u></div>','<br><div style="display:flex;justify-content:space-between;"><p><a href="'+localInfo[pos]['link']+'" style="color:white;">'+localInfo[pos]['toastDesc']+'</a></p><p><a onclick="avoidToastMSG();"  style="color:wheat;">'+localInfo[pos]['avoid']+'</a></div>',8000);
 		}
 	}
 }

@@ -3,13 +3,13 @@ const localInfo={
   "en": {
     "avoid": "Evitar este mensaje",
     "toastTitle": "Espa&ntilde;ol disponible",
-    "toastDesc":"Ir a espa&ntilde;ol",
+    "toastDesc":"Ir a Espa&ntilde;ol",
     "link":"es.html"
   },
   "es": {
     "avoid": "Avoid this message",
     "toastTitle": "English available",
-    "toastDesc":"Go to english",
+    "toastDesc":"Go to English",
     "link":"index.html"
   }
 }
@@ -78,7 +78,7 @@ const shareData = {
 	url: window.location.href
 }
 
-if (!navigator.canShare(shareData)){
+if (navigator.canShare==undefined||!navigator.canShare(shareData)){
 	document.querySelector(".shareContainer").style.display='none';
 }
 
@@ -94,6 +94,16 @@ shareButton.addEventListener('click', async () => {
 
 
 $(document).ready(function() {
+	//Mozzilla detection
+	try{
+		//$.browser.mozilla
+		if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+			//document.getElementById("print").remove();
+			$('#print').remove();
+		}
+	}catch (e){
+		console.log(e);
+	}
 	$('#fullpage').fullpage({
 		'verticalCentered': false,
 		'scrollingSpeed': 600,
@@ -118,6 +128,8 @@ $(document).ready(function() {
     $('a').click(function(){
     	this.blur();
     });
+	//Lang check
+	checkLang();
 });
 
 

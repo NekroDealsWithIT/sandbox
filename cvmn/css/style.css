@@ -406,7 +406,9 @@ h1,h2,h3,h4,h5
     border-radius: 15%;
     width: 175px;
     filter: brightness(0.8);
+    border: 1px solid var(--name-border-color);
 }
+
 
 #intro .description p{
     padding: 5px;

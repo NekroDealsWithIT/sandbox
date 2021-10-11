@@ -97,9 +97,10 @@ $(document).ready(function() {
 	//Mozzilla detection
 	try{
 		//$.browser.mozilla
-		if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+		if ((('netscape' in window) && / rv:/.test(navigator.userAgent))||navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
 			//document.getElementById("print").remove();
 			$('#print').remove();
+			addCustomSS('firefox.css');
 		}
 	}catch (e){
 		console.log(e);
@@ -139,3 +140,11 @@ $(function()
     new WOW().init();
     $(".rotate").textrotator();
 })
+
+function addCustomSS(customSS){
+	let ss = document.createElement("link");
+	ss.type="text/css";
+	ss.rel="stylesheet";
+	ss.href="css/"+customSS;
+	document.head.appendChild(ss);
+}

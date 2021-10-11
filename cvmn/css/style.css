@@ -442,7 +442,13 @@ background-image: url("img/building.jpg");
     text-align: center;
     text-decoration: none;
     width: 100%;
+    /*color: var(--fa-color);*/
 }
+#intro p.meeting a:hover{
+    color: #000;
+    background-color: var(--fa-color);
+}
+
 /*
 #intro p.meeting a::before{
     content: url("../images/calendly.png");
@@ -611,7 +617,7 @@ background-image: url("img/building.jpg");
 
 #courses::before {
       content: "";
-      /*background-image: url('../images/courses.gif');*/
+      background-image: url('../images/webDevelopment.gif');
       background-position: center center;
       background-size: cover;
       position: absolute;
@@ -621,8 +627,10 @@ background-image: url("img/building.jpg");
       bottom: 0px;
       left: 0px;
       opacity: 0.07;
-      /*filter: blur(5px) grayscale(50%);*/
+      filter: blur(5px) grayscale(75%) brightness(.5);
       background-repeat: no-repeat;
+
+      background-attachment: fixed;
 }
 
 #courses h2
@@ -659,6 +667,8 @@ background-image: url("img/building.jpg");
     {
         text-align: left;
         padding-left: 4%;
+        display: flex;
+        justify-content: space-around;
     }
 .courses li:before
     {
@@ -885,14 +895,11 @@ footer .fa
     /* Header */
 
     #intro .introHeader{
-        border: 2px solid var(--name-color);
-        color: var(--name-color);
         letter-spacing: 4px;
         padding: 10px 10px;
         margin: 10px 0;
         width: 90%;
-        height: 240px;
-        border-radius: 20px;
+        height: 250px;
     }
     #intro .introHeader img{
         width: 80px;

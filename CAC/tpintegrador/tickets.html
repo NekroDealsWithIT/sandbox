@@ -42,116 +42,43 @@
 		<include src="navBar.html">Loading...</include>
 		<!-- End NavBar -->
 
-		<!-- Start Scroll -->
-		<div class="scroll">
-			<!-- segundo medio -->
-			<div class="scrollInside celHide"></div>
-			<div class="scrollInside">
-				<h1>Conf Bs As</h1>
-				<p>Bs As llega por primera vez a la Argentina. Un evento para compartir con nuestra comunidad el conocimiento y experiencia de los expertos que est&aacute;n creando el futuro de internet. Ven a conocer a miembros del evento, a otros estudiantes de codo a codo y los oradores de primer nivel que tenemos para t&iacute;. Te esperamos!</p>
-				<p> <a href="#" class="scrollLink">Quiero ser orador</a> <a href="#" class="scrollLink">Compran tickets</a> </p>
-			</div>
-		</div>
-		<!-- End Scroll -->
 		<!-- Start Cards -->
-		<div class="cardsContainer"> <span class="cardTitles">
-				<h5>Conoce a los</h5>
-		  		<h1>Oradores</h1>
-		  	</span> </div>
-		<div id="cardsContainer" class="cardsContainer mr-auto col-sm">
-			<div class="card"> <img class="card-img-top" src="img/steve.jpg" alt="steve">
-				<div class="card-body"> <span class="javascript">Javascript</span> <span class="react">React</span>
-					<h5 class="card-title">Steve Jobs</h5>
-					<p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+		<div id="cardsContainerJS" class="cardsContainer mr-auto col-sm">
+			<div class="card col-2 studentCard" data-value=80 onclick="setDiscount(this);">
+				<div class="card-body"> 
+					<h2>Estudiante</h2>
+					<p class="descuentoInfo">Tienen un descuento</p>
+					<p class="descuento">80%</p>
+					<p class="reminder">* presentar documentaci&oacute;n</p>
 				</div>
 			</div>
-			<div class="card"> <img class="card-img-top" src="img/bill.jpg" alt="bill">
-				<div class="card-body"> <span class="javascript">Javascript</span> <span class="react">React</span>
-					<h5 class="card-title">Bill Gates</h5>
-					<p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+			<div class="card col-2 traineeCard" data-value=50 onclick="setDiscount(this);">
+				<div class="card-body"> 
+					<h2>Trainee</h2>
+					<p class="descuentoInfo">Tienen un descuento</p>
+					<p class="descuento">50%</p>
+					<p class="reminder">* presentar documentaci&oacute;n</p>
 				</div>
 			</div>
-			<div class="card"> <img class="card-img-top" src="img/ada.jpeg" alt="ada">
-				<div class="card-body"> <span class="negocios">Negocios</span> <span class="startups">Startups</span>
-					<h5 class="card-title">Ada Lovelace</h5>
-					<p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+			<div class="card col-2 juniorCard" data-value=15 onclick="setDiscount(this);">
+				<div class="card-body"> 
+					<h2>Junior</h2>
+					<p class="descuentoInfo">Tienen un descuento</p>
+					<p class="descuento">15%</p>
+					<p class="reminder">* presentar documentaci&oacute;n</p>
 				</div>
 			</div>
 		</div>
 		<!-- End Cards -->
-		<!-- Start Carrousel -->
-		<div id="carouselInfo" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselInfo" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselInfo" data-slide-to="1" class=""></li>
-				<li data-target="#carouselInfo" data-slide-to="2" class=""></li>
-				<li data-target="#carouselInfo" data-slide-to="3" class=""></li>
-				<li data-target="#carouselInfo" data-slide-to="4" class=""></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="row">
-						<div class="col-sm"> <img class="d-block w-100" src="img/honolulu-resize.jpg" alt="First slide"> </div>
-						<div class="col-sm info">
-							<h1>Honolulu</h1>
-							<p>Honolulu es la capital y localidad más grande del estado de Hawái, en los Estados Unidos.</p>
-							<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
-							<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p> <a href="#">Conoc&eacute; m&aacute;s</a> </div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-sm"> <img class="d-block w-100" src="img/ba1.jpg" alt="First slide"> </div>
-						<div class="col-sm info">
-							<h1>Buenos Aires - Octubre</h1>
-							<p>Buenos aires es la provincia y localidad m&aacute;s grande del estado de Argentina, en los Estados Unidos.</p>
-							<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
-							<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p> <a href="#">Conoc&eacute; m&aacute;s</a> </div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-sm"> <img class="d-block w-100" src="img/hawaii2.jpg" alt="First slide"> </div>
-						<div class="col-sm info">
-							<h1>Espa&ntilde;a - Octubre</h1>
-							<p>Esta foto creo que es de Espa&ntilde;a parece que tiene rica comida y ahora tengo hambre, en los Estados Unidos.</p>
-							<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
-							<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p> <a href="#">Conoc&eacute; m&aacute;s</a> </div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-sm"> <img class="d-block w-100" src="img/ba3.jpg" alt="First slide"> </div>
-						<div class="col-sm info">
-							<h1>Obelisco - Octubre</h1>
-							<p>En Buenos Aires - Argentina esta el obelisco en el medio de la 9 de julio, en los Estados Unidos.</p>
-							<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
-							<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p> <a href="#">Conoc&eacute; m&aacute;s</a> </div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-sm"> <img class="d-block w-100" src="img/ba1.jpg" alt="First slide"> </div>
-						<div class="col-sm info">
-							<h1>Coso de agua - Octubre</h1>
-							<p>En Buenos Aires - Argentina este es el coso de agua, en los Estados Unidos.</p>
-							<p>Honolulu es la más sureña de entre las principales ciudades estadounidenses.</p>
-							<p>Aunque el nombre de Honolulu se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condado de Honolulu han formado una ciudad-condado consolidada que cubre toda la isla (aproximadamente 600 km² de superficie).</p> <a href="#">Conoc&eacute; m&aacute;s</a> </div>
-					</div>
-				</div>
-			</div>
-			<a class="carousel-control-prev carouselControl" href="#carouselInfo" role="button" data-slide="prev"> <span class="carousel-control-prev-icon " aria-hidden="true"></span> <span class="sr-only">Anterior</span> </a>
-			<a class="carousel-control-next carouselControl" href="#carouselInfo" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Proximo</span> </a>
-		</div>
-		<!-- End Carrousel -->
+
 		<!-- Start Form -->
-		<div class="formContainer"> <span class="formTitles">
-				<h5>Convi&eacute;rtete en</h5>
-		  		<h1>Orador</h1>
+		<div class="formContainer">
+			<span class="formTitles">
+				<h5>VENTA</h5>
+		  		<h1>VALOR DE TICKET $<span id="ticketCost"></span> <span id="descuentoTitulo"></span></h1>
 		  	</span>
 			<div class="row">
-				<form id="oradorForm" class="col-sm" method="post">
-					<p>An&oacute;tate como orador para dar una <span class="ignite">charla ignite</span>. Cu&eacute;ntanos de que quieres hablar!</p>
+				<form id="ticketsForm" class="col-sm" method="post">
 					<div class="row">
 						<div class="col-sm">
 							<input type="text" name="name" placeholder="Nombre" required>
@@ -162,13 +89,37 @@
 					</div>
 					<div class="row">
 						<div class="col-sm">
-							<textarea name="details" placeholder="Sobre Qu&eacute; quieres hablar?" required></textarea>
+							<input type="email" name="email" placeholder="Correo" required>
 						</div>
 					</div>
-					<p class="reminder">Recuerda incluir un t&iacute;tulo para tu charla</p>
-					<p>
-						<input type="submit">
-					</p>
+					<div class="row">
+						<div class="col-sm">
+							<label for="categorySelect">Cantidad</label>
+							<input type="number" min="1" name="qty" id="qty" onchange="calcularTotal();" placeholder="Cantidad" required>
+						</div>
+						<div class="col-sm">
+							<label for="categorySelect">Categoria</label>
+							<select name="category" id="categorySelect" onchange="calcularTotal();">
+							  <option value=0 selected>Sin descuento</option>
+							  <option value=80>Estudiante</option>
+							  <option value=50>Trainee</option>
+							  <option value=15>Junior</option>
+							</select>								
+						</div>
+					</div>					
+					<div class="row">
+						<div class="col-sm">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm">
+							<input type="reset" value="Borrar">
+						</div>
+						<div class="col-sm">
+							<input type="submit" id="ticketSubmit" value="Resumen">
+						</div>						
+					</div>
+					<p class="resultadoTickets">Total a Pagar: <span id="totalAPagar"></span></p>
 				</form>
 			</div>
 		</div>
@@ -178,7 +129,7 @@
 		<!-- End Footer -->
 		<div id="imgRef" class="hidden">
 			<hr>
-			<h1>Img Ref</h1> <img id="screenshot" src="img/screenshot.jpeg"><h1>FIN Img Ref</h1>
+			<h1>Img Ref</h1> <img id="screenshot" src="img/screenshot2.png"><h1>FIN Img Ref</h1>
 		</div>
 	</div>
 	<!-- JS -->

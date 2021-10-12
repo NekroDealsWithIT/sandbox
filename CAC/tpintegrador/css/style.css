@@ -1,16 +1,15 @@
-/*testing*/
-/*
-body{
-	background-color: black;
-	color: aquamarine;
+/* Vars */
+:root{
+	--student-border: #2c92ff;
+	--trainee-border: #69c3d1;
+	--junior-border: #f7c83c;
+	--reminder-gray: #7f858a;
+	--button-bg-green: #96c93e;
+	--total-tickets-bg: #cce5ff;
+	--total-tickets-color: #3a65aa;
+	--offSale-color: red;
+	--offSale-bg: #fffb7f;
 }
-body::after{
-	content: "CSS OK!";
-}
-img::after{
-	content: "Assets OK!";
-}
-*/
 
 /* nav */
 .upperNav{
@@ -239,6 +238,91 @@ nav a{
     text-decoration-style: dotted;
 }
 
+/* Tickets */
+#cardsContainerJS{
+	line-height: 30px;
+}
+
+#cardsContainerJS .studentCard,
+#cardsContainerJS .traineeCard,
+#cardsContainerJS .juniorCard{
+	font-size: 1.5em;
+	text-align: center;
+	min-width: 14em;
+	min-height: 12em;
+	margin: 5px 2px;
+}
+#cardsContainerJS .card.col-2.active {
+    background-color: antiquewhite;
+}
+#cardsContainerJS .descuentoInfo{
+	font-size: 1.6rem;
+}
+
+#cardsContainerJS .descuento{
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+#cardsContainerJS .reminder{
+	font-size: 1.2rem;
+	color: var(--reminder-gray);
+}
+
+
+#cardsContainerJS .studentCard{
+	border: 2px solid var(--student-border);
+}
+
+#cardsContainerJS .traineeCard{
+	border: 2px solid var(--trainee-border);
+}
+
+#cardsContainerJS .juniorCard{
+	border: 2px solid var(--junior-border);
+}
+#ticketsForm{
+
+}
+#ticketsForm input,
+#ticketsForm select{
+	width: 100%;
+	margin: 5px 1px;
+}
+
+#ticketsForm input[type="submit"],
+#ticketsForm input[type="reset"]{
+	width: 100%;
+	color: #fff;
+	background-color: var(--button-bg-green);
+	border: none;
+	border-radius: 5px;
+	min-height: 2em;
+	font-weight: 600;
+	font-size: 1.2em;
+}
+
+#ticketsForm .resultadoTickets{
+    background-color: var(--total-tickets-bg);
+    color: var(--total-tickets-color);
+    min-height: 2em;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.offSale{
+	color: var(--offSale-color);
+    background-color: var(--offSale-bg);
+    font-size: 13px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid var(--offSale-color);
+    text-align: center;
+}
+
+}
 /* footer */
 footer{
   	left: 0;

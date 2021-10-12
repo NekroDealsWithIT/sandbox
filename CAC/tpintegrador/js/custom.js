@@ -53,7 +53,7 @@ $("#ticketsForm").submit(function(e) {
 
 function setDiscount(e){
     document.getElementById("categorySelect").value=e.dataset.value;
-    setActiveCard(e.dataset.value);
+    calcularTotal();
 }
 
 function setActiveCard(discount){
@@ -77,7 +77,6 @@ function calcularTotal(){
 
     setActiveCard(cat);
 
-    if(qty<=0){return null;}
     //if(!qty>0){return null;}
 
     textTotal='$ ' + qty*final + ' ('+ qty +' X $'+ final +') ';
@@ -87,8 +86,8 @@ function calcularTotal(){
     }
     
     document.getElementById("descuentoTitulo").innerHTML=textTitle;
+    if(qty<=0){return null;}
     document.getElementById("totalAPagar").innerHTML=textTotal;
-
 
     return final*qty;
 }

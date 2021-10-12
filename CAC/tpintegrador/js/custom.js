@@ -34,3 +34,27 @@ function toggleImgRef(){
 	let accion=element.classList.contains('hidden')?'MOSTRAR':'OCULTAR';
 	toggleImgRefLink.innerHTML=accion+' IMG REFERENCIA <span class="sr-only">IMAGEN DE REFERENCIA</span>';
 }
+
+/* Auto Import HTML */
+/*
+$(function () {
+  var includes = $('[data-include]')
+  $.each(includes, function () {
+    var file = '' + $(this).data('include') + '.html';
+    $(this).load(file);
+  })
+});
+*/
+
+(() => {
+    const includes = document.getElementsByTagName('include');
+    [].forEach.call(includes, i => {
+        let filePath = i.getAttribute('src');
+        fetch(filePath).then(file => {
+            file.text().then(content => {
+                i.insertAdjacentHTML('afterend', content);
+                i.remove();
+            });
+        });
+    });
+})();

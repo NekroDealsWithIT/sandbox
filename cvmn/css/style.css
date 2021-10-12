@@ -407,6 +407,10 @@ h1,h2,h3,h4,h5
     width: 175px;
     filter: brightness(0.8);
     border: 1px solid var(--name-color);
+    transition: 1s ease;
+}
+#intro .imgHeaderContainer img:hover{
+    /*background-color: var(--name-color);*/
 }
 
 #intro .imgHeaderContainer img::before{
@@ -590,7 +594,7 @@ background-image: url("img/building.jpg");
 
 #experiencia li
     {
-        font-size: 10px;
+        font-size: 14px;
     }
 
 #experiencia a.card-link 
@@ -981,7 +985,12 @@ footer .fa
         border: 0;
         margin: 5px;
     }
-    
+     #experiencia li
+    {
+        font-size: 10px;
+    }
+   
+ 
     /* notes */
     #notes .container{
         margin-left: 5vw;

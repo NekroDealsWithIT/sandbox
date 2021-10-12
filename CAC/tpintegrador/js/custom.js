@@ -46,6 +46,7 @@ $(function () {
 });
 */
 
+/* Auto Import HTML */
 (() => {
     const includes = document.getElementsByTagName('include');
     [].forEach.call(includes, i => {

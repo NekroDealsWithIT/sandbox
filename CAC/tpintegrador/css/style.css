@@ -330,6 +330,10 @@ footer{
   	width: 100%;
   	position: sticky;
 }
+#footerPage{
+	position: sticky;
+	bottom: 0;
+}
 footer ul{
     width: 100%;
     display: flex;
@@ -398,6 +402,10 @@ footer li{
 		margin: 15px;	
 	}
 	/* Footer */
+	#footerPage{
+		position: relative;
+		bottom: auto;
+	}
 	footer a, footer p{
 		font-size: 1em;
 	}	

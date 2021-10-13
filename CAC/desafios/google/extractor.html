@@ -3,10 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>Extractor Palabras</title>
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<!-- Script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 </head>
 <body onload="">
 
@@ -22,16 +26,16 @@
 
 
 	<script type="text/javascript">
-		var baseUrl="https://diccionariofacil.org/diccionario/";
+		var letrasFinal=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+		var baseUrl="http://diccionariofacil.org/diccionario/";
 		var contentUrl="$letra.html?p=$indice.html";
 		var letras=[];
-		/*
-		document.querySelectorAll(".selectedKey, .nada").forEach(
+		document.querySelectorAll("#listadoLetras a").forEach(
 			e=>{
-				if(e.href!=undefined)urls.push(e.innerText);
+				letras.push(e.innerText);
 			});
-		console.log(urls);
-		*/
+		console.log(letras);
 /*
 let s = document.createElement("script");
 s.src = baseUrl;
@@ -49,19 +53,29 @@ $.get( baseUrl, function( data ) {
   console.log( data ); // HTML content of the jQuery.ajax page
 });
 */
+
+  $.ajax(baseUrl, {
+    success: function(response) {
+      //$("#contenidoUrl").html(response);
+      console.log(response)
+    }
+  }); 
 		
-		
-		function getIframe(element,contentDOM){
-			var iframe = document.getElementById("iframeActual");
-			var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
-			elmnt.style.display = "none";	
-			document.getElementById("contenidoUrl").innerHTML=iframe.contentWindow.document;
+		function getIframe(iframe){
+			//var iframe = document.getElementById("iframeActual");
+			//var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+			//elmnt.style.display = "none";	
+			//iframe.
+			//document.getElementById("contenidoUrl").innerHTML=iframe.contentWindow.document;
+			console.warn(iframe.innerHtml);
+			console.log(document.body);
 		}
 
-		contenidoUrl.addEventListener("load", function() {
+		iframeActual.addEventListener("load", function() {
 		  //this.contentWindow.document.notesform.ID_client.value = Client;
-		  getIframe(this,document.getElementById("contenidoUrl"))
-		  return this;
+		  console.log(iframeActual);
+		  getIframe(iframeActual);
+		  return iframeActual;
 		});		
 
 		function doFetch(url){

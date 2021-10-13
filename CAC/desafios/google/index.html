@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Desafio Google CaC</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="js/custom.js"> </script>
+</head>
+<body>
+
+	<label for="searchInput">Realizar Busqueda:</label>
+
+	<input list="listChoices" id="searchInput" name="searchText" onchange="searchRecommendation(this.value);" oninput="searchRecommendation(this.value);" />
+
+	<datalist id="listChoices">
+	    <option value="Chocolate">
+	    <option value="Coconut">
+	    <option value="Mint">
+	    <option value="Strawberry">
+	    <option value="Vanilla">
+	</datalist>
+
+</body>
+</html>

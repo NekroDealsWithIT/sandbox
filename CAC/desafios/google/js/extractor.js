@@ -1,0 +1,1 @@
+var palabras="";document.querySelectorAll("h4").forEach(e=>{palabras+='"'+e.innerText+'",';});palabras;

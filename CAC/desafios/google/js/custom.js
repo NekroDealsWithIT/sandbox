@@ -21,6 +21,7 @@ function realizarBusqueda(){
 	}else{
 		document.querySelector('.JAJAJJAJAJAJAJAJA').classList.add('hidden');
 		document.querySelector('.facepalm').classList.remove('hidden');
+		searchInput.value='google';
 		searchInput.focus();
 	}
 }

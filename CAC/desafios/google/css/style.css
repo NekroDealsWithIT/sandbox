@@ -131,7 +131,7 @@ body{
     justify-content: center;
 }
 
-input[type="submit"] {
+input[type="submit"],input .feelingLucky {
     background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
     border-radius: 4px;
@@ -147,7 +147,7 @@ input[type="submit"] {
     cursor: pointer;
     user-select: none;
 }
-input[type="submit"]:hover {
+input[type="submit"]:hover,input .feelingLucky:hover {
     box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
     background-color: #f8f9fa;
     border: 1px solid #dadce0;

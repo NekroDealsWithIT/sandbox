@@ -13,7 +13,13 @@ document.querySelector(".micSVG").addEventListener('click',function handler(even
 	alert('Tampoco la NASA.');
 });
 
-function realizarBusqueda(){
+document.querySelector('.googleSearch').addEventListener("click", function(event){
+  event.preventDefault();
+  realizarBusqueda(this);
+});
+
+function realizarBusqueda(e){
+	e.preventDefault;
 	let texto=searchInput.value;
 	if (texto.length>0){
 		alert('Ya te direcciono para buscar: '+texto);

@@ -47,3 +47,14 @@ function mostrarPalabras(){
 function serverView(){
 	document.querySelector(".container-fluid").classList.toggle('serverView');
 }
+
+function checkFocus(){
+	if(window.innerWidth<801){
+		let footer=document.querySelector(".pais");
+		if(document.getElementById('searchInput').matches(':focus')){
+			footer.classList.add('hidden');
+		}else{
+			footer.classList.remove('hidden');
+		}
+	}
+}

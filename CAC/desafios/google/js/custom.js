@@ -43,3 +43,7 @@ function mostrarPalabras(){
 		document.querySelector('#predictorWords').innerHTML+=words;
 	}
 }
+
+function serverView(){
+	document.querySelector(".container-fluid").classList.toggle('serverView');
+}

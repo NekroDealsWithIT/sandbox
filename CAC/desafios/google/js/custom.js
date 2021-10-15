@@ -1,4 +1,4 @@
-searchInput.focus();
+//searchInput.focus();
 function generatePrediction(){
 	let options;
 	thesaurusSpanish.forEach(t=>{

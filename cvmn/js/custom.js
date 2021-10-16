@@ -4,20 +4,20 @@ const localInfo={
     "avoid": "Evitar este mensaje",
     "toastTitle": "Espa&ntilde;ol disponible",
     "toastDesc":"Ir a Espa&ntilde;ol",
-    "link":"es.html"
+    "link":"es"
   },
   "es": {
     "avoid": "Avoid this message",
     "toastTitle": "English available",
     "toastDesc":"Go to English",
-    "link":"index.html"
+    "link":"index"
   }
 }
 
 let lang=(window.navigator.language||window.navigator.browserLanguage||window.navigator.userLanguage).substr(0, 2);
 let pos=window.location.pathname.split("/").pop();
 
-if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"){pos='es';}
+if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"||pos=='es'){pos='es';}
 
 function checkLang(){
 	if(getCookie("avoidLangCheck")==''&&lang!=pos){

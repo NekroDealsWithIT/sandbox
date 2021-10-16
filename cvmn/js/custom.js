@@ -131,8 +131,15 @@ $(document).ready(function() {
     });
 	//Lang check
 	checkLang();
+	//Update OG
+	og();
 });
 
+//Open Graph meta
+function og(){
+	document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
+	document.querySelector('meta[property="og:description"]').setAttribute("content", document.querySelector('meta[name="description"]').content);
+}
 
 // wow
 $(function()

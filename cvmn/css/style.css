@@ -680,7 +680,6 @@ background-image: url("img/building.jpg");
 #courses .courses
     {
         text-align: left;
-        padding-left: 4%;
         display: flex;
         justify-content: space-around;
     }
@@ -1020,7 +1019,13 @@ footer .fa
         width: 100%;
         margin-left: 7px;
     }
-
+    #courses .courses li{
+        padding: 0;
+        width: 100%;
+    }
+    .row.courseList {
+        width: 50%;
+    }
 }
 
 /* Small devices (phones, 480px and down) */

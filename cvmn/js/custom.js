@@ -72,10 +72,17 @@ function getCookie(cname) {
 /* End Cookie */
 
 /* Share */
+
+const file = new File([], "img/mn.jpg", { type: "image/jpg" });
 const shareData = {
 	title: document.getElementsByTagName("title")[0].text,
 	text: document.querySelector('meta[name="description"]').content,
-	url: window.location.href
+	url: window.location.href,
+	'og:url': window.location.href,
+    'og:title': document.getElementsByTagName("title")[0].text,
+    'og:image': "img/mn.jpg",
+    img:"img/mn.jpg"
+    //,files: file
 }
 
 if (navigator.canShare==undefined||!navigator.canShare(shareData)){
@@ -135,10 +142,11 @@ $(document).ready(function() {
 	og();
 });
 
-//Open Graph meta
+//Meta CFG
 function og(){
 	document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
 	document.querySelector('meta[property="og:description"]').setAttribute("content", document.querySelector('meta[name="description"]').content);
+	document.querySelector('link[rel="canonical"]').href=window.location.href;
 }
 
 // wow

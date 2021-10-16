@@ -419,6 +419,7 @@ background-image: url("img/building.jpg");
 
 #intro .description p{
     padding: 5px;
+    text-align: justify;
 }
 
 #intro h2
@@ -440,17 +441,26 @@ background-image: url("img/building.jpg");
 
 #intro p.meeting {
     text-align: end;
-    margin: 5px;
+    /*margin: 5px;*/
 }
+
 #intro p.meeting a{
     text-align: center;
     text-decoration: none;
     width: 100%;
+    margin-top: 5px;
     /*color: var(--fa-color);*/
 }
 #intro p.meeting a:hover{
     color: #000;
     background-color: var(--fa-color);
+}
+#intro p.meetingLang{
+    display: inline-flex;
+    width: 100%;
+}
+#intro p.meetingLang a:nth-child(2){
+    margin-left: 5px;
 }
 
 /*
@@ -578,7 +588,7 @@ background-image: url("img/building.jpg");
         border-radius: 14px;
         border: 1px solid var(--experiencia-card-border-color);
         margin: 5px;
-        min-height: 18em;
+        min-height: 22em;
     }
 
 #experiencia h4
@@ -886,6 +896,7 @@ footer .fa
         margin: auto;
         padding-top: 5px;
         padding-bottom: 0px;
+        padding-left: 0px;
         font-size: 10px;
     }
     .nonPrintable{
@@ -1002,6 +1013,12 @@ footer .fa
         width: 90vw;
         margin-left: 5vw;
         border-bottom: 1px solid #000;
+    }
+
+    /* Courses */
+    #courses{
+        width: 100%;
+        margin-left: 7px;
     }
 
 }

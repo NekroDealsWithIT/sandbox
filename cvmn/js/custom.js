@@ -73,7 +73,7 @@ function getCookie(cname) {
 
 /* Share */
 
-const file = new File([], "img/mn.jpg", { type: "image/jpg" });
+const file = new File([], "images/mn.jpg", { type: "image/jpg" });
 const shareData = {
 	title: document.getElementsByTagName("title")[0].text,
 	text: document.querySelector('meta[name="description"]').content,

@@ -42,6 +42,7 @@ section:nth-child(odd){
 }
 #portada{
     background-color: var(--colorFondoPortada);
+    padding-top: 0px;
 }
 #portada::before{    
       content: "";
@@ -91,9 +92,9 @@ div .section{
 
 
 /* start all section */
-#intro,
-#intro .fp-slide,
-#intro .fp-tableCell,
+#portada,
+#portada .fp-slide,
+#portada .fp-tableCell,
 
 #skills,
 #skills .fp-slide,

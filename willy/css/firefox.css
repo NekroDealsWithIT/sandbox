@@ -1,0 +1,11 @@
+@media print {
+    *{
+        border: none!important;
+        float: none; 
+        width: auto;
+    }
+    .col { float: none; width: auto; } /* remove the floats for print */
+    .PB {
+        page-break-after: always;
+    }
+}

@@ -1,0 +1,171 @@
+/* Variables por ej para un Pantone */
+:root {
+    /*
+        Las variables se usan luego con var([nombre de variable])
+        Ej h1{color: var(--negro);}
+    */
+
+    --bodyBgColor: #9f8e8e;
+    --bodyFontColor: #CCCCCC;
+    --bodyTitleColor: #FFFFFF;
+    --bodySubTitle1Color: #FFFFFF;
+    --bodySubTitle2Color: #FFFFFF;
+    --bodySubTitle3Color: #FFFFFF;
+    --bodySubTitle4Color: #FFFFFF;
+    --bodySubTitle5Color: #FFFFFF;
+}
+
+
+
+
+/* PAGINA */
+body{
+    background-color: black;
+    display: inline-flex;
+
+}
+/* ColorPickers */
+#botoneraColores{
+    background-color: wheat;
+    color:#000;
+    min-height: 20vh;
+}
+#botoneraColores .coloresContainer{
+    /* text-align: center; */
+    height: 100%;
+    /* width: 50%;*/
+    border: 1px solid rebeccapurple;
+    border-radius: 5px;
+    margin: 10px;
+}
+input[type='color'] {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+#coloresSeleccionados{
+    text-align: left;
+    color: red;
+}
+
+#botoneraColores .selectorColores{
+    display:flex;
+    justify-content: space-around; 
+    flex-direction: row;
+}
+
+/* Fin ColorPickers */
+
+.contenidoPagina{
+    background: var(--bodyBgColor);
+    color: var(--bodyFontColor);
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 20px;
+}
+
+h1{color: var(--bodyTitleColor);}
+h2{color: var(--bodySubTitle1Color);}
+h3{color: var(--bodySubTitle2Color);}
+h4{color: var(--bodySubTitle3Color);}
+h5{color: var(--bodySubTitle4Color);}
+h6{color: var(--bodySubTitle5Color);}
+
+.container{
+    padding: 10px;
+}
+
+div .section{
+    padding-top: 100px;
+    padding-bottom: 120px;
+    min-height: 50px;
+}
+
+
+/* FIN PAGINA */
+
+/* Smaller devices (phones, 360px and down) */
+@media only screen and (max-width: 360px) {
+/*
+    Moto G3 360x640
+    Samsung i7 Prime 360x640
+*/
+}
+
+/* Small devices (phones, 480px and down) */
+@media only screen and (max-width: 480px) {
+/*
+    Xiaomi Redmi 9 373x851
+    Iphone 8s 375x667
+    Xiaomi X3 Pro 396x880
+    Xiaomi Redmi 6 Pro 400x845
+    LG V20 424x753
+    Motorola One Vision 432x1008
+*/
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+/*
+    Lenovo Yoga 962x601
+*/
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+
+/* IMPRESION */
+@media print{
+    *{
+        /* Hacer que el contenido sea en blanco y negro */
+        filter: grayscale(100%); 
+        
+        /* Poner en negrita el texto y el color en negro */
+        font-weight: bolder;   
+        color: var(--negro);
+    }
+
+    /* Esconder la clase hidden, y la clase nonPrintable */
+    .hidden, .nonPrintable{
+        visibility: hidden;
+        display: none;
+    }
+    /* Mostrar la clase printable */
+    .printable{
+        visibility: visible!important;
+        display: block!important;
+    }
+    
+    /* Hacer un salto de pagina cada vez que haya una clase .PB */
+    .PB {
+        page-break-after: always;
+    }
+    
+    /* Esconder los links (sino aparecen escritos) */
+    a[href] {
+        visibility: hidden;
+    }        
+}
+
+/* MARGENES TAMANO DE PAGINA */
+@page 
+    {
+        size: A4;
+        margin: 11mm 17mm 17mm 17mm;
+    }
+}

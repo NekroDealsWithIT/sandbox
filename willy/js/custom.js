@@ -1,4 +1,4 @@
-const variablesCSS=[
+var variablesCSS=[
 '--bodyBgColor'
 ,'--bodyFontColor'
 ,'--bodyTitleColor'
@@ -7,8 +7,12 @@ const variablesCSS=[
 ,'--bodySubTitle3Color'
 ,'--bodySubTitle4Color'
 ,'--bodySubTitle5Color'
+,'--colorFondoSeccionPares'
+,'--colorFondoSeccionImpares'
+,'--colorFondoPortada'
 ]
 
+var prueba="";
 generarSelectores()
 buscarColores();
 
@@ -17,7 +21,7 @@ function generarSelectores(){
 		var selectoresCSS = document.createElement("div");
 		selectoresCSS.className="selectorColores";
 		var id=v.replace(/--/i, '');
-		selectoresCSS.innerHTML=`<input type="checkbox" checked id="${id}Checkbox" name="${id}Checkbox" value="${id}" onclick="seleccionarColor();">Activar - Selector ${id}: </checkbox><input type="color" id="${id}ColorPicker" defaultValue='' oninput="seleccionarColor();"></div>`;
+		selectoresCSS.innerHTML=`<input type="checkbox" checked id="${id}Checkbox" name="${id}Checkbox" value="${id}" onclick="seleccionarColor();"><input type="color" id="${id}ColorPicker" defaultValue='' oninput="seleccionarColor();"><span class="colorName">${id}</span></div>`;
 		document.querySelector(".coloresContainer").appendChild(selectoresCSS);
 	});
 	document.querySelector(".coloresContainer").innerHTML+='<legend>Copiate estos valores aparte para aplicarlos</legend><p id="coloresSeleccionados"></p>'
@@ -51,7 +55,6 @@ function seleccionarColor(){
 
 
 function buscarColores(){
-
 	var style = document.querySelectorAll("input[type='checkbox']").forEach(e=>{
 		var id=e.value;	//bodyBgColor bodyBgColorColorPicker
 		var color=document.getElementById(id+'ColorPicker');
@@ -61,34 +64,30 @@ function buscarColores(){
 	seleccionarColor();
 }
 
-/*
-Array.from(document.styleSheets)
-   .filter(
-      sheet =>
-      sheet.href === null || sheet.href.startsWith(window.location.origin)
-   )
-   .reduce(
-      (acc, sheet) =>
-      (acc = [
-         ...acc,
-         ...Array.from(sheet.cssRules).reduce(
-            (def, rule) =>
-            (def =
-               rule.selectorText === ":root" ?
-               [
-                  ...def,
-                  ...Array.from(rule.style).filter(name =>
-                     name.startsWith("--")
-                  )
-               ] :
-               def),
-            []
-         )
-      ]),
-      []
-   );
-*/
+let childWindowColores;
+addBotoneraColores(400,400)
+function addBotoneraColores(width,height){
+	var childWindowDiv = document.createElement("div");
+	childWindowDiv.style="background-color:black;"	
+	var childWindowButton = document.createElement("input");
+	
+	var childWindowButton=`<input type="button" value="Colores" id="coloresButton" onclick='window.open("botoneraColores.html", "_blank", "width=${width},height=${height}");'">`;
+	/*
+	childWindowButton.type='button';
+	childWindowButton.value="Colores";
+	childWindowButton.id="coloresButton"
+	childWindowButton.onclick=`window.open("botoneraColores.html", "_blank", "width=${width},height=${height}");"`;
+	*/
 
+	console.log(childWindowButton)
+	
+	//childWindowDiv.appendChild(childWindowButton);
+	childWindowDiv.innerHTML=childWindowButton;
+	//document.body.appendChild(childWindowDiv);
+}
+
+/* identificacion de colores */
+try{
 /*
  Check if the stylesheet is internal or hosted on the current domain.
  If it isn't, attempting to access sheet.cssRules will throw a cross origin error.
@@ -97,33 +96,26 @@ Array.from(document.styleSheets)
  NOTE: One problem this could raise is hosting stylesheets on a CDN with a
  different domain. Those would be cross origin, so you can't access them.
 */
-
-/*
 const isSameDomain = (styleSheet) => {
   // Internal style blocks won't have an href value
   if (!styleSheet.href) {
     return true;
   }
+
   return styleSheet.href.indexOf(window.location.origin) === 0;
 };
-*/
 
 /*
  Determine if the given rule is a CSSStyleRule
  See: https://developer.mozilla.org/en-US/docs/Web/API/CSSRule#Type_constants
 */
-
-/*
 const isStyleRule = (rule) => rule.type === 1;
-*/
 
 /**
  * Get all custom properties on a page
  * @return array<array[string, string]>
  * ex; [["--color-accent", "#b9f500"], ["--color-text", "#252525"], ...]
  */
-
-/*
 const getCSSCustomPropIndex = () =>
   // styleSheets is array-like, so we convert it to an array.
   // Filter out any stylesheets not on this domain
@@ -145,10 +137,13 @@ const getCSSCustomPropIndex = () =>
       ),
     []
   );
+
 const cssCustomPropIndex = getCSSCustomPropIndex();
+
 // Add the swatches to the DOM
 document.querySelector(".colors").innerHTML = cssCustomPropIndex.reduce(
-  (str, [prop, val]) => `${str}<li class="color">
+  (str, [prop, val]) => 
+  	`${str}<li class="color">
     <b class="color__swatch" style="--color: ${val}"></b>
     <div class="color__details">
       <input value="${prop}" readonly />
@@ -157,4 +152,6 @@ document.querySelector(".colors").innerHTML = cssCustomPropIndex.reduce(
    </li>`,
   ""
 );
-*/
+}catch(e){
+	console.log(e);
+}

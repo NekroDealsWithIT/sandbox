@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+   <!-- custom -->
+   <link rel="stylesheet" href="css/style.css">
+<body>
+<p>Enter name </p>  
+<input type="text" id="txtbx" />
+<br/><br/>
+<button onclick="copyFunc()">Copy</button>
+
+<div class="section">
+   <div id="botoneraColores">
+      <h1>Botonera colores</h1>
+      <div class="coloresContainer">
+         <legend>Elegi los colores</legend>
+      </div>
+         
+   </div>
+</div>
+
+<script type="text/javascript">
+      const variablesCSS=[
+   '--bodyBgColor'
+   ,'--bodyFontColor'
+   ,'--bodyTitleColor'
+   ,'--bodySubTitle1Color'
+   ,'--bodySubTitle2Color'
+   ,'--bodySubTitle3Color'
+   ,'--bodySubTitle4Color'
+   ,'--bodySubTitle5Color'
+   ]
+</script>
+
+
+<script>
+   generarSelectores()
+   buscarColores();
+
+
+   function copyFunc() {
+      if (window.opener != null && !window.opener.closed) {
+               var txtName = window.opener.document.getElementById("txtName");
+               txtName.value = document.getElementById("txtbx").value;
+           }
+       window.close();
+   }
+
+   function generarSelectores(){
+      if (window.opener != null && !window.opener.closed) {
+         variablesCSS.forEach(v=>{
+            var selectoresCSS = document.createElement("div");
+            selectoresCSS.className="selectorColores";
+            var id=v.replace(/--/i, '');
+            selectoresCSS.innerHTML=`<input type="checkbox" checked id="${id}Checkbox" name="${id}Checkbox" value="${id}" onclick="seleccionarColor();">Activar - Selector ${id}: </checkbox><input type="color" id="${id}ColorPicker" defaultValue='' oninput="seleccionarColor();"></div>`;
+            document.querySelector(".coloresContainer").appendChild(selectoresCSS);
+         });
+         window.opener.document.querySelector(".coloresContainer").innerHTML+='<legend>Copiate estos valores aparte para aplicarlos</legend><p id="coloresSeleccionados"></p>'
+      }
+   }
+
+   function seleccionarColor(){
+      var colores=[];
+      var htmlData="";
+      let root = window.opener.document.documentElement;
+
+      window.opener.document.querySelectorAll("input[type='checkbox']").forEach(e=>{
+         var id=e.value;
+         //console.log(style.getPropertyValue('--'+id)) // #336699
+         var color=window.opener.document.getElementById(id+'ColorPicker')
+
+         var variableColor='&nbsp;&nbsp;&nbsp;&nbsp;--'+id+': '+color.value+';';
+
+         if(e.checked){
+            variableColor+='<br>'
+            root.style.setProperty('--'+id,color.value);
+         }else{
+            variableColor="";
+            root.style.setProperty('--'+id,color.defaultValue);
+         }
+         
+         htmlData+=variableColor;
+         
+      });
+      window.opener.document.getElementById("coloresSeleccionados").innerHTML=":root{<br>"+htmlData+"}";
+   }
+
+
+   function buscarColores(){
+      var style = window.opener.document.querySelectorAll("input[type='checkbox']").forEach(e=>{
+         var id=e.value;
+         var color=document.getElementById(id+'ColorPicker');
+         var defaultValue=getComputedStyle(document.body).getPropertyValue('--'+id).trim();
+         color.defaultValue=defaultValue;
+      });
+      seleccionarColor();
+   }
+</script>
+
+</body>
+</html>

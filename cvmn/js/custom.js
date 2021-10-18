@@ -4,20 +4,20 @@ const localInfo={
     "avoid": "Evitar este mensaje",
     "toastTitle": "Espa&ntilde;ol disponible",
     "toastDesc":"Ir a Espa&ntilde;ol",
-    "link":"es.html"
+    "link":"es"
   },
   "es": {
     "avoid": "Avoid this message",
     "toastTitle": "English available",
     "toastDesc":"Go to English",
-    "link":"index.html"
+    "link":"index"
   }
 }
 
 let lang=(window.navigator.language||window.navigator.browserLanguage||window.navigator.userLanguage).substr(0, 2);
 let pos=window.location.pathname.split("/").pop();
 
-if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"){pos='es';}
+if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"||pos=='es'){pos='es';}
 
 function checkLang(){
 	if(getCookie("avoidLangCheck")==''&&lang!=pos){
@@ -72,10 +72,17 @@ function getCookie(cname) {
 /* End Cookie */
 
 /* Share */
+
+const file = new File([], "images/mn.jpg", { type: "image/jpg" });
 const shareData = {
 	title: document.getElementsByTagName("title")[0].text,
 	text: document.querySelector('meta[name="description"]').content,
-	url: window.location.href
+	url: window.location.href,
+	'og:url': window.location.href,
+    'og:title': document.getElementsByTagName("title")[0].text,
+    'og:image': "img/mn.jpg",
+    img:"img/mn.jpg"
+    //,files: file
 }
 
 if (navigator.canShare==undefined||!navigator.canShare(shareData)){
@@ -131,8 +138,16 @@ $(document).ready(function() {
     });
 	//Lang check
 	checkLang();
+	//Update OG
+	og();
 });
 
+//Meta CFG
+function og(){
+	document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
+	document.querySelector('meta[property="og:description"]').setAttribute("content", document.querySelector('meta[name="description"]').content);
+	document.querySelector('link[rel="canonical"]').href=window.location.href;
+}
 
 // wow
 $(function()

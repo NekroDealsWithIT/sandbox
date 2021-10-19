@@ -18,6 +18,13 @@
     --colorLink: #00FF00;
     --colorLinkHover: #00FF00;
     --colorLinkVisitado: #00FF00;
+
+    --colorParrafoPortada: #cccccc;
+    --colorParrafoSeccion1: #cccccc;
+    --colorParrafoSeccion2: #cccccc;
+    --colorParrafoSeccion3: #cccccc;
+    --colorParrafoSeccion4: #cccccc;
+    --colorParrafoSeccionFinal: #cccccc;
 }
 
 body
@@ -55,6 +62,15 @@ h4{color: var(--bodySubTitulo3Color);}
 h5{color: var(--bodySubTitulo4Color);}
 h6{color: var(--bodySubTitulo5Color);}
 
+p{text-align: justify;}
+
+#portada p{color: var(--colorParrafoPortada)}
+#seccion1 p{color: var(--colorParrafoSeccion1)}
+#seccion2 p{color: var(--colorParrafoSeccion2)}
+#seccion3 p{color: var(--colorParrafoSeccion3)}
+#seccion4 p{color: var(--colorParrafoSeccion4)}
+#seccionFinal p{color: var(--colorParrafoSeccionFinal)}
+
 .container{
     padding: 10px;
 }
@@ -80,6 +96,7 @@ section:nth-child(odd){
 ,#seccion2::before
 ,#seccion3::before
 ,#seccion4::before
+,#seccionFinal::before
 {    
     content: "";
     background-position: bottom center;
@@ -203,6 +220,7 @@ h1,h2,h3,h4,h5
         font-weight: bold;
         text-transform: capitalize;
     }
+}
 /* end all heading */
 
 .rotating.flip {

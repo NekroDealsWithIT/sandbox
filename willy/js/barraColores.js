@@ -30,7 +30,7 @@ function generarSelectores(){
 			}
 		});
 	}catch(e){
-		console.log(e);
+		console.log("usando variables locales");
 	}
 
 	variablesCSS.forEach(v=>{
@@ -183,6 +183,6 @@ function identificarColores(){
 	);
 	*/
 	}catch(e){
-		console.log(e);
+		console.warn("No pude cargar el pantone");
 	}
 }

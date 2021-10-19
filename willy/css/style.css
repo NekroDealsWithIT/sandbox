@@ -2,17 +2,23 @@
 :root{
     --bodyColorFondo: #2e1414;
     --bodyColorFuente: #cccccc;
-    --bodyColorTitulo: #966969;
+    --bodyColorTitulo: #00fffb;
     --bodySubTitulo1Color: #7d41a4;
     --bodySubTitulo2Color: #81a145;
     --bodySubTitulo3Color: #dee109;
     --bodySubTitulo4Color: #3713ec;
     --bodySubTitulo5Color: #ff0a0a;
-    --colorFondoSeccionImpares: #6a4e4e;
+    --colorFondoSeccionImpares: #825555;
     --colorFondoSeccionPares: #000000;
-    --colorFondoPortada: #4b5d4b;
-}
+    --colorFondoPortada: #486048;
 
+    --colorFondoFinal: #2f1735;
+    --colorFuenteSeccionFinal: #FFFFFF;
+
+    --colorLink: #00FF00;
+    --colorLinkHover: #00FF00;
+    --colorLinkVisitado: #00FF00;
+}
 
 body
 {
@@ -29,62 +35,6 @@ body
 }
 
 /* PAGINA */
-.container-fluid{
-    /*background-color: black;*/
-    /*display: inline-flex;*/
-
-}
-section{
-    background-color: var(--colorFondoSeccionPares);
-}
-section:nth-child(odd){
-    background-color: var(--colorFondoSeccionImpares);
-}
-#portada::before
-,#seccion1::before
-,#seccion2::before
-,#seccion3::before
-,#seccion4::before
-{    
-      content: "";
-      background-position: bottom center;
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      opacity: 0.4;
-      filter: blur(2px);
-      background-repeat: no-repeat;
-   
-      background-attachment: fixed;
-      
-
-}
-#portada::before{
-    background-image: url('../images/portada.jpg');
-}
-
-
-#portada{
-    background-color: var(--colorFondoPortada);
-    padding-top: 0px;
-    /*min-height: 90vh;*/
-}
-
-/* seccion1 */
-#seccion1::before{
-    /*background-image: url('../images/bosque.jpg');*/
-}
-
-/* seccion2 */
-
-/* seccion3 */
-
-/* seccion4 */
-
-
 .contenidoPagina{
     background: var(--bodyColorFondo);
     color: var(--bodyColorFuente);
@@ -93,6 +43,10 @@ section:nth-child(odd){
     font-weight: 400;
     min-height: 20px;
 }
+
+a{color: var(--colorLink);}
+a:hover{color: var(--colorLinkHover);}
+a:visited{color: var(--colorLinkVisitado);}
 
 h1{color: var(--bodyColorTitulo);}
 h2{color: var(--bodySubTitulo1Color);}
@@ -110,6 +64,65 @@ div .section{
     padding-bottom: 120px;
     min-height: 50px;
 }
+.container-fluid{
+    /*background-color: black;*/
+    /*display: inline-flex;*/
+
+}
+section{
+    background-color: var(--colorFondoSeccionPares);
+}
+section:nth-child(odd){
+    background-color: var(--colorFondoSeccionImpares);
+}
+#portada::before
+,#seccion1::before
+,#seccion2::before
+,#seccion3::before
+,#seccion4::before
+{    
+    content: "";
+    background-position: bottom center;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.4;
+    filter: blur(2px);
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+}
+#portada::before{
+    background-image: url('../images/portada.jpg');
+}
+
+
+#portada{
+    background-color: var(--colorFondoPortada);
+    padding-top: 0px;
+    min-height: 100vh;
+}
+
+/* seccion1 */
+#seccion1::before{
+    /*background-image: url('../images/bosque.jpg');*/
+}
+
+/* seccion2 */
+
+/* seccion3 */
+
+/* seccion4 */
+
+/* reflexiones finales */
+#seccionFinal{
+    background-color: var(--colorFondoFinal);
+    color: var(--colorFuenteSeccionFinal);
+}
+
 
 
 /* FIN PAGINA */

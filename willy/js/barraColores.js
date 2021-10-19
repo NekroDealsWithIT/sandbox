@@ -5,12 +5,17 @@ var variablesCSS=[
 ,'--bodySubTitle1Color'
 ,'--bodySubTitle2Color'
 ,'--bodySubTitle3Color'
-
+,'--bodySubTitle4Color'
+,'--bodySubTitle5Color'
+,'--colorFondoSeccionPares'
+,'--colorFondoSeccionImpares'
+,'--colorFondoPortada'
 ]
 
 var prueba="";
 generarSelectores()
 buscarColores();
+identificarColores();
 
 function generarSelectores(){
 	try{
@@ -155,7 +160,7 @@ function identificarColores(){
 	document.querySelector(".colors").innerHTML = cssCustomPropIndex.reduce(
 	  (str, [prop, val]) => 
 	  	`${str}<li class="color">
-	    <b class="color__swatch" style="--color: ${val}"></b>
+	    <b class="color__swatch" style="--color: var(${prop})"></b>
 	    <div class="color__details">
 	      <input value="${prop}" readonly />
 	      <input value="${val}" readonly />
@@ -164,8 +169,9 @@ function identificarColores(){
 	  ""
 	);
 
-	document.querySelector(".colors").innerHTML = 
-	cssCustomPropIndex.reduce((str, [prop, val]) => 
+	/*
+	document.querySelector(".colors").innerHTML = cssCustomPropIndex.reduce(
+	  (str, [prop, val]) => 
 	  	`${str}<li class="color">
 	    <b class="color__swatch" style="--color: ${val}"></b>
 	    <div class="color__details">
@@ -175,6 +181,7 @@ function identificarColores(){
 	   </li>`,
 	  ""
 	);
+	*/
 	}catch(e){
 		console.log(e);
 	}

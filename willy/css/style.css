@@ -1,13 +1,13 @@
 /* Variables por ej para un Pantone */
 :root{
-    --bodyBgColor: #2e1414;
-    --bodyFontColor: #cccccc;
-    --bodyTitleColor: #966969;
-    --bodySubTitle1Color: #7d41a4;
-    --bodySubTitle2Color: #81a145;
-    --bodySubTitle3Color: #dee109;
-    --bodySubTitle4Color: #3713ec;
-    --bodySubTitle5Color: #ff0a0a;
+    --bodyColorFondo: #2e1414;
+    --bodyColorFuente: #cccccc;
+    --bodyColorTitulo: #966969;
+    --bodySubTitulo1Color: #7d41a4;
+    --bodySubTitulo2Color: #81a145;
+    --bodySubTitulo3Color: #dee109;
+    --bodySubTitulo4Color: #3713ec;
+    --bodySubTitulo5Color: #ff0a0a;
     --colorFondoSeccionImpares: #6a4e4e;
     --colorFondoSeccionPares: #000000;
     --colorFondoPortada: #4b5d4b;
@@ -16,8 +16,8 @@
 
 body
 {
-    background: var(--bodyBgColor);
-    color: var(--bodyFontColor);
+    background: var(--bodyColorFondo);
+    color: var(--bodyColorFuente);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -62,20 +62,20 @@ section:nth-child(odd){
 }
 
 .contenidoPagina{
-    background: var(--bodyBgColor);
-    color: var(--bodyFontColor);
+    background: var(--bodyColorFondo);
+    color: var(--bodyColorFuente);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: 400;
     min-height: 20px;
 }
 
-h1{color: var(--bodyTitleColor);}
-h2{color: var(--bodySubTitle1Color);}
-h3{color: var(--bodySubTitle2Color);}
-h4{color: var(--bodySubTitle3Color);}
-h5{color: var(--bodySubTitle4Color);}
-h6{color: var(--bodySubTitle5Color);}
+h1{color: var(--bodyColorTitulo);}
+h2{color: var(--bodySubTitulo1Color);}
+h3{color: var(--bodySubTitulo2Color);}
+h4{color: var(--bodySubTitulo3Color);}
+h5{color: var(--bodySubTitulo4Color);}
+h6{color: var(--bodySubTitulo5Color);}
 
 .container{
     padding: 10px;

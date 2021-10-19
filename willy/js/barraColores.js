@@ -1,15 +1,15 @@
 var variablesCSS=[
-'--bodyBgColor'
-,'--bodyFontColor'
-,'--bodyTitleColor'
-,'--bodySubTitle1Color'
-,'--bodySubTitle2Color'
-,'--bodySubTitle3Color'
-,'--bodySubTitle4Color'
-,'--bodySubTitle5Color'
-,'--colorFondoSeccionPares'
-,'--colorFondoSeccionImpares'
-,'--colorFondoPortada'
+   	'bodyColorFondo'
+    ,'bodyColorFuente'
+    ,'bodyColorTitulo'
+    ,'bodySubTitulo1Color'
+    ,'bodySubTitulo2Color'
+    ,'bodySubTitulo3Color'
+    ,'bodySubTitulo4Color'
+    ,'bodySubTitulo5Color'
+    ,'colorFondoSeccionImpares'
+    ,'colorFondoSeccionPares'
+    ,'colorFondoPortada'
 ]
 
 var prueba="";

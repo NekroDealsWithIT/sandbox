@@ -40,15 +40,15 @@ section{
 section:nth-child(odd){
     background-color: var(--colorFondoSeccionImpares);
 }
-#portada{
-    background-color: var(--colorFondoPortada);
-    padding-top: 0px;
-}
-#portada::before{    
+#portada::before
+,#seccion1::before
+,#seccion2::before
+,#seccion3::before
+,#seccion4::before
+{    
       content: "";
-      background-image: url('../images/portada.jpg');
-      background-position: center center;
-      background-size: contain;
+      background-position: bottom center;
+      background-size: cover;
       position: absolute;
       top: 0px;
       right: 0px;
@@ -59,7 +59,31 @@ section:nth-child(odd){
       background-repeat: no-repeat;
    
       background-attachment: fixed;
+      
+
 }
+#portada::before{
+    background-image: url('../images/portada.jpg');
+}
+
+
+#portada{
+    background-color: var(--colorFondoPortada);
+    padding-top: 0px;
+    /*min-height: 90vh;*/
+}
+
+/* seccion1 */
+#seccion1::before{
+    /*background-image: url('../images/bosque.jpg');*/
+}
+
+/* seccion2 */
+
+/* seccion3 */
+
+/* seccion4 */
+
 
 .contenidoPagina{
     background: var(--bodyColorFondo);

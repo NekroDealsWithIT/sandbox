@@ -91,20 +91,19 @@ section{
 section:nth-child(odd){
     background-color: var(--colorFondoSeccionImpares);
 }
-#portada::before
+/*
 ,#seccion1::before
 ,#seccion2::before
 ,#seccion3::before
 ,#seccion4::before
 ,#seccionFinal::before
+#portada::before
 {    
     content: "";
-    background-position: bottom center;
+    background-position: center center;
     background-size: cover;
     position: absolute;
     top: 0px;
-    right: 0px;
-    bottom: 0px;
     left: 0px;
     opacity: 0.4;
     filter: blur(2px);
@@ -112,15 +111,16 @@ section:nth-child(odd){
 
     background-attachment: fixed;
 }
+
 #portada::before{
     background-image: url('../images/portada.jpg');
 }
-
+*/
 
 #portada{
     background-color: var(--colorFondoPortada);
     padding-top: 0px;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }
 
 /* seccion1 */
@@ -403,6 +403,10 @@ input[type='color'] {
     Moto G3 360x640
     Samsung i7 Prime 360x640
 */
+    .celHide{
+        display: none!important;
+        visibility: hidden;
+    }
 }
 
 /* Small devices (phones, 480px and down) */

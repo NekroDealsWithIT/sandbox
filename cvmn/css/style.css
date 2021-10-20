@@ -1030,9 +1030,6 @@ footer .fa
 
 /* Small devices (phones, 480px and down) */
 @media screen and (max-width: 480px){
-    #intro .fa {
-        margin: 10px;
-    }
     .fa {
         margin: 10px;
     }
@@ -1060,7 +1057,13 @@ footer .fa
         filter: blur(10px) grayscale(50%);
     }
 
-
+    #intro .fa {
+        margin: 10px;
+    }
+    #intro
+    {
+        padding-top: 0px;
+    }
 
     #intro::before {
         background-image: url("../images/intro-bg-411x559.jpg");

@@ -422,22 +422,22 @@ background-image: url("img/building.jpg");
     text-align: justify;
 }
 
-#intro h2
-    {
-        padding-bottom: 10px;
-    }
+#intro h2{
+    padding-bottom: 10px;
+}
 
 #intro .imgHeaderContainer{
     text-align: center ;
 }
 
-
-#intro p
-    {
-        color: var(--experiencia-me-color);
-        /*font-weight: 800;*/
-        text-align: left;
-    }
+#intro h6 {
+    font-weight: revert;
+}
+#intro p{
+    color: var(--experiencia-me-color);
+    /*font-weight: 800;*/
+    text-align: left;
+}
 
 #intro p.meeting {
     text-align: end;
@@ -691,7 +691,10 @@ background-image: url("img/building.jpg");
        vertical-align: middle;
        font-weight: 900;
     }
-
+#courses p.englishLevel {
+    font-size: 1.5em;
+    font-weight: 900;
+}
 
 /* end courses */
 
@@ -767,7 +770,7 @@ background-image: url("img/building.jpg");
 /* start footer */
 footer
     {
-        text-align: center;
+        text-align: justify;
         position: relative;
 
         padding-top: 0px;
@@ -849,7 +852,10 @@ footer .fa
     #experiencia{order: 5;}
     #courses{order: 6;}
     #footer{order: 7}
-    
+    #skills, #experiencia, #courses, #contact, #portfolio {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }   
     *{
         visibility: visible;
         filter: grayscale(100%); 
@@ -967,7 +973,10 @@ footer .fa
         left: 25%;
         margin-bottom: 5px;
     }
-    
+    #intro h6{
+        margin: 0;
+        font-weight: 800;
+    }
     /* skills */
     #skills .row
     {
@@ -1030,6 +1039,11 @@ footer .fa
 
 /* Small devices (phones, 480px and down) */
 @media screen and (max-width: 480px){
+    #skills, #experiencia, #courses, #contact, #portfolio {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
     .fa {
         margin: 10px;
     }
@@ -1093,6 +1107,7 @@ footer .fa
         flex-wrap: wrap;
         margin: auto;
         padding: 10px;
+        justify-content: center;
     }
     .rotate{
         height: 2em;
@@ -1100,6 +1115,14 @@ footer .fa
     #courses .courses {
         padding-left: 0;
         margin-left: -15px;
+        width: 100%;
+    }
+    #courses li{
+        font-size: 0.7em;
+    }
+    #courses p.englishLevel {
+        font-size: 1em;
+        font-weight: 600;
     }
     h1,h2,h3,h4,h5
     {

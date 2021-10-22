@@ -1,23 +1,42 @@
 /* Lang Toast */
 const localInfo={
-  "en": {
-    "avoid": "Evitar este mensaje",
-    "toastTitle": "Espa&ntilde;ol disponible",
-    "toastDesc":"Ir a Espa&ntilde;ol",
-    "link":"es"
-  },
-  "es": {
-    "avoid": "Avoid this message",
-    "toastTitle": "English available",
-    "toastDesc":"Go to English",
-    "link":"index"
-  }
-}
+	"en": {
+		"avoid": "Evitar este mensaje",
+		"toastTitle": "Espa&ntilde;ol disponible",
+		"toastDesc":"Ir a Espa&ntilde;ol",
+		"link":"es"
+	},
+	"es": {
+		"avoid": "Avoid this message",
+		"toastTitle": "English available",
+		"toastDesc":"Go to English",
+		"link":"index"
+	}
+};
+
+const meetingLang={
+	"link":[
+		"mauricioniemand",
+		"mauricio-niemand",
+		"mauricio_niemand"
+	],
+	"en":[
+		"Meeting 30 Minutes",
+		"Meeting 1 Hour",
+		"Meeting 2 Hours"
+	],
+	"es":[
+		"Reunión de 30 Minutos",
+		"Reunión de 1 Hora",
+		"Reunión de 2 horas"
+	]
+};
 
 let lang=(window.navigator.language||window.navigator.browserLanguage||window.navigator.userLanguage).substr(0, 2);
 let pos=window.location.pathname.split("/").pop();
 
 if (pos=='index.html'||pos==''){pos='en';}else if(pos=="es.html"||pos=='es'){pos='es';}
+
 
 function checkLang(){
 	if(getCookie("avoidLangCheck")==''&&lang!=pos){
@@ -140,6 +159,7 @@ $(document).ready(function() {
 	checkLang();
 	//Update OG
 	og();
+	//
 });
 
 //Meta CFG
@@ -162,4 +182,32 @@ function addCustomSS(customSS){
 	ss.rel="stylesheet";
 	ss.href="css/"+customSS;
 	document.head.appendChild(ss);
+}
+
+//Arrange a meeting
+addMeetingOptions(pos);
+function openForm() {
+	document.getElementById("meetingForm").classList.toggle("hiddenMeeting");
+	document.getElementById("meetingForm").classList.toggle("visibleMeeting");
+	let langBar=document.querySelector(".toast-item-wrapper");
+	langBar!=undefined?langBar.remove():"";
+}
+
+function addMeetingOptions(lang){
+	let index=0;
+	meetingLang[lang].forEach(m=>{
+		let opt = document.createElement("option");
+		opt.value="https://calendly.com/"+meetingLang["link"][index];
+		opt.text=m;
+		document.getElementById("schedule").appendChild(opt);		
+		index++;
+	});
+}
+
+function scheduleMeeting(){
+	//document.querySelector('.form-popup a').href=document.getElementById("schedule").value
+}
+function openMeeting(){
+	Calendly.showPopupWidget(document.getElementById('schedule').value);
+	openForm();
 }

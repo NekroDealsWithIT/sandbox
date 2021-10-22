@@ -34,8 +34,8 @@
     --meetings-bg-color: #161414;
     --meetings-font-color: #3fd48f;
 
-    --bookmarkBackground: #798d9d;
-    --bookmarkFont: #000000;
+    --bookmarkBackground: #643fd4;
+    --bookmarkFont: #03e9f4;
 }
 
 body
@@ -401,8 +401,19 @@ h1,h2,h3,h4,h5
 #intro .fa{
     padding-left: 7px;
     margin: 2px 20px;
+    color: var(--button-color);
+    border-color: var(--button-color);
 }
 
+#intro .fa:hover {
+    /*
+    background: var(--name-border-color);
+    */
+    background: transparent;
+    border-color: #FFF;
+    color: var(--name-border-color);
+    color: var(--name-color);
+}   
 /*
 #intro img:not(".QR"){
     border: 1px solid aliceblue;
@@ -839,6 +850,7 @@ background-image: url("img/building.jpg");
     right: 0px;
     bottom: 55vh;
     opacity: .2;
+    transition: all 2s ease-in-out;
 }
 .bookmarkRibbon span{
     color: var(--bookmarkFont);
@@ -847,11 +859,12 @@ background-image: url("img/building.jpg");
     text-align: center;
     right: -10px;
 }
-/*
+
 .bookmarkRibbon:hover{
-    opacity: .8;
+    /*opacity: .8;*/
+    transform: scale(1.1)!important;
 }
-*/
+
 /* Full-width input fields */
 .form-container select, .form-container input[type=text], .form-container input[type=password], #schedule, .form-container option{
     width: 100%;

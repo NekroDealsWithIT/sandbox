@@ -33,6 +33,9 @@
 
     --meetings-bg-color: #161414;
     --meetings-font-color: #3fd48f;
+
+    --bookmarkBackground: #798d9d;
+    --bookmarkFont: #000000;
 }
 
 body
@@ -116,7 +119,7 @@ ul {
 /* start all heading */
 h1,h2,h3,h4,h5
     {
-        color: var(--header-color)  /*#ffffff;*/
+        color: var(--header-color);  /*#ffffff;*/
         font-weight: bold;
         text-transform: capitalize;
     }
@@ -391,6 +394,9 @@ h1,h2,h3,h4,h5
         flex-wrap: wrap;
         border-radius: 20px;
     }
+#intro h1{
+    color: var(--name-color);
+}
 
 #intro .fa{
     padding-left: 7px;
@@ -453,6 +459,7 @@ background-image: url("img/building.jpg");
     width: 100%;
     margin-top: 5px;
     /*color: var(--fa-color);*/
+    border-radius: 5px;
 }
 #intro p.meeting a:hover{
     color: #000;
@@ -770,6 +777,7 @@ background-image: url("img/building.jpg");
     }
 /* end contact */
 
+/* Meeting form */
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
     background-color: #555;
@@ -790,18 +798,60 @@ background-image: url("img/building.jpg");
     position: fixed;
     bottom: 15px;
     right: 15px;
-    border: 2px solid var(--name-color);
-    border-radius: 10px;
+    border: 3px inset var(--name-color);
+    border-radius: 15px;
+    max-width: 300px;
+}
+
+.form-popup h1{
+    color: var(--header-color);
 }
 
 /* Add styles to the form container */
 .form-container {
-    max-width: 300px;
+    width: 100%;
     padding: 10px;
-    background-color: var(--meetings-bg-color);
+    /*background-color: var(--meetings-bg-color);*/
     border-radius: 10px;
+    background: rgb(29,109,92);
+    background: linear-gradient(270deg, rgba(29,109,92,1) 0%, rgba(26,54,68,1) 100%);
 }
-
+/*
+.form-popup::before{
+    content: "Meeting";
+    transform: rotate(180deg);
+    vertical-align: top;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+*/
+ .bookmarkRibbon {
+    width: 105px;
+    height: 0;
+    border-bottom: 20px solid var(--bookmarkBackground);
+    border-top: 20px solid var(--bookmarkBackground);
+    border-left: 15px solid transparent;
+    float: right;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight:700;
+    position: fixed;
+    right: 0px;
+    bottom: 55vh;
+    opacity: .2;
+}
+.bookmarkRibbon span{
+    color: var(--bookmarkFont);
+    position: relative;
+    top: -12px;
+    text-align: center;
+    right: -10px;
+}
+/*
+.bookmarkRibbon:hover{
+    opacity: .8;
+}
+*/
 /* Full-width input fields */
 .form-container select, .form-container input[type=text], .form-container input[type=password], #schedule, .form-container option{
     width: 100%;
@@ -810,11 +860,16 @@ background-image: url("img/building.jpg");
     border: none;
     background: #000000;
     color: var(--meetings-font-color);
+    border-radius: 5px;
+}
+.form-container select{
+    background: rgb(29,109,92);
+    background: linear-gradient(270deg, rgba(29,109,92,1) 0%, rgba(26,54,68,1) 100%);
 }
 
 /* When the inputs get focus, do something */
-.form-container select, .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
+.form-container select:focus, .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    /*background-color: #ddd;*/
     outline: none;
 }
 
@@ -838,8 +893,11 @@ background-image: url("img/building.jpg");
 
 .visibleMeeting {
   visibility: visible;
-  opacity: 1;
+  opacity: .3;
   transition: opacity 0.5s linear;
+}
+.visibleMeeting:hover {
+  opacity: 1;
 }
 
 /* Add a red background color to the cancel button */
@@ -854,14 +912,13 @@ background-image: url("img/building.jpg");
 @media screen and (max-width: 480px){
     .open-button, .form-popup{
         text-align: justify;
-        /*width: 100%;*/
-        right: 0;
-        bottom: 0;
+        /*right: 10px;*/
+        bottom: 10px;
         max-width: 90%;
     }
-    .visibleMeeting {
+    .visibleMeeting:not(.bookmarkRibbon) {
+        opacity: 1;
     }
-
 }
 
 /* start footer */

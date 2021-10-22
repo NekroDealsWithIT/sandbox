@@ -159,7 +159,8 @@ $(document).ready(function() {
 	checkLang();
 	//Update OG
 	og();
-	//
+	//Meetings startup
+	addMeetingOptions(pos);
 });
 
 //Meta CFG
@@ -185,10 +186,13 @@ function addCustomSS(customSS){
 }
 
 //Arrange a meeting
-addMeetingOptions(pos);
 function openForm() {
-	document.getElementById("meetingForm").classList.toggle("hiddenMeeting");
-	document.getElementById("meetingForm").classList.toggle("visibleMeeting");
+	let elements=document.querySelectorAll("#meetingForm, .bookmarkRibbon");
+	elements.forEach(e=>{
+		e.classList.toggle("hiddenMeeting");
+		e.classList.toggle("visibleMeeting");			
+	})
+	
 	let langBar=document.querySelector(".toast-item-wrapper");
 	langBar!=undefined?langBar.remove():"";
 }
@@ -202,12 +206,15 @@ function addMeetingOptions(lang){
 		document.getElementById("schedule").appendChild(opt);		
 		index++;
 	});
+	scheduleMeeting();
 }
 
 function scheduleMeeting(){
-	//document.querySelector('.form-popup a').href=document.getElementById("schedule").value
+	document.querySelector('.form-popup a').href=document.getElementById("schedule").value+"/interview"
 }
 function openMeeting(){
+	/*
 	Calendly.showPopupWidget(document.getElementById('schedule').value);
+	*/
 	openForm();
 }

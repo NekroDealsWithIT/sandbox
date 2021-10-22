@@ -68,6 +68,21 @@
 		<link rel="stylesheet" href="css/jquery.fullPage.css">
 		<!-- custom -->
 		<link rel="stylesheet" href="css/style.css">
+
+		<!-- jQuery Local -->
+		<!-- <script src="js/jquery.js"></script> -->
+		<!-- bootstrap -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- fullpage -->
+		<script src="js/jquery.fullPage.js"></script>
+		<!-- smoothScroll -->
+		<script src="js/smoothscroll.js"></script>
+		<!-- wow -->
+		<script src="js/wow.min.js"></script>
+		<!-- text rotater -->
+		<script src="js/jquery.simple-text-rotator.js"></script>
+		<!-- toast -->
+		<script src="js/toast.script.js"></script>
 		
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -113,25 +128,12 @@
 								 <p class="nonPrintable shareContainer"><a rel="nofollow noopener" href="#" target="" id="shareButton"><i class="fa fa-share-alt"></i></a></p>
 								 <p class="hidden printable"><i class="fa fa-desktop"></i><img src="images/QR/webCV.png"></p>
 							 </div>
-							 <h6 class="wow fadeIn" data-wow-delay="0.9s">CV Completo en LinkedIn</h6> 
- 							 
- 							 <p class="botonera meeting wow fadeInUp nonPrintable" data-wow-delay="0.3s"><a href="https://calendly.com/mauricioniemand" target="_blank"><span></span><span></span><span></span><span></span>Organizar una reuni&oacute;n</a></p>
-
- 							 <!-- Calendly -->
- 							 <!--<p class="botonera meeting wow fadeInUp nonPrintable" data-wow-delay="0.3s"><a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/mauricioniemand'});return false;"><span></span><span></span><span></span><span></span>Click para organizar una reuni&oacute;n</a></p>-->
- 							 <p class="botonera meeting wow fadeInUp nonPrintable smoothScroll" data-wow-delay="0.3s"><a href="#" onclick="openForm();"><span></span><span></span><span></span><span></span>Organizar una reuni&oacute;n</a></p>
-<!-- Principio del widget de globo de Calendly -->
-<!--
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/mauricioniemand', text: 'Programe una reunión conmigo de 30m', color: '#006bff', textColor: '#ffffff', branding: true }); }</script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/mauricio-niemand', text: 'Programe una reunión conmigo de 60m', color: '#006bff', textColor: '#ffffff', branding: true }); }</script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/mauricio_niemand', text: 'Programe una reunión conmigo de 120m', color: '#006bff', textColor: '#ffffff', branding: true }); }</script>
--->
-<!-- Final del widget de globo de Calendly -->
-
+							 <h6 class="wow fadeIn" data-wow-delay="0.9s"><span>CV Completo en LinkedIn</span></h6>
+							 <p class="botonera meeting wow fadeInUp nonPrintable smoothScroll" data-wow-delay="0.3s"><a href="#" onclick="openForm();"><!--<span></span><span></span><span></span><span></span>-->Organizar una reuni&oacute;n</a></p>
 
 							 <p class="botonera meeting meetingLang wow fadeInUp nonPrintable" data-wow-delay="0.3s">
-						 		<a href="index"><span></span><span></span><span></span><span></span>English</a>
-						 		<a onclick="print();" id="print" ><span></span><span></span><span></span><span></span>Imprimir</a>
+						 		<a href="index"><!--<span></span><span></span><span></span><span></span>-->English</a>
+						 		<a onclick="print();" id="print" ><!--<span></span><span></span><span></span><span></span>-->Imprimir</a>
 							 </p>
 						</div>
 						<h2 class="rotate nonPrintable wow fadeIn" data-wow-delay="0.9s">Analista T&eacute;cnico Funcional, Programador Web Full Stack, Desarrollador Java, Posicionamiento SEO  </h2>
@@ -153,7 +155,6 @@
 						<div class="botonera wow fadeInUp " data-wow-delay="0.6s">
 						</div>
 						<div class="botonera wow fadeInUp " data-wow-delay="0.6s">
-							<a href="https://mauricio-niemand-en.netlify.app/" class="btn btn-default smoothScroll hidden nonPrintable"><span></span><span></span><span></span><span></span>Skills</a>
 							<a href="#skills" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>Skills</a>
 							<a href="#experiencia" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>Experiencia</a>
 							<a href="#courses" class="btn btn-default smoothScroll nonPrintable"><span></span><span></span><span></span><span></span>&Uacute;ltimos Cursos</a>
@@ -504,44 +505,36 @@
 		</footer>
 		<!-- end footer -->
 	</div>
-
+	
 	<!-- start arrange a meeting -->
 	<!--<button class="open-button" onclick="openForm()">Arrange Meeting</button>-->
+	<div class="row">
+		<div class="col-sm">
+			<div class="bookmarkRibbon visibleMeeting nonPrintable" onclick="openForm()"><span style="">Meeting</span></div>
+		</div>
+		<div class="col-sm">
+			<div class="form-popup hiddenMeeting" id="meetingForm">
+				<form action="" class="form-container col-sm">
+					<h1><i class="fa fa-calendar"></i> Meetings</h1>
 
-	<div class="form-popup hiddenMeeting" id="meetingForm">
-		<form action="" class="form-container col-sm">
-			<h1>Meetings</h1>
+					<select id="schedule" name="schedule" onchange="scheduleMeeting();"></select>
 
-			<select id="schedule" name="schedule"></select>
-
-			<!--<button type="submit" class="btn" onclick="Calendly.showPopupWidget(document.getElementById('schedule').value);openForm();event.preventDefault();">Schedule it</button>-->
-			<a class="btn" href="#" onclick="openMeeting();">Schedule it</a>
-			<button type="button" class="btn cancel" onclick="openForm()">Cancel</button>
-		</form>
+					<!--<button type="submit" class="btn" onclick="Calendly.showPopupWidget(document.getElementById('schedule').value);openForm();event.preventDefault();">Schedule it</button>-->
+					<a class="btn" href="#" target="_blank" onclick="openMeeting();">Programar reuni&oacute;n</a>
+					<button type="button" class="btn cancel" onclick="openForm()">Cancelar</button>
+				</form>
+			</div>
+		</div>
 	</div>
 	<!-- end arrange a meeting -->
 
-		<!-- jQuery Local -->
-		<!-- <script src="js/jquery.js"></script> -->
-		<!-- bootstrap -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- fullpage -->
-		<script src="js/jquery.fullPage.js"></script>
-		<!-- smoothScroll -->
-		<script src="js/smoothscroll.js"></script>
-		<!-- wow -->
-		<script src="js/wow.min.js"></script>
-		<!-- text rotater -->
-		<script src="js/jquery.simple-text-rotator.js"></script>
-		<!-- toast -->
-		<script src="js/toast.script.js"></script>
+	<!-- Principio del widget de enlace de Calendly -->
+	<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+	<script src="js/widgetCalendly.js" type="text/javascript" async></script>
+	<!-- Final del widget de enlace de Calendly -->
 		
-		<!-- Principio del widget de enlace de Calendly -->
-		<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-		<script src="js/widgetCalendly.js" type="text/javascript" async></script>
-		<!-- Final del widget de enlace de Calendly -->
-		
-		<!-- custom -->
-		<script src="js/custom.js"></script>
+	<!-- custom -->
+	<script src="js/custom.js"></script>
+
 	</body>
 </html>

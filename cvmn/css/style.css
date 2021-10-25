@@ -34,8 +34,16 @@
     --meetings-bg-color: #161414;
     --meetings-font-color: #3fd48f;
 
-    --bookmarkBackground: #643fd4;
-    --bookmarkFont: #03e9f4;
+    --bookmarkBackground: #D43F52; /*#03e9f4; #643fd4;*/
+    --bookmarkFont: #00f3ff; /*#03e9f4;*/
+
+    --reunion1BookmarkBG: #2b9943;
+    --reunion1BookmarkFont: #2b9943;
+    --reunion2BookmarkBG: #2b9943;
+    --reunion2BookmarkFont: #2b9943;
+    --reunion3BookmarkBG: #2b9943;
+    --reunion3BookmarkFont: #2b9943;
+
 }
 
 body
@@ -805,13 +813,12 @@ background-image: url("img/building.jpg");
 
 /* The popup form - hidden by default */
 .form-popup {
-    display: block;
     position: fixed;
-    bottom: 15px;
-    right: 15px;
-    border: 3px inset var(--name-color);
-    border-radius: 15px;
-    max-width: 300px;
+    width: 500px;
+    height: 320px;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
 }
 
 .form-popup h1{
@@ -836,33 +843,45 @@ background-image: url("img/building.jpg");
     text-orientation: upright;
 }
 */
+ .bookMarkContainer{
+    float: right;
+    position: fixed;
+    right: -5px;
+    bottom: 55vh;
+ }
+
  .bookmarkRibbon {
-    width: 105px;
+    width: 15vw;
     height: 0;
     border-bottom: 20px solid var(--bookmarkBackground);
     border-top: 20px solid var(--bookmarkBackground);
     border-left: 15px solid transparent;
-    float: right;
     margin-bottom: 20px;
-    font-size: 17px;
+    font-size: .7em;
     font-weight:700;
-    position: fixed;
-    right: 0px;
-    bottom: 55vh;
-    opacity: .2;
-    transition: all 2s ease-in-out;
+    text-align: center;
+    opacity: 1;
+    transition: transform .5s;
 }
+
+.bookmarkRibbon:hover{
+    /*opacity: .8;*/
+    /*transition: translate(-10px) scale(1.1)!important;*/
+    /*transform: scale(1.1);*/
+    transform: scale(1.05) translate(-10px)!important;
+}
+
+.bookMarkContainer>.bookmarkRibbon.visibleMeeting{
+    animation: fadeInRight;
+
+}
+
 .bookmarkRibbon span{
     color: var(--bookmarkFont);
     position: relative;
     top: -12px;
     text-align: center;
     right: -10px;
-}
-
-.bookmarkRibbon:hover{
-    /*opacity: .8;*/
-    transform: scale(1.1)!important;
 }
 
 /* Full-width input fields */
@@ -886,36 +905,52 @@ background-image: url("img/building.jpg");
     outline: none;
 }
 
-/* Set a style for the submit/login button */
-.form-container .btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-}
-
+/* Esconder meeting */
 .hiddenMeeting {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
+  z-index: -1;
 }
 
+/* MostrarMeeting */
 .visibleMeeting {
   visibility: visible;
-  opacity: .3;
+  opacity: .7;
   transition: opacity 0.5s linear;
 }
+.visibleMeeting.bookmarkRibbon {
+  animation: fadeInRight;
+  animation-duration: 1s;
+  opacity: 1;
+  transition: transform .5s;
+}
+.hiddenMeeting.bookmarkRibbon {
+  animation: fadeOutRight;
+  animation-duration: 1s;
+}
+
 .visibleMeeting:hover {
   opacity: 1;
 }
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+#meetingForm .cancel {
     background-color: var(--name-color);
+    width: 100%;
+    color: var(--experiencia-me-color);
+}
+#meetingForm a.botonera.meeting{
+    width: 100%;
+    text-align: center;
+    background-color: #68f5f9;
+    color: #000;
+    box-shadow: 0 0 10px #03e9f4, 0 0 10px #03e9f4, 0 0 10px #03e9f4, 0 0 10px #03e9f4;
+    font-weight: 900;
+}
+
+#meetingForm .botonera a span{
+    background: linear-gradient(90deg, transparent, var(--name-border-color));
 }
 
 /* Add some hover effects to buttons */

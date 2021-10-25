@@ -508,20 +508,22 @@
 	
 	<!-- start arrange a meeting -->
 	<!--<button class="open-button" onclick="openForm()">Arrange Meeting</button>-->
-	<div class="row">
-		<div class="col-sm">
-			<div class="bookmarkRibbon visibleMeeting nonPrintable wow bounce animated" data-wow-delay="1.2s" onclick="openForm()"><span style="">Reuni&oacute;n</span></div>
+	<div class="row nonPrintable">
+		<div class="col-sm bookMarkContainer hiddenMeeting" data-wow-delay="1.2s">
+			<a href="https://calendly.com/mauricioniemand" target="_blank"><div class="bookmarkRibbon hiddenMeeting nonPrintable animate" data-wow-delay="1.2s"><span>Reuni&oacute;n 30m</span></div></a>
+			<a href="https://calendly.com/mauricio-niemand" target="_blank"><div class="bookmarkRibbon hiddenMeeting nonPrintable animate" data-wow-delay="1.4s"><span>Reuni&oacute;n 1h</span></div></a>
+			<a href="https://calendly.com/mauricio_niemand" target="_blank"><div class="bookmarkRibbon hiddenMeeting nonPrintable animate" data-wow-delay="1.6s"><span>Reuni&oacute;n 2hs</span></div></a>
 		</div>
-		<div class="col-sm">
-			<div class="form-popup hiddenMeeting" id="meetingForm">
+		<div class="col-sm hiddenMeeting" id="meetingForm">
+			<div class="form-popup">
 				<form action="" class="form-container col-sm">
 					<h1><i class="fa fa-calendar"></i> Reuniones</h1>
 
 					<select id="schedule" name="schedule" onchange="scheduleMeeting();"></select>
 
 					<!--<button type="submit" class="btn" onclick="Calendly.showPopupWidget(document.getElementById('schedule').value);openForm();event.preventDefault();">Schedule it</button>-->
-					<a class="btn" href="#" target="_blank" onclick="openMeeting();">Programar reuni&oacute;n</a>
-					<button type="button" class="btn cancel" onclick="openForm()">Cancelar</button>
+					<p class="botonera meeting"><a class="botonera meeting" href="#" target="_blank" onclick="openMeeting();"><span></span><span></span><span></span><span></span>Programar reuni&oacute;n</a>
+					<p><button type="button" class="btn cancel" onclick="openForm();">Cancelar</button></p>
 				</form>
 			</div>
 		</div>

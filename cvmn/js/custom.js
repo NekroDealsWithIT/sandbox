@@ -187,10 +187,18 @@ function addCustomSS(customSS){
 
 //Arrange a meeting
 function openForm() {
-	let elements=document.querySelectorAll("#meetingForm, .bookmarkRibbon");
+	let elements=""
+	let phone="";
+	let action="";
+	var element="";
+
+	phone=($(window).width()>480)?false:true;
+
+	elements=phone?document.querySelectorAll("#meetingForm"):document.querySelectorAll(".bookMarkContainer, .bookmarkRibbon");
+		
 	elements.forEach(e=>{
 		e.classList.toggle("hiddenMeeting");
-		e.classList.toggle("visibleMeeting");			
+		e.classList.toggle("visibleMeeting");
 	})
 	
 	let langBar=document.querySelector(".toast-item-wrapper");
@@ -210,7 +218,7 @@ function addMeetingOptions(lang){
 }
 
 function scheduleMeeting(){
-	document.querySelector('.form-popup a').href=document.getElementById("schedule").value+"/interview"
+	document.querySelector('.form-popup a').href=document.getElementById("schedule").value; //+"interview"
 }
 function openMeeting(){
 	/*

@@ -36,8 +36,8 @@ public class main {
         System.out.println("Sistema operativo: ");
         System.out.println(System.getProperty("os.name"));
 
-        System.out.println(
-                "Nombre: "+userName
+        System.out.println("--------------------------"
+                +"\nNombre: "+userName
                 +"\nApellido: "+userSurname
                 +"\nEdad: "+userAge
                 +"\nHobbie: "+userHobbie

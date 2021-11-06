@@ -1,6 +1,4 @@
-
 import java.util.Scanner;
-
 /**
  *
  * @author Mauricio Niemand <Mauricio.Niemand at your.org>

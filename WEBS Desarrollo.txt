@@ -1,0 +1,84 @@
+UML
+https://app.diagrams.net/ => {Diagramas UML}
+
+API
+https://jsonplaceholder.typicode.com/ => {Generar un rest api json desde github}
+https://data.buenosaires.gob.ar/dataset/ => {API Rest datos gobierno de la ciudad}
+
+JSON
+https://jsoneditoronline.org/ => {Editor online de JSON}
+https://www.freeformatter.com/json-escape.html => {Json escaping}
+
+Mentoring
+https://www.frontendmentor.io/ => {Mentoring FrontEnd}
+https://www.tutorialrepublic.com/ => {Tutorials}
+
+Beautifiers
+https://beautifytools.com/ => {Beautifiers}
+https://codebeautify.org/ => {Beautifiers}
+https://www.samltool.com/prettyprint.php {XML}
+
+Compare
+https://www.diffnow.com/compare-clips/ => {Online txt Diff}
+
+
+XLS Tables to HTML
+https://tableizer.journalistopia.com/ => {XLS Tables to HTML}
+
+Metadata
+https://www.opengraph.xyz/ => {OG tester}
+
+Regex
+https://regexr.com/ => {Regex Editor Online}
+
+Coding Mockup
+https://jsbin.com/ => {Mockup CSS+JS+HTML}
+https://jsfiddle.net/ => {Mockup CSS+JS+HTML}
+https://cssdeck.com/labs/ => {Mockup CSS+JS+HTML}
+https://codepen.io/pen/ => {Mockup CSS+JS+HTML}
+
+CSS
+https://animista.net/ => {Css Animations gen}
+https://www.myfonts.com/WhatTheFont/ => {Font finder}
+https://fontawesome.com/v4.7/icons/ => {Iconos}
+https://icons8.com/ => {Iconos}
+https://fonts.google.com/ => {Google Fonts}
+https://getbootstrap.com/ => {Bootstrap}
+
+JS
+https://jquery.com/ => {Jquery}
+
+Tests
+https://html5test.com/ => {Tester HTML5}
+https://validator.w3.org/ => {Tester W3C}
+https://www.thinkwithgoogle.com/intl/es-419/feature/testmysite/ => {Tester Mobile (SPEED)}
+https://downforeveryoneorjustme.com/ => {Tester Online}
+http://mobiletest.me/ => {Tester Mobile}
+https://loadfocus.com/ => {WEBSITE LOAD TESTS IN THE CLOUD}
+
+SEO
+https://analytics.google.com/ => {SEO Tools}
+https://technicalseo.com/tools/robots-txt/ => {Testing SEO}
+
+GIT
+https://ohshitgit.com/ => {Git reverts}
+https://www.toptal.com/developers/gitignore => {Generador de gitIgnores}
+
+Hosting + Repo
+https://www.heroku.com/ => {Hosting + Repo + GIT}
+https://github.com/ => {Hosting + Repo + GIT}
+https://www.netlify.com/ => {Hosting}
+
+LATEX
+https://latexbase.com/ => {Latex editor online}
+
+Documentacion
+https://maven.apache.org/plugins/maven-javadoc-plugin/examples/aggregate-nofork.html => {Documentacion java a traves de javadocs}
+
+Manejo de imagenes
+https://www.aiseesoft.com/watermark-remover-online/ => {WM Remover}
+https://ezgif.com/crop/ => {GIF Crop}
+https://www12.lunapic.com/editor/ => {IMG Editor}
+https://www.online-image-editor.com/ => {IMG Editor}
+http://www.prodraw.net/online-tool/ => {IMG Editor}
+https://www.facepixelizer.com/ => {IMG Editor+Pixelator}

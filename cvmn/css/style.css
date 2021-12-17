@@ -28,8 +28,8 @@
     --contact-submit-background-hover: #ffffff;
     --contact-submit-color-hover: #D43F52;
     
-    --social-icon-li-a-color: #606060;
-    --social-icon-li-a-hover-color: #D43F52;
+    --social-icon-li-a-color: #00f9fd;/*#606060;*/
+    --social-icon-li-a-hover-color: #3fd48f;
 
     --meetings-bg-color: #161414;
     --meetings-font-color: #3fd48f;
@@ -46,6 +46,10 @@
 
 }
 
+body,html{
+    overflow: clip;
+}
+
 body
 {
     background: var(--body-background);
@@ -53,6 +57,7 @@ body
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: 400;
+    overflow-x: clip;
 }
 
 /* start all section */
@@ -981,8 +986,15 @@ footer
         bottom: 0px;
         width: 100vw;
         background-color: #000;
-        opacity: 0.5;
+        opacity: 0.6;
+        transition: opacity 0.3s ease-in;
     }
+
+footer:hover
+    {
+        opacity: 0.9;
+    }
+
 footer hr
     {
         width: 100px;
@@ -998,12 +1010,39 @@ footer .fa
 /* end footer */
 
 /* start social icon */
+
+#social
+    {
+        text-align: justify;
+        position: relative;
+
+        padding-top: 30px;
+        padding-bottom: 10px;
+
+        bottom: 0px;
+        width: 100vw;
+        background-color: #000;
+        opacity: 0.6;
+        transition: opacity 0.3s ease-in;
+    }
+
+#social:hover
+    {
+        opacity: 0.9;
+    }
+
 .social-icon
     {
         position: relative;
         padding: 0;
-        margin: 0;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
+
+.social-icon .badge-base .LI-profile-badge{
+    background: red!important;
+}
 .social-icon li
     {
         display: inline-block;

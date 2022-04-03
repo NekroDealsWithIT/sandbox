@@ -43,9 +43,10 @@
     height: 2em;
 
     border: 2px solid black;
-    border-radius: 8px;
+    border-radius:  px;
 
-    line-height: 25px;
+    /*line-height: 25px;*/
+    padding: 5px 0;
 }
 
 .descripcion{

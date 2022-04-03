@@ -20,12 +20,12 @@
     
     text-align: center;
     width: 247px;
-    height: 350px;
+    height: 340px;
 
     min-width: 247px;
-    min-height: 350px;
+    min-height: 340px;
 
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .pokemon-card .nombre{
@@ -38,10 +38,9 @@
     text-align: center;
     margin: auto;
 
-    width: 145px;
-    height: 29px;
-    min-width: 145px;
-    min-height: 29px;
+    width: 60%;
+    /*height: 29px;*/
+    height: 2em
 
     border: 2px solid black;
     border-radius: 8px;
@@ -50,7 +49,11 @@
 }
 
 .descripcion{
-    font-size: .8em;
+    /*font-size: .8em;*/
+    font-size: .67em;
+
+    line-height: 15px;
+
     font-weight: bold;
     text-align: justify;
     margin: 0 25px;

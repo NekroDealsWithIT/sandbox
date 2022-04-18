@@ -1,0 +1,23 @@
+*{
+	box-sizing:content-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+body{
+	margin: 2em;
+}
+
+.card-parent{
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card{
+	max-width: 22rem;
+}
+
+.card .modified{
+	font-size: .8em;
+}

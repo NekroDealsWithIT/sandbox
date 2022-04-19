@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap actividad 2</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--bootstrap-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!--Styles-->
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body onload="calcular()">
+	<header>
+		<h1>Bootstrap actividad 2</h1>	
+		<article>
+			<h2 class="imgRefTitle">Img Referencia</h2>
+				<p>1- Ingresá en el siguiente cuadro el código HTML y Javascript correspondiente para la creación de una página web que posea el siguiente aspecto y cumpla con los siguientes requisitos:</p>
+				<p>Posea un script en javascript que declare:</p>
+
+				<ul>
+					<li>una variable llamada primera con un valor numérico = 40</li>
+					<li>una variable llamada segunda con un valor numérico = 16</li>
+					<li>una variable llamada sumatotal con un valor numérico de la suma de las dos variables anteriores.</li>
+				</ul>
+				<p>y una salida por pantalla en HTML que muestre un mensaje y el valor de sumatotal:</p>
+			<picture>
+				<img src="img/image1.png" alt="demo">
+			</picture>
+		</article>
+		<hr>
+	</header>
+	
+	<main>
+		<h2 class="imgRefTitle">Resoluci&oacute;n</h2>
+		<article>
+			Numero 1 <input type="number" class="" value=40 id=n1 onchange="calcular()">
+			Numero 2 <input type="number" class="" value=16 id=n2 onchange="calcular()">
+			<input type="button" class="btn btn-primary" value="calcular" onclick="calcular()">
+			<br>
+			<br>
+			<p class="resultado">Resultado</p>
+		</article>
+	</main>
+
+	<!-- Bootstrap Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>

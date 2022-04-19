@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap actividad 2</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--bootstrap-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!--Styles-->
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+	<header>
+		<h1>Bootstrap actividad 2</h1>	
+		<article>
+			<h2 class="imgRefTitle">Img Referencia</h2>
+			<picture>
+				<img src="img/15.1- imagen ejercicio obligatorio.jpg" alt="demo">
+			</picture>
+		</article>
+		<hr>
+	</header>
+	
+	<main>
+		<h2 class="imgRefTitle">Resoluci&oacute;n</h2>
+		<article>
+			<form class="col-md-4">
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="nombre">Nombre de pila</label>
+						<input type="text" class="form-control" placeholder="Eveready" id="nombre">
+					</div>
+					<div class="col">
+						<label for="apellido">Apellido</label>
+						<input type="text" class="form-control" placeholder="Apellido" id="apellido">
+					</div>
+				</div>
+				<div class="row-md-4">
+					<label for="usuario">Nombre de usuario</label>
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<div class="input-group-text">@</div>
+						</div>
+						<input type="text" class="form-control" placeholder="" id="usuario">
+					</div>
+				</div>			
+				<div class="row-md-4">
+					<label for="correo">Correo Electronico <span class="btn disabled">(opcional)</span></label>
+					<input type="email" class="form-control" placeholder="you@example.com" id="correo">
+				</div>			
+				<div class="row-md-4">
+					<label for="direccion1">Habla a</label>
+					<input type="text" class="form-control" placeholder="1234 Main Street" id="direccion1">
+				</div>
+				<div class="row-md-4">
+					<label for="direccion2">Direcci&oacute;n 2 <span class="btn disabled">(opcional)</span></label>
+					<input type="text" class="form-control" placeholder="Apartamento o suite" id="direccion2">
+				</div>
+				<div class="row">
+					<div class="col">
+						<label for="pais">Pa&iacute;s</label>
+						<!--<input type="text" class="form-control" id="pais">-->
+						<select class="custom-select" id="pais">
+							<option selected>Escoger...</option>
+							<option value="1">Pa&iacute;s Uno</option>
+							<option value="2">Dos</option>
+							<option value="3">Ultraviolento!</option>
+						</select>
+					</div>
+					<div class="col">
+						<label for="estado">Estado</label>
+						<!--<input type="text" class="form-control" placeholder="Escoger..." id="estado">-->
+						<select class="custom-select" id="estado">
+							<option selected>Escoger...</option>
+							<option value="1">Estado Uno</option>
+							<option value="2">Dos</option>
+							<option value="3">Ultraviolento!</option>
+						</select>
+
+					</div>
+					<div class="col">
+						<label for="zip">C&oacute;digo postal</label>
+						<input type="text" class="form-control" placeholder="" id="zip">
+					</div>
+				</div>
+				
+				<hr>
+
+				<div class="row-md-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="envio">
+						<label class="form-check-label" for="envio">
+							La direcci&oacute;n de env&iacute;o es la misma que mi direcci&oacute;n de facturaci&oacute;n
+						</label>
+					</div>
+				</div>
+
+				<div class="row-md-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="guardar">
+						<label class="form-check-label" for="guardar">
+							Guarde esta informaci&oacute;n para la pr&oacute;xima vez
+						</label>
+					</div>
+				</div>
+				
+				<hr>										
+			
+			</form>
+		</article>
+	</main>
+
+	<!-- Bootstrap Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="js/cutom.js"></script>
+</body>
+</html>

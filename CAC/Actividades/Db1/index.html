@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ejercicio CAC DB1</title>
+</head>
+<body>
+	<h1>Ejercicio CAC DB1</h1>
+
+	<h2>Bajar Dump</h2>
+	<a href="files/nekro.zip" download>
+  		<img src="img/descarga.png" alt="Bajar Dump" width="100" height="100">
+	</a>
+
+
+	<h2>Creacion de Tabla</h2>
+	<pre>
+		CREATE TABLE `cac`.`nekro` ( 
+			`id` INT(11) NOT NULL AUTO_INCREMENT , 
+			`nombre` VARCHAR(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL , 
+			`apellido` VARCHAR(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL , 
+			`edad` TINYINT(2) NOT NULL , 
+			`fecha` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+			`provincia` VARCHAR(30) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL , 
+			PRIMARY KEY (`id`)) ENGINE = InnoDB;
+	</pre>
+	<img src="img/creation.png">
+	<h2>Insercion de datos</h2>
+	<pre>
+		INSERT INTO `nekro` 
+			(`id`, `nombre`, `apellido`, `edad`, `fecha`, `provincia`) 
+		VALUES 
+			(1, 'Valdemar', 'Andersen', 20, '2000-02-20 06:00:00', 'Buenos Aires'),
+			(2, 'Giada', 'Fabre', 30, '1990-03-01 06:00:00', 'Mendoza'),
+			(3, 'Ramon', 'Perez', 40, '1980-04-16 06:00:00', 'Catamarca'),
+			(4, 'Carlos', 'Andersen', 50, '1970-05-08 06:00:00', 'Santa Fe'),
+			(5, 'Sandra', 'Gomez', 60, '1970-06-22 06:00:00', 'Buenos Aires');
+	</pre>
+
+	<img src="img/insert.png">
+</body>
+</html>

@@ -119,7 +119,7 @@ jugar o no.
 		isHappy -->|NO| QUEDA_CONTENTA
 		isHappy -->|SI| aumentaNivel
 		aumentaNivel[Aumenta Nivel]
-		aumentaNivel --> |Sube 2 niveles| QUEDA_CONTENTA
+		aumentaNivel --> |+2 nivel| QUEDA_CONTENTA
 
 		QUEDA_CONTENTA[QUEDA CONTENTA]
 ```

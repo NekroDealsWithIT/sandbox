@@ -48,8 +48,9 @@ jugar o no.
 	classDiagram
 		class Tamagotchy{
 			-String name
-			-int energy
 			-int level
+			-int energy
+			-int happiness
 			-Timestamp lastUpdate
 			
 			+feed() void
